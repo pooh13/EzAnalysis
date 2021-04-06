@@ -1,0 +1,25 @@
+@charset "utf-8";
+html, body{
+		/*background:	#ecffff;*/
+		color: #8080c0;
+		font-size:18px;
+		font-weight:bolder;
+		background-image:url('http://pic.51yuansu.com/pic3/cover/02/41/90/59e44215a559e_610.jpg');
+}
+div.aa h3{
+	margin:20px auto 0px auto;
+	font-weight:bolder;
+}
+div.tt input.form-control{ 
+	border:2px #bebebe solid;
+	margin-right:10px; 
+	margin-bottom:5px;
+}
+div.tt button.b1 {
+	font-weight:bold;
+	border:0;
+	background-color:#8080c0;
+	color:#fff;
+	border-radius:10px;
+
+}

@@ -1,0 +1,21 @@
+/*# Empty CSS file for your own CSS*/
+@charset "utf-8";
+html, body{
+		/*background:	#ecffff;*/
+		color: #003d79;
+		font-size:17px;
+		font-weight:bold;
+		background-image:url('http://www.lanrentuku.com/savepic/img/allimg/1305/5-13050G30234.jpg');
+}
+div.aa h3{
+	margin:20px auto 0px auto;
+}
+div.tt input.form-control{ 
+	border:2px #bebebe solid;
+	margin-right:10px; 
+	margin-bottom:5px;
+}
+.btn{
+    margin: 30px 0 0 0;
+    width: 130px;
+}

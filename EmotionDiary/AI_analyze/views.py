@@ -8,10 +8,12 @@ from django.shortcuts import render
 
 from django.conf import settings
 from django.http import HttpResponse, HttpResponseBadRequest, HttpResponseForbidden
+from django.shortcuts import render, redirect, get_object_or_404
 from django.views.decorators.csrf import csrf_exempt
 from .models import PhotoAnalysis
 from django.core.files.base import ContentFile
 from django.core.files import File
+from . import forms
 
 from linebot import LineBotApi, WebhookParser, WebhookHandler
 from linebot.exceptions import InvalidSignatureError, LineBotApiError
@@ -21,6 +23,16 @@ line_bot_api = LineBotApi(settings.LINE_CHANNEL_ACCESS_TOKEN)
 handler = WebhookHandler(settings.LINE_CHANNEL_SECRET)
 
 t = time.time()
+
+
+def user_inform_from(request):
+    form = forms.UserInformFrom(request.POST or None, request.FILES or None)
+    if form.is_valid():
+        form.save()
+
+    return render(request, 'UserInform/new.html', {
+        'form': form
+    })
 
 
 @csrf_exempt
@@ -59,7 +71,7 @@ def handle_text_message(event):
 
         # 接收照片
         message_content = line_bot_api.get_message_content(event.message.id)
-        with tempfile.NamedTemporaryFile(dir='media\\images\\', prefix=event.source.user_id + '-', delete=False) as file:
+        with tempfile.NamedTemporaryFile(dir='static/img/', prefix=event.source.user_id + '-', delete=False) as file:
             for chunk in message_content.iter_content():
                 file.write(chunk)
             temp_file_path = file.name
@@ -68,10 +80,9 @@ def handle_text_message(event):
         # dist_name = os.path.basename(dist_path)
         os.rename(temp_file_path, dist_path)
 
-        print(dist_path)
-        upload_img = PhotoAnalysis(line_id=event.source.user_id, date=datetime.datetime.fromtimestamp(t))
-        upload_img.pic.save(event.source.user_id + '.' + ext, File(open(dist_path, 'rb')))
-        # os.remove(dist_path)
+        # print(dist_path)
+        # upload_img = PhotoAnalysis(line_id=event.source.user_id, date=datetime.datetime.fromtimestamp(t))
+        # upload_img.pic.save(dist_path, File(open(dist_path, 'rb')))
 
         # print("datetime = ", datetime.datetime)
         # print("t = ", t)

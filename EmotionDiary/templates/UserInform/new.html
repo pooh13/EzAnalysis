@@ -1,0 +1,21 @@
+{% extends 'layout.html' %}
+
+{% load bootstrap4 %}
+
+{% block body %}
+  <div class="row">
+    <div class="col-6 offset-3">
+      <h1>Add New Member</h1>
+      <hr>
+      <form action="" method="post" class="form" enctype="multipart/form-data">
+        {% csrf_token %}
+        {% bootstrap_form form %}
+        {% buttons %}
+          <button type="submit" class="btn btn-primary">
+            Submit
+          </button>
+        {% endbuttons %}
+      </form>
+    </div>
+  </div>
+{% endblock %}
