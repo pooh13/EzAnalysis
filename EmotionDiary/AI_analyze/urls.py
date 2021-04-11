@@ -20,4 +20,5 @@ from . import views
 app_name = 'EmotionDiary'
 urlpatterns = [
     path('callback/', views.callback),
+    path('userinform/', views.user_inform_from, name='userinfo'),
 ]
