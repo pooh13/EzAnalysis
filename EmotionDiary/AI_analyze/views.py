@@ -33,7 +33,6 @@ handler = WebhookHandler(settings.LINE_CHANNEL_SECRET)
 
 liff_api = LIFF(settings.LINE_CHANNEL_ACCESS_TOKEN)
 
-
 @csrf_exempt
 def callback(request):
     if request.method == 'POST':
