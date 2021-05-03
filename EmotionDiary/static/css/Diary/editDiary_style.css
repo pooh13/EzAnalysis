@@ -1,0 +1,678 @@
+	.mediaViewInfo {
+		--web-view-name: 更改日記3 - 1 – 3;
+		--web-view-id: ID3_-_1__3;
+		--web-scale-on-resize: true;
+		--web-enable-deep-linking: true;
+	}
+	:root {
+		--web-view-ids: ID3_-_1__3;
+	}
+	* {
+		margin: 0;
+		padding: 0;
+		box-sizing: border-box;
+		border: none;
+	}
+	#ID3_-_1__3 {
+		position: absolute;
+		width: 428px;
+		height: 926px;
+		background-color: rgba(250,249,244,1);
+		overflow: hidden;
+		--web-view-name: 更改日記3 - 1 – 3;
+		--web-view-id: ID3_-_1__3;
+		--web-scale-on-resize: true;
+		--web-enable-deep-linking: true;
+	}
+	@keyframes fadein {
+	
+		0% {
+			opacity: 0;
+		}
+		100% {
+			opacity: 1;
+		}
+	
+	}
+	#_12 {
+		fill: rgba(214,226,233,1);
+		stroke: rgba(198,198,198,1);
+		stroke-width: 1px;
+		stroke-linejoin: miter;
+		stroke-linecap: butt;
+		stroke-miterlimit: 4;
+		shape-rendering: auto;
+	}
+	._12 {
+		overflow: visible;
+		position: absolute;
+		width: 428px;
+		height: 89px;
+		left: 0px;
+		top: 0px;
+		transform: matrix(1,0,0,1,0,0);
+	}
+	#title{
+		left: 154px;
+		top: 24px;
+		position: absolute;
+		overflow: visible;
+		width: 121px;
+		white-space: nowrap;
+		text-align: center;
+		font-family: Microsoft Himalaya;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 30px;
+		color: rgba(0,0,0,1);
+	}
+	#_51 {
+		position: absolute;
+		width: 428px;
+		height: 60px;
+		left: 0px;
+		top: 104px;
+		overflow: visible;
+	}
+	#_104 {
+		fill: rgba(245,232,218,1);
+		stroke: rgba(218,218,218,1);
+		stroke-width: 1px;
+		stroke-linejoin: miter;
+		stroke-linecap: butt;
+		stroke-miterlimit: 4;
+		shape-rendering: auto;
+	}
+	._104 {
+		position: absolute;
+		overflow: visible;
+		width: 428px;
+		height: 60px;
+		left: 0px;
+		top: 0px;
+	}
+	#Date {
+		left: 11px;
+		top: 15px;
+		position: absolute;
+		overflow: visible;
+		width: 45px;
+		white-space: nowrap;
+		text-align: center;
+		font-family: Microsoft JhengHei;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 20px;
+		color: rgba(0,0,0,1);
+	}
+	#ID20210322 {
+		left: 301px;
+		top: 12px;
+		position: absolute;
+		overflow: visible;
+		width: 119px;
+		white-space: nowrap;
+		text-align: center;
+		font-family: Kohinoor Bangla;
+		font-style: normal;
+		font-weight: lighter;
+		font-size: 25px;
+		color: rgba(78,78,78,1);
+	}
+	#_50 {
+		position: absolute;
+		width: 428px;
+		height: 60px;
+		left: 0px;
+		top: 179px;
+		overflow: visible;
+	}
+	#_106 {
+		fill: rgba(229,239,245,1);
+		stroke: rgba(218,218,218,1);
+		stroke-width: 1px;
+		stroke-linejoin: miter;
+		stroke-linecap: butt;
+		stroke-miterlimit: 4;
+		shape-rendering: auto;
+	}
+	._106 {
+		position: absolute;
+		overflow: visible;
+		width: 428px;
+		height: 60px;
+		left: 0px;
+		top: 0px;
+	}
+	#Time {
+		left: 10px;
+		top: 15px;
+		position: absolute;
+		overflow: visible;
+		width: 47px;
+		white-space: nowrap;
+		text-align: center;
+		font-family: Microsoft JhengHei;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 20px;
+		color: rgba(0,0,0,1);
+	}
+	#_0549 {
+		left: 303px;
+		top: 12px;
+		position: absolute;
+		overflow: visible;
+		width: 115px;
+		white-space: nowrap;
+		text-align: center;
+		font-family: Kohinoor Devanagari;
+		font-style: normal;
+		font-weight: lighter;
+		font-size: 25px;
+		color: rgba(78,78,78,1);
+	}
+	#_52 {
+		position: absolute;
+		width: 428px;
+		height: 96px;
+		left: 0px;
+		top: 254px;
+		overflow: visible;
+		--web-animation: fadein 0.3s ease-out;
+		--web-action-type: page;
+		--web-action-target: ____3___1___1.html;
+		cursor: pointer;
+	}
+	#_104_bd {
+		fill: rgba(245,232,218,1);
+		stroke: rgba(218,218,218,1);
+		stroke-width: 1px;
+		stroke-linejoin: miter;
+		stroke-linecap: butt;
+		stroke-miterlimit: 4;
+		shape-rendering: auto;
+	}
+	._104_bd {
+		position: absolute;
+		overflow: visible;
+		width: 428px;
+		height: 96px;
+		left: 0px;
+		top: 0px;
+	}
+	#ID051-joy {
+		position: absolute;
+		width: 74px;
+		height: 74px;
+		left: 322px;
+		top: 11px;
+		overflow: visible;
+	}
+	#_bf {
+		left: 23px;
+		top: 37px;
+		position: absolute;
+		overflow: visible;
+		width: 21px;
+		white-space: nowrap;
+		text-align: center;
+		font-family: Wingdings;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 20px;
+		color: rgba(0,0,0,1);
+	}
+	#_53 {
+		position: absolute;
+		width: 428px;
+		height: 234px;
+		left: 0px;
+		top: 365px;
+		overflow: visible;
+	}
+	#_104_bh {
+		fill: rgba(229,239,245,1);
+		stroke: rgba(218,218,218,1);
+		stroke-width: 1px;
+		stroke-linejoin: miter;
+		stroke-linecap: butt;
+		stroke-miterlimit: 4;
+		shape-rendering: auto;
+	}
+	._104_bh {
+		position: absolute;
+		overflow: visible;
+		width: 428px;
+		height: 234px;
+		left: 0px;
+		top: 0px;
+	}
+	#_bi {
+		left: 23px;
+		top: 8px;
+		position: absolute;
+		overflow: visible;
+		width: 21px;
+		white-space: nowrap;
+		text-align: center;
+		font-family: Wingdings;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 20px;
+		color: rgba(0,0,0,1);
+	}
+	#_9 {
+		fill: rgba(0,0,0,0);
+		stroke: rgba(112,112,112,1);
+		stroke-width: 1px;
+		stroke-linejoin: miter;
+		stroke-linecap: butt;
+		stroke-miterlimit: 4;
+		shape-rendering: auto;
+	}
+	._9 {
+		overflow: visible;
+		position: absolute;
+		width: 408px;
+		height: 1px;
+		left: 10px;
+		top: 33px;
+		transform: matrix(1,0,0,1,0,0);
+	}
+	#_bk {
+		position: absolute;
+		width: 397px;
+		height: 189px;
+		left: 13px;
+		top: 403px;
+		overflow: visible;
+		--web-animation: fadein 0.3s ease-out;
+		--web-action-type: page;
+		--web-action-target: ____3___1___2.html;
+		cursor: pointer;
+	}
+	#_bl {
+		position: absolute;
+		width: 60px;
+		height: 86px;
+		left: 0px;
+		top: 0px;
+		overflow: visible;
+	}
+	#_bm {
+		left: 10px;
+		top: 59px;
+		position: absolute;
+		overflow: visible;
+		width: 41px;
+		white-space: nowrap;
+		text-align: center;
+		font-family: Arial;
+		font-style: normal;
+		font-weight: bold;
+		font-size: 20px;
+		color: rgba(0,0,0,1);
+	}
+	#shopping-bag {
+		position: absolute;
+		width: 60px;
+		height: 60px;
+		left: 0px;
+		top: 0px;
+		overflow: visible;
+	}
+	#_bo {
+		position: absolute;
+		width: 60px;
+		height: 86px;
+		left: 85px;
+		top: 1px;
+		overflow: visible;
+	}
+	#fast-food {
+		position: absolute;
+		width: 60px;
+		height: 60px;
+		left: 0px;
+		top: 0px;
+		overflow: visible;
+	}
+	#_bq {
+		left: 10px;
+		top: 59px;
+		position: absolute;
+		overflow: visible;
+		width: 41px;
+		white-space: nowrap;
+		text-align: center;
+		font-family: Arial;
+		font-style: normal;
+		font-weight: bold;
+		font-size: 20px;
+		color: rgba(0,0,0,1);
+	}
+	#_br {
+		position: absolute;
+		width: 60px;
+		height: 86px;
+		left: 170px;
+		top: 1px;
+		overflow: visible;
+	}
+	#friends {
+		position: absolute;
+		width: 60px;
+		height: 60px;
+		left: 0px;
+		top: 0px;
+		overflow: visible;
+	}
+	#_bt {
+		left: 10px;
+		top: 59px;
+		position: absolute;
+		overflow: visible;
+		width: 41px;
+		white-space: nowrap;
+		text-align: center;
+		font-family: Arial;
+		font-style: normal;
+		font-weight: bold;
+		font-size: 20px;
+		color: rgba(0,0,0,1);
+	}
+	#_bu {
+		position: absolute;
+		width: 60px;
+		height: 86px;
+		left: 337px;
+		top: 0px;
+		overflow: visible;
+	}
+	#sport {
+		position: absolute;
+		width: 60px;
+		height: 60px;
+		left: 0px;
+		top: 0px;
+		overflow: visible;
+	}
+	#_bw {
+		left: 10px;
+		top: 59px;
+		position: absolute;
+		overflow: visible;
+		width: 41px;
+		white-space: nowrap;
+		text-align: center;
+		font-family: Arial;
+		font-style: normal;
+		font-weight: bold;
+		font-size: 20px;
+		color: rgba(0,0,0,1);
+	}
+	#_bx {
+		position: absolute;
+		width: 60px;
+		height: 86px;
+		left: 0px;
+		top: 103px;
+		overflow: visible;
+	}
+	#favourite {
+		position: absolute;
+		width: 60px;
+		height: 60px;
+		left: 0px;
+		top: 0px;
+		overflow: visible;
+	}
+	#_bz {
+		left: 10px;
+		top: 59px;
+		position: absolute;
+		overflow: visible;
+		width: 41px;
+		white-space: nowrap;
+		text-align: center;
+		font-family: Arial;
+		font-style: normal;
+		font-weight: bold;
+		font-size: 20px;
+		color: rgba(0,0,0,1);
+	}
+	#_b {
+		position: absolute;
+		width: 60px;
+		height: 86px;
+		left: 255px;
+		top: 1px;
+		overflow: visible;
+	}
+	#joystick {
+		position: absolute;
+		width: 60px;
+		height: 60px;
+		left: 0px;
+		top: 0px;
+		overflow: visible;
+	}
+	#_ca {
+		left: 0px;
+		top: 59px;
+		position: absolute;
+		overflow: visible;
+		width: 61px;
+		white-space: nowrap;
+		text-align: center;
+		font-family: Arial;
+		font-style: normal;
+		font-weight: bold;
+		font-size: 20px;
+		color: rgba(0,0,0,1);
+	}
+	#_cb {
+		position: absolute;
+		width: 60px;
+		height: 86px;
+		left: 85px;
+		top: 103px;
+		overflow: visible;
+	}
+	#broom {
+		position: absolute;
+		width: 60px;
+		height: 60px;
+		left: 0px;
+		top: 0px;
+		overflow: visible;
+	}
+	#_cc {
+		left: 10px;
+		top: 59px;
+		position: absolute;
+		overflow: visible;
+		width: 41px;
+		white-space: nowrap;
+		text-align: center;
+		font-family: Arial;
+		font-style: normal;
+		font-weight: bold;
+		font-size: 20px;
+		color: rgba(0,0,0,1);
+	}
+	#_cd {
+		position: absolute;
+		width: 60px;
+		height: 86px;
+		left: 170px;
+		top: 103px;
+		overflow: visible;
+	}
+	#luggage {
+		position: absolute;
+		width: 60px;
+		height: 60px;
+		left: 0px;
+		top: 0px;
+		overflow: visible;
+	}
+	#_ce {
+		left: 10px;
+		top: 59px;
+		position: absolute;
+		overflow: visible;
+		width: 41px;
+		white-space: nowrap;
+		text-align: center;
+		font-family: Arial;
+		font-style: normal;
+		font-weight: bold;
+		font-size: 20px;
+		color: rgba(0,0,0,1);
+	}
+	#_cf {
+		position: absolute;
+		width: 60px;
+		height: 86px;
+		left: 337px;
+		top: 103px;
+		overflow: visible;
+	}
+	#confetti {
+		position: absolute;
+		width: 60px;
+		height: 60px;
+		left: 0px;
+		top: 0px;
+		overflow: visible;
+	}
+	#_cg {
+		left: 10px;
+		top: 59px;
+		position: absolute;
+		overflow: visible;
+		width: 41px;
+		white-space: nowrap;
+		text-align: center;
+		font-family: Arial;
+		font-style: normal;
+		font-weight: bold;
+		font-size: 20px;
+		color: rgba(0,0,0,1);
+	}
+	#_ch {
+		position: absolute;
+		width: 60px;
+		height: 86px;
+		left: 255px;
+		top: 103px;
+		overflow: visible;
+	}
+	#open-book {
+		position: absolute;
+		width: 60px;
+		height: 60px;
+		left: 0px;
+		top: 0px;
+		overflow: visible;
+	}
+	#_ci {
+		left: 10px;
+		top: 59px;
+		position: absolute;
+		overflow: visible;
+		width: 41px;
+		white-space: nowrap;
+		text-align: center;
+		font-family: Arial;
+		font-style: normal;
+		font-weight: bold;
+		font-size: 20px;
+		color: rgba(0,0,0,1);
+	}
+	#_107 {
+		fill: rgba(245,232,218,1);
+		stroke: rgba(218,218,218,1);
+		stroke-width: 1px;
+		stroke-linejoin: miter;
+		stroke-linecap: butt;
+		stroke-miterlimit: 4;
+		shape-rendering: auto;
+	}
+	._107 {
+		position: absolute;
+		overflow: visible;
+		width: 428px;
+		height: 317px;
+		left: 0px;
+		top: 609px;
+	}
+	#photo-camera {
+		opacity: 0.499;
+		position: absolute;
+		width: 106.365px;
+		height: 106.365px;
+		left: 13px;
+		top: 615px;
+		overflow: visible;
+	}
+	#NEXT {
+		position: absolute;
+		width: 123px;
+		height: 48px;
+		left: 287px;
+		top: 867px;
+		overflow: visible;
+		--web-animation: fadein 0.3s ease-out;
+		--web-action-type: page;
+		--web-action-target: ____3___1.html;
+		cursor: pointer;
+	}
+	#_4 {
+		fill: rgba(106,142,168,1);
+	}
+	._4 {
+		filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+		position: absolute;
+		overflow: visible;
+		width: 141px;
+		height: 66px;
+		left: 0px;
+		top: 0px;
+	}
+	#_cj {
+		filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+		left: 32px;
+		top: 1px;
+		position: absolute;
+		overflow: visible;
+		width: 61px;
+		white-space: nowrap;
+		text-align: left;
+		font-family: Apple SD Gothic Neo;
+		font-style: normal;
+		font-weight: bold;
+		font-size: 30px;
+		color: rgba(255,255,255,1);
+		letter-spacing: -0.05px;
+	}
+	input[type="date"]::-webkit-datetime-edit { 
+		background: rgba(245,232,218,1);
+		padding-left: 180px;
+		font-size: x-large;
+	} 
+	input[type="time"]::-webkit-datetime-edit { 
+		background-color: rgba(229,239,245,1);
+		padding-left: 190px;
+		font-size: x-large; 
+	}
+	input[type="time"]::-webkit-calendar-picker-indicator {      /*這是控制下拉小箭頭的*/
+		background-color: rgba(229,239,245,1);
+		border: 3px solid rgba(229,239,245,1);
+	}
+	input[type="date"]::-webkit-calendar-picker-indicator {      /*這是控制下拉小箭頭的*/
+		background-color: rgba(245,232,218,1);
+		border: 4px solid rgba(245,232,218,1);
+	}

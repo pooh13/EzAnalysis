@@ -1,0 +1,265 @@
+	.mediaViewInfo {
+		--web-view-name: 基本資料1;
+		--web-view-id: ID1;
+		--web-scale-on-resize: true;
+		--web-enable-deep-linking: true;
+	}
+	:root {
+		--web-view-ids: ID1;
+	}
+	* {
+		margin: 0;
+		padding: 0;
+		box-sizing: border-box;
+		border: none;
+	}
+	#ID1 {
+		position: absolute;
+		width: 428px;
+		height: 926px;
+		background-color: rgba(253,226,228,1);
+		overflow: hidden;
+		--web-view-name: 基本資料1;
+		--web-view-id: ID1;
+		--web-scale-on-resize: true;
+		--web-enable-deep-linking: true;
+	}
+	@keyframes fadein {
+	
+		0% {
+			opacity: 0;
+		}
+		100% {
+			opacity: 1;
+		}
+	
+	}
+	#logo {
+		position: absolute;
+		width: 270px;
+		height: 270px;
+		left: 78px;
+		top: 71px;
+		overflow: visible;
+	}
+	#logo_ {
+		fill: rgba(255,255,255,1);
+	}
+	.logo_ {
+		position: absolute;
+		overflow: visible;
+		width: 270px;
+		height: 270px;
+		left: 0px;
+		top: 0px;
+	}
+	#logo_ba {
+		left: 91px;
+		top: 106px;
+		position: absolute;
+		overflow: visible;
+		width: 89px;
+		white-space: nowrap;
+		text-align: left;
+		font-family: Segoe UI;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 44px;
+		color: rgba(112,112,112,1);
+	}
+	#NEXT {
+		position: absolute;
+		width: 123px;
+		height: 48px;
+		left: 274px;
+		top: 682px;
+		overflow: visible;
+		--web-animation: fadein 0.3s ease-out;
+		--web-action-type: page;
+		--web-action-target: ____2.html;
+		cursor: pointer;
+	}
+	#_4 {
+		fill: rgba(255,215,184,1);
+	}
+	._4 {
+		filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+		position: absolute;
+		overflow: visible;
+		width: 141px;
+		height: 66px;
+		left: 0px;
+		top: 0px;
+	}
+	#Next {
+		filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+		left: 28px;
+		top: 1px;
+		position: absolute;
+		overflow: visible;
+		width: 69px;
+		white-space: nowrap;
+		text-align: left;
+		font-family: Apple SD Gothic Neo;
+		font-style: normal;
+		font-weight: bold;
+		font-size: 30px;
+		color: rgba(255,255,255,1);
+		letter-spacing: -0.05px;
+	}
+	#_2 {
+		position: absolute;
+		width: 78px;
+		height: 78px;
+		left: 270px;
+		top: 553px;
+		overflow: visible;
+	}
+	#_2_ba {
+		fill: rgba(255,255,255,1);
+	}
+	._2_ba {
+		filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+		position: absolute;
+		overflow: visible;
+		width: 96px;
+		height: 96px;
+		left: 0px;
+		top: 0px;
+	}
+	#woman {
+		position: absolute;
+		width: 38.19px;
+		height: 70px;
+		left: 19.905px;
+		top: 4px;
+		overflow: visible;
+	}
+	#_1 {
+		fill: rgba(249,117,161,1);
+	}
+	._1 {
+		overflow: visible;
+		position: absolute;
+		width: 16px;
+		height: 16px;
+		left: 11.095px;
+		top: 0px;
+		transform: matrix(1,0,0,1,0,0);
+	}
+	#_2_bd {
+		fill: rgba(249,117,161,1);
+	}
+	._2_bd {
+		overflow: visible;
+		position: absolute;
+		width: 38.19px;
+		height: 52px;
+		left: 0px;
+		top: 18px;
+		transform: matrix(1,0,0,1,0,0);
+	}
+	#_1_be {
+		position: absolute;
+		width: 78px;
+		height: 78px;
+		left: 78px;
+		top: 553px;
+		overflow: visible;
+	}
+	#_1_bf {
+		fill: rgba(255,255,255,1);
+	}
+	._1_bf {
+		filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+		position: absolute;
+		overflow: visible;
+		width: 96px;
+		height: 96px;
+		left: 0px;
+		top: 0px;
+	}
+	#man {
+		position: absolute;
+		width: 30px;
+		height: 70px;
+		left: 24px;
+		top: 4px;
+		overflow: visible;
+	}
+	#_3 {
+		fill: rgba(130,150,249,1);
+	}
+	._3 {
+		overflow: visible;
+		position: absolute;
+		width: 16px;
+		height: 16px;
+		left: 7px;
+		top: 0px;
+		transform: matrix(1,0,0,1,0,0);
+	}
+	#_4_bi {
+		fill: rgba(130,150,249,1);
+	}
+	._4_bi {
+		overflow: visible;
+		position: absolute;
+		width: 30px;
+		height: 52px;
+		left: 0px;
+		top: 18px;
+		transform: matrix(1,0,0,1,0,0);
+	}
+	#name {
+		position: absolute;
+		width: 368px;
+		height: 106px;
+		left: 29px;
+		top: 364px;
+		overflow: visible;
+	}
+	/* #_3_bk {
+		fill: rgba(255,255,255,1);
+		stroke: rgba(109,104,117,1);
+		stroke-width: 5px;
+		stroke-linejoin: miter;
+		stroke-linecap: butt;
+		stroke-miterlimit: 4;
+		shape-rendering: auto;
+	}
+	._3_bk {
+		filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+		position: absolute;
+		overflow: visible;
+		width: 386px;
+		height: 82px;
+		left: 0px;
+		top: 42px;
+	} */
+	#nametext{
+		mix-blend-mode: darken;
+		left: 0px;
+		top: 0px;
+		position: absolute;
+		overflow: visible;
+		width: 69px;
+		white-space: nowrap;
+		text-align: left;
+		font-family: Microsoft JhengHei;
+		font-style: normal;
+		font-weight: bold;
+		font-size: 30px;
+		color: rgba(109,104,117,1);
+	}
+	.userName {
+		position: absolute;
+		overflow: visible;
+		left: 0px;
+		top: 40px;
+		width: 360px;
+		height: 50px;
+		border:6px rgba(109,104,117,1) solid;
+		border-radius: 20px;/*圓框*/
+		font-size: 24px; /*字體大小*/ 
+	}
