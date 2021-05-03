@@ -16,12 +16,6 @@ from liffpy import (
     LineFrontendFramework as LIFF,
 )
 
-import requests
-import datetime
-import urllib
-import re
-import random
-
 import ssl
 ssl._create_default_https_context = ssl._create_unverified_context
 
@@ -44,8 +38,8 @@ def callback(request):
         signature = request.META['HTTP_X_LINE_SIGNATURE']
 
         # get request body as text
-        # body = request.body.decode('utf-8')
-        body = request.get_data(as_text = True)
+        body = request.body.decode('utf-8')
+        # body = request.get_data(as_text = True)
         # app.logger.info("Request body: " + body)
 
         try:
@@ -68,14 +62,9 @@ def user_inform_from(request):
 
         form.save()
 
-#     line_bot_api.reply_message(event.reply_token, text="新增成功")
     return render(request, 'UserInform/new.html', {
         'form': form
     })
-
-    # return render(request, 'UserInform/newUserInform.html', {
-    #     'form': form
-    # })
 
 
 
@@ -97,6 +86,7 @@ def edit_diary(event):
 @handler.add(MessageEvent, message=(TextMessage, ImageMessage))
 def handle_text_message(event):
     if isinstance(event, MessageEvent):
+
         # 取得使用者的Line資訊
         userid = event.source.user_id
         print(userid)
