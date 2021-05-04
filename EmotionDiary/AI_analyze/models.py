@@ -16,8 +16,8 @@ class DefaultThing(models.Model):
 class UserInform(models.Model):
     line_id = models.CharField(primary_key=True, max_length=120, blank=False, null=False)
     username = models.CharField(max_length=20, blank=False, null=False)
-    gender = models.IntegerField(blank=False, null=False)
-    age = models.IntegerField(blank=False, null=False)
+    gender = models.CharField(max_length=2, blank=False, null=False)
+    birth = models.DateField(blank=False, null=False)
     career_id = models.ForeignKey(Career, on_delete=models.CASCADE)
 
 

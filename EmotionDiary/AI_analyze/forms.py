@@ -5,4 +5,4 @@ from . import models
 class UserInformFrom(forms.ModelForm):
     class Meta:
         model = models.UserInform
-        fields = ['username', 'gender', 'age', 'career_id']
+        fields = ['line_id', 'username', 'gender', 'birth', 'career_id']

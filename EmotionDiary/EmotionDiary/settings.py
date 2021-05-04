@@ -29,7 +29,8 @@ SECRET_KEY = '*f60@damy%^)#)=$@+0804h=nvwyhi594_az@3oo=u$+u(pc&+'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+SET_URL = '530413e171f4.ngrok.io'
+ALLOWED_HOSTS = [SET_URL, '127.0.0.1']
 
 
 # Application definition
@@ -88,8 +89,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',   # 數據庫引擎
         'NAME': 'diary',  # DB名稱，ex: sakila
-        'USER': 'admin',     # 用戶名
-        'PASSWORD': 'P@ssw0rd',  # 密碼
+        'USER': 'root',     # 用戶名
+        'PASSWORD': 'Imd@110208',  # 密碼
         'HOST': '127.0.0.1',  # 本機端ip
         'PORT': '3306',         # port
     }
@@ -133,11 +134,10 @@ TIME_ZONE = 'Asia/Taipei'
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-STATICILES_DIRS = [
+# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static')
 ]
-
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
