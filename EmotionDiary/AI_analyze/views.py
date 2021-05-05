@@ -26,6 +26,8 @@ handler = WebhookHandler(settings.LINE_CHANNEL_SECRET)
 url = settings.SET_URL
 
 t = time.time()
+print(datetime.date.today().strftime("%Y-%m-%d"))
+today = datetime.date.today().strftime("%Y-%m-%d")
 
 
 def user_inform_from(request):
@@ -66,17 +68,24 @@ def callback(request):
         except LineBotApiError:
             return HttpResponseBadRequest()
 
-        # for event in events:
-        #     print(events)
-        #     if isinstance(event, MessageEvent):
-        #         mtext = event.message.text
-        #         message = []
-        #         message.append(TextSendMessage(text=mtext))
-        #         line_bot_api.reply_message(event.reply_token, message)
-        #     else:
-        #         print(events)
+        for event in events:
+            # print(events)
+            # if isinstance(event, MessageEvent):
+            #     mtext = event.message.text
+            #     message = []
+            #     message.append(TextSendMessage(text=mtext))
+            #     line_bot_api.reply_message(event.reply_token, message)
+            # else:
+            #     print(events)
 
-        # models.UserInform.objects.create(line_id=)
+            profile = line_bot_api.get_profile(event.source.user_id)
+            username = profile.display_name
+
+            # 判斷此用戶在UserInform內的line_id欄位是否存在，若存在則get到，若不存在則新增一筆預設資料
+            try:
+                models.UserInform.objects.get(line_id=event.source.user_id)
+            except models.UserInform.DoesNotExist:
+                models.UserInform.objects.create(line_id=event.source.user_id, username=username, gender=1, birth=today, career_id_id=1)
 
         return HttpResponse()
     else:
@@ -145,6 +154,9 @@ def handle_text_message(event):
             # emoji_m = {"index": 0, "productId": "5ac1bfd5040ab15980c9b435", "emojiId": "001"}
             # emoji = chr(0x100078)
             # print(emoji_f)
+
+            gender = ""
+
             buttons_template_message = TemplateSendMessage(
                 alt_text='Buttons template',
                 template=ButtonsTemplate(
@@ -154,11 +166,13 @@ def handle_text_message(event):
                     actions=[
                         MessageAction(
                             label='女生(Female)',
-                            text='我是女生'
+                            text='我是女生',
+                            gender='F'
                         ),
                         MessageAction(
                             label='男生(Male)',
-                            text='我是男生'
+                            text='我是男生',
+                            gender='M'
                         ),
                     ]
                 )
@@ -175,7 +189,7 @@ def handle_text_message(event):
                             actions=[
                                 URIImagemapAction(
                                     base_url='https://imgur.com/cStUqlu.jpg',
-                                    link_uri='https://' + url + '/AI_analyze/userinform/',
+                                    link_uri='https://' + url + '/AI_analyze/userinform/' + event.source.user_id,
                                     area=ImagemapArea(
                                         x=0, y=0, width=520, height=520
                                     )
@@ -200,14 +214,6 @@ def handle_text_message(event):
                                 ),
                             ]
                         )
-
-            print(datetime.date.today().strftime("%Y-%m-%d"))
-            today = datetime.date.today().strftime("%Y-%m-%d")
-            # 判斷此用戶在UserInform內的line_id欄位是否存在，若存在則get到，若不存在則新增一筆預設資料
-            try:
-                models.UserInform.objects.get(line_id=event.source.user_id)
-            except models.UserInform.DoesNotExist:
-                models.UserInform.objects.create(line_id=event.source.user_id, username=username, gender=1, birth=today, career_id_id=1)
 
             # check = models.UserInform.objects.get(username='kelly')
             # check.line_id = event.source.user_id
