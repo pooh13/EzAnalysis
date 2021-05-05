@@ -7,6 +7,9 @@ class Career(models.Model):
     career_id = models.IntegerField(primary_key=True)
     career_name = models.CharField(max_length=10, blank=False, null=False)
 
+    def __str__(self):
+        return self.career_name
+
 
 class DefaultThing(models.Model):
     things_id = models.IntegerField(primary_key=True)
@@ -16,6 +19,12 @@ class DefaultThing(models.Model):
 class UserInform(models.Model):
     line_id = models.CharField(primary_key=True, max_length=120, blank=False, null=False)
     username = models.CharField(max_length=20, blank=False, null=False)
+    male = 'M'
+    female = 'F'
+    GENDER_CHOICES = (
+        (male, '男'),
+        (female, '女'),
+    )
     gender = models.CharField(max_length=2, blank=False, null=False)
     birth = models.DateField(blank=False, null=False)
     career_id = models.ForeignKey(Career, on_delete=models.CASCADE)

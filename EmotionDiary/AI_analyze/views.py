@@ -30,8 +30,9 @@ print(datetime.date.today().strftime("%Y-%m-%d"))
 today = datetime.date.today().strftime("%Y-%m-%d")
 
 
-def user_inform_from(request):
-    form = forms.UserInformFrom(request.POST or None, request.FILES or None)
+def user_inform_from(request, pk):
+    box = get_object_or_404(models.UserInform, pk=pk)
+    form = forms.UserInformFrom(request.POST or None, request.FILES or None, instance=box)
     # career = models.Career.objects.get(career_id=1)
     if form.is_valid():
         # models.UserInform.objects.get(line_id=request)
@@ -68,8 +69,8 @@ def callback(request):
         except LineBotApiError:
             return HttpResponseBadRequest()
 
-        for event in events:
-            # print(events)
+        # for event in events:
+        #     print(events)
             # if isinstance(event, MessageEvent):
             #     mtext = event.message.text
             #     message = []
@@ -77,15 +78,6 @@ def callback(request):
             #     line_bot_api.reply_message(event.reply_token, message)
             # else:
             #     print(events)
-
-            profile = line_bot_api.get_profile(event.source.user_id)
-            username = profile.display_name
-
-            # 判斷此用戶在UserInform內的line_id欄位是否存在，若存在則get到，若不存在則新增一筆預設資料
-            try:
-                models.UserInform.objects.get(line_id=event.source.user_id)
-            except models.UserInform.DoesNotExist:
-                models.UserInform.objects.create(line_id=event.source.user_id, username=username, gender=1, birth=today, career_id_id=1)
 
         return HttpResponse()
     else:
@@ -96,6 +88,12 @@ def callback(request):
 def handle_text_message(event):
     profile = line_bot_api.get_profile(event.source.user_id)
     username = profile.display_name
+
+    # 判斷此用戶在UserInform內的line_id欄位是否存在，若存在則get到，若不存在則新增一筆預設資料
+    try:
+        models.UserInform.objects.get(line_id=event.source.user_id)
+    except models.UserInform.DoesNotExist:
+        models.UserInform.objects.create(line_id=event.source.user_id, username=username, gender='F', birth=today, career_id_id=1)
 
     ignore = ['設定成功！']
 
