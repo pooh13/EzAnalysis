@@ -30,7 +30,7 @@ class UserInform(models.Model):
     career_id = models.ForeignKey(Career, on_delete=models.CASCADE, blank=True, null=True)
 
 
-class PhotoAnalysis(models.Model):
+class AnalysisDiary(models.Model):
     photo_id = models.AutoField(primary_key=True)
     line_id = models.ForeignKey(UserInform, on_delete=models.CASCADE)
     date = models.DateTimeField(null=False)
@@ -58,6 +58,13 @@ class UserThings(models.Model):
 class DefaultNote(models.Model):
     note_id = models.CharField(max_length=4, primary_key=True)
     default_note = models.CharField(max_length=255, blank=False, null=False)
+
+
+class InstantPhotoAnalysis(models.Model):
+    photo_id = models.AutoField(primary_key=True)
+    line_id = models.ForeignKey(UserInform, on_delete=models.CASCADE)
+    date = models.DateTimeField(null=False)
+    pic = models.ImageField(upload_to='img', max_length=200, null=False)
 
 
 
