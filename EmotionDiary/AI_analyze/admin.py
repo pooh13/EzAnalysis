@@ -4,4 +4,4 @@ from django.contrib import admin
 
 from . import models
 
-admin.site.register(models.PhotoAnalysis)
+admin.site.register(models.InstantPhotoAnalysis)
