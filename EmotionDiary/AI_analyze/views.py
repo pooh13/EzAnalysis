@@ -23,6 +23,7 @@ from linebot.models.emojis import Emojis
 
 line_bot_api = LineBotApi(settings.LINE_CHANNEL_ACCESS_TOKEN)
 handler = WebhookHandler(settings.LINE_CHANNEL_SECRET)
+parser = WebhookParser(settings.LINE_CHANNEL_SECRET)
 url = settings.SET_URL
 
 t = time.time()
@@ -69,15 +70,17 @@ def callback(request):
         except LineBotApiError:
             return HttpResponseBadRequest()
 
+        # print(events)
+
         # for event in events:
         #     print(events)
-            # if isinstance(event, MessageEvent):
-            #     mtext = event.message.text
-            #     message = []
-            #     message.append(TextSendMessage(text=mtext))
-            #     line_bot_api.reply_message(event.reply_token, message)
-            # else:
-            #     print(events)
+        #     if isinstance(event, MessageEvent):
+        #         mtext = event.message.text
+        #         message = []
+        #         message.append(TextSendMessage(text=mtext))
+        #         line_bot_api.reply_message(event.reply_token, message)
+        #     else:
+        #         print(events)
 
         return HttpResponse()
     else:
@@ -93,10 +96,11 @@ def handle_text_message(event):
     try:
         models.UserInform.objects.get(line_id=event.source.user_id)
     except models.UserInform.DoesNotExist:
-        models.UserInform.objects.create(line_id=event.source.user_id, username=username, gender='F', birth=today, career_id_id=1)
+        models.UserInform.objects.create(line_id=event.source.user_id, username=username)
 
     ignore = ['設定成功！']
 
+    # if
     if isinstance(event.message, ImageMessage):
         ext = 'jpg'
         print(event)
@@ -113,8 +117,8 @@ def handle_text_message(event):
         os.rename(temp_file_path, dist_path)
 
         # print(dist_path)
-        upload_img = models.PhotoAnalysis(line_id=event.source.user_id, date=datetime.datetime.fromtimestamp(t))
-        upload_img.pic.save(dist_path, File(open(dist_path, 'rb')))
+        # upload_img = models.PhotoAnalysis(line_id=event.source.user_id, date=datetime.datetime.fromtimestamp(t))
+        # upload_img.pic.save(dist_path, File(open(dist_path, 'rb')))
 
         # print("datetime = ", datetime.datetime)
         # print("t = ", t)
@@ -130,7 +134,7 @@ def handle_text_message(event):
         msg = msg.encode('utf-8')
         user_line_id = event.source.user_id
 
-        print(event)
+        # print(event)
         if event.message.text == "文字":
             print("收到了")
             line_bot_api.reply_message(

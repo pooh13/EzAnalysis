@@ -22,14 +22,16 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-LINE_CHANNEL_ACCESS_TOKEN = '6pzegJmVUuwqq78rLWl87O9Tr5N8kNU7r8+kxhizZ2emhpTiWMt2OdBCnA19Xqi/nla5PeZNwO++cZYOMHDZKuCpezNxMVYbyDRK1g3RGemZD7XR09bIOaOW3uIBnpBga6XGUXS5M0smEIW4O32aHgdB04t89/1O/w1cDnyilFU='
-LINE_CHANNEL_SECRET = '60f84eb382e4db050cb164e0d0034b9f'
+# LINE_CHANNEL_ACCESS_TOKEN = '6pzegJmVUuwqq78rLWl87O9Tr5N8kNU7r8+kxhizZ2emhpTiWMt2OdBCnA19Xqi/nla5PeZNwO++cZYOMHDZKuCpezNxMVYbyDRK1g3RGemZD7XR09bIOaOW3uIBnpBga6XGUXS5M0smEIW4O32aHgdB04t89/1O/w1cDnyilFU='
+LINE_CHANNEL_ACCESS_TOKEN = 'cpfmlQ/WPB9z/wsDYuukK90dDrvTGFqVw47/++CGLzjrKZnQCfQp37WAdvaC+WCPhoXaHfax38HCiIoeG3ozReYtn7WyWJPK+eH2lOlEOrZPeYrnP38JIk/gdbH2Cnnicw+mzmlQDl8kJ3goKr1MqwdB04t89/1O/w1cDnyilFU='
+# LINE_CHANNEL_SECRET = '60f84eb382e4db050cb164e0d0034b9f'
+LINE_CHANNEL_SECRET = '11c25e9460f9bcb06f47c7de2df06688'
 SECRET_KEY = '*f60@damy%^)#)=$@+0804h=nvwyhi594_az@3oo=u$+u(pc&+'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-SET_URL = '530413e171f4.ngrok.io'
+SET_URL = 'fe1ac1dacb26.ngrok.io'
 ALLOWED_HOSTS = [SET_URL, '127.0.0.1']
 
 
@@ -90,7 +92,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',   # 數據庫引擎
         'NAME': 'diary',  # DB名稱，ex: sakila
         'USER': 'root',     # 用戶名
-        'PASSWORD': 'Imd@110208',  # 密碼
+        'PASSWORD': 'mysql123',  # 密碼
         'HOST': '127.0.0.1',  # 本機端ip
         'PORT': '3306',         # port
     }

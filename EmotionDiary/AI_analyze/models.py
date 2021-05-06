@@ -4,7 +4,7 @@ from django.db import models
 
 
 class Career(models.Model):
-    career_id = models.IntegerField(primary_key=True)
+    career_id = models.CharField(max_length=4, primary_key=True)
     career_name = models.CharField(max_length=10, blank=False, null=False)
 
     def __str__(self):
@@ -12,7 +12,7 @@ class Career(models.Model):
 
 
 class DefaultThing(models.Model):
-    things_id = models.IntegerField(primary_key=True)
+    things_id = models.CharField(max_length=4, primary_key=True)
     things = models.CharField(max_length=10, blank=False, null=False)
 
 
@@ -25,9 +25,9 @@ class UserInform(models.Model):
         (male, '男'),
         (female, '女'),
     )
-    gender = models.CharField(max_length=2, blank=False, null=False)
-    birth = models.DateField(blank=False, null=False)
-    career_id = models.ForeignKey(Career, on_delete=models.CASCADE)
+    gender = models.CharField(max_length=2, choices=GENDER_CHOICES, blank=True, null=True)
+    birth = models.DateField(blank=True, null=True)
+    career_id = models.ForeignKey(Career, on_delete=models.CASCADE, blank=True, null=True)
 
 
 class PhotoAnalysis(models.Model):
@@ -56,7 +56,7 @@ class UserThings(models.Model):
 
 
 class DefaultNote(models.Model):
-    note_id = models.IntegerField(primary_key=True)
+    note_id = models.CharField(max_length=4, primary_key=True)
     default_note = models.CharField(max_length=255, blank=False, null=False)
 
 

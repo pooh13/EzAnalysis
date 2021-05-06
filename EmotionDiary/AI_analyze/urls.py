@@ -17,7 +17,7 @@ from django.contrib import admin
 from django.urls import path
 from . import views
 
-app_name = 'EmotionDiary'
+app_name = 'AI_analyze'
 urlpatterns = [
     path('callback/', views.callback),
     path('userinform/<str:pk>', views.user_inform_from, name='userinfo'),

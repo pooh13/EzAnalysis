@@ -1,3 +1,5 @@
 .idea/
 EmotionDiary/.idea/
 EmotionDiary/db.sqlite3
+venv/
+EmotionDiary/venv/
