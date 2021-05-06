@@ -191,18 +191,16 @@ def handle_text_message(event):
             )
         elif event.message.text == "設定生日":
             date_picker = TemplateSendMessage(
-                alt_text='請輸入日期',
+                alt_text='請輸入生日日期',
                 template=ButtonsTemplate(
-                    text='請輸入日期',
-                    title='輸入年/月/日',
+                    text='請輸入生日日期',
+                    title='年/月/日',
                     actions=[
                         DatetimePickerAction(
                             label='設定',
                             data='action=buy&itemid=1',
                             mode='date',
-                            initial='2019-05-09',
-                            min='2019-05-09',
-                            max='2099-12-31'
+                            initial=today,
                         )
                     ]
                 )
@@ -282,29 +280,36 @@ def handle_text_message(event):
             )
 
 
-# @handler.add(PostbackEvent)
-# def handle_post_message(event):
-#     time_type = event.postback.params
-#     print('time' in time_type)
-#
-#     confirm_template = TemplateSendMessage(
-#         alt_text='目錄 template',
-#         template=ConfirmTemplate(
-#             title='再次確認時間',
-#             text='您設定的時間是 {} 嗎?'.format(str(event.postback.params.get('time'))),
-#             actions=[
-#                 MessageAction(
-#                     label='沒錯',
-#                     text='沒錯',
-#                 ),
-#                 MessageAction(
-#                     label='更改',
-#                     text='更改',
-#                 )
-#             ]
-#         )
-#     )
-#     line_bot_api.reply_message(
-#         event.reply_token,
-#         confirm_template
-#     )
+@handler.add(PostbackEvent)
+def handle_post_message(event):
+    time_type = event.postback.params
+    print(time_type)
+
+    # confirm_template = TemplateSendMessage(
+    #     alt_text='目錄 template',
+    #     template=ConfirmTemplate(
+    #         title='再次確認時間',
+    #         text='您設定的時間是 {} 嗎?'.format(str(event.postback.params.get('time'))),
+    #         actions=[
+    #             MessageAction(
+    #                 label='沒錯',
+    #                 text='沒錯',
+    #             ),
+    #             MessageAction(
+    #                 label='更改',
+    #                 text='更改',
+    #             )
+    #         ]
+    #     )
+    # )
+
+    birth_date = models.UserInform.objects.get(line_id=event.source.user_id)
+    birth_date.birth = time_type.get('date')
+    birth_date.save()
+
+    line_bot_api.reply_message(
+        event.reply_token, [
+            TextSendMessage(text='您的生日是 {}'.format(str(time_type.get('date')))),
+            TextSendMessage(text="設定成功！")
+        ]
+    )
