@@ -103,12 +103,12 @@ def handle_follow(event):
     buttons_template_message = TemplateSendMessage(
         alt_text='Product Promotion',
         template=ButtonsTemplate(
-            title="Product Promotion",
-            text='Do you want to receive the promotion messages?',
+            title="歡迎加入心情日記-臉部辨識",
+            text='為了讓整個分析可以更精準\n請幫助我們回答幾項問題',
             actions=[
                 PostbackAction(
-                    label='yes',
-                    display_text='yes',
+                    label='開始',
+                    display_text='開始',
                     data='promotion=true'
                 ),
             ]
@@ -140,7 +140,6 @@ def handle_text_message(event):
 
     ignore = ['設定成功！']
 
-    # if
     if isinstance(event.message, ImageMessage):
         ext = 'jpg'
         print(event)
@@ -316,36 +315,79 @@ def handle_text_message(event):
 
 @handler.add(PostbackEvent)
 def handle_post_message(event):
-    if event.postback.data == "promotion=date":
-
+    if event.postback.data == "promotion=true":
+        date_picker = TemplateSendMessage(
+            alt_text='請輸入生日日期',
+            template=ButtonsTemplate(
+                text='請輸入生日日期',
+                title='設定生日',
+                actions=[
+                    DatetimePickerAction(
+                        label='設定',
+                        data='promotion=date',
+                        mode='date',
+                        initial=today,
+                    )
+                ]
+            )
+        )
+        line_bot_api.reply_message(
+            event.reply_token,
+            date_picker
+        )
+    elif event.postback.data == "promotion=date":
         time_type = event.postback.params
         print(time_type)
-
-        # confirm_template = TemplateSendMessage(
-        #     alt_text='目錄 template',
-        #     template=ConfirmTemplate(
-        #         title='再次確認時間',
-        #         text='您設定的時間是 {} 嗎?'.format(str(event.postback.params.get('time'))),
-        #         actions=[
-        #             MessageAction(
-        #                 label='沒錯',
-        #                 text='沒錯',
-        #             ),
-        #             MessageAction(
-        #                 label='更改',
-        #                 text='更改',
-        #             )
-        #         ]
-        #     )
-        # )
 
         birth_date = models.UserInform.objects.get(line_id=event.source.user_id)
         birth_date.birth = time_type.get('date')
         birth_date.save()
 
+        buttons_template_message = TemplateSendMessage(
+            alt_text='Buttons template',
+            template=ButtonsTemplate(
+                thumbnail_image_url='https://imgur.com/6KC33AK.jpg',
+                title='選擇您的性別',
+                text='請選擇',
+                actions=[
+                    PostbackAction(
+                        label='女生(Female)',
+                        data='gender=female'
+                    ),
+                    PostbackAction(
+                        label='男生(Male)',
+                        data='gender=male'
+                    ),
+                ]
+            )
+        )
+
         line_bot_api.reply_message(
             event.reply_token, [
                 TextSendMessage(text='您的生日是 {}'.format(str(time_type.get('date')))),
-                TextSendMessage(text="設定成功！")
+                TextSendMessage(text="生日設定成功！"),
+                buttons_template_message
+            ]
+        )
+    elif event.postback.data == "gender=male":
+        gender_choice = models.UserInform.objects.get(line_id=event.source.user_id)
+        gender_choice.gender = "M"
+        gender_choice.save()
+
+        line_bot_api.reply_message(
+            event.reply_token, [
+                TextSendMessage(text='嗨~帥哥'),
+                TextSendMessage(text="性別設定成功！"),
+            ]
+        )
+    elif event.postback.data == "gender=female":
+        gender_choice = models.UserInform.objects.get(line_id=event.source.user_id)
+        gender_choice.gender = "F"
+        gender_choice.save()
+
+        line_bot_api.reply_message(
+            event.reply_token, [
+                TextSendMessage(text='嗨~美女'),
+                TextSendMessage(text="性別設定成功！"),
             ]
         )
