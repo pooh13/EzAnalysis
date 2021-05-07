@@ -18,7 +18,7 @@ from linebot.exceptions import InvalidSignatureError, LineBotApiError
 from linebot.models import MessageEvent, TextSendMessage, TextMessage, StickerSendMessage, ImageMessage, \
     ImagemapSendMessage, BaseSize, URIImagemapAction, ImagemapArea, MessageImagemapAction, TemplateSendMessage, \
     ButtonsTemplate, PostbackAction, MessageAction, URIAction, responses, DatetimePickerAction, PostbackEvent, \
-    ConfirmTemplate
+    ConfirmTemplate, FollowEvent
 import linebot.models
 from linebot.models.emojis import Emojis
 
@@ -49,7 +49,7 @@ def user_inform_from(request, pk):
     })
 
 
-# 網頁 -------------------------------------------
+# test網頁 -------------------------------------------
 def test(request):
     return render(request, 'test2.html')
 
@@ -90,6 +90,42 @@ def callback(request):
         return HttpResponseBadRequest()
 
 
+@handler.add(FollowEvent)
+def handle_follow(event):
+    line_id = event.source.user_id
+    profile = line_bot_api.get_profile(line_id)
+
+    line_name = profile.display_name
+    line_picture_url = profile.picture_url  # 取得使用者的大頭貼
+    line_status_message = profile.status_message  # 取得使用者的個簽留言
+    unfollow = False
+
+    buttons_template_message = TemplateSendMessage(
+        alt_text='Product Promotion',
+        template=ButtonsTemplate(
+            title="Product Promotion",
+            text='Do you want to receive the promotion messages?',
+            actions=[
+                PostbackAction(
+                    label='yes',
+                    display_text='yes',
+                    data='promotion=true'
+                ),
+            ]
+        )
+    )
+    line_bot_api.reply_message(
+        event.reply_token,
+        [
+            TextSendMessage(text="Hello\U0010007A"),
+            TextSendMessage(text="You are " + line_name),
+            TextSendMessage(text="You're picture is " + line_picture_url),
+            TextSendMessage(text="You're status_message is " + line_status_message),
+            buttons_template_message,
+        ]
+    )
+
+
 @handler.add(MessageEvent, message=(TextMessage, ImageMessage))
 def handle_text_message(event):
     profile = line_bot_api.get_profile(event.source.user_id)
@@ -111,18 +147,18 @@ def handle_text_message(event):
 
         # 接收照片
         message_content = line_bot_api.get_message_content(event.message.id)
-        with tempfile.NamedTemporaryFile(dir='media\\img\\', prefix=event.source.user_id + '-', delete=False) as file:
+        with tempfile.NamedTemporaryFile(dir='media\\img\\', prefix=event.source.user_id + '-' + ext, delete=False) as file:
             for chunk in message_content.iter_content():
                 file.write(chunk)
             temp_file_path = file.name
 
-        dist_path = temp_file_path + '.' + ext
-        # dist_name = os.path.basename(dist_path)
-        os.rename(temp_file_path, dist_path)
-
-        # print(dist_path)
-        upload_img = models.InstantPhotoAnalysis(line_id_id=event.source.user_id, date=datetime.datetime.fromtimestamp(t))
-        upload_img.pic.save(event.source.user_id + '.' + ext, File(open(dist_path, 'rb')))
+        # dist_path = temp_file_path + '.' + ext
+        # # dist_name = os.path.basename(dist_path)
+        # os.rename(temp_file_path, dist_path)
+        #
+        # # print(dist_path)
+        # upload_img = models.InstantPhotoAnalysis(line_id_id=event.source.user_id, date=datetime.datetime.fromtimestamp(t))
+        # upload_img.pic.save(event.source.user_id + '.' + ext, File(open(dist_path, 'rb')))
         # upload_img.save()
 
         line_bot_api.reply_message(
@@ -166,8 +202,6 @@ def handle_text_message(event):
             # emoji = chr(0x100078)
             # print(emoji_f)
 
-            gender = ""
-
             buttons_template_message = TemplateSendMessage(
                 alt_text='Buttons template',
                 template=ButtonsTemplate(
@@ -194,11 +228,11 @@ def handle_text_message(event):
                 alt_text='請輸入生日日期',
                 template=ButtonsTemplate(
                     text='請輸入生日日期',
-                    title='年/月/日',
+                    title='設定生日',
                     actions=[
                         DatetimePickerAction(
                             label='設定',
-                            data='action=buy&itemid=1',
+                            data='promotion=date',
                             mode='date',
                             initial=today,
                         )
@@ -282,34 +316,36 @@ def handle_text_message(event):
 
 @handler.add(PostbackEvent)
 def handle_post_message(event):
-    time_type = event.postback.params
-    print(time_type)
+    if event.postback.data == "promotion=date":
 
-    # confirm_template = TemplateSendMessage(
-    #     alt_text='目錄 template',
-    #     template=ConfirmTemplate(
-    #         title='再次確認時間',
-    #         text='您設定的時間是 {} 嗎?'.format(str(event.postback.params.get('time'))),
-    #         actions=[
-    #             MessageAction(
-    #                 label='沒錯',
-    #                 text='沒錯',
-    #             ),
-    #             MessageAction(
-    #                 label='更改',
-    #                 text='更改',
-    #             )
-    #         ]
-    #     )
-    # )
+        time_type = event.postback.params
+        print(time_type)
 
-    birth_date = models.UserInform.objects.get(line_id=event.source.user_id)
-    birth_date.birth = time_type.get('date')
-    birth_date.save()
+        # confirm_template = TemplateSendMessage(
+        #     alt_text='目錄 template',
+        #     template=ConfirmTemplate(
+        #         title='再次確認時間',
+        #         text='您設定的時間是 {} 嗎?'.format(str(event.postback.params.get('time'))),
+        #         actions=[
+        #             MessageAction(
+        #                 label='沒錯',
+        #                 text='沒錯',
+        #             ),
+        #             MessageAction(
+        #                 label='更改',
+        #                 text='更改',
+        #             )
+        #         ]
+        #     )
+        # )
 
-    line_bot_api.reply_message(
-        event.reply_token, [
-            TextSendMessage(text='您的生日是 {}'.format(str(time_type.get('date')))),
-            TextSendMessage(text="設定成功！")
-        ]
-    )
+        birth_date = models.UserInform.objects.get(line_id=event.source.user_id)
+        birth_date.birth = time_type.get('date')
+        birth_date.save()
+
+        line_bot_api.reply_message(
+            event.reply_token, [
+                TextSendMessage(text='您的生日是 {}'.format(str(time_type.get('date')))),
+                TextSendMessage(text="設定成功！")
+            ]
+        )
