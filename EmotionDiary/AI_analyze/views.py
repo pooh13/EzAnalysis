@@ -117,10 +117,10 @@ def handle_follow(event):
     line_bot_api.reply_message(
         event.reply_token,
         [
-            TextSendMessage(text="Hello\U0010007A"),
-            TextSendMessage(text="You are " + line_name),
-            TextSendMessage(text="You're picture is " + line_picture_url),
-            TextSendMessage(text="You're status_message is " + line_status_message),
+            # TextSendMessage(text="Hello\U0010007A"),
+            # TextSendMessage(text="You are " + line_name),
+            # TextSendMessage(text="You're picture is " + line_picture_url),
+            # TextSendMessage(text="You're status_message is " + line_status_message),
             buttons_template_message,
         ]
     )
@@ -391,3 +391,9 @@ def handle_post_message(event):
                 TextSendMessage(text="性別設定成功！"),
             ]
         )
+    elif event.postback.data == "action=nextpage":
+        print("one")
+        line_bot_api.link_rich_menu_to_user(event.source.user_id, "richmenu-3045108a9995f171da79f56000760fa0")  # first
+    elif event.postback.data == "action=previouspage":
+        print("two")
+        line_bot_api.link_rich_menu_to_user(event.source.user_id, "richmenu-258ba2db128c7d79f836b04bbaa93f31")  # second
