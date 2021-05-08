@@ -39,8 +39,6 @@ def callback(request):
 
         # get request body as text
         body = request.body.decode('utf-8')
-        # body = request.get_data(as_text = True)
-        # app.logger.info("Request body: " + body)
 
         try:
             handler.handle(body, signature) # 傳入的事件
@@ -54,20 +52,36 @@ def callback(request):
     else:
         return HttpResponseBadRequest()
 
+def index(request):
+    return render(request, 'index.html', {
 
-# @app.route("/userinform", methods=['GET', 'POST'])
-def user_inform_from(request):
+    })
+def usertest(request):
     form = forms.UserInformFrom(request.POST or None, request.FILES or None)
+    # form.fields['line_id'].widget = form.HiddenInput()
     if form.is_valid():
-
+        # form.save(commit=False) # 保存數據，但暫時不提交到數據庫中
         form.save()
+    print(form.as_p())
+    # if form.save():
+    #     print(form.as_p())
 
     return render(request, 'UserInform/new.html', {
         'form': form
     })
 
+def user_inform_from(request):
+    form = forms.UserInformFrom(request.POST or None, request.FILES or None)
+    if form.is_valid():
+        # newform = form.save(commit=False) # 保存數據，但暫時不提交到數據庫中
+        form.save()
+    print(form.as_p())
 
+    return render(request, 'UserInform/newUser.html', {
+        'form': form
+    })
 
+# @app.route("/menudiary", methods=['POST'])
 def menu_diary(request):
 
     return render(request, 'Diary/MenuDiary.html', {
@@ -88,18 +102,21 @@ def handle_text_message(event):
     if isinstance(event, MessageEvent):
 
         # 取得使用者的Line資訊
-        userid = event.source.user_id
-        print(userid)
+        userid2 = event.source.user_id
+        # print(userid)
 
     # LIFF
-    elif 'https://' in event.message.text:
+    if 'https://' in event.message.text:
         # 丟https://網址 轉換成 https://liff.line.me/
         liff_id = liff_api.add(view_type="tall", view_url=event.message.text)
         message=[]
         message.append(TextSendMessage(text='https://liff.line.me/'+liff_id))
         line_bot_api.reply_message(event.reply_token, message)
 
-    # if event.message.text == '日記':
-    #     liff_id = '1655797178-OAZa4b85'
-    #     line_bot_api.reply_message(event.reply_token, TextSendMessage(text='https://liff.line.me/'+liff_id))
+    if event.message.text == '日記':
+        userid = event.source.user_id
+        print("日記" + "userId=" + userid)
+        liff_id = '1655950183-lEgOEwVq'
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(text='https://liff.line.me/'+liff_id))
+        # user_id = models.UserInform.objects.
 
