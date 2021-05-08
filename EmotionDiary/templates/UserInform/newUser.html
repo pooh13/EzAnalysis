@@ -7,7 +7,7 @@
 {% endblock %}
 
 {% block body %}
-	<form action="." method="post" class="form" enctype="multipart/form-data">
+	<form id="userForm" action="." method="post" class="form" enctype="multipart/form-data">
         {% csrf_token %}
 		<div id="ID1">
 			<!--	userid, username	-->
@@ -24,21 +24,10 @@
 			<!--	age	-->
 			<div id="age" class="age">
 				<div id="agetext">
-					<label for="age"><span>年齡：</span></label>
+					<span>年齡：</span>
 					<div id="agetextbox">
 						{{ form.age }}
 					</div>
-				</div>
-			</div>
-
-			<!--	buttons	-->
-			<div id="NEXT" class="NEXT">
-				<svg class="_4">
-					<rect id="_4" rx="24" ry="24" x="0" y="0" width="123" height="48">
-					</rect>
-				</svg>
-				<div id="final">
-					<input type="submit" value="完成">
 				</div>
 			</div>
 
@@ -67,6 +56,18 @@
 			</svg>
 			<div id="_bk">
 				<span>基本資料</span>
+			</div>
+
+			<!--	buttons	-->
+			<div id="NEXT" class="NEXT">
+				<svg class="_4">
+					<rect id="_4" rx="24" ry="24" x="0" y="0" width="123" height="48">
+					</rect>
+				</svg>
+				<div id="final">
+					<input type="button" value="完成" onclick="check(this);">
+<!--					<input type="button" id="submit" style="display:none" onclick="document.getElementById('userForm').submit();">-->
+				</div>
 			</div>
 		</div>
 
@@ -181,5 +182,29 @@
 
 {% block js %}
 	<script src="{% static 'js/UserInform/newUser.js' %}"></script>
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+	<script type="text/javascript">
+		function check(){
+			var button = document.getElementById('userForm');
+			var username = document.getElementById('disname').value;
+			var age = document.getElementById('yearold').value;
+	    	var gender = document.getElementById('gender').value;
+	    	var job = document.getElementById('job').value;
+			if(username == 0){
+				swal("請填寫名字", "", "error");
+			}else if(age == 0){
+				swal("請填選年齡", "", "error");
+			}else if(gender == 0){
+				swal("請填選性別", "", "error");
+			}else if(job == 0){
+				swal("請填選職業", "", "error");
+			}else{
+				swal("註冊成功", "", "success", {button:"OK"})
+					.then(() => {
+						button.submit();
+					});
+			}
+		}
+	</script>
 <!--	<script src="{% static 'js/liff.js' %}"></script>-->
 {% endblock %}

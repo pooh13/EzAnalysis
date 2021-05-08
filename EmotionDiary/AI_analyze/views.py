@@ -62,9 +62,6 @@ def usertest(request):
     if form.is_valid():
         # form.save(commit=False) # 保存數據，但暫時不提交到數據庫中
         form.save()
-    print(form.as_p())
-    # if form.save():
-    #     print(form.as_p())
 
     return render(request, 'UserInform/new.html', {
         'form': form
