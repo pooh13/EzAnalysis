@@ -62,20 +62,17 @@ def usertest(request):
     if form.is_valid():
         # form.save(commit=False) # 保存數據，但暫時不提交到數據庫中
         form.save()
-    print(form.as_p())
-    # if form.save():
-    #     print(form.as_p())
 
     return render(request, 'UserInform/new.html', {
         'form': form
     })
 
-def user_inform_from(request):
+def newUser(request):
     form = forms.UserInformFrom(request.POST or None, request.FILES or None)
     if form.is_valid():
         # newform = form.save(commit=False) # 保存數據，但暫時不提交到數據庫中
         form.save()
-    print(form.as_p())
+    # print(form.as_p())
 
     return render(request, 'UserInform/newUser.html', {
         'form': form

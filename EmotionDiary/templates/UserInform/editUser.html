@@ -3,7 +3,7 @@
 {% load static %}
 
 {% block css %}
-<link rel="stylesheet" href="{% static 'css/UserInform/newUser.css' %}" xmlns="http://www.w3.org/1999/html">
+<link rel="stylesheet" href="{% static 'css/UserInform/editUser.css' %}" xmlns="http://www.w3.org/1999/html">
 {% endblock %}
 
 {% block body %}
@@ -181,11 +181,11 @@
 {% endblock %}
 
 {% block js %}
-	<script src="{% static 'js/UserInform/newUser.js' %}"></script>
+	<script src="{% static 'js/UserInform/editUser.js' %}"></script>
 	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 	<script type="text/javascript">
 		function check(){
-			var button = document.getElementById('userForm');
+			var form = document.getElementById('userForm');
 			var username = document.getElementById('disname').value;
 			var age = document.getElementById('yearold').value;
 	    	var gender = document.getElementById('gender').value;
@@ -201,7 +201,7 @@
 			}else{
 				swal("註冊成功", "", "success", {button:"OK"})
 					.then(() => {
-						button.submit();
+						form.submit();
 					});
 			}
 		}

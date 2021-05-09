@@ -22,7 +22,7 @@ urlpatterns = [
     path('callback/', views.callback),
     path('index/', views.index, name='index'),
     path('usertest/', views.usertest, name='usertest'),
-    path('userinform/', views.user_inform_from, name='userinfo'),
+    path('newUser/', views.newUser, name='newUser'),
     path('editdiary/', views.edit_diary, name='edit_diary'),
     path('menudiary/', views.menu_diary, name='menu_diary'),
 ]
