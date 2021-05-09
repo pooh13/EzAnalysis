@@ -1,5 +1,5 @@
 from django import forms
-from . import models
+import models
 
 
 class UserInformFrom(forms.ModelForm):
@@ -18,4 +18,9 @@ class UserInformFrom(forms.ModelForm):
             'career_id': forms.TextInput(attrs={'id': 'job', 'type': 'hidden'}),
         }
 
+    # kelly-------------------------------------------------------
+    # class Meta:
+    #     model = models.UserInform
+    #     fields = ['username', 'gender', 'birth', 'career_id']
+    # ------------------------------------------------------------
 

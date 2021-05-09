@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 import os
 from pathlib import Path
+import pymysql    # 一定要加
+pymysql.install_as_MySQLdb()   # 一定要加
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -19,14 +21,23 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-LINE_CHANNEL_ACCESS_TOKEN = 'j7AojEDEFiURHXb+NCZRvtYlHaP8hSt7sLeMVDDlK/z3TambVgaTeYsUhk2134fpk9/V1/y0p9foMnlkD/p6yE5r2IHEjruHlgp931416eeWGu3iN5xF4D1MZOAJvUv/nWmRfAIdm4GXUldTb+7oCQdB04t89/1O/w1cDnyilFU='
-LINE_CHANNEL_SECRET = '22b5a8ab0ef1feff4475994dbdaf61d3'
+# kelly-----------------------------------------------------------
+LINE_CHANNEL_ACCESS_TOKEN = '6pzegJmVUuwqq78rLWl87O9Tr5N8kNU7r8+kxhizZ2emhpTiWMt2OdBCnA19Xqi/nla5PeZNwO++cZYOMHDZKuCpezNxMVYbyDRK1g3RGemZD7XR09bIOaOW3uIBnpBga6XGUXS5M0smEIW4O32aHgdB04t89/1O/w1cDnyilFU='
+LINE_CHANNEL_SECRET = '60f84eb382e4db050cb164e0d0034b9f'
 SECRET_KEY = '*f60@damy%^)#)=$@+0804h=nvwyhi594_az@3oo=u$+u(pc&+'
+# ----------------------------------------------------------------
+
+# 16-----------------------------------------------------------
+# LINE_CHANNEL_ACCESS_TOKEN = 'j7AojEDEFiURHXb+NCZRvtYlHaP8hSt7sLeMVDDlK/z3TambVgaTeYsUhk2134fpk9/V1/y0p9foMnlkD/p6yE5r2IHEjruHlgp931416eeWGu3iN5xF4D1MZOAJvUv/nWmRfAIdm4GXUldTb+7oCQdB04t89/1O/w1cDnyilFU='
+# LINE_CHANNEL_SECRET = '22b5a8ab0ef1feff4475994dbdaf61d3'
+# SECRET_KEY = '*f60@damy%^)#)=$@+0804h=nvwyhi594_az@3oo=u$+u(pc&+'
+# -------------------------------------------------------------
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+SET_URL = 'b87e8a582406.ngrok.io'
+ALLOWED_HOSTS = [SET_URL, '127.0.0.1']
 
 
 # Application definition
@@ -78,9 +89,17 @@ WSGI_APPLICATION = 'EmotionDiary.wsgi.application'
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
 DATABASES = {
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.sqlite3',
+    #     'NAME': BASE_DIR / 'db.sqlite3',
+    # }
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',   # 數據庫引擎
+        'NAME': 'diary',  # DB名稱，ex: sakila
+        'USER': 'root',     # 用戶名
+        'PASSWORD': 'Imd@110208',  # 密碼
+        'HOST': '127.0.0.1',  # 本機端ip
+        'PORT': '3306',         # port
     }
 }
 
@@ -111,18 +130,21 @@ LANGUAGE_CODE = 'zh-hant'
 
 TIME_ZONE = 'Asia/Taipei'
 
-USE_I18N = True
-
-USE_L10N = True
-
-USE_TZ = True
+# USE_I18N = True
+#
+# USE_L10N = True
+#
+# USE_TZ = True
 
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static')
+]
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')

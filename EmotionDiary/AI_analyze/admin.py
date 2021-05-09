@@ -1,8 +1,5 @@
 from django.contrib import admin
-
-# Register your models here.
-from . import models
-# from .models import Career
+import models
 
 admin.site.register(models.Career)
 admin.site.register(models.DefaultThing)
@@ -11,6 +8,7 @@ admin.site.register(models.PhotoAnalysis)
 admin.site.register(models.Diary)
 admin.site.register(models.UserThings)
 admin.site.register(models.DefaultNote)
+admin.site.register(models.InstantPhotoAnalysis)
 
 
 class Career(admin.ModelAdmin):
