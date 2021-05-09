@@ -64,7 +64,7 @@ class InstantPhotoAnalysis(models.Model):
     photo_id = models.AutoField(primary_key=True)
     line_id = models.ForeignKey(UserInform, on_delete=models.CASCADE)
     date = models.DateTimeField(null=False)
-    pic = models.ImageField(upload_to='img', max_length=200, null=False)
+    pic = models.ImageField(upload_to='img')
 
 
 

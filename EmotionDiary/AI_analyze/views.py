@@ -20,7 +20,6 @@ from linebot.models import MessageEvent, TextSendMessage, TextMessage, StickerSe
     ButtonsTemplate, PostbackAction, MessageAction, URIAction, responses, DatetimePickerAction, PostbackEvent, \
     ConfirmTemplate, FollowEvent, ImageSendMessage
 
-import linebot.models
 from linebot.models.emojis import Emojis
 
 import requests
@@ -218,19 +217,32 @@ def handle_text_message(event):
 
         # 接收照片
         message_content = line_bot_api.get_message_content(event.message.id)
-        with tempfile.NamedTemporaryFile(dir='media\\img\\', prefix=event.source.user_id + '-' + ext, delete=False) as file:
+        with tempfile.NamedTemporaryFile(dir='media\\img\\', prefix=event.source.user_id + '-', delete=False) as file:
             for chunk in message_content.iter_content():
                 file.write(chunk)
-            temp_file_path = file.name
 
-        # dist_path = temp_file_path + '.' + ext
-        # # dist_name = os.path.basename(dist_path)
-        # os.rename(temp_file_path, dist_path)
-        #
-        # # print(dist_path)
-        # upload_img = models.InstantPhotoAnalysis(line_id_id=event.source.user_id, date=datetime.datetime.fromtimestamp(t))
-        # upload_img.pic.save(event.source.user_id + '.' + ext, File(open(dist_path, 'rb')))
-        # upload_img.save()
+            temp_file_path = file.name
+            # dist_path = temp_file_path + '.' + ext
+            #
+            # os.rename(temp_file_path, dist_path)
+            #
+            # upload_img = models.InstantPhotoAnalysis(line_id_id=event.source.user_id, date=datetime.datetime.fromtimestamp(t))
+            # upload_img.pic.save(event.source.user_id + '.' + ext, File(open(dist_path, 'rb')))
+            # upload_img.save()
+
+        dist_path = temp_file_path + '.' + ext
+        # print(dist_path)
+
+        # dist_name = os.path.basename(dist_path)
+        os.rename(temp_file_path, dist_path)
+
+        arr = dist_path.split("\\")
+        db_pic_path = arr[-1::-1][1] + "/" + arr[-1::-1][0]  # img/XXX.jpg
+        # print(db_pic_path)
+
+        upload_img = models.InstantPhotoAnalysis(line_id_id=event.source.user_id, date=datetime.datetime.fromtimestamp(t), pic=db_pic_path)
+        # upload_img.pic.save(event.source.user_id + '.' + ext, File(open(dist_path, 'rb')))  # 同張照片會存兩次
+        upload_img.save()
 
         line_bot_api.reply_message(
             event.reply_token, [
