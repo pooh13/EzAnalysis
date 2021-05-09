@@ -1,0 +1,35 @@
+{% extends 'layout.html' %}
+
+{% load bootstrap4 %}
+
+{% load static %}
+
+{% block body %}
+  <div class="row">
+    <div class="col-6 offset-3">
+      <h1>Add New Member</h1>
+      <hr>
+      <form action="" method="post" class="form" enctype="multipart/form-data">
+        {% csrf_token %}
+        {% bootstrap_form form %}
+<!--        <tr><th><label for="userid">Line id：</label></th><td><input type="hidden" name="line_id" id="userid" maxlength="120" required></td></tr>-->
+<!--        <tr><th><label for="disname">Username：</label></th><td><input type="text" name="username" id="disname" maxlength="20" required></td></tr>-->
+<!--        <tr><th><label for="gender">Gender：</label></th><td><input type="text" name="gender" id="gender" required></td></tr>-->
+<!--        <tr><th><label for="age">Age：</label></th><td><input type="text" name="age" id="age" required></td></tr>-->
+<!--        <tr><th><label for="career_id">Career id：</label></th><td><input type="text" name="career_id" id="career_id" required></td></tr>-->
+        {% buttons %}
+          <button type="submit" class="btn btn-primary" onclick="myMsg(this);">
+            Submit
+          </button>
+        {% endbuttons %}
+      </form>
+    </div>
+  </div>
+
+{% endblock %}
+
+{% block js %}
+    <script src="https://d.line-scdn.net/liff/1.0/sdk.js"></script>
+    <script src="{% static 'js/liff.js' %}"></script>
+{% endblock %}
+

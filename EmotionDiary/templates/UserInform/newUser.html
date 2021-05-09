@@ -1,0 +1,210 @@
+{% extends 'layout.html' %}
+{% load bootstrap4 %}
+{% load static %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/UserInform/newUser.css' %}" xmlns="http://www.w3.org/1999/html">
+{% endblock %}
+
+{% block body %}
+	<form id="userForm" action="." method="post" class="form" enctype="multipart/form-data">
+        {% csrf_token %}
+		<div id="ID1">
+			<!--	userid, username	-->
+			<div id="name" class="name">
+				{{ form.line_id }}
+				<div id="textname">
+					<span>名字:</span>
+					<div id="nametextbox">
+						{{ form.username }}
+					</div>
+				</div>
+			</div>
+
+			<!--	age	-->
+			<div id="age" class="age">
+				<div id="agetext">
+					<span>年齡：</span>
+					<div id="agetextbox">
+						{{ form.age }}
+					</div>
+				</div>
+			</div>
+
+			<!--	gender	-->
+			<div id="woman1">
+				<div id="woman">
+					{{ form.gender }}
+					<button id="2" name="gender_btn" value="F" type="button" class ="btn1" style="background-color: #ffffff;">
+						<img src="{% static 'images/UserInform/woman.png' %}" style="width: 100%;">
+					</button>
+				</div>
+			</div>
+
+			<div id="man1">
+				<div id="man">
+					{{ form.career_id }}
+					<button id="1" name="gender_btn" value="M" type = "button" class = "btn1" style="background-color: #ffffff;">
+						<img id="man_img" src="{% static 'images/UserInform/man.png' %}" style="width: 100%;">
+					</button>
+				</div>
+			</div>
+
+			<svg class="_bj">
+				<rect id="_bj" rx="0" ry="0" x="0" y="0" width="428" height="64">
+				</rect>
+			</svg>
+			<div id="_bk">
+				<span>基本資料</span>
+			</div>
+
+			<!--	buttons	-->
+			<div id="NEXT" class="NEXT">
+				<svg class="_4">
+					<rect id="_4" rx="24" ry="24" x="0" y="0" width="123" height="48">
+					</rect>
+				</svg>
+				<div id="final">
+					<input type="button" value="完成" onclick="check(this);">
+<!--					<input type="button" id="submit" style="display:none" onclick="document.getElementById('userForm').submit();">-->
+				</div>
+			</div>
+		</div>
+
+		<div id="_bo">
+			<!-- 底框 -->
+			<svg class="_5">
+				<rect id="_5" rx="28" ry="28" x="0" y="0" width="384" height="337">
+				</rect>
+			</svg>
+
+			<!-- 底框 -->
+			<div id="_bq">
+				<!-- other -->
+				<div id="_br">
+					<div id="other">
+						<span>其他</span>
+					</div>
+					<button id = "9" value="9" name="job_btn" type = "button" class = "btn3"  style="background-color:rgba(255,255,255,1);">
+						<img id="ID035-astronaut" src="{% static 'images/UserInform/ID035-astronaut.png' %}" srcset="{% static 'images/UserInform/ID035-astronaut.png' %} 1x, {% static 'images/UserInform/ID035-astronaut@2x.png' %} 2x">
+					</button>
+				</div>
+				<!-- 農民漁牧業 -->
+				<div id="_bv">
+					<div id="farmer">
+						<span>農民漁牧業</span>
+					</div>
+					<button id ="8" value="8" name="job_btn" type = "button" class = "btn3"  style="background-color:rgb(255, 252, 203);">
+						<img id="ID001-farmer" src="{% static 'images/UserInform/ID001-farmer.png' %}" srcset="{% static 'images/UserInform/ID001-farmer.png' %} 1x, {% static 'images/UserInform/ID001-farmer@2x.png' %} 2x">
+					</button>
+				</div>
+
+<!--				<div id="_bz">-->
+<!--					<div id="_b">-->
+<!--						<span>退休人員</span>-->
+<!--					</div>-->
+<!--					<svg class="_11">-->
+<!--						<rect id="_11" rx="20" ry="20" x="0" y="0" width="80" height="80">-->
+<!--						</rect>-->
+<!--					</svg>-->
+<!--					<img id="ID043-teacher" src="img/ID043-teacher.png" srcset="img/ID043-teacher.png 1x, img/ID043-teacher@2x.png 2x">-->
+<!--				</div>-->
+<!--				<div id="_ca">-->
+<!--					<div id="_cb">-->
+<!--						<span>家管</span>-->
+<!--					</div>-->
+<!--					<svg class="_15">-->
+<!--						<rect id="_15" rx="20" ry="20" x="0" y="0" width="80" height="80">-->
+<!--						</rect>-->
+<!--					</svg>-->
+<!--					<img id="ID008-maid" src="img/ID008-maid.png" srcset="img/ID008-maid.png 1x, img/ID008-maid@2x.png 2x">-->
+
+<!--				</div>-->
+<!--				<div id="_cc">-->
+<!--					<div id="_cd">-->
+<!--						<span>工商業</span>-->
+<!--					</div>-->
+<!--					<svg class="_9">-->
+<!--						<rect id="_9" rx="20" ry="20" x="0" y="0" width="80" height="80">-->
+<!--						</rect>-->
+<!--					</svg>-->
+<!--					<img id="ID048-office-worker" src="img/ID048-office-worker.png" srcset="img/ID048-office-worker.png 1x, img/ID048-office-worker@2x.png 2x">-->
+
+<!--				</div>-->
+<!--				<div id="_ce">-->
+<!--					<svg class="_12">-->
+<!--						<rect id="_12" rx="20" ry="20" x="0" y="0" width="80" height="80">-->
+<!--						</rect>-->
+<!--					</svg>-->
+<!--					<div id="_cf">-->
+<!--						<span>自由業</span>-->
+<!--					</div>-->
+<!--					<img id="ID019-hacker" src="img/ID019-hacker.png" srcset="img/ID019-hacker.png 1x, img/ID019-hacker@2x.png 2x">-->
+
+<!--				</div>-->
+<!--				<div id="_cg">-->
+<!--					<div id="_ch">-->
+<!--						<span>服務業</span>-->
+<!--					</div>-->
+<!--					<svg class="_13">-->
+<!--						<rect id="_13" rx="20" ry="20" x="0" y="0" width="80" height="80">-->
+<!--						</rect>-->
+<!--					</svg>-->
+<!--					<img id="ID046-telemarketer" src="img/ID046-telemarketer.png" srcset="img/ID046-telemarketer.png 1x, img/ID046-telemarketer@2x.png 2x">-->
+
+<!--				</div>-->
+<!--				<div id="_cj">-->
+<!--					<svg class="_7">-->
+<!--						<rect id="_7" rx="20" ry="20" x="0" y="0" width="80" height="80">-->
+<!--						</rect>-->
+<!--					</svg>-->
+<!--					<div id="_cl">-->
+<!--						<span>軍公教</span>-->
+<!--					</div>-->
+<!--					<img id="ID030-soldier" src="img/ID030-soldier.png" srcset="img/ID030-soldier.png 1x, img/ID030-soldier@2x.png 2x">-->
+
+<!--				</div>-->
+<!--				<div id="_cn">-->
+<!--					<svg class="_10">-->
+<!--						<rect id="_10" rx="20" ry="20" x="0" y="0" width="80" height="80">-->
+<!--						</rect>-->
+<!--					</svg>-->
+<!--					<img id="ID009-student" src="img/ID009-student.png" srcset="img/ID009-student.png 1x, img/ID009-student@2x.png 2x">-->
+
+<!--					<div id="_cq">-->
+<!--						<span>學生</span>-->
+<!--					</div>-->
+<!--				</div>-->
+			</div>
+		</div>
+	</form>
+{% endblock %}
+
+{% block js %}
+	<script src="{% static 'js/UserInform/newUser.js' %}"></script>
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+	<script type="text/javascript">
+		function check(){
+			var button = document.getElementById('userForm');
+			var username = document.getElementById('disname').value;
+			var age = document.getElementById('yearold').value;
+	    	var gender = document.getElementById('gender').value;
+	    	var job = document.getElementById('job').value;
+			if(username == 0){
+				swal("請填寫名字", "", "error");
+			}else if(age == 0){
+				swal("請填選年齡", "", "error");
+			}else if(gender == 0){
+				swal("請填選性別", "", "error");
+			}else if(job == 0){
+				swal("請填選職業", "", "error");
+			}else{
+				swal("註冊成功", "", "success", {button:"OK"})
+					.then(() => {
+						button.submit();
+					});
+			}
+		}
+	</script>
+<!--	<script src="{% static 'js/liff.js' %}"></script>-->
+{% endblock %}

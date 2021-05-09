@@ -1,3 +1,4 @@
 .idea/
 EmotionDiary/.idea/
 EmotionDiary/db.sqlite3
+EmotionDiary/__pycache__/
