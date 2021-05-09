@@ -1,0 +1,152 @@
+{% extends 'layout.html' %}
+{% load static %}
+
+{% block css %}
+	<link rel="stylesheet" href="{% static 'css/UserInform/userdata2.css' %}">
+{% endblock %}
+{% block body %}
+<div id="ID2__1">
+	<div onclick="application.goToTargetView(event)" id="NEXT" class="NEXT">
+		<svg class="_4">
+			<rect id="_4" rx="24" ry="24" x="0" y="0" width="123" height="48">
+			</rect>
+		</svg>
+		<div id="finish">
+			<span>完成</span>
+		</div>
+	</div>
+	<svg class="_5">
+		<rect id="_5" rx="28" ry="28" x="0" y="0" width="384" height="337">
+		</rect>
+	</svg>
+	<div id="job">
+<!-- ------------------------------other--------------------------------- -->
+		<div id="other">
+			<div id="other_text">
+				<span>其他</span>
+			</div>
+			<div id="other_btn">
+				<button id = "other_btn" name="job" type = "button" class = "btn1" style="background-color: #ffffff;" onclick="jobSelect();">
+					<img id="ID035-astronaut" src="{% static 'images/UserInform/ID035-astronaut.png' %}" srcset="{% static 'images/UserInform/img/ID035-astronaut.png' %} 1x, {% static 'images/UserInform/img/ID035-astronaut@2x.png' %} 2x">
+			</button>
+			</div>
+		</div>
+<!-- ------------------------------fisher--------------------------------- -->
+		<div id="fisher">
+			<div id="fisher_text">
+				<span>農民漁牧業</span>
+			</div>
+			<div id="fisher_btn">
+				<button id = "fisher_btn" name="job" type = "button" class = "btn1" style="background-color: rgba(227,124,124,1);" onclick="jobSelect();">
+					<img id="ID001-farmer" src="{% static 'images/UserInform/ID001-farmer.png' %}" srcset="{% static 'images/UserInform/ID001-farmer.png' %} 1x, {% static 'images/UserInform/ID001-farmer@2x.png' %} 2x">
+			</button>
+			</div>
+		</div>
+<!-- ------------------------------retirement--------------------------------- -->
+		<div id="retirement">
+			<div id="retirement_text">
+				<span>退休人員</span>
+			</div>
+			<div id="retirement_btn">
+				<button id = "retirement_btn" name="job" type = "button" class = "btn1" style="background-color: rgba(167,233,212,1);" onclick="jobSelect();">
+					<img id="ID043-teacher" src="{% static 'images/UserInform/ID043-teacher.png' %}" srcset="{% static 'images/UserInform/ID043-teacher.png' %} 1x, {% static 'images/UserInform/ID043-teacher@2x.png' %} 2x">
+			</button>
+			</div>
+		</div>
+
+		<div id="_bj">
+			<div id="_bk">
+				<span>家管</span>
+			</div>
+			<svg class="_15">
+				<rect id="_15" rx="20" ry="20" x="0" y="0" width="80" height="80">
+				</rect>
+			</svg>
+
+			<img id="ID008-maid" src="ID008-maid.png" srcset="ID008-maid.png 1x, ID008-maid@2x.png 2x">
+
+		</div>
+
+		<div id="_bn">
+			<div id="_bo">
+				<span>工商業</span>
+			</div>
+			<svg class="_9">
+				<rect id="_9" rx="20" ry="20" x="0" y="0" width="80" height="80">
+				</rect>
+			</svg>
+			<img id="ID048-office-worker" src="ID048-office-worker.png" srcset="ID048-office-worker.png 1x, ID048-office-worker@2x.png 2x">
+
+		</div>
+
+		<div id="_br">
+			<svg class="_12">
+				<rect id="_12" rx="20" ry="20" x="0" y="0" width="80" height="80">
+				</rect>
+			</svg>
+			<div id="_bt">
+				<span>自由業</span>
+			</div>
+			<img id="ID019-hacker" src="ID019-hacker.png" srcset="ID019-hacker.png 1x, ID019-hacker@2x.png 2x">
+
+		</div>
+
+		<div id="_bv">
+			<div id="_bw">
+				<span>服務業</span>
+			</div>
+			<svg class="_13">
+				<rect id="_13" rx="20" ry="20" x="0" y="0" width="80" height="80">
+				</rect>
+			</svg>
+			<img id="ID046-telemarketer" src="ID046-telemarketer.png" srcset="ID046-telemarketer.png 1x, ID046-telemarketer@2x.png 2x">
+
+		</div>
+
+		<div id="_bz">
+			<svg class="_7">
+				<rect id="_7" rx="20" ry="20" x="0" y="0" width="80" height="80">
+				</rect>
+			</svg>
+			<div id="_b">
+				<span>軍公教</span>
+			</div>
+			<img id="ID030-soldier" src="ID030-soldier.png" srcset="ID030-soldier.png 1x, ID030-soldier@2x.png 2x">
+
+		</div>
+
+		<div id="_ca">
+			<svg class="_10">
+				<rect id="_10" rx="20" ry="20" x="0" y="0" width="80" height="80">
+				</rect>
+			</svg>
+			<img id="ID009-student" src="ID009-student.png" srcset="ID009-student.png 1x, ID009-student@2x.png 2x">
+			<div id="_cb">
+				<span>學生</span>
+			</div>
+		</div>
+
+	</div>
+	<div id="logo" class="logo">
+		<svg class="logo_b">
+			<ellipse id="logo_b" rx="135" ry="135" cx="135" cy="135">
+			</ellipse>
+		</svg>
+		<div id="logo_ca">
+			<span>logo</span>
+		</div>
+	</div>
+	<div id="age" class="age">
+		<div id="agetext">
+			<span>生日:</span>
+			<div id="agetextbox">
+			<input class="agetextbox" name="agetextbox" type="date">
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}
+
+{% block js %}
+	<script src="{% static 'js/UserInform/userinform2.js' %}"></script>
+{% endblock %}

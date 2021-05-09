@@ -1,0 +1,100 @@
+{% extends 'layout.html' %}
+{% load static %}
+
+{% block css %}
+	<link rel="stylesheet" href="{% static 'css/Diary/menuDiary_style.css' %}">
+{% endblock %}
+
+{% block body %}
+	<div id="">
+		<img id="_2" src="{% static 'images/Diary/Menu/_2.png' %}" srcset="{% static 'images/Diary/Menu/_2.png' %} 1x, {% static 'images/Diary/Menu/_2@2x.png' %} 2x">
+
+		<div onclick="application.goToTargetView(event)" id="_ba1">
+			<svg class="_125">
+				<rect id="_125" rx="5" ry="5" x="0" y="0" width="388" height="203">
+				</rect>
+			</svg>
+			<svg class="_128">
+				<rect id="_128" rx="5" ry="5" x="0" y="0" width="366" height="182">
+				</rect>
+			</svg>
+			<a href="{% url 'EmotionDiary:edit_diary' %}">
+				<div id="Revise_Diary">
+					<span>Revise<br/>Diary</span>
+				</div>
+			</a>
+		</div>
+		<div onclick="application.goToTargetView(event)" id="_ba">
+			<svg class="_127">
+				<rect id="_127" rx="5" ry="5" x="0" y="0" width="388" height="203">
+				</rect>
+			</svg>
+			<svg class="_126">
+				<rect id="_126" rx="5" ry="5" x="0" y="0" width="366" height="182">
+				</rect>
+			</svg>
+			<a href="{% url 'EmotionDiary:userinfo' %}">
+				<div id="Add_Diary">
+					<span>
+						Add<br/>Diary
+					</span>
+				</div>
+			</a>
+		</div>
+		<div id="_bc">
+			<img id="_be" src="{% static 'images/Diary/Menu/_be.png' %}" srcset="{% static 'images/Diary/Menu/_be.png' %} 1x, {% static 'images/Diary/Menu/_be@2x.png' %} 2x">
+			<img id="_bf" src="{% static 'images/Diary/Menu/_bf.png' %}" srcset="{% static 'images/Diary/Menu/_bf.png' %} 1x, {% static 'images/Diary/Menu/_bf@2x.png' %} 2x">
+
+			<img id="_1" src="{% static 'images/Diary/Menu/_1.png' %}" srcset="{% static 'images/Diary/Menu/_1.png' %} 1x, {% static 'images/Diary/Menu/_1@2x.png' %} 2x">
+
+		</div>
+		<img id="_bh" src="{% static 'images/Diary/Menu/_bh.png' %}" srcset="{% static 'images/Diary/Menu/_bh.png' %} 1x, {% static 'images/Diary/Menu/_bh@2x.png' %} 2x">
+
+		<img id="w644_1" src="{% static 'images/Diary/Menu/w644_1.png' %}" srcset="{% static 'images/Diary/Menu/w644_1.png' %} 1x, {% static 'images/Diary/Menu/w644_1@2x.png' %} 2x">
+
+		<img id="w644_1_bj" src="{% static 'images/Diary/Menu/w644_1_bj.png' %}" srcset="{% static 'images/Diary/Menu/w644_1_bj.png' %} 1x, {% static 'images/Diary/Menu/w644_1_bj@2x.png' %} 2x">
+
+		<svg class="_13" viewBox="0 0 259 59.969">
+			<path id="_13" d="M 259 0 C 259 0 207.640869140625 38.790283203125 142.890869140625 52.790283203125 C 78.140869140625 66.790283203125 0 56 0 56">
+			</path>
+		</svg>
+		<div id="KEEP">
+			<span>KEEP</span>
+		</div>
+		<div id="DIARY">
+			<span>DIARY</span>
+		</div>
+		<div id="KEEP_bn">
+			<span>KEEP</span>
+		</div>
+		<div id="DIARY_bo">
+			<span>DIARY</span>
+		</div>
+		<div id="_61">
+			<svg class="_136">
+				<rect id="_136" rx="0" ry="0" x="0" y="0" width="45.66" height="63.539">
+				</rect>
+			</svg>
+			<img id="vh9keWU" src="{% static 'images/Diary/Menu/vh9keWU.png' %}" srcset="{% static 'images/Diary/Menu/vh9keWU.png' %} 1x, {% static 'images/Diary/Menu/vh9keWU@2x.png' %} 2x">
+
+		</div>
+		<img id="clothespin_PNG57" src="{% static 'images/Diary/Menu/clothespin_PNG57.png' %}" srcset="{% static 'images/Diary/Menu/clothespin_PNG57.png' %} 1x, {% static 'images/Diary/Menu/clothespin_PNG57@2x.png' %} 2x">
+
+		<div id="_62">
+			<svg class="_136_bu">
+				<rect id="_136_bu" rx="0" ry="0" x="0" y="0" width="45.66" height="63.539">
+				</rect>
+			</svg>
+			<img id="ID8164a8766028c1cc7d82587f62dd" src="{% static 'images/Diary/Menu/ID8164a8766028c1cc7d82587f62dd.png' %}" srcset="{% static 'images/Diary/Menu/ID8164a8766028c1cc7d82587f62dd.png' %} 1x, {% static 'images/Diary/Menu/ID8164a8766028c1cc7d82587f62dd@2x.png' %} 2x">
+
+		</div>
+		<img id="clothespin_PNG57_bw" src="{% static 'images/Diary/Menu/clothespin_PNG57_bw.png' %}" srcset="{% static 'images/Diary/Menu/clothespin_PNG57_bw.png' %} 1x, {% static 'images/Diary/Menu/clothespin_PNG57_bw@2x.png' %} 2x">
+
+		<img id="_3" src="{% static 'images/Diary/Menu/_3.png' %}" srcset="{% static 'images/Diary/Menu/_3.png' %} 1x, {% static 'images/Menu/_3@2x.png' %} 2x">
+	</div>
+{% endblock %}
+
+{% block js %}
+	<script src="https://static.line-scdn.net/liff/edge/2/sdk.js"/>
+	<script src="{% static 'js/liff.js' %}"></script>
+{% endblock %}

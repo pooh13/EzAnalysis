@@ -1,0 +1,608 @@
+	.mediaViewInfo {
+		--web-view-name: 基本資料2 – 1;
+		--web-view-id: ID2__1;
+		--web-scale-on-resize: true;
+		--web-enable-deep-linking: true;
+	}
+	:root {
+		--web-view-ids: ID2__1;
+	}
+	* {
+		margin: 0;
+		padding: 0;
+		box-sizing: border-box;
+		border: none;
+	}
+	#ID2__1 {
+		position: absolute;
+		width: 428px;
+		height: 926px;
+		background-color: rgba(214,226,233,1);
+		overflow: hidden;
+		--web-view-name: 基本資料2 – 1;
+		--web-view-id: ID2__1;
+		--web-scale-on-resize: true;
+		--web-enable-deep-linking: true;
+	}
+	@keyframes fadein {
+	
+		0% {
+			opacity: 0;
+		}
+		100% {
+			opacity: 1;
+		}
+	
+	}
+	#NEXT {
+		position: absolute;
+		width: 123px;
+		height: 48px;
+		left: 282px;
+		top: 823px;
+		overflow: visible;
+		--web-animation: fadein 0.3s ease-out;
+		--web-action-type: page;
+		--web-action-target: ____2.html;
+		cursor: pointer;
+	}
+	#_4 {
+		fill: rgba(219,231,228,1);
+	}
+	._4 {
+		filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+		position: absolute;
+		overflow: visible;
+		width: 141px;
+		height: 66px;
+		left: 0px;
+		top: 0px;
+	}
+	#finish{
+		filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+		left: 36px;
+		top: 1px;
+		position: absolute;
+		overflow: visible;
+		width: 61px;
+		white-space: nowrap;
+		text-align: left;
+		font-family: Apple SD Gothic Neo;
+		font-style: normal;
+		font-weight: bold;
+		font-size: 30px;
+		color: rgba(255,255,255,1);
+		letter-spacing: -0.05px;
+	}
+	#_5 {
+		opacity: 0.52;
+		fill: rgba(185,185,185,1);
+	}
+	._5 {
+		filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+		position: absolute;
+		overflow: visible;
+		width: 402px;
+		height: 355px;
+		left: 21px;
+		top: 453px;
+	}
+	/* --------------------------------------------------------------- */
+	#job {
+		position: absolute;
+		width: 324px;
+		height: 318px;
+		left: 51px;
+		top: 467px;
+		overflow: visible;
+	}
+	/* ---------------------------other------------------------------- */
+	#other {
+		position: absolute;
+		width: 80px;
+		height: 102px;
+		left: 244px;
+		top: 205px;
+		overflow: visible;
+	}
+	#other_text {
+		left: 23px;
+		top: 90px;
+		position: absolute;
+		overflow: visible;
+		width: 35px;
+		white-space: nowrap;
+		text-align: left;
+		font-family: Cambria;
+		font-style: normal;
+		font-weight: bold;
+		font-size: 17px;
+		color: rgba(255,255,255,1);
+		letter-spacing: -0.05px;
+	}
+	#other_btn {
+		fill: rgba(255,255,255,1);
+	}
+	.other_btn {
+		position: absolute;
+		overflow: visible;
+		width: 80px;
+		height: 80px;
+		left: 0px;
+		top: 0px;
+	}
+	
+	#ID035-astronaut {
+		position: absolute;
+		width: 63px;
+		height: 63px;
+		left: 9px;
+		top: 20px;
+		overflow: visible;
+	}
+	/* --------------------------------------------------------------- */
+	#fisher {
+		position: absolute;
+		width: 85px;
+		height: 102px;
+		left: 120px;
+		top: 205px;
+		overflow: visible;
+	}
+	#fisher_btn {
+		fill: rgba(227,124,124,1);
+	}
+	.fisher_btn {
+		position: absolute;
+		overflow: visible;
+		width: 80px;
+		height: 80px;
+		left: 2px;
+		top: 0px;
+	}
+	#fisher_text {
+		left: 0px;
+		top: 90px;
+		position: absolute;
+		overflow: visible;
+		width: 86px;
+		white-space: nowrap;
+		text-align: left;
+		font-family: Cambria;
+		font-style: normal;
+		font-weight: bold;
+		font-size: 17px;
+		color: rgba(255,255,255,1);
+		letter-spacing: -0.05px;
+	}
+	#ID001-farmer {
+		position: absolute;
+		width: 63px;
+		height: 63px;
+		left: 9px;
+		top: 20px;
+		overflow: visible;
+	}
+	/* ------------------------------retirement--------------------------------- */
+	#retirement {
+		position: absolute;
+		width: 80px;
+		height: 102px;
+		left: 0px;
+		top: 205px;
+		overflow: visible;
+	}
+	#retirement_text {
+		left: 6px;
+		top: 90px;
+		position: absolute;
+		overflow: visible;
+		width: 69px;
+		white-space: nowrap;
+		text-align: left;
+		font-family: Cambria;
+		font-style: normal;
+		font-weight: bold;
+		font-size: 17px;
+		color: rgba(255,255,255,1);
+		letter-spacing: -0.05px;
+	}
+	#retirement_btn {
+		fill: rgba(167,233,212,1);
+	}
+	.retirement_btn {
+		position: absolute;
+		overflow: visible;
+		width: 80px;
+		height: 80px;
+		left: 2px;
+		top: 0px;
+	}
+	#ID043-teacher {
+		position: absolute;
+		width: 63px;
+		height: 63px;
+		left: 9px;
+		top: 20px;
+		overflow: visible;
+	}
+	#_bj {
+		position: absolute;
+		width: 80px;
+		height: 102px;
+		left: 244px;
+		top: 108px;
+		overflow: visible;
+	}
+	#_bk {
+		left: 23px;
+		top: 80px;
+		position: absolute;
+		overflow: visible;
+		width: 35px;
+		white-space: nowrap;
+		text-align: left;
+		font-family: Cambria;
+		font-style: normal;
+		font-weight: bold;
+		font-size: 17px;
+		color: rgba(255,255,255,1);
+		letter-spacing: -0.05px;
+	}
+	#_15 {
+		fill: rgba(250,214,172,1);
+	}
+	._15 {
+		position: absolute;
+		overflow: visible;
+		width: 80px;
+		height: 80px;
+		left: 0px;
+		top: 0px;
+	}
+	#ID008-maid {
+		position: absolute;
+		width: 63px;
+		height: 63px;
+		left: 9px;
+		top: 9px;
+		overflow: visible;
+	}
+	#_bn {
+		position: absolute;
+		width: 80px;
+		height: 102px;
+		left: 122px;
+		top: 108px;
+		overflow: visible;
+	}
+	#_bo {
+		left: 15px;
+		top: 80px;
+		position: absolute;
+		overflow: visible;
+		width: 52px;
+		white-space: nowrap;
+		text-align: left;
+		font-family: Cambria;
+		font-style: normal;
+		font-weight: bold;
+		font-size: 17px;
+		color: rgba(255,255,255,1);
+		letter-spacing: -0.05px;
+	}
+	#_9 {
+		fill: rgba(136,158,170,1);
+	}
+	._9 {
+		position: absolute;
+		overflow: visible;
+		width: 80px;
+		height: 80px;
+		left: 0px;
+		top: 0px;
+	}
+	#ID048-office-worker {
+		position: absolute;
+		width: 63px;
+		height: 63px;
+		left: 9px;
+		top: 9px;
+		overflow: visible;
+	}
+	#_br {
+		position: absolute;
+		width: 80px;
+		height: 102px;
+		left: 0px;
+		top: 108px;
+		overflow: visible;
+	}
+	#_12 {
+		fill: rgba(147,146,155,1);
+	}
+	._12 {
+		position: absolute;
+		overflow: visible;
+		width: 80px;
+		height: 80px;
+		left: 0px;
+		top: 0px;
+	}
+	#_bt {
+		left: 15px;
+		top: 80px;
+		position: absolute;
+		overflow: visible;
+		width: 52px;
+		white-space: nowrap;
+		text-align: left;
+		font-family: Cambria;
+		font-style: normal;
+		font-weight: bold;
+		font-size: 17px;
+		color: rgba(255,255,255,1);
+		letter-spacing: -0.05px;
+	}
+	#ID019-hacker {
+		position: absolute;
+		width: 63px;
+		height: 63px;
+		left: 9px;
+		top: 9px;
+		overflow: visible;
+	}
+	#_bv {
+		position: absolute;
+		width: 80px;
+		height: 102px;
+		left: 244px;
+		top: 0px;
+		overflow: visible;
+	}
+	#_bw {
+		left: 15px;
+		top: 80px;
+		position: absolute;
+		overflow: visible;
+		width: 52px;
+		white-space: nowrap;
+		text-align: left;
+		font-family: Cambria;
+		font-style: normal;
+		font-weight: bold;
+		font-size: 17px;
+		color: rgba(255,255,255,1);
+		letter-spacing: -0.05px;
+	}
+	#_13 {
+		fill: rgba(184,245,255,1);
+	}
+	._13 {
+		position: absolute;
+		overflow: visible;
+		width: 80px;
+		height: 80px;
+		left: 0px;
+		top: 0px;
+	}
+	#ID046-telemarketer {
+		position: absolute;
+		width: 63px;
+		height: 63px;
+		left: 9px;
+		top: 9px;
+		overflow: visible;
+	}
+	#_bz {
+		position: absolute;
+		width: 80px;
+		height: 102px;
+		left: 122px;
+		top: 0px;
+		overflow: visible;
+	}
+	#_7 {
+		fill: rgba(198,218,208,1);
+	}
+	._7 {
+		position: absolute;
+		overflow: visible;
+		width: 80px;
+		height: 80px;
+		left: 0px;
+		top: 0px;
+	}
+	#_b {
+		left: 15px;
+		top: 80px;
+		position: absolute;
+		overflow: visible;
+		width: 52px;
+		white-space: nowrap;
+		text-align: left;
+		font-family: Cambria;
+		font-style: normal;
+		font-weight: bold;
+		font-size: 17px;
+		color: rgba(255,255,255,1);
+		letter-spacing: -0.05px;
+	}
+	#ID030-soldier {
+		position: absolute;
+		width: 63px;
+		height: 63px;
+		left: 9px;
+		top: 9px;
+		overflow: visible;
+	}
+	#_ca {
+		position: absolute;
+		width: 80px;
+		height: 102px;
+		left: 0px;
+		top: 0px;
+		overflow: visible;
+	}
+	#_10 {
+		fill: rgba(250,215,179,1);
+	}
+	._10 {
+		position: absolute;
+		overflow: visible;
+		width: 80px;
+		height: 80px;
+		left: 0px;
+		top: 0px;
+	}
+	#ID009-student {
+		position: absolute;
+		width: 63px;
+		height: 63px;
+		left: 9px;
+		top: 9px;
+		overflow: visible;
+	}
+	#_cb {
+		left: 24px;
+		top: 80px;
+		position: absolute;
+		overflow: visible;
+		width: 35px;
+		white-space: nowrap;
+		text-align: left;
+		font-family: Cambria;
+		font-style: normal;
+		font-weight: bold;
+		font-size: 17px;
+		color: rgba(255,255,255,1);
+		letter-spacing: -0.05px;
+	}
+	#logo {
+		position: absolute;
+		width: 270px;
+		height: 270px;
+		left: 78px;
+		top: 26px;
+		overflow: visible;
+	}
+	#logo_b {
+		fill: rgba(255,255,255,1);
+	}
+	.logo_b {
+		position: absolute;
+		overflow: visible;
+		width: 270px;
+		height: 270px;
+		left: 0px;
+		top: 0px;
+	}
+	#logo_ca {
+		left: 91px;
+		top: 106px;
+		position: absolute;
+		overflow: visible;
+		width: 89px;
+		white-space: nowrap;
+		text-align: left;
+		font-family: Segoe UI;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 44px;
+		color: rgba(112,112,112,1);
+	}
+	#_3 {
+		fill: rgba(255,255,255,1);
+		stroke: rgba(109,104,117,1);
+		stroke-width: 5px;
+		stroke-linejoin: miter;
+		stroke-linecap: butt;
+		stroke-miterlimit: 4;
+		shape-rendering: auto;
+	}
+	._3 {
+		filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+		position: absolute;
+		overflow: visible;
+		width: 386px;
+		height: 82px;
+		left: 0px;
+		top: 42px;
+	}
+/* ----------------agetextbox ----------------*/
+#age {
+	position: absolute;
+	width: 368px;
+	height: 98px;
+	left: 29px;
+	top: 250px;
+	overflow: visible;
+}
+#agetext{
+	position: absolute;
+	width: 368px;
+	height: 98px;
+	left: 29px;
+	top: 180px;
+	overflow: visible;
+}
+#agetextbox {
+	fill: rgba(255,255,255,1);
+	stroke: rgba(109,104,117,1);
+	stroke-width: 5px;
+	stroke-linejoin: miter;
+	stroke-linecap: butt;
+	stroke-miterlimit: 4;
+	shape-rendering: auto;
+}
+.agetextbox {
+	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+	position: absolute;
+	overflow: visible;
+	width: 386px;
+	height: 50px;
+	border-radius: 20px;/*圓框*/
+	font-size: 24px; /*字體大小*/ 
+	border:6px rgba(109,104,117,1) solid;
+	mix-blend-mode: darken;
+	left: 0px;
+	top: 34px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Microsoft JhengHei;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 30px;
+	color: rgba(109,104,117,1);
+}
+#age {
+	mix-blend-mode: darken;
+	left: -10px;
+	top: 120px;
+	position: absolute;
+	overflow: visible;
+	width: 57px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Microsoft JhengHei;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 25px;
+	color: rgba(109,104,117,1);
+}
+.btn1{
+	border:none;
+	height: 80px;
+	width:  80px;
+	font-size: small;
+	margin-top: 10px;
+	border-radius:20px;
+	  }
+.btn2{
+	border:5px #0066ff solid;
+	height: 80px;
+	width:  80px;
+	font-size: small;
+	margin-top: 10px;
+	border-radius:20px;
+	  }
