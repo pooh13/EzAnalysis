@@ -9,8 +9,8 @@ from django.core.files import File
 from django.http import HttpResponse, HttpResponseBadRequest, HttpResponseForbidden
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views.decorators.csrf import csrf_exempt
-import models
-import forms
+from . import models
+from . import forms
 from django.core.files.base import ContentFile
 from django.core.files import File
 
@@ -171,6 +171,8 @@ def index(request):
     return render(request, 'index.html', {
 
     })
+
+
 def usertest(request):
     form = forms.UserInformFrom(request.POST or None, request.FILES or None)
     # form.fields['line_id'].widget = form.HiddenInput()
@@ -181,6 +183,7 @@ def usertest(request):
     return render(request, 'UserInform/new.html', {
         'form': form
     })
+
 
 def user_inform_from(request):
     form = forms.UserInformFrom(request.POST or None, request.FILES or None)
@@ -193,11 +196,13 @@ def user_inform_from(request):
         'form': form
     })
 
+
 # @app.route("/menudiary", methods=['POST'])
 def menu_diary(request):
 
     return render(request, 'Diary/MenuDiary.html', {
     })
+
 
 '''
 # @app.route("/editdiary", methods=['GET', 'POST'])
@@ -209,6 +214,7 @@ def edit_diary(event):
     return render(request, 'Diary/editDiary.html', {
     })
 '''
+
 
 @handler.add(FollowEvent)
 def handle_follow(event):
@@ -266,14 +272,6 @@ def handle_text_message(event):
 
     ignore = ['設定成功！']
 
-    # LIFF
-    if 'https://' in event.message.text:
-        # 丟https://網址 轉換成 https://liff.line.me/
-        liff_id = liff_api.add(view_type="tall", view_url=event.message.text)
-        message=[]
-        message.append(TextSendMessage(text='https://liff.line.me/'+liff_id))
-        line_bot_api.reply_message(event.reply_token, message)
-
     if isinstance(event.message, ImageMessage):
         ext = 'jpg'
         print(event)
@@ -317,6 +315,14 @@ def handle_text_message(event):
         msg = event.message.text
         msg = msg.encode('utf-8')
         user_line_id = event.source.user_id
+
+        # LIFF
+        if 'https://' in event.message.text:
+            # 丟https://網址 轉換成 https://liff.line.me/
+            liff_id = liff_api.add(view_type="tall", view_url=event.message.text)
+            message=[]
+            message.append(TextSendMessage(text='https://liff.line.me/'+liff_id))
+            line_bot_api.reply_message(event.reply_token, message)
 
         # print(event)
         if event.message.text == "文字":

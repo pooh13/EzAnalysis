@@ -1,10 +1,9 @@
 from django.contrib import admin
-import models
+from . import models
 
 admin.site.register(models.Career)
 admin.site.register(models.DefaultThing)
 admin.site.register(models.UserInform)
-admin.site.register(models.PhotoAnalysis)
 admin.site.register(models.Diary)
 admin.site.register(models.UserThings)
 admin.site.register(models.DefaultNote)
