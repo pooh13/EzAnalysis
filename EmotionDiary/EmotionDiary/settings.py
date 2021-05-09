@@ -22,9 +22,17 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
+# kelly-----------------------------------------------------------
 LINE_CHANNEL_ACCESS_TOKEN = '6pzegJmVUuwqq78rLWl87O9Tr5N8kNU7r8+kxhizZ2emhpTiWMt2OdBCnA19Xqi/nla5PeZNwO++cZYOMHDZKuCpezNxMVYbyDRK1g3RGemZD7XR09bIOaOW3uIBnpBga6XGUXS5M0smEIW4O32aHgdB04t89/1O/w1cDnyilFU='
 LINE_CHANNEL_SECRET = '60f84eb382e4db050cb164e0d0034b9f'
 SECRET_KEY = '*f60@damy%^)#)=$@+0804h=nvwyhi594_az@3oo=u$+u(pc&+'
+# ----------------------------------------------------------------
+
+# 16-----------------------------------------------------------
+# LINE_CHANNEL_ACCESS_TOKEN = 'j7AojEDEFiURHXb+NCZRvtYlHaP8hSt7sLeMVDDlK/z3TambVgaTeYsUhk2134fpk9/V1/y0p9foMnlkD/p6yE5r2IHEjruHlgp931416eeWGu3iN5xF4D1MZOAJvUv/nWmRfAIdm4GXUldTb+7oCQdB04t89/1O/w1cDnyilFU='
+# LINE_CHANNEL_SECRET = '22b5a8ab0ef1feff4475994dbdaf61d3'
+# SECRET_KEY = '*f60@damy%^)#)=$@+0804h=nvwyhi594_az@3oo=u$+u(pc&+'
+# -------------------------------------------------------------
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True

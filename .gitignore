@@ -1,10 +1,6 @@
 .idea/
 EmotionDiary/.idea/
 EmotionDiary/db.sqlite3
-<<<<<<< HEAD
 venv/
 EmotionDiary/venv/
-=======
-EmotionDiary/venv/
-
->>>>>>> kelly
+EmotionDiary/__pycache__/
