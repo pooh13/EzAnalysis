@@ -1,3 +1,4 @@
+# why
 """
 ASGI config for EmotionDiary project.
 
