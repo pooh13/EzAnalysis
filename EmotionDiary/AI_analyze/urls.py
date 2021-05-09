@@ -23,4 +23,6 @@ urlpatterns = [
     path('userinform/<str:pk>', views.user_inform_from, name='userinfo'),
     path('test/', views.test, name='test'),
     path('add/', views.add, name='add'),
+    path('userdata/', views.userdata, name='userdata'),
+    path('userdata2/', views.userdata2, name='userdata2'),
 ]

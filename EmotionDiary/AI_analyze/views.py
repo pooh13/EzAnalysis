@@ -56,6 +56,14 @@ def test(request):
 
 def add(request):
     return render(request, 'add.html')
+
+
+def userdata(request):
+    return render(request, 'newUserInform/userdata.html')
+
+
+def userdata2(request):
+    return render(request, 'newUserInform/userdata2.html')
 # -----------------------------------------------
 
 
@@ -99,6 +107,12 @@ def handle_follow(event):
     line_picture_url = profile.picture_url  # 取得使用者的大頭貼
     line_status_message = profile.status_message  # 取得使用者的個簽留言
     unfollow = False
+
+    # 判斷此用戶在UserInform內的line_id欄位是否存在，若存在則get到，若不存在則新增一筆預設資料
+    try:
+        models.UserInform.objects.get(line_id=event.source.user_id)
+    except models.UserInform.DoesNotExist:
+        models.UserInform.objects.create(line_id=event.source.user_id, username=line_name)
 
     buttons_template_message = TemplateSendMessage(
         alt_text='Product Promotion',
@@ -269,7 +283,7 @@ def handle_text_message(event):
                                     )
                                 ),
                                 URIImagemapAction(
-                                    link_uri='https://imgur.com/UtnXde0.jpg',
+                                    link_uri='https://' + url + '/AI_analyze/userdata/',
                                     area=ImagemapArea(
                                         x=520, y=520, width=520, height=520
                                     )
