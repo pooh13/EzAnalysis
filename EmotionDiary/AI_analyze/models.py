@@ -2,7 +2,7 @@ from django.db import models
 
 # Create your models here.
 class Career(models.Model):
-    career_id = models.IntegerField(primary_key=True)
+    career_id = models.CharField(max_length=4, primary_key=True)
     career_name = models.CharField(max_length=10, blank=False, null=False)
 
     def __str__(self):
@@ -10,23 +10,23 @@ class Career(models.Model):
 
 
 class DefaultThing(models.Model):
-    things_id = models.IntegerField(primary_key=True)
+    things_id = models.CharField(max_length=4, primary_key=True)
     things = models.CharField(max_length=10, blank=False, null=False)
 
 
 class UserInform(models.Model):
     line_id = models.CharField(primary_key=True, max_length=120, blank=False, null=False)
     username = models.CharField(max_length=20, blank=False, null=False)
-    gender = models.CharField(max_length=20, blank=False, null=False)
-    age = models.IntegerField(blank=False, null=False)
-    career_id = models.ForeignKey(Career, on_delete=models.CASCADE)
+    gender = models.CharField(max_length=2, blank=True, null=True)
+    birth = models.DateField(blank=True, null=True)
+    career_id = models.ForeignKey(Career, on_delete=models.CASCADE, blank=True, null=True)
 
 
-class PhotoAnalysis(models.Model):
+class AnalysisDiary(models.Model):
     photo_id = models.AutoField(primary_key=True)
-    line_id = models.CharField(max_length=120, blank=False, null=False)
-    date = models.DateTimeField()
-    pic = models.ImageField(upload_to='images')
+    line_id = models.ForeignKey(UserInform, on_delete=models.CASCADE)
+    date = models.DateTimeField(null=False)
+    pic = models.ImageField(null=False)
 
 
 class Diary(models.Model):
@@ -48,5 +48,13 @@ class UserThings(models.Model):
 
 
 class DefaultNote(models.Model):
-    note_id = models.IntegerField(primary_key=True)
+    note_id = models.CharField(max_length=4, primary_key=True)
     default_note = models.CharField(max_length=255, blank=False, null=False)
+
+
+class InstantPhotoAnalysis(models.Model):
+    photo_id = models.AutoField(primary_key=True)
+    line_id = models.ForeignKey(UserInform, on_delete=models.CASCADE)
+    date = models.DateTimeField(null=False)
+    pic = models.ImageField(upload_to='img')
+

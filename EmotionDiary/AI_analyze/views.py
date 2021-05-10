@@ -8,7 +8,6 @@ from django.views.decorators.csrf import csrf_exempt
 from linebot import LineBotApi, WebhookHandler
 from linebot.exceptions import InvalidSignatureError, LineBotApiError
 from linebot.models import *
-from flask import Flask, request, abort
 
 from . import forms
 from . import models
@@ -21,7 +20,6 @@ ssl._create_default_https_context = ssl._create_unverified_context
 
 # filter 來過濾條件
 
-# app = Flask(__name__)
 
 # LINE 聊天機器人的基本資料
 line_bot_api = LineBotApi(settings.LINE_CHANNEL_ACCESS_TOKEN)
@@ -30,7 +28,6 @@ handler = WebhookHandler(settings.LINE_CHANNEL_SECRET)
 liff_api = LIFF(settings.LINE_CHANNEL_ACCESS_TOKEN)
 
 
-# @app.route("callback/", methods=['POST'])
 @csrf_exempt
 def callback(request):
     if request.method == 'POST':
@@ -56,6 +53,7 @@ def index(request):
     return render(request, 'index.html', {
 
     })
+
 def usertest(request):
     form = forms.UserInformFrom(request.POST or None, request.FILES or None)
     # form.fields['line_id'].widget = form.HiddenInput()
@@ -71,6 +69,7 @@ def newUser(request):
     form = forms.UserInformFrom(request.POST or None, request.FILES or None)
     if form.is_valid():
         # newform = form.save(commit=False) # 保存數據，但暫時不提交到數據庫中
+
         form.save()
     # print(form.as_p())
 
@@ -78,21 +77,16 @@ def newUser(request):
         'form': form
     })
 
-# @app.route("/menudiary", methods=['POST'])
-def menu_diary(request):
+def editUser(request):
+    form = forms.UserInformFrom(request.POST or None, request.FILES or None)
+    if form.is_valid():
+        # newform = form.save(commit=False) # 保存數據，但暫時不提交到數據庫中
+        form.save()
+    # print(form.as_p())
 
-    return render(request, 'Diary/MenuDiary.html', {
+    return render(request, 'UserInform/editUser.html', {
+        'form': form
     })
-
-# @app.route("/editdiary", methods=['GET', 'POST'])
-def edit_diary(event):
-    # userid = event.source.user_id
-    # print(userid)
-    # diary = models.Diary.objects.get(line_id=userid)
-
-    return render(request, 'Diary/editDiary.html', {
-    })
-
 
 @handler.add(MessageEvent, message=(TextMessage, ImageMessage))
 def handle_text_message(event):

@@ -26,7 +26,7 @@
 				<div id="agetext">
 					<span>年齡：</span>
 					<div id="agetextbox">
-						{{ form.age }}
+						{{ form.birth }}
 					</div>
 				</div>
 			</div>
@@ -187,7 +187,7 @@
 		function check(){
 			var form = document.getElementById('userForm');
 			var username = document.getElementById('disname').value;
-			var age = document.getElementById('yearold').value;
+			var birth = document.getElementById('birth').value;
 	    	var gender = document.getElementById('gender').value;
 	    	var job = document.getElementById('job').value;
 			if(username == 0){

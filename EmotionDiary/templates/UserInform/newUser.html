@@ -24,9 +24,9 @@
 			<!--	age	-->
 			<div id="age" class="age">
 				<div id="agetext">
-					<span>年齡：</span>
+					<span>生日：</span>
 					<div id="agetextbox">
-						{{ form.age }}
+						{{ form.birth }}
 					</div>
 				</div>
 			</div>
@@ -183,28 +183,30 @@
 {% block js %}
 	<script src="{% static 'js/UserInform/newUser.js' %}"></script>
 	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
 	<script type="text/javascript">
-		function check(){
-			var button = document.getElementById('userForm');
-			var username = document.getElementById('disname').value;
-			var age = document.getElementById('yearold').value;
-	    	var gender = document.getElementById('gender').value;
-	    	var job = document.getElementById('job').value;
-			if(username == 0){
-				swal("請填寫名字", "", "error");
-			}else if(age == 0){
-				swal("請填選年齡", "", "error");
-			}else if(gender == 0){
-				swal("請填選性別", "", "error");
-			}else if(job == 0){
-				swal("請填選職業", "", "error");
-			}else{
-				swal("註冊成功", "", "success", {button:"OK"})
-					.then(() => {
-						button.submit();
-					});
-			}
-		}
-	</script>
+        function check(){
+            var button = document.getElementById('userForm');
+            var username = document.getElementById('disname').value;
+            var birth = document.getElementById('birth');
+            var gender = document.getElementById('gender').value;
+            var job = document.getElementById('job').value;
+            if(username == 0){
+                swal("請填寫名字", "", "error");
+            }else if(birth == 0){
+                swal("請填選生日", "", "error");
+            }else if(gender == 0){
+                swal("請填選性別", "", "error");
+            }else if(job == 0){
+                swal("請填選職業", "", "error");
+            }else{
+                swal("註冊成功", "", "success", {button:"OK"})
+                    .then(() => {
+                        button.submit();
+                    });
+            }
+        }
+    </script>
+
 <!--	<script src="{% static 'js/liff.js' %}"></script>-->
 {% endblock %}

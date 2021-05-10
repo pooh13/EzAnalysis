@@ -3,7 +3,7 @@
 ///////////////////////////////////////
 
 /**
- * Functionality for scaling, showing by media query, and navigation between multiple pages on a single page. 
+ * Functionality for scaling, showing by media query, and navigation between multiple pages on a single page.
  * Code subject to change.
  **/
 
@@ -122,18 +122,18 @@ var Application = function() {
 		if (self.initialized==false) {
 			if (self.enableDeepLinking) {
 				self.syncronizeViewToURL();
-			} 
-	
+			}
+
 			if (self.refreshPageForChanges) {
 				self.setupRefreshForChanges();
 			}
-	
+
 			self.initialized = true;
 		}
-		
+
 		if (self.scaleViewsToFit) {
 			self.viewScale = self.scaleViewToFit(view);
-			
+
 			if (self.viewScale<0) {
 				setTimeout(self.scaleViewToFit, 500, view);
 			}
@@ -146,7 +146,7 @@ var Application = function() {
 		else {
 			// no view found
 		}
-	
+
 		if (self.showUpdateNotification) {
 			self.showNotification();
 		}
@@ -157,7 +157,7 @@ var Application = function() {
 
 
 	///////////////////////////////////////
-	// AUTO REFRESH 
+	// AUTO REFRESH
 	///////////////////////////////////////
 
 	self.setupRefreshForChanges = function() {
@@ -172,14 +172,14 @@ var Application = function() {
 	}
 
 	/**
-	 * Attempt to check the last modified date by the headers 
+	 * Attempt to check the last modified date by the headers
 	 * or the last modified property from the byte array (experimental)
 	 **/
 	self.requestRefreshUpdate = function() {
 		var url = document.location.href;
 		var protocol = window.location.protocol;
 		var method;
-		
+
 		try {
 
 			if (self.refreshCheckContentSize) {
@@ -207,20 +207,20 @@ var Application = function() {
 
 					self.refreshRequest.onload = self.refreshOnLoadOnceHandler;
 
-					// In some browsers (Chrome & Safari) this error occurs at send: 
-					// 
-					// Chrome - Access to XMLHttpRequest at 'file:///index.html' from origin 'null' 
-					// has been blocked by CORS policy: 
-					// Cross origin requests are only supported for protocol schemes: 
+					// In some browsers (Chrome & Safari) this error occurs at send:
+					//
+					// Chrome - Access to XMLHttpRequest at 'file:///index.html' from origin 'null'
+					// has been blocked by CORS policy:
+					// Cross origin requests are only supported for protocol schemes:
 					// http, data, chrome, chrome-extension, https.
-					// 
+					//
 					// Safari - XMLHttpRequest cannot load file:///Users/user/Public/index.html. Cross origin requests are only supported for HTTP.
-					// 
+					//
 					// Solution is to run a local server, set local permissions or test in another browser
 					self.refreshRequest.send(null);
 
-					// In MS browsers the following behavior occurs possibly due to an AJAX call to check last modified date: 
-					// 
+					// In MS browsers the following behavior occurs possibly due to an AJAX call to check last modified date:
+					//
 					// DOM7011: The code on this page disabled back and forward caching.
 
 					// In Brave (Chrome) error when on the server
@@ -234,7 +234,7 @@ var Application = function() {
 					self.refreshRequest.ontimeout = function() {
 						self.log("Couldn't find page to check for updates");
 					}
-					
+
 					var method;
 					if (protocol=="file:") {
 						method = "GET";
@@ -262,8 +262,8 @@ var Application = function() {
 		try {
 
 			if (self.refreshRequest.readyState === XMLHttpRequest.DONE) {
-				
-				if (self.refreshRequest.status === 2 || 
+
+				if (self.refreshRequest.status === 2 ||
 					self.refreshRequest.status === 200) {
 					var pageChanged = false;
 
@@ -275,7 +275,7 @@ var Application = function() {
 						//lastModifiedDate = refreshRequest.getResponseHeader("Last-Modified");
 						var headers = self.refreshRequest.getAllResponseHeaders();
 						var hasContentHeader = headers.indexOf("Content-Length")!=-1;
-						
+
 						if (hasContentHeader) {
 							contentSize = self.refreshRequest.getResponseHeader("Content-Length");
 
@@ -307,7 +307,7 @@ var Application = function() {
 
 					}
 
-					
+
 					if (pageChanged) {
 						clearInterval(self.refreshInterval);
 						self.refreshUpdatedPage();
@@ -370,7 +370,7 @@ var Application = function() {
 		notification.setAttribute("style", styleRule);
 
 		notification.className= "PageRefreshedClass";
-		
+
 		document.body.appendChild(notification);
 
 		setTimeout(function() {
@@ -385,7 +385,7 @@ var Application = function() {
 	}
 
 	/**
-	 * Get the last modified date from the header 
+	 * Get the last modified date from the header
 	 * or file object after request has been received
 	 **/
 	self.getLastModified = function(request) {
@@ -395,7 +395,7 @@ var Application = function() {
 		if (request.response && request.response.lastModified) {
 			date = request.response.lastModified;
 		}
-		
+
 		// http protocol - check headers
 		if (date==null) {
 			date = request.getResponseHeader("Last-Modified");
@@ -406,7 +406,7 @@ var Application = function() {
 
 	self.updateLastModifiedLabel = function() {
 		var labelValue = "";
-		
+
 		if (self.lastModifiedLabel==null) {
 			self.lastModifiedLabel = document.getElementById("LastModifiedLabel");
 		}
@@ -432,7 +432,7 @@ var Application = function() {
 					labelValue += minutes==1 ? " minute" : " minutes";
 				}
 			}
-			
+
 			if (seconds<10) {
 				labelValue = "Updated now";
 			}
@@ -549,7 +549,7 @@ var Application = function() {
 	self.getStylesheetRules = function(styleSheet) {
 		try {
 			if (styleSheet) return styleSheet.cssRules || styleSheet.rules;
-	
+
 			return document.styleSheets[0]["cssRules"] || document.styleSheets[0]["rules"];
 		}
 		catch (error) {
@@ -569,7 +569,7 @@ var Application = function() {
 	}
 
 	/**
-	 * If single page application hide all of the views. 
+	 * If single page application hide all of the views.
 	 * @param {Number} selectedIndex if provided shows the view at index provided
 	 **/
 	self.hideViews = function(selectedIndex, animation) {
@@ -597,7 +597,7 @@ var Application = function() {
 						self.disableMediaQuery(rule);
 					}
 				}
-				
+
 				queryIndex++;
 			}
 		}
@@ -739,7 +739,7 @@ var Application = function() {
 		var display = null;
 		var reparent = true;
 		var view = null;
-		
+
 		if (overlay==null || overlay==false) {
 			self.log("Overlay not found, '"+ id + "'");
 			return;
@@ -764,7 +764,7 @@ var Application = function() {
 				event.stopImmediatePropagation();
 			}
 		}
-		
+
 		if (self.application==false || targetType=="page") {
 			document.location.href = "./" + actionTargetValue;
 			return;
@@ -796,9 +796,9 @@ var Application = function() {
 			//self.setElementAnimation(overlay, null);
 			//overlay.style.animation = animation;
 			self.enableMediaQuery(query);
-			
+
 			var display = overlay && overlay.style.display;
-			
+
 			if (overlay && display=="" || display=="none") {
 				overlay.style.display = "block";
 				//self.setViewOptions(overlay);
@@ -836,11 +836,11 @@ var Application = function() {
 		anchorTop = self.getIsStyleDefined(id, "top");
 		anchorBottom = self.getIsStyleDefined(id, "bottom");
 
-		
+
 		if (self.viewsDictionary[overlay.id] && self.viewsDictionary[overlay.id].styleDeclaration) {
 			style = self.viewsDictionary[overlay.id].styleDeclaration.style;
 		}
-		
+
 		if (centerHorizontally) {
 			style.left = "50%";
 			style.transformOrigin = "0 0";
@@ -855,7 +855,7 @@ var Application = function() {
 		else {
 			style.left = x + "px";
 		}
-		
+
 		if (centerVertically) {
 			style.top = "50%";
 			transform.push("translateY(-50%)");
@@ -894,12 +894,12 @@ var Application = function() {
 
 		if (overlay) {
 			var style = overlay.style;
-			
+
 			if (style.animation && self.supportAnimations && animate) {
 				self.reverseAnimation(overlay, true);
 
 				var duration = self.getAnimationDuration(style.animation, true);
-		
+
 				setTimeout(function() {
 					self.setElementAnimation(overlay, null);
 					self.hideOverlay(overlay);
@@ -930,10 +930,10 @@ var Application = function() {
 
 		if (hide) {
 			//target.addEventListener("animationend", self.animationEndHideHandler);
-	
+
 			var duration = self.getAnimationDuration(lastAnimation, true);
 			var isOverlay = self.isOverlay(target);
-	
+
 			setTimeout(function() {
 				self.setElementAnimation(target, null);
 
@@ -1005,7 +1005,7 @@ var Application = function() {
 
 			if (self.scaleViewsToFit) {
 				var newScaleValue = self.scaleViewToFit(view);
-				
+
 				if (newScaleValue<0) {
 					setTimeout(self.scaleViewToFit, 500, view);
 				}
@@ -1046,7 +1046,7 @@ var Application = function() {
 		// loop through rules and hide media queries except selected
 		for (var i=0;i<numberOfRules;i++) {
 			var rule = rules[i];
-			
+
 			if (rule.media!=null) {
 
 				if (queryIndex==prevQueryIndex) {
@@ -1087,7 +1087,7 @@ var Application = function() {
 		// loop through rules and hide media queries except selected
 		for (var i=0;i<numberOfRules;i++) {
 			var rule = rules[i];
-			
+
 			if (rule.media!=null) {
 
 				if (queryIndex==nextQueryIndex) {
@@ -1150,12 +1150,12 @@ var Application = function() {
 		for (var i=0;i<numberOfRules;i++) {
 			if (rules[i].media!=null) { numberOfQueries++; }
 		}
-		
+
 		return numberOfQueries;
 	}
 
 	/////////////////////////////////////////
-	// VIEW SCALE 
+	// VIEW SCALE
 	/////////////////////////////////////////
 
 	self.sliderChangeHandler = function(event) {
@@ -1169,7 +1169,7 @@ var Application = function() {
 		var tooltip = parseInt(scale * 100 + "") + "%";
 		var inputType;
 		var inputValue;
-		
+
 		if (slider) {
 			inputValue = self.getShortNumber(scale * 100);
 			if (inputValue!=slider["value"]) {
@@ -1189,13 +1189,13 @@ var Application = function() {
 	self.viewChangeHandler = function(event) {
 		var view = self.getVisibleView();
 		var matrix = view ? getComputedStyle(view).transform : null;
-		
+
 		if (matrix) {
 			self.viewScale = self.getViewScaleValue(view);
-			
+
 			var scaleNeededToFit = self.getViewFitToViewportScale(view);
 			var isViewLargerThanViewport = scaleNeededToFit<1;
-			
+
 			// scale large view to fit if scale to fit is enabled
 			if (self.scaleViewsToFit) {
 				self.scaleViewToFit(view);
@@ -1220,7 +1220,7 @@ var Application = function() {
 	}
 
 	/**
-	 * Scales view to scale. 
+	 * Scales view to scale.
 	 * @param {Object} view view to scale. views are in views array
 	 * @param {Boolean} scaleToFit set to true to scale to fit. set false to use desired scale value
 	 * @param {Number} desiredScale scale to define. not used if scale to fit is false
@@ -1273,7 +1273,7 @@ var Application = function() {
 		}
 
 		self.updateSliderValue(desiredScale);
-		
+
 		// scale to fit width
 		if (scaleToWidth && scaleToHeight==false) {
 			canCenterVertically = scaleNeededToFitHeight>=scaleNeededToFitWidth;
@@ -1318,7 +1318,7 @@ var Application = function() {
 					translateY = "0";
 					topPosition = "0";
 				}
-				
+
 				if (style.top != topPosition) {
 					style.top = topPosition + "";
 				}
@@ -1365,7 +1365,7 @@ var Application = function() {
 			//canCenterHorizontally = scaleNeededToFitHeight<=scaleNeededToFitWidth && enableScaleUp==false;
 			canCenterVertically = scaleNeededToFitHeight>=scaleNeededToFitWidth;
 			canCenterHorizontally = scaleNeededToFitWidth>=1 && enableScaleUp==false;
-			
+
 			if (isSliderChange) {
 				canCenterHorizontally = desiredScale<scaleToFitFullHeight;
 			}
@@ -1425,7 +1425,7 @@ var Application = function() {
 					translateY = "0";
 					topPosition = "0";
 				}
-				
+
 				if (style.top != topPosition) {
 					style.top = topPosition + "";
 				}
@@ -1471,7 +1471,7 @@ var Application = function() {
 
 			//canCenterHorizontally = self.canCenterHorizontally(view, "fit", false, desiredScale);
 			//canCenterVertically = self.canCenterVertically(view, "fit", false, desiredScale);
-			
+
 			if (self.centerVertically) {
 				if (canCenterVertically) {
 					translateY = "-50%";
@@ -1481,7 +1481,7 @@ var Application = function() {
 					translateY = "0";
 					topPosition = "0";
 				}
-				
+
 				if (style.top != topPosition) {
 					style.top = topPosition + "";
 				}
@@ -1520,7 +1520,7 @@ var Application = function() {
 			self.viewTop = topPosition;
 
 			self.updateSliderValue(desiredScale);
-			
+
 			return desiredScale;
 		}
 
@@ -1546,7 +1546,7 @@ var Application = function() {
 					translateY = "0";
 					topPosition = "0";
 				}
-				
+
 				if (style.top != topPosition) {
 					style.top = topPosition + "";
 				}
@@ -1589,7 +1589,7 @@ var Application = function() {
 			self.viewTop = topPosition;
 
 			self.updateSliderValue(desiredScale);
-			
+
 			return desiredScale;
 		}
 	}
@@ -1598,8 +1598,8 @@ var Application = function() {
 	 * Returns true if view can be centered horizontally
 	 * @param {HTMLElement} view view
 	 * @param {String} type type of scaling - width, height, all, none
-	 * @param {Boolean} scaleUp if scale up enabled 
-	 * @param {Number} scale target scale value 
+	 * @param {Boolean} scaleUp if scale up enabled
+	 * @param {Number} scale target scale value
 	 */
 	self.canCenterHorizontally = function(view, type, scaleUp, scale, minimumScale, maximumScale) {
 		var scaleNeededToFit = self.getViewFitToViewportScale(view, scaleUp);
@@ -1613,7 +1613,7 @@ var Application = function() {
 		scaleUp = scaleUp == null ? false : scaleUp;
 
 		if (type=="width") {
-	
+
 			if (scaleUp && maximumScale==null) {
 				canCenter = false;
 			}
@@ -1634,7 +1634,7 @@ var Application = function() {
 					minScale = Math.max(minimumScale, Math.min(maximumScale, scaleNeededToFitHeight));
 				}
 			}
-	
+
 			if (scaleUp && maximumScale=="") {
 				canCenter = false;
 			}
@@ -1655,7 +1655,7 @@ var Application = function() {
 		}
 
 		self.horizontalScrollbarsNeeded = canCenter;
-		
+
 		return canCenter;
 	}
 
@@ -1663,8 +1663,8 @@ var Application = function() {
 	 * Returns true if view can be centered horizontally
 	 * @param {HTMLElement} view view to scale
 	 * @param {String} type type of scaling
-	 * @param {Boolean} scaleUp if scale up enabled 
-	 * @param {Number} scale target scale value 
+	 * @param {Boolean} scaleUp if scale up enabled
+	 * @param {Number} scale target scale value
 	 */
 	self.canCenterVertically = function(view, type, scaleUp, scale, minimumScale, maximumScale) {
 		var scaleNeededToFit = self.getViewFitToViewportScale(view, scaleUp);
@@ -1676,7 +1676,7 @@ var Application = function() {
 		type = type==null ? "none" : type;
 		scale = scale==null ? 1 : scale;
 		scaleUp = scaleUp == null ? false : scaleUp;
-	
+
 		if (type=="width") {
 			canCenter = scaleNeededToFitHeight>=scaleNeededToFitWidth;
 		}
@@ -1697,7 +1697,7 @@ var Application = function() {
 		}
 
 		self.verticalScrollbarsNeeded = canCenter;
-		
+
 		return canCenter;
 	}
 
@@ -1723,7 +1723,7 @@ var Application = function() {
 		else if (elementWidth > availableWidth || elementHeight > availableHeight) {
 			newScale = Math.min(availableHeight/elementHeight, availableWidth/elementWidth);
 		}
-		
+
 		return newScale;
 	}
 
@@ -1748,7 +1748,7 @@ var Application = function() {
 		else if (elementWidth > availableWidth) {
 			newScale = availableWidth/elementWidth;
 		}
-		
+
 		return newScale;
 	}
 
@@ -1771,22 +1771,22 @@ var Application = function() {
 		else if (elementHeight > availableHeight) {
 			newScale = availableHeight/elementHeight;
 		}
-		
+
 		return newScale;
 	}
 
 	self.keypressHandler = function(event) {
 		var rightKey = 39;
 		var leftKey = 37;
-		
-		// listen for both events 
+
+		// listen for both events
 		if (event.type=="keypress") {
 			window.removeEventListener("keyup", self.keypressHandler);
 		}
 		else {
 			window.removeEventListener("keypress", self.keypressHandler);
 		}
-		
+
 		if (self.showNavigationControls) {
 			if (self.navigationOnKeypress) {
 				if (event.keyCode==rightKey) {
@@ -1844,7 +1844,7 @@ var Application = function() {
 
 	self.getVisibleView = function() {
 		var viewIds = self.getViewIds();
-		
+
 		for (var i=0;i<viewIds.length;i++) {
 			var viewId = viewIds[i].replace(/[\#?\.?](.*)/, "$" + "1");
 			var view = self.getElement(viewId);
@@ -1853,10 +1853,10 @@ var Application = function() {
 			if (view==null && viewId && viewId.lastIndexOf(postName)!=-1) {
 				view = self.getElement(viewId.replace(postName, ""));
 			}
-			
+
 			if (view) {
 				var display = getComputedStyle(view).display;
-		
+
 				if (display=="block" || display=="flex") {
 					return view;
 				}
@@ -1869,7 +1869,7 @@ var Application = function() {
 	self.getVisibleViews = function() {
 		var viewIds = self.getViewIds();
 		var views = [];
-		
+
 		for (var i=0;i<viewIds.length;i++) {
 			var viewId = viewIds[i].replace(/[\#?\.?](.*)/, "$" + "1");
 			var view = self.getElement(viewId);
@@ -1878,10 +1878,10 @@ var Application = function() {
 			if (view==null && viewId && viewId.lastIndexOf(postName)!=-1) {
 				view = self.getElement(viewId.replace(postName, ""));
 			}
-			
+
 			if (view) {
 				var display = getComputedStyle(view).display;
-				
+
 				if (display=="none") {
 					continue;
 				}
@@ -1908,10 +1908,10 @@ var Application = function() {
 			for (let index = 0; index < views.length; index++) {
 				var viewId = views[index];
 				var state = self.viewsDictionary[viewId];
-				var rule = state && state.rule; 
+				var rule = state && state.rule;
 				var matchResults = window.matchMedia(rule.conditionText);
 				var view = self.views[viewId];
-				
+
 				if (matchResults.matches) {
 					if (ids==true) {
 						matchingViews.push(viewId);
@@ -1947,7 +1947,7 @@ var Application = function() {
 				var viewStateName = self.getStyleRuleValue(mediaRule, self.STATE_NAME, state);
 				var stateFoundAtt = view.getAttribute(self.STATE_NAME)==state;
 				var matchesResults = false;
-				
+
 				if (viewStateName==stateName) {
 					if (matchQuery) {
 						matchesResults = self.ruleMatchesQuery(rule);
@@ -1992,12 +1992,12 @@ var Application = function() {
 
 		if (self.showByMediaQuery) {
 			var stateName = fragment;
-			
+
 			if (stateName==null || stateName=="") {
 				var initialView = self.getInitialView();
 				stateName = initialView ? self.getStateNameByViewId(initialView.id) : null;
 			}
-			
+
 			self.showMediaQueryViewsByState(stateName);
 			return;
 		}
@@ -2016,7 +2016,7 @@ var Application = function() {
 				window.history.pushState({name:currentView.id}, null, "#"+ currentView.id);
 			}
 		}
-		
+
 		self.setViewVariables(view);
 		return view;
 	}
@@ -2044,7 +2044,7 @@ var Application = function() {
 		var computedStyle = window.getComputedStyle(view);
 		var value = computedStyle.getPropertyValue(property);
 		var type = typeof value;
-		
+
 		if (value=="true" || (type=="string" && value.indexOf("true")!=-1)) {
 			return true;
 		}
@@ -2061,10 +2061,10 @@ var Application = function() {
 		if (value===undefined) {
 			return defaultValue;
 		}
-		
+
 		value = value.replace(/^[\s\"]*/, "");
 		value = value.replace(/[\s\"]*$/, "");
-		value = value.replace(/^[\s"]*(.*?)[\s"]*$/, function (match, capture) { 
+		value = value.replace(/^[\s"]*(.*?)[\s"]*$/, function (match, capture) {
 			return capture;
 		});
 
@@ -2077,10 +2077,10 @@ var Application = function() {
 		if (value===undefined) {
 			return null;
 		}
-		
+
 		value = value.replace(/^[\s\"]*/, "");
 		value = value.replace(/[\s\"]*$/, "");
-		value = value.replace(/^[\s"]*(.*?)[\s"]*$/, function (match, capture) { 
+		value = value.replace(/^[\s"]*(.*?)[\s"]*$/, function (match, capture) {
 			return capture;
 		});
 
@@ -2090,7 +2090,7 @@ var Application = function() {
 	/**
 	 * Get the first defined value of property. Returns empty string if not defined
 	 * @param {String} id id of element
-	 * @param {String} property 
+	 * @param {String} property
 	 */
 	self.getCSSPropertyValueForElement = function(id, property) {
 		var styleSheets = document.styleSheets;
@@ -2105,19 +2105,19 @@ var Application = function() {
 			var cssRules = self.getStylesheetRules(styleSheet);
 			var numOfCSSRules = cssRules.length;
 			var cssRule;
-			
+
 			for (var j=0;j<numOfCSSRules;j++) {
 				cssRule = cssRules[j];
-				
+
 				if (cssRule.media) {
 					var mediaRules = cssRule.cssRules;
 					var numOfMediaRules = mediaRules ? mediaRules.length : 0;
-					
+
 					for(var k=0;k<numOfMediaRules;k++) {
 						var mediaRule = mediaRules[k];
-						
+
 						if (mediaRule.selectorText==selectorIDText || mediaRule.selectorText==selectorClassText) {
-							
+
 							if (mediaRule.style && mediaRule.style.getPropertyValue(property)!="") {
 								value = mediaRule.style.getPropertyValue(property);
 								values.push(value);
@@ -2153,7 +2153,7 @@ var Application = function() {
 			const view = self.getElement(id);
 			self.views[id] = view;
 		}
-		
+
 		self.viewIds = viewIds;
 	}
 
@@ -2165,13 +2165,13 @@ var Application = function() {
 			const id = viewIds[index];
 			const view = self.getViewById(id);
 			const isOverlay = view && self.isOverlay(view);
-			
+
 			if (isOverlay) {
 				ids.push(id);
 				self.overlays[id] = view;
 			}
 		}
-		
+
 		self.overlayIds = ids;
 	}
 
@@ -2190,21 +2190,21 @@ var Application = function() {
 		var property = self.prefix + "view-id";
 		var stateName = self.prefix + "state";
 		var stateValue;
-		
+
 		for (var j=0;j<numOfCSSRules;j++) {
 			cssRule = cssRules[j];
-			
+
 			if (cssRule.media) {
 				var mediaRules = cssRule.cssRules;
 				var numOfMediaRules = mediaRules ? mediaRules.length : 0;
 				var mediaViewInfoFound = false;
 				var mediaId = null;
-				
+
 				for(var k=0;k<numOfMediaRules;k++) {
 					var mediaRule = mediaRules[k];
 
 					selectorText = mediaRule.selectorText;
-					
+
 					if (selectorText==".mediaViewInfo" && mediaViewInfoFound==false) {
 
 						mediaId = self.getStyleRuleValue(mediaRule, property);
@@ -2212,7 +2212,7 @@ var Application = function() {
 
 						selectorIDText = "#" + mediaId;
 						selectorClassText = "." + mediaId + "_Class";
-						
+
 						// prevent duplicates from load and domcontentloaded events
 						if (self.addedViews.indexOf(mediaId)==-1) {
 							self.addView(mediaId, cssRule, mediaRule, stateValue);
@@ -2238,7 +2238,7 @@ var Application = function() {
 			}
 			else {
 				selectorText = cssRule.selectorText;
-				
+
 				if (selectorText==null) continue;
 
 				selectorText = selectorText.replace(/[#|\s|*]?/g, "");
@@ -2318,7 +2318,7 @@ var Application = function() {
 		var targetState = targetView ? self.getStateNameByViewId(targetView.id) : null;
 		var actionTargetStyles = targetView ? targetView.style : null;
 		var state = self.viewsDictionary[actionTargetValue];
-		
+
 		// navigate to page
 		if (self.application==false || targetType=="page") {
 			document.location.href = "./" + actionTargetValue;
@@ -2334,7 +2334,7 @@ var Application = function() {
 
 			if (self.showByMediaQuery) {
 				var stateName = targetState;
-				
+
 				if (stateName==null || stateName=="") {
 					var initialView = self.getInitialView();
 					stateName = initialView ? self.getStateNameByViewId(initialView.id) : null;
@@ -2379,7 +2379,7 @@ var Application = function() {
 			var duration = self.getAnimationDuration(animation, true);
 
 			// if target view is above (higher index)
-			// then fade in target view 
+			// then fade in target view
 			// and after fade in then hide previous view instantly
 			if (fromIndex<toIndex) {
 				self.setElementAnimation(from, null);
@@ -2397,7 +2397,7 @@ var Application = function() {
 				}, duration)
 			}
 			// if target view is on bottom
-			// then show target view instantly 
+			// then show target view instantly
 			// and fade out current view
 			else if (fromIndex>toIndex) {
 				self.setElementAnimation(to, null);
@@ -2431,7 +2431,7 @@ var Application = function() {
 		}
 
 		self.setElementAnimation(element, null);
-		
+
 		element.style.animation = animation;
 	}
 
@@ -2502,7 +2502,7 @@ var Application = function() {
 	}
 
 	self.resizeHandler = function(event) {
-		
+
 		if (self.showByMediaQuery) {
 			if (self.enableDeepLinking) {
 				var stateName = self.getHashFragment();
@@ -2517,7 +2517,7 @@ var Application = function() {
 		else {
 			var visibleViews = self.getVisibleViews();
 
-			for (let index = 0; index < visibleViews.length; index++) {	
+			for (let index = 0; index < visibleViews.length; index++) {
 				var view = visibleViews[index];
 				self.scaleViewIfNeeded(view);
 			}
@@ -2581,8 +2581,8 @@ var Application = function() {
 		// but if multiple views exists at same size user may want specific view
 		// if showStateFunction is defined that is called with state fragment and user can show or hide each media matching view by returning true or false
 		// if showStateFunction is not defined and state is defined and view has a defined state that matches then show that and hide other matching views
-		// if no state is defined show view 
-		// an viewChanging event is dispatched before views are shown or hidden that can be prevented 
+		// if no state is defined show view
+		// an viewChanging event is dispatched before views are shown or hidden that can be prevented
 
 		// get all matched queries
 		// if state name is specified then show that view and hide other views
@@ -2593,10 +2593,10 @@ var Application = function() {
 		var showViews = [];
 		var hideViews = [];
 
-		// loop views that match media query 
+		// loop views that match media query
 		for (let index = 0; index < matchedViews.length; index++) {
 			var view = matchedViews[index];
-			
+
 			// let user determine visible view
 			if (self.showStateFunction!=null) {
 				if (self.showStateFunction(view, state)) {
@@ -2658,7 +2658,7 @@ var Application = function() {
 			viewChangeEvent.hideViews = hideViews;
 			window.dispatchEvent(viewChangeEvent);
 		}
-		
+
 	}
 
 	self.clearDisplay = function(view) {
@@ -2684,7 +2684,7 @@ var Application = function() {
 				self.showView(view);
 				self.setViewVariables(view);
 				self.updateViewLabel();
-				
+
 				window.dispatchEvent(new Event(self.VIEW_CHANGE));
 			}
 			else {
@@ -2732,7 +2732,7 @@ var Application = function() {
 		if (self.scaleToFitOnDoubleClick && self.actualSizeOnDoubleClick) {
 			var isViewScaled = view.getAttributeNS(null, self.SIZE_STATE_NAME);
 			var isScaled = false;
-			
+
 			// if scale is not 1 then view needs scaling
 			if (scaleNeededToFit!=1) {
 
@@ -2749,14 +2749,14 @@ var Application = function() {
 				}
 			}
 			else {
-				// view is smaller than viewport 
+				// view is smaller than viewport
 				// so scale to fit() is scale actual size
 				// actual size and scaled size are the same
 				// but call scale to fit to retain centering
 				self.scaleViewToFit(view);
 				isScaled = false;
 			}
-			
+
 			view.setAttributeNS(null, self.SIZE_STATE_NAME, isScaled+"");
 			isViewScaled = view.getAttributeNS(null, self.SIZE_STATE_NAME);
 		}
@@ -2788,25 +2788,25 @@ var Application = function() {
 
 	self.getStackArray = function(error) {
 		var value = "";
-		
+
 		if (error==null) {
 		  try {
 			 error = new Error("Stack");
 		  }
 		  catch (e) {
-			 
+
 		  }
 		}
-		
+
 		if ("stack" in error) {
 		  value = error.stack;
 		  var methods = value.split(/\n/g);
-	 
+
 		  var newArray = methods ? methods.map(function (value, index, array) {
 			 value = value.replace(/\@.*/,"");
 			 return value;
 		  }) : null;
-	 
+
 		  if (newArray && newArray[0].includes("getStackTrace")) {
 			 newArray.shift();
 		  }
@@ -2816,17 +2816,17 @@ var Application = function() {
 		  if (newArray && newArray[0]=="") {
 			 newArray.shift();
 		  }
-	 
+
 			return newArray;
 		}
-		
+
 		return null;
 	}
 
 	self.log = function(value) {
 		console.log.apply(this, [value]);
 	}
-	
+
 	// initialize on load
 	// sometimes the body size is 0 so we call this now and again later
 	window.addEventListener("load", self.onloadHandler);
@@ -2878,22 +2878,28 @@ var Application = function() {
 		}
 	}
 
-//	function initializeApp(data) {
-//        liff.getProfile().then(profile => {
-//            $("#userid").val(data.context.userId);
+	function initializeApp(data) {
+        liff.getProfile().then(profile => {
+            $("#userid").val(data.context.userId);
 //            $("#disname").val(profile.displayName);
-//        });
-//    }
+        });
+        // .val( )：新增或讀取表單內的值
+        var userid = data.context.userId; //my line_id
+        var form = document.forms['userForm'];
+        var uservalid = $("#userid").val(form.elements['line_id']);
+        // 判斷使用者是否已經填過資料
+        if(uservalid == ''){
+            window.alert("not yet!");
+        }else{
+            window.alert("already");
+        }
+    }
+
 	window.onload = function(){
 		genderSelect(g_id);
 		jobSelect(j_id);
-		liff.init({
-          liffId: '1655966851-dq3bjBAM'
-        }).then(function (data) {
-            liff.getProfile().then(profile => {
-                $("#userid").val(data.context.userId);
-                $("#disname").val(profile.displayName);
-            });
+		liff.init(function (data) {
+            initializeApp(data);
         });
 	}
 }
