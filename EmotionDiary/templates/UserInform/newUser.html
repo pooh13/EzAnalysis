@@ -3,13 +3,21 @@
 {% load static %}
 
 {% block css %}
-<link rel="stylesheet" href="{% static 'css/UserInform/newUser.css' %}" xmlns="http://www.w3.org/1999/html">
+<link rel="stylesheet" href="{% static 'css/UserInform/style.css' %}">
 {% endblock %}
 
 {% block body %}
 	<form id="userForm" action="." method="post" class="form" enctype="multipart/form-data">
         {% csrf_token %}
 		<div id="ID1">
+			<svg class="_bj">
+				<rect id="_bj" rx="0" ry="0" x="0" y="0" width="428" height="64">
+				</rect>
+			</svg>
+			<div id="_bk">
+				<span>基本資料</span>
+			</div>
+
 			<!--	userid, username	-->
 			<div id="name" class="name">
 				{{ form.line_id }}
@@ -32,9 +40,9 @@
 			</div>
 
 			<!--	gender	-->
+			{{ form.gender }}
 			<div id="woman1">
 				<div id="woman">
-					{{ form.gender }}
 					<button id="2" name="gender_btn" value="F" type="button" class ="btn1" style="background-color: #ffffff;">
 						<img src="{% static 'images/UserInform/woman.png' %}" style="width: 100%;">
 					</button>
@@ -43,19 +51,10 @@
 
 			<div id="man1">
 				<div id="man">
-					{{ form.career_id }}
 					<button id="1" name="gender_btn" value="M" type = "button" class = "btn1" style="background-color: #ffffff;">
 						<img id="man_img" src="{% static 'images/UserInform/man.png' %}" style="width: 100%;">
 					</button>
 				</div>
-			</div>
-
-			<svg class="_bj">
-				<rect id="_bj" rx="0" ry="0" x="0" y="0" width="428" height="64">
-				</rect>
-			</svg>
-			<div id="_bk">
-				<span>基本資料</span>
 			</div>
 
 			<!--	buttons	-->
@@ -66,18 +65,19 @@
 				</svg>
 				<div id="final">
 					<input type="button" value="完成" onclick="check(this);">
-<!--					<input type="button" id="submit" style="display:none" onclick="document.getElementById('userForm').submit();">-->
 				</div>
 			</div>
 		</div>
 
+		<!--	job	-->
+		{{ form.career_id }}
 		<div id="_bo">
 			<!-- 底框 -->
 			<svg class="_5">
 				<rect id="_5" rx="28" ry="28" x="0" y="0" width="384" height="337">
 				</rect>
 			</svg>
-			<!-- 底框 -->
+
 			<div id="_bq">
 				<!-- 其他 -->
 				<div id="other">
@@ -169,7 +169,7 @@
 						<span>軍公教</span>
 					</div>
 					<div id="soldier_btn">
-						<button id = "2" name="job_btn" value="2" type = "button" class = "btn3" style="background-color: rgba(198,218,208,1);">
+						<button id="2" name="job_btn" value="2" type="button" class="btn3" style="background-color: rgba(198,218,208,1);">
 							<img id="ID030-soldier" src="{% static 'images/UserInform/ID030-soldier.png' %}" srcset="{% static 'images/UserInform/ID030-soldier.png' %} 1x, {% static 'images/UserInform/ID030-soldier@2x.png' %} 2x">
 						</button>
 					</div>
@@ -181,7 +181,7 @@
 						<span>學生</span>
 					</div>
 					<div id="student_btn">
-						<button id = "1" name="job_btn" value="1" type = "button" class = "btn3" style="background-color: rgba(250,215,179,1);">
+						<button id="1" name="job_btn" value="1" type="button" class="btn3" style="background-color: rgba(250,215,179,1);">
 							<img id="ID009-student" src="{% static 'images/UserInform/ID009-student.png' %}" srcset="{% static 'images/UserInform/ID009-student.png' %} 1x, {% static 'images/UserInform/ID009-student@2x.png' %} 2x">
 						</button>
 					</div>
