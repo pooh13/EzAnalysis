@@ -1,11 +1,12 @@
+
 	.mediaViewInfo {
-		--web-view-name: 基本資料2 – 1;
-		--web-view-id: ID2__1;
+		--web-view-name: 修改基本資料1;
+		--web-view-id: ID1;
 		--web-scale-on-resize: true;
 		--web-enable-deep-linking: true;
 	}
 	:root {
-		--web-view-ids: ID2__1;
+		--web-view-ids: ID1;
 	}
 	* {
 		margin: 0;
@@ -13,27 +14,71 @@
 		box-sizing: border-box;
 		border: none;
 	}
-	#ID2__1 {
+	#ID1 {
 		position: absolute;
 		width: 428px;
 		height: 926px;
-		background-color: rgba(214,226,233,1);
+		background-color: rgba(253,231,232,1);
 		overflow: hidden;
-		--web-view-name: 基本資料2 – 1;
-		--web-view-id: ID2__1;
+		--web-view-name: 修改基本資料1;
+		--web-view-id: ID1;
 		--web-scale-on-resize: true;
 		--web-enable-deep-linking: true;
 	}
-	@keyframes fadein {
-	
-		0% {
-			opacity: 0;
-		}
-		100% {
-			opacity: 1;
-		}
-	
+	/* ----------------name----------------*/
+	#name {
+		position: absolute;
+		width: 368px;
+		height: 98px;
+		left: 29px;
+		top: 90px;
+		overflow: visible;
 	}
+	#nametextbox{
+		fill: rgba(255,255,255,1);
+		stroke: rgba(109,104,117,1);
+		stroke-width: 5px;
+		stroke-linejoin: miter;
+		stroke-linecap: butt;
+		stroke-miterlimit: 4;
+		shape-rendering: auto;
+	}
+	.nametextbox{
+		filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+		position: absolute;
+		overflow: visible;
+		width: 386px;
+		height: 50px;
+		border-radius: 20px;/*圓框*/
+		font-size: 24px; /*字體大小*/ 
+		border:6px rgba(109,104,117,1) solid;
+		mix-blend-mode: darken;
+		left: 0px;
+		top: 39px;
+		white-space: nowrap;
+		text-align: left;
+		font-family: Microsoft JhengHei;
+		font-style: normal;
+		font-weight: bold;
+		font-size: 30px;
+		color: rgba(109,104,117,1);
+	}
+	#textname{
+		mix-blend-mode: darken;
+		left: 0px;
+		top: 0px;
+		position: absolute;
+		overflow: visible;
+		width: 57px;
+		white-space: nowrap;
+		text-align: left;
+		font-family: Microsoft JhengHei;
+		font-style: normal;
+		font-weight: bold;
+		font-size: 25px;
+		color: rgba(109,104,117,1);
+	}
+	/* ----------------next----------------*/
 	#NEXT {
 		position: absolute;
 		width: 123px;
@@ -41,13 +86,9 @@
 		left: 282px;
 		top: 823px;
 		overflow: visible;
-		--web-animation: fadein 0.3s ease-out;
-		--web-action-type: page;
-		--web-action-target: ____2.html;
-		cursor: pointer;
 	}
 	#_4 {
-		fill: rgba(219,231,228,1);
+		fill: rgba(255,215,184,1);
 	}
 	._4 {
 		filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
@@ -58,10 +99,10 @@
 		left: 0px;
 		top: 0px;
 	}
-	#finish{
+	#final {
 		filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
-		left: 36px;
-		top: 1px;
+		left: 32px;
+		top: 7px;
 		position: absolute;
 		overflow: visible;
 		width: 61px;
@@ -74,8 +115,162 @@
 		color: rgba(255,255,255,1);
 		letter-spacing: -0.05px;
 	}
+	/* ----------------woman----------------*/
+	#woman1 {
+		position: absolute;
+		width: 78px;
+		height: 78px;
+		left: 250px;
+		top: 300px;
+		overflow: visible;
+	}
+	#woman {
+		position: absolute;
+		width: 37.675px;
+		height: 69.267px;
+		left: 20.163px;
+		top: 4.367px;
+		overflow: visible;
+	}
+	#_1 {
+		fill: rgba(249,117,161,1);
+	}
+	._1 {
+		overflow: visible;
+		position: absolute;
+		width: 15.153px;
+		height: 15.152px;
+		left: 11.192px;
+		top: 0px;
+		transform: matrix(1,0,0,1,0,0);
+	}
+	/* ----------------man----------------*/
+	#man1{
+		position: absolute;
+		width: 78px;
+		height: 78px;
+		left: 50px;
+		top: 300px;
+		overflow: visible;
+	}
+	#_1_bf {
+		fill: rgba(255,255,255,1);
+	}
+	._1_bf {
+		filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+		position: absolute;
+		overflow: visible;
+		width: 96px;
+		height: 96px;
+		left: 0px;
+		top: 0px;
+	}
+	#man {
+		position: absolute;
+		width: 30.304px;
+		height: 69.267px;
+		left: 23.848px;
+		top: 4.367px;
+		overflow: visible;
+	}
+
+	#_bj {
+		fill: rgba(214,226,233,1);
+	}
+	._bj {
+		position: absolute;
+		overflow: visible;
+		width: 428px;
+		height: 64px;
+		left: -1px;
+		top: 0px;
+	}
+	#_bk {
+		left: 153px;
+		top: 11px;
+		position: absolute;
+		overflow: visible;
+		width: 121px;
+		white-space: nowrap;
+		text-align: left;
+		font-family: Microsoft JhengHei;
+		font-style: normal;
+		font-weight: bold;
+		font-size: 30px;
+		color: rgba(109,104,117,1);
+	}
+	/* ----------------agetextbox ----------------*/
+	#age {
+		position: absolute;
+		width: 368px;
+		height: 98px;
+		left: 29px;
+		top: 220px;
+		overflow: visible;
+	}
+	#agetext{
+		position: absolute;
+		width: 368px;
+		height: 98px;
+		left: 29px;
+		top: 180px;
+		overflow: visible;
+	}
+	#agetextbox {
+		fill: rgba(255,255,255,1);
+		stroke: rgba(109,104,117,1);
+		stroke-width: 5px;
+		stroke-linejoin: miter;
+		stroke-linecap: butt;
+		stroke-miterlimit: 4;
+		shape-rendering: auto;
+	}
+	.agetextbox {
+		filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+		position: absolute;
+		overflow: visible;
+		width: 386px;
+		height: 50px;
+		border-radius: 20px;/*圓框*/
+		font-size: 24px; /*字體大小*/ 
+		border:6px rgba(109,104,117,1) solid;
+		mix-blend-mode: darken;
+		left: 0px;
+		top: 34px;
+		white-space: nowrap;
+		text-align: left;
+		font-family: Microsoft JhengHei;
+		font-style: normal;
+		font-weight: bold;
+		font-size: 30px;
+		color: rgba(109,104,117,1);
+	}
+	#age {
+		mix-blend-mode: darken;
+		left: 0px;
+		top: 0px;
+		position: absolute;
+		overflow: visible;
+		width: 57px;
+		white-space: nowrap;
+		text-align: left;
+		font-family: Microsoft JhengHei;
+		font-style: normal;
+		font-weight: bold;
+		font-size: 25px;
+		color: rgba(109,104,117,1);
+	}
+
+	#_bo {
+		position: absolute;
+		width: 384px;
+		height: 337px;
+		left: 21px;
+		top: 452px;
+		overflow: visible;
+	}
 	#_5 {
-		opacity: 0.52;
+		opacity: 0.642;
 		fill: rgba(185,185,185,1);
 	}
 	._5 {
@@ -84,30 +279,29 @@
 		overflow: visible;
 		width: 402px;
 		height: 355px;
-		left: 21px;
-		top: 453px;
+		left: 0px;
+		top: 0px;
 	}
-	/* --------------------------------------------------------------- */
-	#job {
+	#_bq {
 		position: absolute;
 		width: 324px;
 		height: 318px;
-		left: 51px;
-		top: 467px;
+		left: 30px;
+		top: 14px;
 		overflow: visible;
 	}
-	/* ---------------------------other------------------------------- */
-	#other {
+	#_br {
 		position: absolute;
 		width: 80px;
 		height: 102px;
 		left: 244px;
-		top: 205px;
+		top: 216px;
 		overflow: visible;
 	}
-	#other_text {
+	/*-------------- other -----------------*/
+	#other {
 		left: 23px;
-		top: 90px;
+		top: 80px;
 		position: absolute;
 		overflow: visible;
 		width: 35px;
@@ -120,39 +314,35 @@
 		color: rgba(255,255,255,1);
 		letter-spacing: -0.05px;
 	}
-	#other_btn {
-		fill: rgba(255,255,255,1);
-	}
-	.other_btn {
+	#other_btn.btn3{
 		position: absolute;
 		overflow: visible;
 		width: 80px;
 		height: 80px;
 		left: 0px;
-		top: 0px;
+		top: -10px;
 	}
-	
 	#ID035-astronaut {
 		position: absolute;
 		width: 63px;
 		height: 63px;
-		left: 9px;
-		top: 20px;
+		left: 8px;
+		top: 9px;
 		overflow: visible;
 	}
-	/* --------------------------------------------------------------- */
-	#fisher {
+	
+	#_bv {
 		position: absolute;
 		width: 85px;
 		height: 102px;
 		left: 120px;
-		top: 205px;
+		top: 216px;
 		overflow: visible;
 	}
-	#fisher_btn {
+	#_8 {
 		fill: rgba(227,124,124,1);
 	}
-	.fisher_btn {
+	._8 {
 		position: absolute;
 		overflow: visible;
 		width: 80px;
@@ -160,9 +350,10 @@
 		left: 2px;
 		top: 0px;
 	}
-	#fisher_text {
+	/* farmer */
+	#farmer {
 		left: 0px;
-		top: 90px;
+		top: 80px;
 		position: absolute;
 		overflow: visible;
 		width: 86px;
@@ -180,21 +371,28 @@
 		width: 63px;
 		height: 63px;
 		left: 9px;
-		top: 20px;
+		top: 9px;
 		overflow: visible;
 	}
-	/* ------------------------------retirement--------------------------------- */
-	#retirement {
+	#farmer_btn.btn3{
+		position: absolute;
+		overflow: visible;
+		width: 80px;
+		height: 80px;
+		left: 0px;
+		top: -10px;
+	}
+	#_bz {
 		position: absolute;
 		width: 80px;
 		height: 102px;
 		left: 0px;
-		top: 205px;
+		top: 216px;
 		overflow: visible;
 	}
-	#retirement_text {
+	#_b {
 		left: 6px;
-		top: 90px;
+		top: 80px;
 		position: absolute;
 		overflow: visible;
 		width: 69px;
@@ -207,15 +405,15 @@
 		color: rgba(255,255,255,1);
 		letter-spacing: -0.05px;
 	}
-	#retirement_btn {
+	#_11 {
 		fill: rgba(167,233,212,1);
 	}
-	.retirement_btn {
+	._11 {
 		position: absolute;
 		overflow: visible;
 		width: 80px;
 		height: 80px;
-		left: 2px;
+		left: 0px;
 		top: 0px;
 	}
 	#ID043-teacher {
@@ -223,10 +421,10 @@
 		width: 63px;
 		height: 63px;
 		left: 9px;
-		top: 20px;
+		top: 9px;
 		overflow: visible;
 	}
-	#_bj {
+	#_ca {
 		position: absolute;
 		width: 80px;
 		height: 102px;
@@ -234,7 +432,7 @@
 		top: 108px;
 		overflow: visible;
 	}
-	#_bk {
+	#_cb {
 		left: 23px;
 		top: 80px;
 		position: absolute;
@@ -268,7 +466,7 @@
 		top: 9px;
 		overflow: visible;
 	}
-	#_bn {
+	#_cc {
 		position: absolute;
 		width: 80px;
 		height: 102px;
@@ -276,7 +474,7 @@
 		top: 108px;
 		overflow: visible;
 	}
-	#_bo {
+	#_cd {
 		left: 15px;
 		top: 80px;
 		position: absolute;
@@ -310,7 +508,7 @@
 		top: 9px;
 		overflow: visible;
 	}
-	#_br {
+	#_ce {
 		position: absolute;
 		width: 80px;
 		height: 102px;
@@ -329,7 +527,7 @@
 		left: 0px;
 		top: 0px;
 	}
-	#_bt {
+	#_cf {
 		left: 15px;
 		top: 80px;
 		position: absolute;
@@ -352,7 +550,7 @@
 		top: 9px;
 		overflow: visible;
 	}
-	#_bv {
+	#_cg {
 		position: absolute;
 		width: 80px;
 		height: 102px;
@@ -360,7 +558,7 @@
 		top: 0px;
 		overflow: visible;
 	}
-	#_bw {
+	#_ch {
 		left: 15px;
 		top: 80px;
 		position: absolute;
@@ -394,7 +592,7 @@
 		top: 9px;
 		overflow: visible;
 	}
-	#_bz {
+	#_cj {
 		position: absolute;
 		width: 80px;
 		height: 102px;
@@ -413,7 +611,7 @@
 		left: 0px;
 		top: 0px;
 	}
-	#_b {
+	#_cl {
 		left: 15px;
 		top: 80px;
 		position: absolute;
@@ -436,7 +634,7 @@
 		top: 9px;
 		overflow: visible;
 	}
-	#_ca {
+	#_cn {
 		position: absolute;
 		width: 80px;
 		height: 102px;
@@ -463,7 +661,7 @@
 		top: 9px;
 		overflow: visible;
 	}
-	#_cb {
+	#_cq {
 		left: 24px;
 		top: 80px;
 		position: absolute;
@@ -478,131 +676,58 @@
 		color: rgba(255,255,255,1);
 		letter-spacing: -0.05px;
 	}
-	#logo {
-		position: absolute;
-		width: 270px;
-		height: 270px;
-		left: 78px;
-		top: 26px;
-		overflow: visible;
-	}
-	#logo_b {
-		fill: rgba(255,255,255,1);
-	}
-	.logo_b {
-		position: absolute;
-		overflow: visible;
-		width: 270px;
-		height: 270px;
+	#nametextbox{
+		mix-blend-mode: darken;
 		left: 0px;
 		top: 0px;
-	}
-	#logo_ca {
-		left: 91px;
-		top: 106px;
 		position: absolute;
 		overflow: visible;
-		width: 89px;
+		width: 69px;
 		white-space: nowrap;
 		text-align: left;
-		font-family: Segoe UI;
+		font-family: Microsoft JhengHei;
 		font-style: normal;
-		font-weight: normal;
-		font-size: 44px;
-		color: rgba(112,112,112,1);
+		font-weight: bold;
+		font-size: 30px;
+		color: rgba(109,104,117,1);
 	}
-	#_3 {
-		fill: rgba(255,255,255,1);
-		stroke: rgba(109,104,117,1);
-		stroke-width: 5px;
-		stroke-linejoin: miter;
-		stroke-linecap: butt;
-		stroke-miterlimit: 4;
-		shape-rendering: auto;
-	}
-	._3 {
-		filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
-		position: absolute;
-		overflow: visible;
-		width: 386px;
-		height: 82px;
-		left: 0px;
-		top: 42px;
-	}
-/* ----------------agetextbox ----------------*/
-#age {
-	position: absolute;
-	width: 368px;
-	height: 98px;
-	left: 29px;
-	top: 250px;
-	overflow: visible;
+	.btn1{
+		border:2px #ffffff solid;
+		height: 100px;
+		width:  100px;
+		font-size: small;
+		margin-top: 10px;
+		border-radius:50px;
+	  	}
+	.btn2{
+		border:5px #f78989 solid;
+		height: 100px;
+		width:  100px;
+		font-size: small;
+		margin-top: 10px;
+		border-radius:50px;
+	  	}
+	.btn3{
+		/* border:2px #ffffff solid; */
+		height: 80px;
+		width:  80px;
+		font-size: small;
+		margin-top: 10px;
+		border-radius:20px;
+		}
+	.btn4{
+		border:5px #7eeef2 solid;
+		height: 100px;
+		width:  100px;
+		font-size: small;
+		margin-top: 10px;
+		border-radius:30px;
+		}
+
+
+#contextinfo {
+    display: none;
 }
-#agetext{
-	position: absolute;
-	width: 368px;
-	height: 98px;
-	left: 29px;
-	top: 180px;
-	overflow: visible;
+#accesstokendata, #profileinfo {
+    display: none;
 }
-#agetextbox {
-	fill: rgba(255,255,255,1);
-	stroke: rgba(109,104,117,1);
-	stroke-width: 5px;
-	stroke-linejoin: miter;
-	stroke-linecap: butt;
-	stroke-miterlimit: 4;
-	shape-rendering: auto;
-}
-.agetextbox {
-	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
-	position: absolute;
-	overflow: visible;
-	width: 386px;
-	height: 50px;
-	border-radius: 20px;/*圓框*/
-	font-size: 24px; /*字體大小*/ 
-	border:6px rgba(109,104,117,1) solid;
-	mix-blend-mode: darken;
-	left: 0px;
-	top: 34px;
-	white-space: nowrap;
-	text-align: left;
-	font-family: Microsoft JhengHei;
-	font-style: normal;
-	font-weight: bold;
-	font-size: 30px;
-	color: rgba(109,104,117,1);
-}
-#age {
-	mix-blend-mode: darken;
-	left: -10px;
-	top: 120px;
-	position: absolute;
-	overflow: visible;
-	width: 57px;
-	white-space: nowrap;
-	text-align: left;
-	font-family: Microsoft JhengHei;
-	font-style: normal;
-	font-weight: bold;
-	font-size: 25px;
-	color: rgba(109,104,117,1);
-}
-.btn1{
-	border:none;
-	height: 80px;
-	width:  80px;
-	font-size: small;
-	margin-top: 10px;
-	border-radius:20px;
-	  }
-.btn2{
-	border:5px #0066ff solid;
-	height: 80px;
-	width:  80px;
-	font-size: small;
-	margin-top: 10px;
-	border-radius:20px;
-	  }

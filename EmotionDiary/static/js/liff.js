@@ -11,15 +11,9 @@ function initializeApp(data) {
         $("#userid").val(data.context.userId);
         $("#disname").val(profile.displayName);
     });
+    if(data.context.userId == ""){
+        var button = document.getElementById('userForm');
+        button.submit();
+        window.alert("Submit");
+    }
 }
-function myMsg(){
-    alert("儲存成功!"+ g_id);
-}
-
-//window.onload = function (data) {
-//    liff.getProfile().then(profile => {
-//        document.getElementById('useridfield').textContent = data.context.userId;
-//        document.getElementById('displaynamefield').textContent = profile.displayName;
-//        $("#disname").val(profile.displayName);
-//    });
-//}

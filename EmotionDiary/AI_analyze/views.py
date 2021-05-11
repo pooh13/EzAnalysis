@@ -2,29 +2,19 @@ import os
 import datetime
 import time
 import tempfile
-# from cgitb import handler
 
+from django.shortcuts import render
+from cgitb import handler
 from django.conf import settings
-from django.core.files import File
 from django.http import HttpResponse, HttpResponseBadRequest, HttpResponseForbidden
-from django.shortcuts import render, redirect, get_object_or_404
 from django.views.decorators.csrf import csrf_exempt
-import models
-import forms
-from django.core.files.base import ContentFile
-from django.core.files import File
-
-# from flask import Flask, request, abort
 
 from linebot import LineBotApi, WebhookParser, WebhookHandler
 from linebot.exceptions import InvalidSignatureError, LineBotApiError
-from linebot.models import MessageEvent, TextSendMessage, TextMessage, StickerSendMessage, ImageMessage, \
-    ImagemapSendMessage, BaseSize, URIImagemapAction, ImagemapArea, MessageImagemapAction, TemplateSendMessage, \
-    ButtonsTemplate, PostbackAction, MessageAction, URIAction, responses, DatetimePickerAction, PostbackEvent, \
-    ConfirmTemplate, FollowEvent, ImageSendMessage
+from linebot.models import *
 
-from linebot.models.emojis import Emojis
-
+from . import forms
+from . import models
 from liffpy import (
     LineFrontendFramework as LIFF,
 )
@@ -32,59 +22,22 @@ from liffpy import (
 import ssl
 ssl._create_default_https_context = ssl._create_unverified_context
 
+# setting TIME
+t = time.time()
+today = datetime.date.today().strftime("%Y-%m-%d")
+
+
 # filter 來過濾條件
 
-# app = Flask(__name__)
 
 # LINE 聊天機器人的基本資料
 line_bot_api = LineBotApi(settings.LINE_CHANNEL_ACCESS_TOKEN)
 handler = WebhookHandler(settings.LINE_CHANNEL_SECRET)
 parser = WebhookParser(settings.LINE_CHANNEL_SECRET)
 url = settings.SET_URL
+
 liff_api = LIFF(settings.LINE_CHANNEL_ACCESS_TOKEN)
 
-t = time.time()
-# print(datetime.date.today().strftime("%Y-%m-%d"))
-today = datetime.date.today().strftime("%Y-%m-%d")
-
-
-# kelly
-'''
-def user_inform_from(request, pk):
-    box = get_object_or_404(models.UserInform, pk=pk)
-    form = forms.UserInformFrom(request.POST or None, request.FILES or None, instance=box)
-    # career = models.Career.objects.get(career_id=1)
-    if form.is_valid():
-        # models.UserInform.objects.get(line_id=request)
-
-        form.save()
-
-    return render(request, 'UserInform/new.html', {
-        # 'id': user_line_id,
-        'form': form,
-        # 'career': career
-    })
-'''
-
-# test網頁 -------------------------------------------
-def test(request):
-    return render(request, 'test2.html')
-
-
-def add(request):
-    return render(request, 'add.html')
-
-
-def userdata(request):
-    return render(request, 'newUserInform/userdata.html')
-
-
-def userdata2(request):
-    return render(request, 'newUserInform/userdata2.html')
-# -----------------------------------------------
-
-
-# @app.route("callback/", methods=['POST'])
 @csrf_exempt
 def callback(request):
     if request.method == 'POST':
@@ -96,81 +49,21 @@ def callback(request):
 
         try:
             handler.handle(body, signature) # 傳入的事件
-
-            # 此events有帶值，但無法執行下面的message事件
-            events2 = parser.parse(body, signature)
         except InvalidSignatureError:
             return HttpResponseForbidden()
 
         except LineBotApiError:
             return HttpResponseBadRequest()
-        # 16----------------------------------------------------------------------------
-        '''
-        for event in events2:
-            try:
-                find_pic = {'tbm': 'isch', 'q': event.message.text}
-                url = f"https://www.google.com/search?{urllib.parse.urlencode(find_pic)}"
-                headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.132 Safari/537.36'}
 
-                req = urllib.request.Request(url, headers=headers)
-                conn = urllib.request.urlopen(req)
-                data = conn.read()
-
-                pattern = 'img data-src="\S*"'
-                img_list = []
-
-                for match in re.finditer(pattern, str(data)):
-                    img_list.append(match.group()[14:-3])
-
-                random_img_url = img_list[random.randint(0, len(img_list)+1)]
-                print(random_img_url)
-
-                line_bot_api.reply_message(
-                    event.reply_token,
-                    ImageSendMessage(original_content_url = random_img_url,
-                                     preview_image_url = random_img_url))
-            except:
-                # 回覆圖片 ImageSendMessage --ok
-                # if event.message.text == "圖片":
-                # if isinstance(event, MessageEvent):
-                #     line_bot_api.reply_message(
-                #         event.reply_token,
-                #         ImageSendMessage(original_content_url='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR4dI0KzluMib7ZBG4vYHbtbtfxi88lwUmSZB1FVFE&amp;usqp=C',
-                #                             preview_image_url='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR4dI0KzluMib7ZBG4vYHbtbtfxi88lwUmSZB1FVFE&amp;usqp=C' )
-                # )
-
-                # 回覆相同文字 TextSendMessage --ok
-                # if isinstance(event, MessageEvent): # 如果有訊息事件
-                #     line_bot_api.reply_message(
-                #         event.reply_token,
-                #         TextSendMessage(text=event.message.text) # 回復傳入的訊息文字
-                #     )
-
-                # 回覆貼圖 StickerSendMessage --ok
-                if isinstance(event, MessageEvent):
-                    line_bot_api.reply_message(
-                        event.reply_token,
-                        StickerSendMessage(package_id=11539, sticker_id=52114122)
-                    )
-
-                # Imagemap message
-                # if event.message.text == "圖片":
-                #     line_bot_api.reply_message(event.replytoken, ImageSendMessage(
-                #         type = 'imagemap',
-                #         baseUrl = 'https://github.com/line/line-bot-sdk-nodejs/raw/master/examples/kitchensink/static/rich',
-                #         altText = 'Imagemap alt text',
-                #     ))
-        '''
-        # 16----------------------------------------------------------------------------
         return HttpResponse()
     else:
         return HttpResponseBadRequest()
-
 
 def index(request):
     return render(request, 'index.html', {
 
     })
+
 def usertest(request):
     form = forms.UserInformFrom(request.POST or None, request.FILES or None)
     # form.fields['line_id'].widget = form.HiddenInput()
@@ -182,34 +75,30 @@ def usertest(request):
         'form': form
     })
 
-def user_inform_from(request):
+def newUser(request):
     form = forms.UserInformFrom(request.POST or None, request.FILES or None)
     if form.is_valid():
         # newform = form.save(commit=False) # 保存數據，但暫時不提交到數據庫中
+
         form.save()
-    print(form.as_p())
+    # print(form.as_p())
 
     return render(request, 'UserInform/newUser.html', {
         'form': form
     })
 
-# @app.route("/menudiary", methods=['POST'])
-def menu_diary(request):
+def editUser(request):
+    form = forms.UserInformFrom(request.POST or None, request.FILES or None)
+    if form.is_valid():
+        # newform = form.save(commit=False) # 保存數據，但暫時不提交到數據庫中
+        form.save()
+    # print(form.as_p())
 
-    return render(request, 'Diary/MenuDiary.html', {
+    return render(request, 'UserInform/editUser.html', {
+        'form': form
     })
 
-'''
-# @app.route("/editdiary", methods=['GET', 'POST'])
-def edit_diary(event):
-    # userid = event.source.user_id
-    # print(userid)
-    # diary = models.Diary.objects.get(line_id=userid)
-
-    return render(request, 'Diary/editDiary.html', {
-    })
-'''
-
+# LINE BOT
 @handler.add(FollowEvent)
 def handle_follow(event):
     line_id = event.source.user_id
@@ -265,14 +154,6 @@ def handle_text_message(event):
         models.UserInform.objects.create(line_id=event.source.user_id, username=username)
 
     ignore = ['設定成功！']
-
-    # LIFF
-    if 'https://' in event.message.text:
-        # 丟https://網址 轉換成 https://liff.line.me/
-        liff_id = liff_api.add(view_type="tall", view_url=event.message.text)
-        message=[]
-        message.append(TextSendMessage(text='https://liff.line.me/'+liff_id))
-        line_bot_api.reply_message(event.reply_token, message)
 
     if isinstance(event.message, ImageMessage):
         ext = 'jpg'
@@ -550,4 +431,8 @@ def handle_post_message(event):
     elif event.postback.data == "action=previouspage":
         print("two")
         line_bot_api.link_rich_menu_to_user(event.source.user_id, "richmenu-258ba2db128c7d79f836b04bbaa93f31")  # second
+
+
+
+
 

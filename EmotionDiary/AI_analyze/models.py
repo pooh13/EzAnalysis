@@ -1,8 +1,6 @@
 from django.db import models
 
 # Create your models here.
-
-
 class Career(models.Model):
     career_id = models.CharField(max_length=4, primary_key=True)
     career_name = models.CharField(max_length=10, blank=False, null=False)
@@ -19,13 +17,7 @@ class DefaultThing(models.Model):
 class UserInform(models.Model):
     line_id = models.CharField(primary_key=True, max_length=120, blank=False, null=False)
     username = models.CharField(max_length=20, blank=False, null=False)
-    male = 'M'
-    female = 'F'
-    GENDER_CHOICES = (
-        (male, '男'),
-        (female, '女'),
-    )
-    gender = models.CharField(max_length=2, choices=GENDER_CHOICES, blank=True, null=True)
+    gender = models.CharField(max_length=2, blank=True, null=True)
     birth = models.DateField(blank=True, null=True)
     career_id = models.ForeignKey(Career, on_delete=models.CASCADE, blank=True, null=True)
 
@@ -65,3 +57,4 @@ class InstantPhotoAnalysis(models.Model):
     line_id = models.ForeignKey(UserInform, on_delete=models.CASCADE)
     date = models.DateTimeField(null=False)
     pic = models.ImageField(upload_to='img')
+
