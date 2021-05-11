@@ -29,8 +29,10 @@ from liffpy import (
     LineFrontendFramework as LIFF,
 )
 
-import ssl
-ssl._create_default_https_context = ssl._create_unverified_context
+# 16-------------------------------------
+# import ssl
+# ssl._create_default_https_context = ssl._create_unverified_context
+# ---------------------------------------
 
 # filter 來過濾條件
 
@@ -66,6 +68,7 @@ def user_inform_from(request, pk):
     })
 '''
 
+
 # test網頁 -------------------------------------------
 def test(request):
     return render(request, 'test2.html')
@@ -82,6 +85,55 @@ def userdata(request):
 def userdata2(request):
     return render(request, 'newUserInform/userdata2.html')
 # -----------------------------------------------
+
+
+def index(request):
+    return render(request, 'index.html', {
+
+    })
+
+
+def usertest(request):
+    form = forms.UserInformFrom(request.POST or None, request.FILES or None)
+    # form.fields['line_id'].widget = form.HiddenInput()
+    if form.is_valid():
+        # form.save(commit=False) # 保存數據，但暫時不提交到數據庫中
+        form.save()
+
+    return render(request, 'UserInform/new.html', {
+        'form': form
+    })
+
+
+def user_inform_from(request):
+    form = forms.UserInformFrom(request.POST or None, request.FILES or None)
+    if form.is_valid():
+        # newform = form.save(commit=False) # 保存數據，但暫時不提交到數據庫中
+        form.save()
+    # print(form.as_p())
+
+    return render(request, 'UserInform/newUser.html', {
+        'form': form
+    })
+
+
+# @app.route("/menudiary", methods=['POST'])
+def menu_diary(request):
+
+    return render(request, 'Diary/MenuDiary.html', {
+    })
+
+
+'''
+# @app.route("/editdiary", methods=['GET', 'POST'])
+def edit_diary(event):
+    # userid = event.source.user_id
+    # print(userid)
+    # diary = models.Diary.objects.get(line_id=userid)
+
+    return render(request, 'Diary/editDiary.html', {
+    })
+'''
 
 
 # @app.route("callback/", methods=['POST'])
@@ -165,55 +217,6 @@ def callback(request):
         return HttpResponse()
     else:
         return HttpResponseBadRequest()
-
-
-def index(request):
-    return render(request, 'index.html', {
-
-    })
-
-
-def usertest(request):
-    form = forms.UserInformFrom(request.POST or None, request.FILES or None)
-    # form.fields['line_id'].widget = form.HiddenInput()
-    if form.is_valid():
-        # form.save(commit=False) # 保存數據，但暫時不提交到數據庫中
-        form.save()
-
-    return render(request, 'UserInform/new.html', {
-        'form': form
-    })
-
-
-def user_inform_from(request):
-    form = forms.UserInformFrom(request.POST or None, request.FILES or None)
-    if form.is_valid():
-        # newform = form.save(commit=False) # 保存數據，但暫時不提交到數據庫中
-        form.save()
-    print(form.as_p())
-
-    return render(request, 'UserInform/newUser.html', {
-        'form': form
-    })
-
-
-# @app.route("/menudiary", methods=['POST'])
-def menu_diary(request):
-
-    return render(request, 'Diary/MenuDiary.html', {
-    })
-
-
-'''
-# @app.route("/editdiary", methods=['GET', 'POST'])
-def edit_diary(event):
-    # userid = event.source.user_id
-    # print(userid)
-    # diary = models.Diary.objects.get(line_id=userid)
-
-    return render(request, 'Diary/editDiary.html', {
-    })
-'''
 
 
 @handler.add(FollowEvent)
@@ -348,12 +351,14 @@ def handle_text_message(event):
                 event.reply_token,
                 TextSendMessage(text="url")
             )
+        # 16--------------------------------------------------------------------------
         elif event.message.text == '日記':
             userid = event.source.user_id
             print("日記" + "userId=" + userid)
             liff_id = '1655950183-lEgOEwVq'
             line_bot_api.reply_message(event.reply_token, TextSendMessage(text='https://liff.line.me/'+liff_id))
             # user_id = models.UserInform.objects.
+        # ----------------------------------------------------------------------------
         elif event.message.text == "設定性別":
             # emoji_f = {"index": 0, "productId": "5ac1bfd5040ab15980c9b435", "emojiId": "001"}
             # emoji_m = {"index": 0, "productId": "5ac1bfd5040ab15980c9b435", "emojiId": "001"}
