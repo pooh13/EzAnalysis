@@ -49,6 +49,9 @@ t = time.time()
 # print(datetime.date.today().strftime("%Y-%m-%d"))
 today = datetime.date.today().strftime("%Y-%m-%d")
 
+# 判斷使用者在LINEBOT中日記事件的觸發
+prev = {}
+
 
 # kelly
 '''
@@ -134,6 +137,11 @@ def edit_diary(event):
     return render(request, 'Diary/editDiary.html', {
     })
 '''
+
+
+def job_select():
+    content = "student"
+    return content
 
 
 # @app.route("callback/", methods=['POST'])
@@ -351,6 +359,12 @@ def handle_text_message(event):
                 event.reply_token,
                 TextSendMessage(text="url")
             )
+        elif event.message.text == "輸入日記":
+            prev[user_line_id] = 'get_diary'
+            line_bot_api.reply_message(
+                event.reply_token,
+                TextSendMessage(text="好的~現在您可以輸入您的日記了"),
+            )
         # 16--------------------------------------------------------------------------
         elif event.message.text == '日記':
             userid = event.source.user_id
@@ -467,14 +481,33 @@ def handle_text_message(event):
         elif event.message.text in ignore:
             pass
         else:
-            e = chr(0x100010)
-            e2 = chr(0x10008D)
-            line_bot_api.reply_message(
-                event.reply_token, [
-                    TextSendMessage(text='不好意思 我不太清楚你的意思'),
-                    # StickerSendMessage(package_id=11539, sticker_id=52114129)
-                ]
-            )
+            if user_line_id not in prev:
+                e = chr(0x100010)
+                e2 = chr(0x10008D)
+                line_bot_api.reply_message(
+                    event.reply_token, [
+                        TextSendMessage(text='不好意思 我不太清楚你的意思'),
+                        # StickerSendMessage(package_id=11539, sticker_id=52114129)
+                    ]
+                )
+            elif prev[user_line_id] == "get_diary":
+                diary = event.message.text
+                prev.update({event.source.user_id: ''})
+                line_bot_api.reply_message(
+                    event.reply_token, [
+                        TextSendMessage(text=diary + "\n\n已經儲存"),
+                        # StickerSendMessage(package_id=11539, sticker_id=52114129)
+                    ]
+                )
+            else:
+                e = chr(0x100010)
+                e2 = chr(0x10008D)
+                line_bot_api.reply_message(
+                    event.reply_token, [
+                        TextSendMessage(text='不好意思 我不太清楚你的意思'),
+                        # StickerSendMessage(package_id=11539, sticker_id=52114129)
+                    ]
+                )
 
 
 @handler.add(PostbackEvent)
