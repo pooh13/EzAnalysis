@@ -68,43 +68,6 @@ def user_inform_from(request, pk):
 liff_api = LIFF(settings.LINE_CHANNEL_ACCESS_TOKEN)
 
 
-def index(request):
-    return render(request, 'index.html', {
-
-    })
-
-
-def usertest(request):
-    form = forms.UserInformFrom(request.POST or None, request.FILES or None)
-    # form.fields['line_id'].widget = form.HiddenInput()
-    if form.is_valid():
-        # form.save(commit=False) # 保存數據，但暫時不提交到數據庫中
-        form.save()
-
-    return render(request, 'UserInform/new.html', {
-        'form': form
-    })
-
-
-def user_inform_from(request):
-    form = forms.UserInformFrom(request.POST or None, request.FILES or None)
-    if form.is_valid():
-        # newform = form.save(commit=False) # 保存數據，但暫時不提交到數據庫中
-        form.save()
-    # print(form.as_p())
-
-    return render(request, 'UserInform/newUser.html', {
-        'form': form
-    })
-
-
-# @app.route("/menudiary", methods=['POST'])
-def menu_diary(request):
-
-    return render(request, 'Diary/MenuDiary.html', {
-    })
-
-
 def job_select():
     content = "student"
     return content

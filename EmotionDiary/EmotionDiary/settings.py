@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 import os
 from pathlib import Path
+import pymysql    # 一定要加
+pymysql.install_as_MySQLdb()   # 一定要加
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -87,9 +89,17 @@ WSGI_APPLICATION = 'EmotionDiary.wsgi.application'
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
 DATABASES = {
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.sqlite3',
+    #     'NAME': BASE_DIR / 'db.sqlite3',
+    # },
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',   # 數據庫引擎
+        'NAME': 'diary',  # DB名稱，ex: sakila
+        'USER': 'root',     # 用戶名
+        'PASSWORD': 'Imd@110208',  # 密碼
+        'HOST': '127.0.0.1',  # 本機端ip
+        'PORT': '3306',         # port
     }
 }
 
