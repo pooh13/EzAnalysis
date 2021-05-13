@@ -149,40 +149,52 @@ def handle_follow(event):
     line_status_message = profile.status_message  # 取得使用者的個簽留言
     unfollow = False
 
-    # 判斷此用戶在UserInform內的line_id欄位是否存在，若存在則get到，若不存在則新增一筆預設資料
-    try:
-        models.UserInform.objects.get(line_id=event.source.user_id)
-    except models.UserInform.DoesNotExist:
-        models.UserInform.objects.create(line_id=event.source.user_id, username=line_name)
-
-    buttons_template_message = TemplateSendMessage(
-        alt_text='Product Promotion',
-        template=ButtonsTemplate(
-            title="歡迎加入心情日記-臉部辨識",
-            text='為了讓整個分析可以更精準\n請幫助我們回答幾項問題',
-            actions=[
-                PostbackAction(
-                    label='開始',
-                    display_text='開始',
-                    data='promotion=true'
-                ),
+    if models.UserInform.objects.filter(line_id=event.source.user_id).exists():
+        line_bot_api.reply_message(
+            event.reply_token,
+            [
+                TextSendMessage(text="您已註冊過囉\U0010007A"),
             ]
         )
-    )
-    line_bot_api.reply_message(
-        event.reply_token,
-        [
-            # TextSendMessage(text="Hello\U0010007A"),
-            # TextSendMessage(text="You are " + line_name),
-            # TextSendMessage(text="You're picture is " + line_picture_url),
-            # TextSendMessage(text="You're status_message is " + line_status_message),
-            buttons_template_message,
-        ]
-    )
+    else:
+        # 判斷此用戶在UserInform內的line_id欄位是否存在，若存在則get到，若不存在則新增一筆預設資料
+        # try:
+        #     models.UserInform.objects.get(line_id=event.source.user_id)
+        # except models.UserInform.DoesNotExist:
+        #     models.UserInform.objects.create(line_id=event.source.user_id, username=line_name)
+
+        models.UserInform.objects.create(line_id=event.source.user_id, username=line_name)
+
+        buttons_template_message = TemplateSendMessage(
+            alt_text='Product Promotion',
+            template=ButtonsTemplate(
+                title="歡迎加入心情日記-臉部辨識",
+                text='為了讓整個分析可以更精準\n請幫助我們回答幾項問題',
+                actions=[
+                    PostbackAction(
+                        label='開始',
+                        display_text='開始',
+                        data='promotion=true'
+                    ),
+                ]
+            )
+        )
+        line_bot_api.reply_message(
+            event.reply_token,
+            [
+                # TextSendMessage(text="Hello\U0010007A"),
+                # TextSendMessage(text="You are " + line_name),
+                # TextSendMessage(text="You're picture is " + line_picture_url),
+                # TextSendMessage(text="You're status_message is " + line_status_message),
+                buttons_template_message,
+            ]
+        )
 
 
 @handler.add(MessageEvent, message=(TextMessage, ImageMessage))
 def handle_text_message(event):
+    print(models.UserInform.objects.filter(line_id=event.source.user_id).exists())
+
     profile = line_bot_api.get_profile(event.source.user_id)
     username = profile.display_name
     # print(linebot.models.insight.GenderInsight(gender=))
@@ -425,25 +437,33 @@ def handle_text_message(event):
 @handler.add(PostbackEvent)
 def handle_post_message(event):
     if event.postback.data == "promotion=true":
-        date_picker = TemplateSendMessage(
-            alt_text='請輸入生日日期',
-            template=ButtonsTemplate(
-                text='請輸入生日日期',
-                title='設定生日',
-                actions=[
-                    DatetimePickerAction(
-                        label='設定',
-                        data='promotion=date',
-                        mode='date',
-                        initial=today,
-                    )
+        if models.UserInform.objects.filter(line_id=event.source.user_id).exists():
+            line_bot_api.reply_message(
+                event.reply_token,
+                [
+                    TextSendMessage(text="您已註冊過囉\U0010007A"),
                 ]
             )
-        )
-        line_bot_api.reply_message(
-            event.reply_token,
-            date_picker
-        )
+        else:
+            date_picker = TemplateSendMessage(
+                alt_text='請輸入生日日期',
+                template=ButtonsTemplate(
+                    text='請輸入生日日期',
+                    title='設定生日',
+                    actions=[
+                        DatetimePickerAction(
+                            label='設定',
+                            data='promotion=date',
+                            mode='date',
+                            initial=today,
+                        )
+                    ]
+                )
+            )
+            line_bot_api.reply_message(
+                event.reply_token,
+                date_picker
+            )
     elif event.postback.data == "promotion=date":
         time_type = event.postback.params
         print(time_type)
