@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 import os
 from pathlib import Path
+import pymysql    # 一定要加
+pymysql.install_as_MySQLdb()   # 一定要加
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -19,10 +21,17 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-# kelly-----------------------------------------------------------
-LINE_CHANNEL_ACCESS_TOKEN = '6pzegJmVUuwqq78rLWl87O9Tr5N8kNU7r8+kxhizZ2emhpTiWMt2OdBCnA19Xqi/nla5PeZNwO++cZYOMHDZKuCpezNxMVYbyDRK1g3RGemZD7XR09bIOaOW3uIBnpBga6XGUXS5M0smEIW4O32aHgdB04t89/1O/w1cDnyilFU='
-LINE_CHANNEL_SECRET = '60f84eb382e4db050cb164e0d0034b9f'
+
+# master-----------------------------------------------------------
+LINE_CHANNEL_ACCESS_TOKEN = 'r5fMBbir3iMPWiB5ljtrNFUZRNBKTDWHGp1bZRngaMwo2A1/U8EYpuAqPPXcgYMzGWgd7CtHasUVWfGzOWzJzkYROF9hueAr7593pIpZi9doAO2eM7hnSM+Tk/ucUXql+fFaD4rdl1bLUncwwAo8SwdB04t89/1O/w1cDnyilFU='
+LINE_CHANNEL_SECRET = '4035572c42c59a932917e526f2ae1324'
 SECRET_KEY = '*f60@damy%^)#)=$@+0804h=nvwyhi594_az@3oo=u$+u(pc&+'
+# ----------------------------------------------------------------
+
+# kelly-----------------------------------------------------------
+# LINE_CHANNEL_ACCESS_TOKEN = '6pzegJmVUuwqq78rLWl87O9Tr5N8kNU7r8+kxhizZ2emhpTiWMt2OdBCnA19Xqi/nla5PeZNwO++cZYOMHDZKuCpezNxMVYbyDRK1g3RGemZD7XR09bIOaOW3uIBnpBga6XGUXS5M0smEIW4O32aHgdB04t89/1O/w1cDnyilFU='
+# LINE_CHANNEL_SECRET = '60f84eb382e4db050cb164e0d0034b9f'
+# SECRET_KEY = '*f60@damy%^)#)=$@+0804h=nvwyhi594_az@3oo=u$+u(pc&+'
 # ----------------------------------------------------------------
 
 # 16-----------------------------------------------------------
@@ -87,9 +96,18 @@ WSGI_APPLICATION = 'EmotionDiary.wsgi.application'
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
 DATABASES = {
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.sqlite3',
+    #     'NAME': BASE_DIR / 'db.sqlite3',
+    # },
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',   # 數據庫引擎
+        'NAME': 'diary',  # DB名稱，ex: sakila
+        'USER': 'root',     # 用戶名
+        # 'PASSWORD': 'Imd@110208',  # 密碼
+        'PASSWORD': 'mysql123',  # 密碼
+        'HOST': '127.0.0.1',  # 本機端ip
+        'PORT': '3306',         # port
     }
 }
 

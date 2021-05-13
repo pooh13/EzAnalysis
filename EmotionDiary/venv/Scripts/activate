@@ -37,7 +37,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="C:\Users\User\Desktop\EzAnalysis\EmotionDiary\venv"
+VIRTUAL_ENV="E:\Project\EzAnalysis\EmotionDiary\venv"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"

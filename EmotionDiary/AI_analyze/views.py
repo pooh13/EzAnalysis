@@ -15,9 +15,9 @@ from linebot.models import *
 
 from . import forms
 from . import models
-from liffpy import (
-    LineFrontendFramework as LIFF,
-)
+# from liffpy import (
+#     LineFrontendFramework as LIFF,
+# )
 
 # 16-------------------------------------
 # import ssl
@@ -65,7 +65,7 @@ def user_inform_from(request, pk):
 '''
 
 
-liff_api = LIFF(settings.LINE_CHANNEL_ACCESS_TOKEN)
+# liff_api = LIFF(settings.LINE_CHANNEL_ACCESS_TOKEN)
 
 
 def index(request):
@@ -156,7 +156,7 @@ def newUser(request):
         # newform = form.save(commit=False) # 保存數據，但暫時不提交到數據庫中
 
         form.save()
-    # print(form.as_p())
+    print(form.as_p())
 
     return render(request, 'UserInform/newUser.html', {
         'form': form
@@ -277,12 +277,12 @@ def handle_text_message(event):
         user_line_id = event.source.user_id
 
         # LIFF
-        if 'https://' in event.message.text:
-            # 丟https://網址 轉換成 https://liff.line.me/
-            liff_id = liff_api.add(view_type="tall", view_url=event.message.text)
-            message=[]
-            message.append(TextSendMessage(text='https://liff.line.me/'+liff_id))
-            line_bot_api.reply_message(event.reply_token, message)
+        # if 'https://' in event.message.text:
+        #     # 丟https://網址 轉換成 https://liff.line.me/
+        #     liff_id = liff_api.add(view_type="tall", view_url=event.message.text)
+        #     message=[]
+        #     message.append(TextSendMessage(text='https://liff.line.me/'+liff_id))
+        #     line_bot_api.reply_message(event.reply_token, message)
 
         # print(event)
         if event.message.text == "文字":

@@ -1,4 +1,4 @@
-#!c:\users\user\desktop\ezanalysis\emotiondiary\venv\scripts\python.exe
+#!E:\Project\EzAnalysis\EmotionDiary\venv\Scripts\python.exe
 # When the django-admin.py deprecation ends, remove this script.
 import warnings
 
