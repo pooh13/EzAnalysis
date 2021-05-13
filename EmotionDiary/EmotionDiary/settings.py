@@ -11,8 +11,6 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 import os
 from pathlib import Path
-import pymysql    # 一定要加
-pymysql.install_as_MySQLdb()   # 一定要加
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -37,7 +35,8 @@ SECRET_KEY = '*f60@damy%^)#)=$@+0804h=nvwyhi594_az@3oo=u$+u(pc&+'
 DEBUG = True
 
 SET_URL = 'b87e8a582406.ngrok.io'
-ALLOWED_HOSTS = [SET_URL, '127.0.0.1']
+# SET_URL = '719b5dc374f9.ngrok.io'
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -68,8 +67,7 @@ ROOT_URLCONF = 'EmotionDiary.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR,'templates')]
-        ,
+        'DIRS': [os.path.join(BASE_DIR,'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -89,17 +87,9 @@ WSGI_APPLICATION = 'EmotionDiary.wsgi.application'
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
 DATABASES = {
-    # 'default': {
-    #     'ENGINE': 'django.db.backends.sqlite3',
-    #     'NAME': BASE_DIR / 'db.sqlite3',
-    # }
     'default': {
-        'ENGINE': 'django.db.backends.mysql',   # 數據庫引擎
-        'NAME': 'diary',  # DB名稱，ex: sakila
-        'USER': 'root',     # 用戶名
-        'PASSWORD': 'Imd@110208',  # 密碼
-        'HOST': '127.0.0.1',  # 本機端ip
-        'PORT': '3306',         # port
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
 
@@ -130,21 +120,18 @@ LANGUAGE_CODE = 'zh-hant'
 
 TIME_ZONE = 'Asia/Taipei'
 
-# USE_I18N = True
-#
-# USE_L10N = True
-#
-# USE_TZ = True
+USE_I18N = True
+
+USE_L10N = True
+
+USE_TZ = True
 
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
-# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static')
-]
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
