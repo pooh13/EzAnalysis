@@ -57,9 +57,15 @@ class MySQL_DB_Link(object):
 
         return count
 
-
+# MySQL_localtest
 MySQLConnectInfo = MySQL_DB_Link('localhost', '3306', 'localtest', 'root', 'mysql')
-list = MySQLConnectInfo.query('select * from localtest.test')
+MySQLConnectInfoStr = ['localhost', '3306', 'localtest', 'root', 'mysql']
+
+# MySQL_localDjango
+# MySQLConnectInfo = MySQL_DB_Link('localhost', '3306', 'diary', 'root', 'mysql')
+
+# test
+# list = MySQLConnectInfo.query('select * from localtest.test')
 # list = MySQLConnectInfo.count('select * from localtest.test')
 
-print(list)
+# print(list)
