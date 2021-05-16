@@ -17,5 +17,6 @@ def MyJieba_hant(context):
         # print("%s%s %s  %d" % ("  "*(5-len(k)), k, "*"*int(v/3), v))
         result = k+","+str(v)
         # print(result)
-        return result
-    # print("\n"+"-"*80+"\n")
+    return result
+
+    print("\n"+"-"*80+"\n")
