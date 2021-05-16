@@ -7,6 +7,7 @@ def cursorToList(cursorToListResult):
                                                      MySQL_DB_Link.MySQLConnectInfoStr[2],
                                                      MySQL_DB_Link.MySQLConnectInfoStr[3],
                                                      MySQL_DB_Link.MySQLConnectInfoStr[4],).query(cursorToListResult)
+
     cursorToList = toList.toList(cursorToListResult)
 
     return cursorToList
