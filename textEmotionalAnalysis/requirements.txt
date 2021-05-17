@@ -1,1 +1,2 @@
 jieba-hant==0.39.1
+pyodbc==4.0.30
