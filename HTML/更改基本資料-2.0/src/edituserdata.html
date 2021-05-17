@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="css/style.css">
+<script src="js/edituserdata.js"></script>
+<meta charset="utf-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>更改基本資料</title>
+</head>
+<body>
+	<div id="ID1">
+		<div id="name" class="name">
+			<!-- <svg class="_3">
+				<rect id="_3" rx="28" ry="28" x="0" y="0" width="368" height="64">
+				</rect>
+			</svg> -->
+			<div id="textname">
+				<span>名字:</span>
+				<div id="nametextbox">
+					<input class="nametextbox" name="nametextbox" type="text" size="20" maxlength="20">
+				</div>
+			</div>
+		</div>
+		<div id="NEXT" class="NEXT">
+			<svg class="_4">
+				<rect id="_4" rx="24" ry="24" x="0" y="0" width="123" height="48">
+				</rect>
+			</svg>
+			<div id="final">
+				<span>完成</span>
+			</div>
+		</div>
+		
+		<div id="woman1">
+			<!-- womanbtn -->
+			<div id="woman">
+				<button id = "2" name="gender" type = "button" class = "btn1" style="background-color: #ffffff;" onclick="genderSelect();">
+					<img src="img/woman.png" style="width: 100%;">
+				</button>
+			</div>
+		</div>
+
+		<div id="man1">
+			<!-- manbtn -->
+			<div id="man">
+				<button id = "1" name="gender" type = "button" class = "btn1" style="background-color: #ffffff;" onclick="genderSelect();">
+					<img id="man_img" src="img/man.png" style="width: 100%;">
+				</button>
+			</div>
+		</div>
+	</div>
+	
+		<svg class="_bj">
+			<rect id="_bj" rx="0" ry="0" x="0" y="0" width="428" height="64">
+			</rect>
+		</svg>
+		<div id="_bk">
+			<span>基本資料</span>
+		</div>
+		<div id="age" class="age">
+			<div id="agetext">
+				<span>生日:</span>
+				<div id="agetextbox">
+				<input class="agetextbox" name="agetextbox" type="date">
+				</div>
+			</div>
+			
+		</div>
+		<div id="_bo">
+			<!-- 底框 -->
+			<svg class="_5">
+				<rect id="_5" rx="28" ry="28" x="0" y="0" width="384" height="337">
+				</rect>
+			</svg>
+			<!-- 底框 -->
+			<div id="_bq">
+				<!-- other -->
+				<div id="other">
+					<div id="other_text">
+						<span>其他</span>
+					</div>
+					<button id = "other_btn" name="job" type = "button" class = "btn3" style="background-color:rgba(255,255,255,1);" onclick="jobSelect();">
+						<img id="ID035-astronaut" src="img/ID035-astronaut.png" srcset="img/ID035-astronaut.png 1x, img/ID035-astronaut@2x.png 2x">
+					</button>
+				</div>
+				<!-- 農民漁牧業 -->
+				<div id="farmer">
+					<div id="farmer_text">
+						<span>農民漁牧業</span>
+					</div>
+					<button id = "farmer_btn" name="job" type = "button" class = "btn3" style="background-color:rgb(255, 252, 203);" onclick="jobSelect();">
+						<img id="ID001-farmer" src="img/ID001-farmer.png" srcset="img/ID001-farmer.png 1x, img/ID001-farmer@2x.png 2x">
+					</button>	
+				</div>
+				<!-- /* ----------------------------retirement------------------------------- */ -->
+				<div id="retirement">
+					<div id="retirement_text">
+						<span>退休人員</span>
+					</div>
+					<div id="retirement_btn">
+						<button id = "retirement_btn" name="job" type = "button" class = "btn3" style="background-color: rgba(167,233,212,1);" onclick="jobSelect();">
+							<img id="ID043-teacher" src="img/ID043-teacher.png" srcset="img/ID043-teacher.png 1x, img/ID043-teacher@2x.png 2x">
+					</button>
+					</div>	
+				</div>
+				<!-- ------------------------------home--------------------------------- -->
+				<div id="home">
+					<div id="home_text">
+						<span>家管</span>
+					</div>
+					<div id="home_btn">
+						<button id = "home_btn" name="job" type = "button" class = "btn3" style="background-color: rgba(251, 219, 231,1);" onclick="jobSelect();">
+							<img id="ID008-maid" src="img/ID008-maid.png" srcset="img/ID008-maid.png 1x, img/ID008-maid@2x.png 2x">
+					</button>
+					</div>			
+				</div>
+
+				<!-- ------------------------------business------------------------------------>
+				<div id="business">
+					<div id="business_text">
+						<span>工商業</span>
+					</div>
+					<div id="business_btn">
+						<button id = "business_btn" name="job" type = "button" class = "btn3" style="background-color: rgba(136,158,170,1);" onclick="jobSelect();">
+							<img id="ID048-office-worker" src="img/ID048-office-worker.png" srcset="img/ID048-office-worker.png 1x, img/ID048-office-worker@2x.png 2x"></button>
+					</div>	
+				</div>
+
+				<!-- ------------------------------freelance------------------------------------>
+				<div id="freelance">
+					<div id="freelance_text">
+						<span>自由業</span>
+					</div>
+					<div id="freelance_btn">
+						<button id = "freelance_btn" name="job" type = "button" class = "btn3" style="background-color: rgba(147,146,155,1);" onclick="jobSelect();">
+							<img id="ID019-hacker" src="img/ID019-hacker.png" srcset="img/ID019-hacker.png 1x, img/ID019-hacker@2x.png 2x"></button>
+					</div>		
+				</div>
+				<!-- ------------------------------service------------------------------------>
+				<div id="service">
+					<div id="service_text">
+						<span>服務業</span>
+					</div>
+					<div id="service_btn">
+						<button id = "service_btn" name="job" type = "button" class = "btn3" style="background-color: rgba(184,245,255,1);" onclick="jobSelect();">
+							<img id="ID046-telemarketerr" src="img/ID046-telemarketer.png" srcset="img/ID046-telemarketer.png 1x, img/ID046-telemarketer@2x.png 2x"></button>
+					</div>			
+				</div>
+				<!-- ------------------------------soldier------------------------------------>
+				<div id="soldier">
+					<div id="soldier_text">
+						<span>軍公教</span>
+					</div>
+					<div id="soldier_btn">
+						<button id = "soldier_btn" name="job" type = "button" class = "btn3" style="background-color: rgba(198,218,208,1);" onclick="jobSelect();">
+							<img id="ID030-soldier" src="img/ID030-soldier.png" srcset="img/ID030-soldier.png 1x, img/ID030-soldier@2x.png 2x"></button>
+					</div>
+				</div>
+				<!-- ------------------------------student------------------------------------>
+				<div id="student">
+					<div id="student_text">
+						<span>學生</span>
+					</div>
+					<div id="student_btn">
+						<button id = "student_btn" name="job" type = "button" class = "btn3" style="background-color: rgba(250,215,179,1);" onclick="jobSelect();">
+							<img id="ID009-student" src="img/ID009-student.png" srcset="img/ID009-student.png 1x, img/ID009-student@2x.png 2x"></button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	</body>
+	</html>
