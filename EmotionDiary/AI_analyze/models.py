@@ -32,10 +32,10 @@ class AnalysisDiary(models.Model):
 
 class Diary(models.Model):
     line_id = models.ForeignKey(UserInform, on_delete=models.CASCADE)
-    date = models.DateTimeField(null=False)
-    mood = models.IntegerField(null=False)
+    date = models.DateField(null=False)
+    mood = models.IntegerField(null=True)
     note = models.CharField(max_length=255)
-    pic = models.ImageField(null=False)
+    pic = models.ImageField(null=True)
 
     class Meta:
         unique_together = ("line_id", "date")
