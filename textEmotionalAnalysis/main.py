@@ -4,15 +4,17 @@ import cursorToList
 import toList
 
 
-def textEmotionalAnalysis():
-    queryList = (b'select ? from ?')
+def textEmotionalAnalysis(test):
+    # queryList = (f'select test.text from localtest.test')
+    # print(type(queryList))
     # print(queryList)
-    args = (b'test.text', b'localtest.test')
+    # args = (b'test.text', b'localtest.test')
     a = cursorToList.cursorToList(MySQL_DB_Link.MySQL_DB_Link(MySQL_DB_Link.MySQLConnectInfoStr[0],
                                                      MySQL_DB_Link.MySQLConnectInfoStr[1],
                                                      MySQL_DB_Link.MySQLConnectInfoStr[2],
                                                      MySQL_DB_Link.MySQLConnectInfoStr[3],
-                                                     MySQL_DB_Link.MySQLConnectInfoStr[4],).query(queryList, args))
+                                                     MySQL_DB_Link.MySQLConnectInfoStr[4],).query(
+                                                    'select test.text from localtest.test where id ='+test))
     print(a)
 
     # b = cursorToList.cursorToList(a)
@@ -35,7 +37,7 @@ def textEmotionalAnalysis():
     # print(word)
 
 
-textEmotionalAnalysis()
+textEmotionalAnalysis('1')
 
 # word = MyJieba_hant.MyJieba_hant(context)
 # print(word)
