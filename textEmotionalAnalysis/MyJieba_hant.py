@@ -1,9 +1,10 @@
 import jieba_hant
 from collections import Counter
+import stopWords
 
 def MyJieba_hant(context):
     # print("原文內容："+context)
-    sentence=([t for t in jieba_hant.cut(context, cut_all=False)])
+    sentence=([word for word in jieba_hant.cut(context, cut_all=False) if word not in stopWords.stopWords()[0] and word not in stopWords.stopWords()[1]])
     # print("斷詞結果：",sentence)
     # -------------------------------------------------------------------------
     cnt = Counter()
@@ -17,6 +18,6 @@ def MyJieba_hant(context):
         # print("%s%s %s  %d" % ("  "*(5-len(k)), k, "*"*int(v/3), v))
         result = k+","+str(v)
         # print(result)
-    return result
+        return result
 
     print("\n"+"-"*80+"\n")
