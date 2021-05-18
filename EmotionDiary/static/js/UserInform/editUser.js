@@ -2881,18 +2881,9 @@ var Application = function() {
 	function initializeApp(data) {
         liff.getProfile().then(profile => {
             $("#userid").val(data.context.userId);
-//            $("#disname").val(profile.displayName);
+            $("#disname").val(profile.displayName);
         });
-        // .val( )：新增或讀取表單內的值
-        var userid = data.context.userId; //my line_id
-        var form = document.forms['userForm'];
-        var uservalid = $("#userid").val(form.elements['line_id']);
-        // 判斷使用者是否已經填過資料
-        if(uservalid == ''){
-            window.alert("not yet!");
-        }else{
-            window.alert("already");
-        }
+
     }
 
 	window.onload = function(){

@@ -31,12 +31,11 @@ today = datetime.date.today().strftime("%Y-%m-%d")
 
 
 # LINE 聊天機器人的基本資料
+# liff_api = LIFF(settings.LINE_CHANNEL_ACCESS_TOKEN)
 line_bot_api = LineBotApi(settings.LINE_CHANNEL_ACCESS_TOKEN)
 handler = WebhookHandler(settings.LINE_CHANNEL_SECRET)
 parser = WebhookParser(settings.LINE_CHANNEL_SECRET)
 url = settings.SET_URL
-
-liff_api = LIFF(settings.LINE_CHANNEL_ACCESS_TOKEN)
 
 @csrf_exempt
 def callback(request):
@@ -59,10 +58,12 @@ def callback(request):
     else:
         return HttpResponseBadRequest()
 
+
 def index(request):
     return render(request, 'index.html', {
 
     })
+
 
 def usertest(request):
     form = forms.UserInformFrom(request.POST or None, request.FILES or None)
@@ -75,7 +76,8 @@ def usertest(request):
         'form': form
     })
 
-def newUser(request):
+
+def newuser(request):
     form = forms.UserInformFrom(request.POST or None, request.FILES or None)
     if form.is_valid():
         # newform = form.save(commit=False) # 保存數據，但暫時不提交到數據庫中
@@ -87,16 +89,14 @@ def newUser(request):
         'form': form
     })
 
-def editUser(request):
+
+def edituser(request):
     form = forms.UserInformFrom(request.POST or None, request.FILES or None)
-    if form.is_valid():
-        # newform = form.save(commit=False) # 保存數據，但暫時不提交到數據庫中
-        form.save()
-    # print(form.as_p())
 
     return render(request, 'UserInform/editUser.html', {
-        'form': form
+        'form': form,
     })
+
 
 # LINE BOT
 @handler.add(FollowEvent)
@@ -206,6 +206,14 @@ def handle_text_message(event):
                 event.reply_token,
                 TextSendMessage(text=event.message.text)
             )
+
+        # elif 'https://' in event.message.text:
+        #     # 丟https://網址 轉換成 https://liff.line.me/
+        #     liff_id = liff_api.add(view_type="tall", view_url=event.message.text)
+        #     message=[]
+        #     message.append(TextSendMessage(text='https://liff.line.me/'+liff_id))
+        #     line_bot_api.reply_message(event.reply_token, message)
+
         elif event.message.text == "選擇":
             insight = line_bot_api.get_insight_demographic()
             print(insight.genders)

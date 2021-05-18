@@ -22,6 +22,6 @@ urlpatterns = [
     path('callback/', views.callback),
     path('index/', views.index, name='index'),
     path('usertest/', views.usertest, name='usertest'),
-    path('newUser/', views.newUser, name='newUser'),
-    path('editUser/', views.editUser, name='editUser'),
+    path('newUser/', views.newuser, name='newUser'),
+    path('editUser/', views.edituser, name='editUser'),
 ]
