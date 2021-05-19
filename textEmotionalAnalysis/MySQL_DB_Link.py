@@ -1,6 +1,5 @@
 import pyodbc
 
-
 # print(pyodbc.drivers())
 
 class MySQL_DB_Link(object):
@@ -70,6 +69,7 @@ MySQLConnectInfoStr = ['localhost', '3306', 'localtest', 'root', 'mysql']
 
 # test
 # list = MySQLConnectInfo.query('select test.text from localtest.test')
+# list = MySQLConnectInfo.query('select * from localtest.test')
 # list = MySQLConnectInfo.count('select * from localtest.test')
 # list = MySQLConnectInfo.execute('select test.text from localtest.test')
 
