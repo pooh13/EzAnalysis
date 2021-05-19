@@ -154,12 +154,12 @@ def handle_follow(event):
         )
     else:
         # 判斷此用戶在UserInform內的line_id欄位是否存在，若存在則get到，若不存在則新增一筆預設資料
-        # try:
-        #     models.UserInform.objects.get(line_id=event.source.user_id)
-        # except models.UserInform.DoesNotExist:
-        #     models.UserInform.objects.create(line_id=event.source.user_id, username=line_name)
+        try:
+            models.UserInform.objects.get(line_id=event.source.user_id)
+        except models.UserInform.DoesNotExist:
+            models.UserInform.objects.create(line_id=event.source.user_id, username=line_name)
 
-        models.UserInform.objects.create(line_id=event.source.user_id, username=line_name)
+        # models.UserInform.objects.create(line_id=event.source.user_id, username=line_name)
 
         buttons_template_message = TemplateSendMessage(
             alt_text='Product Promotion',
@@ -189,11 +189,15 @@ def handle_follow(event):
 
 @handler.add(MessageEvent, message=(TextMessage, ImageMessage))
 def handle_text_message(event):
+    # test ------------------
+    # career_id = models.Career.objects.get(career_name='學生')
+    # print(career_id.career_id)
     # print(models.Diary.objects.filter(line_id=event.source.user_id, date=today).exists())
     # print(datetime.datetime.fromtimestamp(t))
+    # ------------------------
+
     profile = line_bot_api.get_profile(event.source.user_id)
     username = profile.display_name
-    # print(linebot.models.insight.GenderInsight(gender=))
 
     # 判斷此用戶在UserInform內的line_id欄位是否存在，若存在則get到，若不存在則新增一筆預設資料
     try:
@@ -203,6 +207,7 @@ def handle_text_message(event):
 
     ignore = ['設定成功！', '日記儲存成功！']
     emotion = {'超開心': 1, '開心': 2, '普通': 3, '難過': 4, '超難過': 5}
+    career = ['學生', '軍公教', '服務業', '自由業', '工商業', '家管', '退休人員', '農民漁牧業', '其他']
 
     if isinstance(event.message, ImageMessage):
         ext = 'jpg'
@@ -495,71 +500,82 @@ def handle_text_message(event):
                 ]
             )
             line_bot_api.reply_message(event.reply_token, imagemap_message)
-        elif event.message.text == "職業":
-            imagemap_message = ImagemapSendMessage(
-                            base_url='https://imgur.com/uJHMGjf.png',
-                            alt_text='this is an image map',
-                            base_size=BaseSize(height=1040, width=1040),
-                            actions=[
-                                MessageImagemapAction(
-                                    text='學生',
-                                    area=ImagemapArea(
-                                        x=120, y=120, width=240, height=240
-                                    )
-                                ),
-                                MessageImagemapAction(
-                                    text='軍公教',
-                                    area=ImagemapArea(
-                                        x=400, y=120, width=240, height=240
-                                    )
-                                ),
-                                MessageImagemapAction(
-                                    text='服務業',
-                                    area=ImagemapArea(
-                                        x=680, y=120, width=240, height=240
-                                    )
-                                ),
-                                MessageImagemapAction(
-                                    text='自由業',
-                                    area=ImagemapArea(
-                                        x=120, y=400, width=240, height=240
-                                    )
-                                ),
-                                MessageImagemapAction(
-                                    text='工商業',
-                                    area=ImagemapArea(
-                                        x=400, y=400, width=240, height=240
-                                    )
-                                ),
-                                MessageImagemapAction(
-                                    text='家管',
-                                    area=ImagemapArea(
-                                        x=680, y=400, width=240, height=240
-                                    )
-                                ),
-                                MessageImagemapAction(
-                                    text='退休人員',
-                                    area=ImagemapArea(
-                                        x=120, y=680, width=240, height=240
-                                    )
-                                ),
-                                MessageImagemapAction(
-                                    text='農民漁牧業',
-                                    area=ImagemapArea(
-                                        x=400, y=680, width=240, height=240
-                                    )
-                                ),
-                                MessageImagemapAction(
-                                    text='其他',
-                                    area=ImagemapArea(
-                                        x=680, y=680, width=240, height=240
-                                    )
-                                ),
-                            ]
-                        )
-            line_bot_api.reply_message(event.reply_token, imagemap_message)
+        # elif event.message.text == "職業":
+        #     imagemap_message = ImagemapSendMessage(
+        #                     base_url='https://imgur.com/uJHMGjf.png',
+        #                     alt_text='this is an image map',
+        #                     base_size=BaseSize(height=1040, width=1040),
+        #                     actions=[
+        #                         MessageImagemapAction(
+        #                             text='學生',
+        #                             area=ImagemapArea(
+        #                                 x=120, y=120, width=240, height=240
+        #                             )
+        #                         ),
+        #                         MessageImagemapAction(
+        #                             text='軍公教',
+        #                             area=ImagemapArea(
+        #                                 x=400, y=120, width=240, height=240
+        #                             )
+        #                         ),
+        #                         MessageImagemapAction(
+        #                             text='服務業',
+        #                             area=ImagemapArea(
+        #                                 x=680, y=120, width=240, height=240
+        #                             )
+        #                         ),
+        #                         MessageImagemapAction(
+        #                             text='自由業',
+        #                             area=ImagemapArea(
+        #                                 x=120, y=400, width=240, height=240
+        #                             )
+        #                         ),
+        #                         MessageImagemapAction(
+        #                             text='工商業',
+        #                             area=ImagemapArea(
+        #                                 x=400, y=400, width=240, height=240
+        #                             )
+        #                         ),
+        #                         MessageImagemapAction(
+        #                             text='家管',
+        #                             area=ImagemapArea(
+        #                                 x=680, y=400, width=240, height=240
+        #                             )
+        #                         ),
+        #                         MessageImagemapAction(
+        #                             text='退休人員',
+        #                             area=ImagemapArea(
+        #                                 x=120, y=680, width=240, height=240
+        #                             )
+        #                         ),
+        #                         MessageImagemapAction(
+        #                             text='農民漁牧業',
+        #                             area=ImagemapArea(
+        #                                 x=400, y=680, width=240, height=240
+        #                             )
+        #                         ),
+        #                         MessageImagemapAction(
+        #                             text='其他',
+        #                             area=ImagemapArea(
+        #                                 x=680, y=680, width=240, height=240
+        #                             )
+        #                         ),
+        #                     ]
+        #                 )
+        #     line_bot_api.reply_message(event.reply_token, imagemap_message)
         elif event.message.text in ignore:
             pass
+        elif event.message.text in career:
+
+            career_text = models.Career.objects.get(career_name=event.message.text)
+            userinfo = models.UserInform.objects.get(line_id=event.source.user_id)
+            userinfo.career_id_id = career_text.career_id
+            userinfo.save()
+
+            line_bot_api.reply_message(
+                event.reply_token,
+                TextSendMessage(text="您的職業設定成功！")
+            )
         else:
             if user_line_id not in prev:
                 e = chr(0x100010)
@@ -618,33 +634,33 @@ def handle_text_message(event):
 @handler.add(PostbackEvent)
 def handle_post_message(event):
     if event.postback.data == "promotion=true":
-        if models.UserInform.objects.filter(line_id=event.source.user_id).exists():
-            line_bot_api.reply_message(
-                event.reply_token,
-                [
-                    TextSendMessage(text="您已註冊過囉\U0010007A"),
+        # if models.UserInform.objects.filter(line_id=event.source.user_id).exists():
+        #     line_bot_api.reply_message(
+        #         event.reply_token,
+        #         [
+        #             TextSendMessage(text="您已註冊過囉\U0010007A"),
+        #         ]
+        #     )
+        # else:
+        date_picker = TemplateSendMessage(
+            alt_text='請輸入生日日期',
+            template=ButtonsTemplate(
+                text='請輸入生日日期',
+                title='設定生日',
+                actions=[
+                    DatetimePickerAction(
+                        label='設定',
+                        data='promotion=date',
+                        mode='date',
+                        initial=today,
+                    )
                 ]
             )
-        else:
-            date_picker = TemplateSendMessage(
-                alt_text='請輸入生日日期',
-                template=ButtonsTemplate(
-                    text='請輸入生日日期',
-                    title='設定生日',
-                    actions=[
-                        DatetimePickerAction(
-                            label='設定',
-                            data='promotion=date',
-                            mode='date',
-                            initial=today,
-                        )
-                    ]
-                )
-            )
-            line_bot_api.reply_message(
-                event.reply_token,
-                date_picker
-            )
+        )
+        line_bot_api.reply_message(
+            event.reply_token,
+            date_picker
+        )
     elif event.postback.data == "promotion=date":
         time_type = event.postback.params
         print(time_type)
@@ -684,10 +700,73 @@ def handle_post_message(event):
         gender_choice.gender = "M"
         gender_choice.save()
 
+        career_image_map_message = ImagemapSendMessage(
+            base_url='https://imgur.com/uJHMGjf.png',
+            alt_text='this is an image map',
+            base_size=BaseSize(height=1040, width=1040),
+            actions=[
+                MessageImagemapAction(
+                    text='學生',
+                    area=ImagemapArea(
+                        x=120, y=120, width=240, height=240
+                    )
+                ),
+                MessageImagemapAction(
+                    text='軍公教',
+                    area=ImagemapArea(
+                        x=400, y=120, width=240, height=240
+                    )
+                ),
+                MessageImagemapAction(
+                    text='服務業',
+                    area=ImagemapArea(
+                        x=680, y=120, width=240, height=240
+                    )
+                ),
+                MessageImagemapAction(
+                    text='自由業',
+                    area=ImagemapArea(
+                        x=120, y=400, width=240, height=240
+                    )
+                ),
+                MessageImagemapAction(
+                    text='工商業',
+                    area=ImagemapArea(
+                        x=400, y=400, width=240, height=240
+                    )
+                ),
+                MessageImagemapAction(
+                    text='家管',
+                    area=ImagemapArea(
+                        x=680, y=400, width=240, height=240
+                    )
+                ),
+                MessageImagemapAction(
+                    text='退休人員',
+                    area=ImagemapArea(
+                        x=120, y=680, width=240, height=240
+                    )
+                ),
+                MessageImagemapAction(
+                    text='農民漁牧業',
+                    area=ImagemapArea(
+                        x=400, y=680, width=240, height=240
+                    )
+                ),
+                MessageImagemapAction(
+                    text='其他',
+                    area=ImagemapArea(
+                        x=680, y=680, width=240, height=240
+                    )
+                ),
+            ]
+        )
+
         line_bot_api.reply_message(
             event.reply_token, [
                 TextSendMessage(text='嗨~帥哥'),
                 TextSendMessage(text="性別設定成功！"),
+                career_image_map_message
             ]
         )
     elif event.postback.data == "gender=female":
@@ -695,10 +774,73 @@ def handle_post_message(event):
         gender_choice.gender = "F"
         gender_choice.save()
 
+        career_image_map_message = ImagemapSendMessage(
+            base_url='https://imgur.com/uJHMGjf.png',
+            alt_text='this is an image map',
+            base_size=BaseSize(height=1040, width=1040),
+            actions=[
+                MessageImagemapAction(
+                    text='學生',
+                    area=ImagemapArea(
+                        x=120, y=120, width=240, height=240
+                    )
+                ),
+                MessageImagemapAction(
+                    text='軍公教',
+                    area=ImagemapArea(
+                        x=400, y=120, width=240, height=240
+                    )
+                ),
+                MessageImagemapAction(
+                    text='服務業',
+                    area=ImagemapArea(
+                        x=680, y=120, width=240, height=240
+                    )
+                ),
+                MessageImagemapAction(
+                    text='自由業',
+                    area=ImagemapArea(
+                        x=120, y=400, width=240, height=240
+                    )
+                ),
+                MessageImagemapAction(
+                    text='工商業',
+                    area=ImagemapArea(
+                        x=400, y=400, width=240, height=240
+                    )
+                ),
+                MessageImagemapAction(
+                    text='家管',
+                    area=ImagemapArea(
+                        x=680, y=400, width=240, height=240
+                    )
+                ),
+                MessageImagemapAction(
+                    text='退休人員',
+                    area=ImagemapArea(
+                        x=120, y=680, width=240, height=240
+                    )
+                ),
+                MessageImagemapAction(
+                    text='農民漁牧業',
+                    area=ImagemapArea(
+                        x=400, y=680, width=240, height=240
+                    )
+                ),
+                MessageImagemapAction(
+                    text='其他',
+                    area=ImagemapArea(
+                        x=680, y=680, width=240, height=240
+                    )
+                ),
+            ]
+        )
+
         line_bot_api.reply_message(
             event.reply_token, [
                 TextSendMessage(text='嗨~美女'),
                 TextSendMessage(text="性別設定成功！"),
+                career_image_map_message
             ]
         )
     elif event.postback.data == "confirm=yes":
