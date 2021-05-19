@@ -145,13 +145,38 @@ def handle_follow(event):
     line_status_message = profile.status_message  # 取得使用者的個簽留言
     unfollow = False
 
-    if models.UserInform.objects.filter(line_id=event.source.user_id).exists():
-        line_bot_api.reply_message(
-            event.reply_token,
-            [
-                TextSendMessage(text="您已註冊過囉\U0010007A"),
+    buttons_template_message = TemplateSendMessage(
+        alt_text='Product Promotion',
+        template=ButtonsTemplate(
+            title="歡迎加入心情日記-臉部辨識",
+            text='為了讓整個分析可以更精準\n請幫助我們回答幾項問題',
+            actions=[
+                PostbackAction(
+                    label='開始',
+                    display_text='開始',
+                    data='promotion=true'
+                ),
             ]
         )
+    )
+
+    if models.UserInform.objects.filter(line_id=event.source.user_id).exists():
+        print("here")
+        userinfo = models.UserInform.objects.get(line_id=event.source.user_id)
+        try:
+            if userinfo.gender == "":
+                line_bot_api.reply_message(
+                    event.reply_token,
+                    buttons_template_message,
+                )
+        except models.UserInform.DoesNotExist:
+            print("i'm here")
+            models.UserInform.objects.create(line_id=event.source.user_id, username=line_name)
+
+            line_bot_api.reply_message(
+                event.reply_token,
+                TextSendMessage(text="您已註冊過囉\U0010007A"),
+            )
     else:
         # 判斷此用戶在UserInform內的line_id欄位是否存在，若存在則get到，若不存在則新增一筆預設資料
         try:
@@ -161,20 +186,6 @@ def handle_follow(event):
 
         # models.UserInform.objects.create(line_id=event.source.user_id, username=line_name)
 
-        buttons_template_message = TemplateSendMessage(
-            alt_text='Product Promotion',
-            template=ButtonsTemplate(
-                title="歡迎加入心情日記-臉部辨識",
-                text='為了讓整個分析可以更精準\n請幫助我們回答幾項問題',
-                actions=[
-                    PostbackAction(
-                        label='開始',
-                        display_text='開始',
-                        data='promotion=true'
-                    ),
-                ]
-            )
-        )
         line_bot_api.reply_message(
             event.reply_token,
             [
@@ -190,6 +201,8 @@ def handle_follow(event):
 @handler.add(MessageEvent, message=(TextMessage, ImageMessage))
 def handle_text_message(event):
     # test ------------------
+    test = models.UserInform.objects.exclude(gender__isnull=True).exclude(gender="")
+    print(test)
     # career_id = models.Career.objects.get(career_name='學生')
     # print(career_id.career_id)
     # print(models.Diary.objects.filter(line_id=event.source.user_id, date=today).exists())
