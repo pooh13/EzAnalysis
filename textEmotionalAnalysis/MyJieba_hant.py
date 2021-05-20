@@ -9,7 +9,7 @@ def MyJieba_hant(context):
 
     return sentence
 
-    # -----limit(5)
+    # ----- limit(5)
     # cnt = Counter()
     #
     # for x in sentence:
