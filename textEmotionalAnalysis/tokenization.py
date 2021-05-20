@@ -5,6 +5,9 @@ def tokenization(textQueryList):
     comment_bow = dict()
     context = JiebaResult.JiebaResult(textQueryList)
 
+    # print(context)
+    # print(len(context))
+
     # ----- len()
     # for i in range(len(tableQueryList)):
     #     comment_bow.update({i: set(context)})
@@ -17,6 +20,8 @@ def tokenization(textQueryList):
         bow = bow.union(set(v))
 
     # print(comment_bow)
+    # print(len(comment_bow))
     # print(bow)
+    # print(len(bow))
 
     return comment_bow, bow

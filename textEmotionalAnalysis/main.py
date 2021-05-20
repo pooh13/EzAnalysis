@@ -18,14 +18,14 @@ def textEmotionalAnalysis():
     # args = (b'test.text', b'localtest.test')
 
     # -----tokenization
-    print(tokenization.tokenization(textQueryList)[0])
-    print(tokenization.tokenization(textQueryList)[1])
+    # print(tokenization.tokenization(textQueryList)[0])
+    # print(tokenization.tokenization(textQueryList)[1])
     # print(type(tokenization.tokenization(tableQueryList, textQueryList)))
     # tokenization.tokenization(tableQueryList, textQueryList)
 
-    # one_hotEncoding.oneHotEncoding(JiebaResult())
-
-
+    a = one_hotEncoding.oneHotEncoding(tokenization.tokenization(textQueryList)[0], tokenization.tokenization(textQueryList)[1])
+    print(type(a))
+    print(a)
 
 
 textEmotionalAnalysis()
