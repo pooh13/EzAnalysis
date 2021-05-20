@@ -91,8 +91,15 @@ def newuser(request):
 
 
 def edituser(request):
-    form = forms.UserInformFrom(request.POST or None, request.FILES or None)
-
+    # my line_id = 'Ua86fbb6a53fe1f0559a2841cb1cac3a7'
+    form = forms.UserInformFrom(request.GET or None, request.FILES or None)
+    user = models.UserInform.objects.all();
+    # userid = user.line_id;
+    # print(user.username)
+    if 'line_id' in request.GET and request.GET['line_id'] !='':
+        print("success")
+    # if request.method == 'GET':
+        
     return render(request, 'UserInform/editUser.html', {
         'form': form,
     })
