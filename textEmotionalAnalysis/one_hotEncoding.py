@@ -1,15 +1,18 @@
 import numpy as np
 from sklearn.preprocessing import OneHotEncoder
+import cursorToPd
 
+def oneHotEncoding(comment_bow, bow, queryList):
 
-def oneHotEncoding(comment_bow, bow):
     comment_bowLen = len(comment_bow) - 1
 
     bow_array = np.array(list(bow)).reshape(-1, 1)
     onehot = OneHotEncoder().fit(bow_array)
 
-    X = np.ndarray((len(bow), len(bow)))
-    for i in range(len(bow)):
+    df = cursorToPd.cursorToPd(queryList)
+
+    X = np.ndarray((len(df), len(bow)))
+    for i in range(len(df)):
         if (len(comment_bow[i]) < comment_bowLen):
             # 少數僅含空白、標點符號之類而被刪除完內容的評論
             if (len(comment_bow[i]) == 0):
@@ -20,8 +23,5 @@ def oneHotEncoding(comment_bow, bow):
                 X[i] = comment_onehot
         else:
             break
-
-    # print(type(X))
-    # print(X)
 
     return X

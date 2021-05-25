@@ -1,4 +1,5 @@
 def toList(result):
+
     listResult=[]
 
     for column in result:

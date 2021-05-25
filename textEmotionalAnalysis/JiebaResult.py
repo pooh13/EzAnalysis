@@ -1,8 +1,8 @@
 import MyJieba_hant
 import cursorToList
 
-
 def JiebaResult(queryList):
+
     # ----- jieba limit
     # for contextRow in cursorToList.cursorToList(queryList):
     #     JiebaResult = str(MyJieba_hant.MyJieba_hant(str(contextRow)))

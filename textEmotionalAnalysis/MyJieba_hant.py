@@ -3,8 +3,9 @@ from collections import Counter
 import stopWords
 
 def MyJieba_hant(context):
+
     # print("原文內容："+context)
-    sentence=([word for word in jieba_hant.cut(context, cut_all=False) if word not in stopWords.stopWords()[0]])
+    sentence = ([word for word in jieba_hant.cut(context, cut_all=False) if word not in stopWords.stopWords()[0]])
     # print("斷詞結果：",sentence)
 
     return sentence
