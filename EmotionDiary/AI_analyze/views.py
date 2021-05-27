@@ -160,20 +160,12 @@ def handle_follow(event):
         )
     )
 
-    if models.UserInform.objects.filter(line_id=event.source.user_id).exists():
-        print("here")
-        userinfo = models.UserInform.objects.get(line_id=event.source.user_id)
-        try:
-            if userinfo.gender == "":
-                line_bot_api.reply_message(
-                    event.reply_token,
-                    buttons_template_message,
-                )
-        except models.UserInform.DoesNotExist:
-            print("i'm here")
-            models.UserInform.objects.create(line_id=event.source.user_id, username=line_name)
+    # 判斷資料庫中的使用者資訊是否完整
+    check_info = models.UserInform.objects.exclude(gender__isnull=True).exclude(gender="")
+    check_list = [i.line_id for i in check_info]
 
-            line_bot_api.reply_message(
+    if line_id in check_list:
+        line_bot_api.reply_message(
                 event.reply_token,
                 TextSendMessage(text="您已註冊過囉\U0010007A"),
             )
@@ -183,8 +175,6 @@ def handle_follow(event):
             models.UserInform.objects.get(line_id=event.source.user_id)
         except models.UserInform.DoesNotExist:
             models.UserInform.objects.create(line_id=event.source.user_id, username=line_name)
-
-        # models.UserInform.objects.create(line_id=event.source.user_id, username=line_name)
 
         line_bot_api.reply_message(
             event.reply_token,
@@ -201,8 +191,9 @@ def handle_follow(event):
 @handler.add(MessageEvent, message=(TextMessage, ImageMessage))
 def handle_text_message(event):
     # test ------------------
-    test = models.UserInform.objects.exclude(gender__isnull=True).exclude(gender="")
-    print(test)
+    # test = models.UserInform.objects.exclude(gender__isnull=True).exclude(gender="")
+    # check_list = [i.line_id for i in test]
+    # print(event.source.user_id not in check_list)
     # career_id = models.Career.objects.get(career_name='學生')
     # print(career_id.career_id)
     # print(models.Diary.objects.filter(line_id=event.source.user_id, date=today).exists())
@@ -224,42 +215,103 @@ def handle_text_message(event):
 
     if isinstance(event.message, ImageMessage):
         ext = 'jpg'
-        print(event)
+        # print(event)
 
         # 接收照片
         message_content = line_bot_api.get_message_content(event.message.id)
-        with tempfile.NamedTemporaryFile(dir='media\\img\\', prefix=event.source.user_id + '-', delete=False) as file:
-            for chunk in message_content.iter_content():
-                file.write(chunk)
 
-            temp_file_path = file.name
-            # dist_path = temp_file_path + '.' + ext
-            #
-            # os.rename(temp_file_path, dist_path)
-            #
-            # upload_img = models.InstantPhotoAnalysis(line_id_id=event.source.user_id, date=datetime.datetime.fromtimestamp(t))
-            # upload_img.pic.save(event.source.user_id + '.' + ext, File(open(dist_path, 'rb')))
-            # upload_img.save()
+        if prev[event.source.user_id] == "diary_image":
+            # 判斷使用者當天是否已經登入過一次照片(使用者一天只會有一張照片)
+            if os.path.isfile('media\\images\\' + event.source.user_id + '-' + today + '.' + ext):
+                os.remove('media\\images\\' + event.source.user_id + '-' + today + '.' + ext)
 
-        dist_path = temp_file_path + '.' + ext
-        # print(dist_path)
+            with open('media\\images\\' + event.source.user_id + '-', 'wb') as file:
+                for chunk in message_content.iter_content():
+                    file.write(chunk)
 
-        # dist_name = os.path.basename(dist_path)
-        os.rename(temp_file_path, dist_path)
+                temp_file_path = file.name
 
-        arr = dist_path.split("\\")
-        db_pic_path = arr[-1::-1][1] + "/" + arr[-1::-1][0]  # img/XXX.jpg
-        # print(db_pic_path)
+            dist_path = temp_file_path + today + '.' + ext
 
-        upload_img = models.InstantPhotoAnalysis(line_id_id=event.source.user_id, date=datetime.datetime.fromtimestamp(t), pic=db_pic_path)
-        # upload_img.pic.save(event.source.user_id + '.' + ext, File(open(dist_path, 'rb')))  # 同張照片會存兩次
-        upload_img.save()
+            # dist_name = os.path.basename(dist_path)
+            os.rename(temp_file_path, dist_path)
+            # print(dist_path)
 
-        line_bot_api.reply_message(
-            event.reply_token, [
-                TextSendMessage(text="已成功上傳照片")
-            ]
-        )
+            arr = dist_path.split("\\")
+            db_pic_path = arr[-1::-1][1] + "/" + arr[-1::-1][0]  # img/XXX.jpg
+            # print(db_pic_path)
+
+            upload_img = models.Diary.objects.get(line_id=event.source.user_id, date=today)
+            upload_img.pic = db_pic_path
+            upload_img.save()
+
+            prev.update({event.source.user_id: ''})
+
+            # 取得日記心情並轉換為文字
+            diary = models.Diary.objects.get(line_id=event.source.user_id, date=today)
+            mood = ""
+            for mood_name, mood_int in emotion.items():
+                if mood_int == diary.mood:
+                    mood = mood_name
+
+            confirm_template = TemplateSendMessage(
+                alt_text='確認訊息',
+                template=ConfirmTemplate(
+                    title='這是ConfirmTemplate',
+                    text='確認以上內容是否正確！',
+                    actions=[
+                        MessageAction(
+                            label='確認',
+                            text='確認',
+                        ),
+                        MessageAction(
+                            label='修改',
+                            text='修改'
+                        ),
+                    ]
+                )
+            )
+
+            # print('https://' + url + '/' + dist_path.replace("\\", "/"))
+
+            line_bot_api.reply_message(
+                event.reply_token, [
+                    TextSendMessage(text="已成功上傳照片"),
+                    TextSendMessage(text="您今天的心情為：" + mood + "\n\n所輸入的日記內容為：\n" + diary.note),
+                    TextSendMessage(text="所上傳的照片為："),
+                    ImageSendMessage(
+                        original_content_url='https://' + url + '/' + dist_path.replace("\\", "/"),
+                        preview_image_url='https://' + url + '/' + dist_path.replace("\\", "/")
+                    ),
+                    confirm_template
+                ]
+            )
+        else:
+            with tempfile.NamedTemporaryFile(dir='media\\images\\', prefix=event.source.user_id + '-', delete=False) as file:
+                for chunk in message_content.iter_content():
+                    file.write(chunk)
+
+                temp_file_path = file.name
+
+            dist_path = temp_file_path + '.' + ext
+            # print(dist_path)
+
+            # dist_name = os.path.basename(dist_path)
+            os.rename(temp_file_path, dist_path)
+
+            arr = dist_path.split("\\")
+            db_pic_path = arr[-1::-1][1] + "/" + arr[-1::-1][0]  # img/XXX.jpg
+            # print(db_pic_path)
+
+            upload_img = models.InstantPhotoAnalysis(line_id_id=event.source.user_id, date=datetime.datetime.fromtimestamp(t), pic=db_pic_path)
+            # upload_img.pic.save(event.source.user_id + '.' + ext, File(open(dist_path, 'rb')))  # 同張照片會存兩次
+            upload_img.save()
+
+            line_bot_api.reply_message(
+                event.reply_token, [
+                    TextSendMessage(text="已成功上傳照片")
+                ]
+            )
 
     elif isinstance(event, MessageEvent):
         msg = event.message.text
@@ -281,13 +333,6 @@ def handle_text_message(event):
                 event.reply_token,
                 TextSendMessage(text=event.message.text)
             )
-        elif event.message.text == "選擇":
-            insight = line_bot_api.get_insight_demographic()
-            print(insight.genders)
-            line_bot_api.reply_message(
-                event.reply_token,
-                insight.genders
-            )
         elif event.message.text == "現在時間":
             line_bot_api.reply_message(
                 event.reply_token,
@@ -301,42 +346,42 @@ def handle_text_message(event):
             )
         elif event.message.text in ["輸入日記", "修改"]:
             imagemap_message = ImagemapSendMessage(
-                            base_url='https://imgur.com/758BclP.png',
-                            alt_text='this is an image map',
-                            base_size=BaseSize(height=1040, width=1040),
-                            actions=[
-                                MessageImagemapAction(
-                                    text='超開心',
-                                    area=ImagemapArea(
-                                        x=60, y=200, width=240, height=240
-                                    )
-                                ),
-                                MessageImagemapAction(
-                                    text='開心',
-                                    area=ImagemapArea(
-                                        x=400, y=200, width=240, height=240
-                                    )
-                                ),
-                                MessageImagemapAction(
-                                    text='普通',
-                                    area=ImagemapArea(
-                                        x=740, y=200, width=240, height=240
-                                    )
-                                ),
-                                MessageImagemapAction(
-                                    text='難過',
-                                    area=ImagemapArea(
-                                        x=210, y=600, width=240, height=240
-                                    )
-                                ),
-                                MessageImagemapAction(
-                                    text='超難過',
-                                    area=ImagemapArea(
-                                        x=590, y=600, width=240, height=240
-                                    )
-                                ),
-                            ]
+                base_url='https://imgur.com/758BclP.png',
+                alt_text='this is an image map',
+                base_size=BaseSize(height=1040, width=1040),
+                actions=[
+                    MessageImagemapAction(
+                        text='超開心',
+                        area=ImagemapArea(
+                            x=60, y=200, width=240, height=240
                         )
+                    ),
+                    MessageImagemapAction(
+                        text='開心',
+                        area=ImagemapArea(
+                            x=400, y=200, width=240, height=240
+                        )
+                    ),
+                    MessageImagemapAction(
+                        text='普通',
+                        area=ImagemapArea(
+                            x=740, y=200, width=240, height=240
+                        )
+                    ),
+                    MessageImagemapAction(
+                        text='難過',
+                        area=ImagemapArea(
+                            x=210, y=600, width=240, height=240
+                        )
+                    ),
+                    MessageImagemapAction(
+                        text='超難過',
+                        area=ImagemapArea(
+                            x=590, y=600, width=240, height=240
+                        )
+                    ),
+                ]
+            )
 
             line_bot_api.reply_message(
                 event.reply_token, [
@@ -347,6 +392,11 @@ def handle_text_message(event):
             )
         elif event.message.text in emotion.keys():
             if models.Diary.objects.filter(line_id=event.source.user_id, date=today).exists():
+
+                user_mood = models.Diary.objects.get(line_id=event.source.user_id, date=today)
+                user_mood.mood = emotion.get(event.message.text)
+                user_mood.save()
+
                 prev[user_line_id] = 'get_diary'
 
                 line_bot_api.reply_message(
@@ -419,37 +469,37 @@ def handle_text_message(event):
         elif event.message.text == "選擇清單":
             # https://50509fc4ca20.ngrok.io/AI_analyze/userinform/
             imagemap_message = ImagemapSendMessage(
-                            base_url='https://imgur.com/p1iMJMn.jpg',
-                            alt_text='this is an image map',
-                            base_size=BaseSize(height=1040, width=1040),
-                            actions=[
-                                URIImagemapAction(
-                                    base_url='https://imgur.com/cStUqlu.jpg',
-                                    link_uri='https://' + url + '/AI_analyze/userinform/' + event.source.user_id,
-                                    area=ImagemapArea(
-                                        x=0, y=0, width=520, height=520
-                                    )
-                                ),
-                                MessageImagemapAction(
-                                    text='設定性別',
-                                    area=ImagemapArea(
-                                        x=520, y=0, width=520, height=520
-                                    )
-                                ),
-                                MessageImagemapAction(
-                                    text='設定生日',
-                                    area=ImagemapArea(
-                                        x=0, y=520, width=520, height=520
-                                    )
-                                ),
-                                URIImagemapAction(
-                                    link_uri='https://' + url + '/AI_analyze/userdata/',
-                                    area=ImagemapArea(
-                                        x=520, y=520, width=520, height=520
-                                    )
-                                ),
-                            ]
+                base_url='https://imgur.com/p1iMJMn.jpg',
+                alt_text='this is an image map',
+                base_size=BaseSize(height=1040, width=1040),
+                actions=[
+                    URIImagemapAction(
+                        base_url='https://imgur.com/cStUqlu.jpg',
+                        link_uri='https://' + url + '/AI_analyze/userinform/' + event.source.user_id,
+                        area=ImagemapArea(
+                            x=0, y=0, width=520, height=520
                         )
+                    ),
+                    MessageImagemapAction(
+                        text='設定性別',
+                        area=ImagemapArea(
+                            x=520, y=0, width=520, height=520
+                        )
+                    ),
+                    MessageImagemapAction(
+                        text='設定生日',
+                        area=ImagemapArea(
+                            x=0, y=520, width=520, height=520
+                        )
+                    ),
+                    URIImagemapAction(
+                        link_uri='https://' + url + '/AI_analyze/userdata/',
+                        area=ImagemapArea(
+                            x=520, y=520, width=520, height=520
+                        )
+                    ),
+                ]
+            )
 
             # check = models.UserInform.objects.get(username='kelly')
             # check.line_id = event.source.user_id
@@ -513,69 +563,6 @@ def handle_text_message(event):
                 ]
             )
             line_bot_api.reply_message(event.reply_token, imagemap_message)
-        # elif event.message.text == "職業":
-        #     imagemap_message = ImagemapSendMessage(
-        #                     base_url='https://imgur.com/uJHMGjf.png',
-        #                     alt_text='this is an image map',
-        #                     base_size=BaseSize(height=1040, width=1040),
-        #                     actions=[
-        #                         MessageImagemapAction(
-        #                             text='學生',
-        #                             area=ImagemapArea(
-        #                                 x=120, y=120, width=240, height=240
-        #                             )
-        #                         ),
-        #                         MessageImagemapAction(
-        #                             text='軍公教',
-        #                             area=ImagemapArea(
-        #                                 x=400, y=120, width=240, height=240
-        #                             )
-        #                         ),
-        #                         MessageImagemapAction(
-        #                             text='服務業',
-        #                             area=ImagemapArea(
-        #                                 x=680, y=120, width=240, height=240
-        #                             )
-        #                         ),
-        #                         MessageImagemapAction(
-        #                             text='自由業',
-        #                             area=ImagemapArea(
-        #                                 x=120, y=400, width=240, height=240
-        #                             )
-        #                         ),
-        #                         MessageImagemapAction(
-        #                             text='工商業',
-        #                             area=ImagemapArea(
-        #                                 x=400, y=400, width=240, height=240
-        #                             )
-        #                         ),
-        #                         MessageImagemapAction(
-        #                             text='家管',
-        #                             area=ImagemapArea(
-        #                                 x=680, y=400, width=240, height=240
-        #                             )
-        #                         ),
-        #                         MessageImagemapAction(
-        #                             text='退休人員',
-        #                             area=ImagemapArea(
-        #                                 x=120, y=680, width=240, height=240
-        #                             )
-        #                         ),
-        #                         MessageImagemapAction(
-        #                             text='農民漁牧業',
-        #                             area=ImagemapArea(
-        #                                 x=400, y=680, width=240, height=240
-        #                             )
-        #                         ),
-        #                         MessageImagemapAction(
-        #                             text='其他',
-        #                             area=ImagemapArea(
-        #                                 x=680, y=680, width=240, height=240
-        #                             )
-        #                         ),
-        #                     ]
-        #                 )
-        #     line_bot_api.reply_message(event.reply_token, imagemap_message)
         elif event.message.text in ignore:
             pass
         elif event.message.text in career:
@@ -589,6 +576,11 @@ def handle_text_message(event):
                 event.reply_token,
                 TextSendMessage(text="您的職業設定成功！")
             )
+        elif event.message.text == "確認":
+            line_bot_api.reply_message(
+                event.reply_token,
+                TextSendMessage(text="日記儲存成功！")
+            )
         else:
             if user_line_id not in prev:
                 e = chr(0x100010)
@@ -601,37 +593,21 @@ def handle_text_message(event):
                 )
             elif prev[user_line_id] == "get_diary":
                 diary = event.message.text
-                prev.update({event.source.user_id: ''})
+                prev.update({event.source.user_id: 'diary_image'})
 
+                # 儲存輸入之日記內容
                 set_diary = models.Diary.objects.get(line_id=event.source.user_id, date=today)
                 set_diary.note = diary
                 set_diary.save()
 
-                confirm_template = TemplateSendMessage(
-                    alt_text='確認訊息',
-                    template=ConfirmTemplate(
-                        title='這是ConfirmTemplate',
-                        text='今天紀錄的心情及日記是否確認無誤，若無錯誤就確認登錄您的心情日記，若有錯誤可以修正唷！',
-                        actions=[
-                            PostbackTemplateAction(
-                                label='確認',
-                                text='確認',
-                                data='confirm=yes'
-                            ),
-                            MessageAction(
-                                label='修改',
-                                text='修改'
-                            ),
-                        ]
-                    )
-                )
                 line_bot_api.reply_message(
-                    event.reply_token, [
-                        # TextSendMessage(text=diary + "\n\n已經儲存"),
-                        # TextSendMessage(text="已經儲存"),
-                        TextSendMessage(text=diary + "\n\n已經儲存"),
-                        confirm_template
-                    ]
+                    event.reply_token,
+                    TextSendMessage(text="請傳送一張今天的照片~"),
+                )
+            elif prev[user_line_id] == "diary_image":
+                line_bot_api.reply_message(
+                    event.reply_token,
+                    TextSendMessage(text="請傳送一張今天的照片~"),
                 )
             else:
                 e = chr(0x100010)
@@ -855,11 +831,6 @@ def handle_post_message(event):
                 TextSendMessage(text="性別設定成功！"),
                 career_image_map_message
             ]
-        )
-    elif event.postback.data == "confirm=yes":
-        line_bot_api.reply_message(
-            event.reply_token,
-            TextSendMessage(text="日記儲存成功！"),
         )
     # elif event.postback.data == "confirm=alter":
     #     line_bot_api.reply_message(

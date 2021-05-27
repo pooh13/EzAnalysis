@@ -36,7 +36,7 @@ SECRET_KEY = '*f60@damy%^)#)=$@+0804h=nvwyhi594_az@3oo=u$+u(pc&+'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-SET_URL = '4bd54a81fcc6.ngrok.io'
+SET_URL = '3b0d3a062b5d.ngrok.io'
 ALLOWED_HOSTS = ['*']
 
 
@@ -133,7 +133,7 @@ USE_I18N = True
 
 USE_L10N = True
 
-USE_TZ = True
+USE_TZ = False
 
 
 # Static files (CSS, JavaScript, Images)

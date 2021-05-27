@@ -35,7 +35,7 @@ class Diary(models.Model):
     date = models.DateField(null=False)
     mood = models.IntegerField(null=True)
     note = models.CharField(max_length=255)
-    pic = models.ImageField(null=True)
+    pic = models.ImageField(upload_to='images', null=True)
 
     class Meta:
         unique_together = ("line_id", "date")
@@ -57,5 +57,5 @@ class InstantPhotoAnalysis(models.Model):
     photo_id = models.AutoField(primary_key=True)
     line_id = models.ForeignKey(UserInform, on_delete=models.CASCADE)
     date = models.DateTimeField(null=False)
-    pic = models.ImageField(upload_to='img')
+    pic = models.ImageField(upload_to='images')
 
