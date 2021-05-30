@@ -91,7 +91,7 @@ var Application = function() {
 		if (view==null) view = self.getInitialView();
 		self.collectViews();
 		self.collectOverlays();
-		self.collectMediaQueries();
+//		self.collectMediaQueries();
 
 		for (let index = 0; index < views.length; index++) {
 			var view = views[index];
@@ -1836,11 +1836,11 @@ var Application = function() {
 		return viewId;
 	}
 
-	self.getApplicationStylesheet = function() {
-		var stylesheetId = self.getViewPreferenceValue(document.body, self.prefix + "stylesheet-id");
-		self.applicationStylesheet = document.getElementById("applicationStylesheet");
-		return self.applicationStylesheet.sheet;
-	}
+//	self.getApplicationStylesheet = function() {
+//		var stylesheetId = self.getViewPreferenceValue(document.body, self.prefix + "stylesheet-id");
+//		self.applicationStylesheet = document.getElementById("applicationStylesheet");
+//		return self.applicationStylesheet.sheet;
+//	}
 
 	self.getVisibleView = function() {
 		var viewIds = self.getViewIds();
@@ -2177,7 +2177,7 @@ var Application = function() {
 
 	self.collectMediaQueries = function() {
 		var viewIds = self.getViewIds();
-		var styleSheet = self.getApplicationStylesheet();
+//		var styleSheet = self.getApplicationStylesheet();
 		var cssRules = self.getStylesheetRules(styleSheet);
 		var numOfCSSRules = cssRules ? cssRules.length : 0;
 		var cssRule;
@@ -2777,9 +2777,9 @@ var Application = function() {
 		self.setViewScaleValue(view, false, 1);
 	}
 
-	self.onloadHandler = function(event) {
-		self.initialize();
-	}
+//	self.onloadHandler = function(event) {
+//		self.initialize();
+//	}
 
 	self.setElementHTML = function(id, value) {
 		var element = self.getElement(id);
@@ -2878,20 +2878,23 @@ var Application = function() {
 		}
 	}
 
-	function initializeApp(data) {
-        liff.getProfile().then(profile => {
-            $("#userid").val(data.context.userId);
-            $("#disname").val(profile.displayName);
-        });
-    }
-
 	window.onload = function(){
 		genderSelect(g_id);
 		jobSelect(j_id);
-		liff.init(function (data) {
-            initializeApp(data);
-        });
+        liff.init({ liffId: '1655966851-4WdE01zN' })
+		liff.ready.then(() => {
+            // do something you want when liff.init finishes
+            if(!liff.isLoggedIn()){
+                liff.login();
+            }else{
+                const user = liff.getContext();
+                $('#userid').val(user.userId);
+                const accessToken = liff.getAccessToken();
+                console.log(accessToken)
+            }
+        })
 	}
+
 }
 
 window.application = new Application();

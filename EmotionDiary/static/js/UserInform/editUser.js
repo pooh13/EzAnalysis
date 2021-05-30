@@ -91,7 +91,7 @@ var Application = function() {
 		if (view==null) view = self.getInitialView();
 		self.collectViews();
 		self.collectOverlays();
-		self.collectMediaQueries();
+//		self.collectMediaQueries();
 
 		for (let index = 0; index < views.length; index++) {
 			var view = views[index];
@@ -1836,11 +1836,11 @@ var Application = function() {
 		return viewId;
 	}
 
-	self.getApplicationStylesheet = function() {
-		var stylesheetId = self.getViewPreferenceValue(document.body, self.prefix + "stylesheet-id");
-		self.applicationStylesheet = document.getElementById("applicationStylesheet");
-		return self.applicationStylesheet.sheet;
-	}
+//	self.getApplicationStylesheet = function() {
+//		var stylesheetId = self.getViewPreferenceValue(document.body, self.prefix + "stylesheet-id");
+//		self.applicationStylesheet = document.getElementById("applicationStylesheet");
+//		return self.applicationStylesheet.sheet;
+//	}
 
 	self.getVisibleView = function() {
 		var viewIds = self.getViewIds();
@@ -2177,7 +2177,7 @@ var Application = function() {
 
 	self.collectMediaQueries = function() {
 		var viewIds = self.getViewIds();
-		var styleSheet = self.getApplicationStylesheet();
+//		var styleSheet = self.getApplicationStylesheet();
 		var cssRules = self.getStylesheetRules(styleSheet);
 		var numOfCSSRules = cssRules ? cssRules.length : 0;
 		var cssRule;
@@ -2778,7 +2778,7 @@ var Application = function() {
 	}
 
 	self.onloadHandler = function(event) {
-		self.initialize();
+//		self.initialize();
 	}
 
 	self.setElementHTML = function(id, value) {
@@ -2836,8 +2836,17 @@ var Application = function() {
 	var j_id;
 
 	function genderSelect(g_id) {
+		// document.getElementsByTagName('button').gender_btn.className='btn2';
 		var arr = document.getElementsByName('gender_btn');
-		for(var i = 0;i<arr.length;i++){
+		var user_gen = document.getElementById('gender').value;
+
+		if(user_gen == 'M'){
+			document.getElementsByTagName('button').G1.className='btn2';
+		}else if(user_gen == 'F'){
+			document.getElementsByTagName('button').G2.className='btn2';
+		}
+
+		for(var i = 0;i<arr.length;i++){	
 			arr[i].onclick = function(){
 				//this是当前激活的按钮，在这里可以写对应的操作
 				if(this.className == 'btn1'){
@@ -2858,7 +2867,31 @@ var Application = function() {
 	}
 
 	function jobSelect(j_id){
+		// document.getElementsByTagName('button').job_btn.className='btn4';
 		var arr = document.getElementsByName('job_btn');
+		var user_job = document.getElementById('job').value;
+
+		if(user_job == 'C001'){
+			document.getElementsByTagName('button').C001.className='btn4';
+		}else if(user_job == 'C002'){
+			document.getElementsByTagName('button').C002.className='btn4';
+		}else if(user_job == 'C003'){
+			document.getElementsByTagName('button').C003.className='btn4';
+		}else if(user_job == 'C004'){
+			document.getElementsByTagName('button').C004.className='btn4';
+		}else if(user_job == 'C005'){
+			document.getElementsByTagName('button').C005.className='btn4';
+		}else if(user_job == 'C006'){
+			document.getElementsByTagName('button').C006.className='btn4';
+		}else if(user_job == 'C007'){
+			document.getElementsByTagName('button').C007.className='btn4';
+		}else if(user_job == 'C008'){
+			document.getElementsByTagName('button').C008.className='btn4';
+		}else if(user_job == 'C009'){
+			document.getElementsByTagName('button').C009.className='btn4';
+		}
+
+
 		for(var i = 0;i<arr.length;i++){
 			arr[i].onclick = function(){
 				//this是当前激活的按钮，在这里可以写对应的操作
@@ -2878,21 +2911,22 @@ var Application = function() {
 		}
 	}
 
-	function initializeApp(data) {
-        liff.getProfile().then(profile => {
-            $("#userid").val(data.context.userId);
-            $("#disname").val(profile.displayName);
-        });
-
-    }
-
-	window.onload = function(){
+    window.onload = function(){
 		genderSelect(g_id);
 		jobSelect(j_id);
-		liff.init(function (data) {
-            initializeApp(data);
-        });
+//		liff.init({ liffId: '1655797178-3Np2L8Nl' })
+//		liff.ready.then(() => {
+//            // do something you want when liff.init finishes
+//            liff.getProfile().then(profile => {
+//              $("#userid").val(profile.userId);
+//              $("#disname").val(profile.displayName)
+//            })
+//            const accessToken = liff.getAccessToken();
+//            console.log(accessToken)
+//
+//        })
 	}
+
 }
 
 window.application = new Application();

@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 import os
 from pathlib import Path
+import  pymysql
+pymysql.install_as_MySQLdb()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -26,7 +28,7 @@ SECRET_KEY = '*f60@damy%^)#)=$@+0804h=nvwyhi594_az@3oo=u$+u(pc&+'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-SET_URL = '719b5dc374f9.ngrok.io'
+SET_URL = '34cef46bea8d.ngrok.io'
 ALLOWED_HOSTS = ['*']
 
 
@@ -80,8 +82,15 @@ WSGI_APPLICATION = 'EmotionDiary.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        # 'ENGINE': 'django.db.backends.sqlite3',
+        # 'NAME': BASE_DIR / 'db.sqlite3',
+
+        'ENGINE': 'django.db.backends.mysql',  # 設定驅動
+        'NAME': 'EzAnalyze',  # 設定資料庫名
+        'USER': 'root',  # 設定使用者名稱
+        'PASSWORD': '1234',  # 設定密碼
+        'HOST': 'localhost',  # 設定主機地址
+        'PORT': 3306,  # 設定埠號
     }
 }
 

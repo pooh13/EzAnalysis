@@ -3,6 +3,10 @@ import datetime
 import time
 import tempfile
 
+import liffpy
+import linebot.api
+import requests
+
 from django.shortcuts import render
 from cgitb import handler
 from django.conf import settings
@@ -26,16 +30,16 @@ ssl._create_default_https_context = ssl._create_unverified_context
 t = time.time()
 today = datetime.date.today().strftime("%Y-%m-%d")
 
-
 # filter 來過濾條件
 
 
 # LINE 聊天機器人的基本資料
-# liff_api = LIFF(settings.LINE_CHANNEL_ACCESS_TOKEN)
+liff_api = LIFF(settings.LINE_CHANNEL_ACCESS_TOKEN)
 line_bot_api = LineBotApi(settings.LINE_CHANNEL_ACCESS_TOKEN)
 handler = WebhookHandler(settings.LINE_CHANNEL_SECRET)
 parser = WebhookParser(settings.LINE_CHANNEL_SECRET)
 url = settings.SET_URL
+
 
 @csrf_exempt
 def callback(request):
@@ -83,23 +87,26 @@ def newuser(request):
         # newform = form.save(commit=False) # 保存數據，但暫時不提交到數據庫中
 
         form.save()
-    # print(form.as_p())
+    print(form.as_p())
 
     return render(request, 'UserInform/newUser.html', {
         'form': form
     })
 
 
-def edituser(request):
-    # my line_id = 'Ua86fbb6a53fe1f0559a2841cb1cac3a7'
-    form = forms.UserInformFrom(request.GET or None, request.FILES or None)
-    user = models.UserInform.objects.all();
-    # userid = user.line_id;
-    # print(user.username)
-    if 'line_id' in request.GET and request.GET['line_id'] !='':
-        print("success")
-    # if request.method == 'GET':
-        
+def edituser(request, pk):
+    profile = models.UserInform.objects.get(line_id=pk)
+    form = forms.UserInformFrom(request.POST or None, instance=profile)
+    # form = forms.UserInformFrom(request.POST or None, request.FILES or None)
+    form_test = request.POST.get('line_id')
+    # print(form_test)
+    print(profile)
+    print(form)
+
+    if form.is_valid():
+
+        form.save()
+
     return render(request, 'UserInform/editUser.html', {
         'form': form,
     })
@@ -213,7 +220,6 @@ def handle_text_message(event):
                 event.reply_token,
                 TextSendMessage(text=event.message.text)
             )
-
         # elif 'https://' in event.message.text:
         #     # 丟https://網址 轉換成 https://liff.line.me/
         #     liff_id = liff_api.add(view_type="tall", view_url=event.message.text)

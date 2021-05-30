@@ -7,7 +7,7 @@
 {% endblock %}
 
 {% block body %}
-	<form id="userForm" action="." method="get" class="form" enctype="multipart/form-data">
+	<form id="userForm" action="." method="post" class="form" enctype="multipart/form-data">
         {% csrf_token %}
 		<div id="ID1">
 			<svg class="_bj">
@@ -43,7 +43,7 @@
 			{{ form.gender }}
 			<div id="woman1">
 				<div id="woman">
-					<button id="2" name="gender_btn" value="F" type="button" class ="btn1" style="background-color: #ffffff;">
+					<button id="G2" name="gender_btn" value="F" type="button" class ="btn1" style="background-color: #ffffff;">
 						<img src="{% static 'images/UserInform/woman.png' %}" style="width: 100%;">
 					</button>
 				</div>
@@ -51,7 +51,7 @@
 
 			<div id="man1">
 				<div id="man">
-					<button id="1" name="gender_btn" value="M" type = "button" class = "btn1" style="background-color: #ffffff;">
+					<button id="G1" name="gender_btn" value="M" type = "button" class = "btn1" style="background-color: #ffffff;">
 						<img id="man_img" src="{% static 'images/UserInform/man.png' %}" style="width: 100%;">
 					</button>
 				</div>
@@ -192,32 +192,26 @@
 {% endblock %}
 
 {% block js %}
-	<script src="{% static 'js/UserInform/newUser.js' %}"></script>
+	<script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+	<script src="{% static 'js/UserInform/editUser.js' %}"></script>
 	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
 
 	<script type="text/javascript">
         function check(){
             var button = document.getElementById('userForm');
             var username = document.getElementById('disname').value;
-            var birth = document.getElementById('birth');
-            var gender = document.getElementById('gender').value;
-            var job = document.getElementById('job').value;
-            if(username == 0){
+            
+			if(username == 0){
                 swal("請填寫名字", "", "error");
-            }else if(birth == 0){
-                swal("請填選生日", "", "error");
-            }else if(gender == 0){
-                swal("請填選性別", "", "error");
-            }else if(job == 0){
-                swal("請填選職業", "", "error");
-            }else{
-                swal("註冊成功", "", "success", {button:"OK"})
+            }
+			else{
+                swal("修改成功", "", "success", {button:"OK"})
                     .then(() => {
                         button.submit();
                     });
             }
         }
     </script>
-
-<!--	<script src="{% static 'js/liff.js' %}"></script>-->
+	
 {% endblock %}

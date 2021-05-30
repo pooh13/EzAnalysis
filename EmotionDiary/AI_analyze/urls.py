@@ -23,5 +23,5 @@ urlpatterns = [
     path('index/', views.index, name='index'),
     path('usertest/', views.usertest, name='usertest'),
     path('newUser/', views.newuser, name='newUser'),
-    path('editUser/', views.edituser, name='editUser'),
+    path('editUser/<pk>', views.edituser, name='editUser'),
 ]
