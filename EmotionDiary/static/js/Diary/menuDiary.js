@@ -2831,59 +2831,6 @@ var Application = function() {
 	// sometimes the body size is 0 so we call this now and again later
 	window.addEventListener("load", self.onloadHandler);
 	window.document.addEventListener("DOMContentLoaded", self.onloadHandler);
-	// ---------------------------------------------------------------------------
-	var g_id;
-	var j_id;
-
-	function genderSelect(g_id) {
-		var arr = document.getElementsByName('gender_btn');
-		for(var i = 0;i<arr.length;i++){
-			arr[i].onclick = function(){
-				//this是当前激活的按钮，在这里可以写对应的操作
-				if(this.className == 'btn1'){
-					this.className = 'btn2';
-					g_id = this.id;
-					var g_name = this.value;
-					document.getElementById('gender').value = g_name;
-					var btn = document.getElementsByClassName('btn2');
-					for(var j=0;j<btn.length;j++){
-						if(btn[j].id!=g_id){
-						btn[j].className = 'btn1';
-						}
-					}
-				}
-			}
-		}
-
-	}
-
-	function jobSelect(j_id){
-		var arr = document.getElementsByName('job_btn');
-		for(var i = 0;i<arr.length;i++){
-			arr[i].onclick = function(){
-				//this是当前激活的按钮，在这里可以写对应的操作
-				if(this.className == 'btn3'){
-					this.className = 'btn4';
-					j_id = this.id;
-					var j_name = this.value;
-					document.getElementById('job').value = j_name;
-					var btn = document.getElementsByClassName('btn4');
-					for(var j=0;j<btn.length;j++){
-						if(btn[j].id!=j_id){
-						btn[j].className = 'btn3';
-						}
-					}
-				}
-			}
-		}
-	}
-
-	window.onload = function(){
-		genderSelect(g_id);
-		jobSelect(j_id);
-	}
-
 }
 
 window.application = new Application();
-

@@ -65,23 +65,14 @@ def index(request):
 
     })
 
+def menudiary(request):
+    return render(request, 'Diary/menuDiary.html', {
+
+    })
 
 def profile(request):
     return render(request, 'UserInform/profile.html', {
     })
-
-
-def newuser(request):
-    form = forms.UserInformFrom(request.POST or None, request.FILES or None)
-    if form.is_valid():
-
-        form.save()
-    print(form.as_p())
-
-    return render(request, 'UserInform/newUser.html', {
-        'form': form
-    })
-
 
 def edituser(request, pk):
     profile = models.UserInform.objects.get(line_id=pk)
