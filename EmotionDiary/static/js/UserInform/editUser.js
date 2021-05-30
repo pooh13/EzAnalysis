@@ -2836,7 +2836,6 @@ var Application = function() {
 	var j_id;
 
 	function genderSelect(g_id) {
-		// document.getElementsByTagName('button').gender_btn.className='btn2';
 		var arr = document.getElementsByName('gender_btn');
 		var user_gen = document.getElementById('gender').value;
 
@@ -2867,7 +2866,6 @@ var Application = function() {
 	}
 
 	function jobSelect(j_id){
-		// document.getElementsByTagName('button').job_btn.className='btn4';
 		var arr = document.getElementsByName('job_btn');
 		var user_job = document.getElementById('job').value;
 

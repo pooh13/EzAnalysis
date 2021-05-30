@@ -3,14 +3,11 @@ import datetime
 import time
 import tempfile
 
-import liffpy
-import linebot.api
-import requests
-
 from django.shortcuts import render
 from cgitb import handler
 from django.conf import settings
-from django.http import HttpResponse, HttpResponseBadRequest, HttpResponseForbidden
+from django.http import HttpResponse, HttpResponseRedirect, HttpResponseBadRequest, HttpResponseForbidden
+from django.urls import reverse
 from django.views.decorators.csrf import csrf_exempt
 
 from linebot import LineBotApi, WebhookParser, WebhookHandler
@@ -69,22 +66,14 @@ def index(request):
     })
 
 
-def usertest(request):
-    form = forms.UserInformFrom(request.POST or None, request.FILES or None)
-    # form.fields['line_id'].widget = form.HiddenInput()
-    if form.is_valid():
-        # form.save(commit=False) # 保存數據，但暫時不提交到數據庫中
-        form.save()
-
-    return render(request, 'UserInform/new.html', {
-        'form': form
+def profile(request):
+    return render(request, 'UserInform/profile.html', {
     })
 
 
 def newuser(request):
     form = forms.UserInformFrom(request.POST or None, request.FILES or None)
     if form.is_valid():
-        # newform = form.save(commit=False) # 保存數據，但暫時不提交到數據庫中
 
         form.save()
     print(form.as_p())
@@ -99,14 +88,14 @@ def edituser(request, pk):
     form = forms.UserInformFrom(request.POST or None, instance=profile)
     # print(profile)
     # print(form)
-
-    if form.is_valid():
-
-        form.save()
+    if request.method == 'POST':
+        if form.is_valid():
+            form.save()
 
     return render(request, 'UserInform/editUser.html', {
         'form': form,
     })
+
 
 
 # LINE BOT

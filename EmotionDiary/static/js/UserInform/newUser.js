@@ -2881,18 +2881,6 @@ var Application = function() {
 	window.onload = function(){
 		genderSelect(g_id);
 		jobSelect(j_id);
-        liff.init({ liffId: '1655966851-4WdE01zN' })
-		liff.ready.then(() => {
-            // do something you want when liff.init finishes
-            if(!liff.isLoggedIn()){
-                liff.login();
-            }else{
-                const user = liff.getContext();
-                $('#userid').val(user.userId);
-                const accessToken = liff.getAccessToken();
-                console.log(accessToken)
-            }
-        })
 	}
 
 }

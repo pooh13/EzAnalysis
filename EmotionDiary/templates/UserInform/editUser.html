@@ -7,7 +7,7 @@
 {% endblock %}
 
 {% block body %}
-	<form id="userForm" action="." method="post" class="form" enctype="multipart/form-data">
+	<form id="userForm" action="" method="post" class="form" enctype="multipart/form-data">
         {% csrf_token %}
 		<div id="ID1">
 			<svg class="_bj">
@@ -206,11 +206,12 @@
                 swal("請填寫名字", "", "error");
             }
 			else{
-                swal("修改成功", "", "success", {button:"OK"})
+                swal("儲存成功", "", "success", {button:"OK"})
                     .then(() => {
                         button.submit();
                     });
             }
+
         }
     </script>
 	

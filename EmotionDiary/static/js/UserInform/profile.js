@@ -8,7 +8,8 @@ window.onload = function(){
         liff.getProfile().then(profile => {
           const user = profile.userId;
           $('#userid').val(profile.userId);
-          location.replace('https://34cef46bea8d.ngrok.io/AI_analyze/editUser/'+profile.userId)
+          $('#disname').val(profile.displayName);
+          location.replace('https://34cef46bea8d.ngrok.io/AI_analyze/editUser/' + profile.userId)
         })
 //        const accessToken = liff.getAccessToken();
 //        console.log(accessToken)
