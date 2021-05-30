@@ -97,11 +97,8 @@ def newuser(request):
 def edituser(request, pk):
     profile = models.UserInform.objects.get(line_id=pk)
     form = forms.UserInformFrom(request.POST or None, instance=profile)
-    # form = forms.UserInformFrom(request.POST or None, request.FILES or None)
-    form_test = request.POST.get('line_id')
-    # print(form_test)
-    print(profile)
-    print(form)
+    # print(profile)
+    # print(form)
 
     if form.is_valid():
 
