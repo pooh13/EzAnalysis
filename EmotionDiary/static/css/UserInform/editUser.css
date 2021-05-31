@@ -1,5 +1,5 @@
 
-	.mediaViewInfo {
+    .mediaViewInfo {
 		--web-view-name: 修改基本資料1;
 		--web-view-id: ID1;
 		--web-scale-on-resize: true;
@@ -290,18 +290,18 @@
 		top: 14px;
 		overflow: visible;
 	}
-	#_br {
+	/*-------------- other -----------------*/
+	#other {
 		position: absolute;
 		width: 80px;
 		height: 102px;
 		left: 244px;
-		top: 216px;
+		top: 205px;
 		overflow: visible;
 	}
-	/*-------------- other -----------------*/
-	#other {
+	#other_text {
 		left: 23px;
-		top: 80px;
+		top: 90px;
 		position: absolute;
 		overflow: visible;
 		width: 35px;
@@ -314,35 +314,35 @@
 		color: rgba(255,255,255,1);
 		letter-spacing: -0.05px;
 	}
-	#other_btn.btn3{
+	.other_btn{
 		position: absolute;
 		overflow: visible;
 		width: 80px;
 		height: 80px;
 		left: 0px;
-		top: -10px;
+		top: 0px;
 	}
 	#ID035-astronaut {
 		position: absolute;
 		width: 63px;
 		height: 63px;
 		left: 8px;
-		top: 9px;
+		top: 20px;
 		overflow: visible;
 	}
-	
-	#_bv {
+/* --------------------------------------------------------------- */
+	#farmer {
 		position: absolute;
 		width: 85px;
 		height: 102px;
 		left: 120px;
-		top: 216px;
+		top: 205px;
 		overflow: visible;
 	}
-	#_8 {
+	#farmer_btn {
 		fill: rgba(227,124,124,1);
 	}
-	._8 {
+	.farmer_btn {
 		position: absolute;
 		overflow: visible;
 		width: 80px;
@@ -351,9 +351,9 @@
 		top: 0px;
 	}
 	/* farmer */
-	#farmer {
+	#farmer_text {
 		left: 0px;
-		top: 80px;
+		top: 90px;
 		position: absolute;
 		overflow: visible;
 		width: 86px;
@@ -371,28 +371,21 @@
 		width: 63px;
 		height: 63px;
 		left: 9px;
-		top: 9px;
+		top: 20px;
 		overflow: visible;
 	}
-	#farmer_btn.btn3{
-		position: absolute;
-		overflow: visible;
-		width: 80px;
-		height: 80px;
-		left: 0px;
-		top: -10px;
-	}
-	#_bz {
+	/* ----------------------------retirement------------------------------- */
+	#retirement {
 		position: absolute;
 		width: 80px;
 		height: 102px;
 		left: 0px;
-		top: 216px;
+		top: 205px;
 		overflow: visible;
 	}
-	#_b {
+	#retirement_text {
 		left: 6px;
-		top: 80px;
+		top: 90px;
 		position: absolute;
 		overflow: visible;
 		width: 69px;
@@ -405,10 +398,10 @@
 		color: rgba(255,255,255,1);
 		letter-spacing: -0.05px;
 	}
-	#_11 {
+	#retirement_btn {
 		fill: rgba(167,233,212,1);
 	}
-	._11 {
+	.retirement_btn {
 		position: absolute;
 		overflow: visible;
 		width: 80px;
@@ -421,20 +414,21 @@
 		width: 63px;
 		height: 63px;
 		left: 9px;
-		top: 9px;
+		top: 20px;
 		overflow: visible;
 	}
-	#_ca {
+/* --------------------------------------------------------------- */
+	#home {
 		position: absolute;
 		width: 80px;
 		height: 102px;
 		left: 244px;
-		top: 108px;
+		top: 100px;
 		overflow: visible;
 	}
-	#_cb {
+	#home_text {
 		left: 23px;
-		top: 80px;
+		top: 90px;
 		position: absolute;
 		overflow: visible;
 		width: 35px;
@@ -447,10 +441,10 @@
 		color: rgba(255,255,255,1);
 		letter-spacing: -0.05px;
 	}
-	#_15 {
+	#home_btn {
 		fill: rgba(250,214,172,1);
 	}
-	._15 {
+	.home_btn {
 		position: absolute;
 		overflow: visible;
 		width: 80px;
@@ -463,20 +457,21 @@
 		width: 63px;
 		height: 63px;
 		left: 9px;
-		top: 9px;
+		top: 20px;
 		overflow: visible;
 	}
-	#_cc {
+/* --------------------------------------------------------------- */
+	#business {
 		position: absolute;
 		width: 80px;
 		height: 102px;
 		left: 122px;
-		top: 108px;
+		top: 100px;
 		overflow: visible;
 	}
-	#_cd {
+	#business_text {
 		left: 15px;
-		top: 80px;
+		top: 90px;
 		position: absolute;
 		overflow: visible;
 		width: 52px;
@@ -489,10 +484,10 @@
 		color: rgba(255,255,255,1);
 		letter-spacing: -0.05px;
 	}
-	#_9 {
+	#business_btn {
 		fill: rgba(136,158,170,1);
 	}
-	._9 {
+	.business_btn {
 		position: absolute;
 		overflow: visible;
 		width: 80px;
@@ -505,21 +500,22 @@
 		width: 63px;
 		height: 63px;
 		left: 9px;
-		top: 9px;
+		top: 20px;
 		overflow: visible;
 	}
-	#_ce {
+/* --------------------------------------------------------------- */
+	#freelance {
 		position: absolute;
 		width: 80px;
 		height: 102px;
 		left: 0px;
-		top: 108px;
+		top: 100px;
 		overflow: visible;
 	}
-	#_12 {
+	#freelance_btn {
 		fill: rgba(147,146,155,1);
 	}
-	._12 {
+	.freelance_btn {
 		position: absolute;
 		overflow: visible;
 		width: 80px;
@@ -527,9 +523,9 @@
 		left: 0px;
 		top: 0px;
 	}
-	#_cf {
+	#freelance_text {
 		left: 15px;
-		top: 80px;
+		top: 90px;
 		position: absolute;
 		overflow: visible;
 		width: 52px;
@@ -547,20 +543,21 @@
 		width: 63px;
 		height: 63px;
 		left: 9px;
-		top: 9px;
+		top: 20px;
 		overflow: visible;
 	}
-	#_cg {
+/* --------------------------------------------------------------- */
+	#service {
 		position: absolute;
 		width: 80px;
 		height: 102px;
 		left: 244px;
-		top: 0px;
+		top: -10px;
 		overflow: visible;
 	}
-	#_ch {
+	#service_text {
 		left: 15px;
-		top: 80px;
+		top: 90px;
 		position: absolute;
 		overflow: visible;
 		width: 52px;
@@ -573,10 +570,10 @@
 		color: rgba(255,255,255,1);
 		letter-spacing: -0.05px;
 	}
-	#_13 {
+	#service_btn {
 		fill: rgba(184,245,255,1);
 	}
-	._13 {
+	.service_btn {
 		position: absolute;
 		overflow: visible;
 		width: 80px;
@@ -589,21 +586,22 @@
 		width: 63px;
 		height: 63px;
 		left: 9px;
-		top: 9px;
+		top: 20px;
 		overflow: visible;
 	}
-	#_cj {
+/* --------------------------------------------------------------- */
+	#soldier {
 		position: absolute;
 		width: 80px;
 		height: 102px;
 		left: 122px;
-		top: 0px;
+		top: -10px;
 		overflow: visible;
 	}
-	#_7 {
+	#soldier_btn {
 		fill: rgba(198,218,208,1);
 	}
-	._7 {
+	.soldier_btn {
 		position: absolute;
 		overflow: visible;
 		width: 80px;
@@ -611,9 +609,9 @@
 		left: 0px;
 		top: 0px;
 	}
-	#_cl {
+	#soldier_text {
 		left: 15px;
-		top: 80px;
+		top: 90px;
 		position: absolute;
 		overflow: visible;
 		width: 52px;
@@ -631,21 +629,22 @@
 		width: 63px;
 		height: 63px;
 		left: 9px;
-		top: 9px;
+		top: 20px;
 		overflow: visible;
 	}
-	#_cn {
+/* --------------------------------------------------------------- */
+	#student {
 		position: absolute;
 		width: 80px;
 		height: 102px;
 		left: 0px;
-		top: 0px;
+		top: -10px;
 		overflow: visible;
 	}
-	#_10 {
+	#student_btn {
 		fill: rgba(250,215,179,1);
 	}
-	._10 {
+	.student_btn {
 		position: absolute;
 		overflow: visible;
 		width: 80px;
@@ -658,12 +657,12 @@
 		width: 63px;
 		height: 63px;
 		left: 9px;
-		top: 9px;
+		top: 20px;
 		overflow: visible;
 	}
-	#_cq {
+	#student_text {
 		left: 24px;
-		top: 80px;
+		top: 90px;
 		position: absolute;
 		overflow: visible;
 		width: 35px;
@@ -676,6 +675,7 @@
 		color: rgba(255,255,255,1);
 		letter-spacing: -0.05px;
 	}
+/* --------------------------------------------------------------- */
 	#nametextbox{
 		mix-blend-mode: darken;
 		left: 0px;
@@ -708,7 +708,7 @@
 		border-radius:50px;
 	  	}
 	.btn3{
-		/* border:2px #ffffff solid; */
+		border:none;
 		height: 80px;
 		width:  80px;
 		font-size: small;
@@ -716,18 +716,10 @@
 		border-radius:20px;
 		}
 	.btn4{
-		border:5px #7eeef2 solid;
-		height: 100px;
-		width:  100px;
+		border:5px #0066ff solid;
+		height: 80px;
+		width:  80px;
 		font-size: small;
 		margin-top: 10px;
-		border-radius:30px;
+		border-radius:20px;
 		}
-
-
-#contextinfo {
-    display: none;
-}
-#accesstokendata, #profileinfo {
-    display: none;
-}

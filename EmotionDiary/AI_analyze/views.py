@@ -65,14 +65,17 @@ def index(request):
 
     })
 
+
 def menudiary(request):
     return render(request, 'Diary/menuDiary.html', {
 
     })
 
+
 def profile(request):
     return render(request, 'UserInform/profile.html', {
     })
+
 
 def edituser(request, pk):
     profile = models.UserInform.objects.get(line_id=pk)
