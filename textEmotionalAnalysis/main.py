@@ -13,9 +13,13 @@ os.environ["CUDA_VISIBLE_DEVICES"] = "0"
 def textEmotionalAnalysis():
 
     # ----- queryAll
-    tableQueryList = (f'select * from localtest.test')
-    textQueryList = (f'select test.text from localtest.test')
-    moodQueryList = (f'select test.mood from localtest.test')
+    # tableQueryList = (f'SELECT * FROM localtest.test')
+    # textQueryList = (f'SELECT test.text FROM localtest.test')
+    # moodQueryList = (f'SELECT test.mood FROM localtest.test')
+
+    tableQueryList = (f'SELECT * FROM localtest.test ORDER BY RAND() LIMIT 200')
+    textQueryList = (f'SELECT dmsc_zh.Comment FROM localtest.dmsc_zh ORDER BY RAND() LIMIT 200')
+    moodQueryList = (f'SELECT dmsc_zh.Star FROM localtest.dmsc_zh ORDER BY RAND() LIMIT 200')
 
     # ----- queryFunction
     # textQueryList = (f'select test.text from localtest.test where id = ' + line_id)
@@ -30,10 +34,11 @@ def textEmotionalAnalysis():
 
     # ----- one_hotEncoding
     X = one_hotEncoding.oneHotEncoding(tokenization.tokenization(textQueryList)[0], tokenization.tokenization(textQueryList)[1], moodQueryList)
-    # print(X)
+    print(X)
 
     # ----- column "mood"
     y = cursorToPd.cursorToPd(moodQueryList)
+    print(y)
 
     # ----- check row amount
     # print(X.shape)
