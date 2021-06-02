@@ -66,8 +66,26 @@ def index(request):
     })
 
 
-def menudiary(request):
+def menu_diary(request):
     return render(request, 'Diary/menuDiary.html', {
+
+    })
+
+
+def add_diary1(request):
+    return render(request, 'Diary/addDiary1.html', {
+
+    })
+
+
+def add_diary2(request):
+    return render(request, 'Diary/addDiary2.html', {
+
+    })
+
+
+def add_diary3(request):
+    return render(request, 'Diary/addDiary3.html', {
 
     })
 
@@ -77,9 +95,9 @@ def profile(request):
     })
 
 
-def edituser(request, pk):
-    profile = models.UserInform.objects.get(line_id=pk)
-    form = forms.UserInformFrom(request.POST or None, instance=profile)
+def edit_user(request, pk):
+    userinfo = models.UserInform.objects.get(line_id=pk)
+    form = forms.UserInformFrom(request.POST or None, instance=userinfo)
     # print(profile)
     # print(form)
     if request.method == 'POST':

@@ -51,7 +51,6 @@
 		overflow: visible;
 		--web-animation: fadein 0.3s ease-out;
 		--web-action-type: page;
-		--web-action-target: 修改日記.html;
 		cursor: pointer;
 	}
 	#_125 {
@@ -114,7 +113,6 @@
 		overflow: visible;
 		--web-animation: fadein 0.3s ease-out;
 		--web-action-type: page;
-		--web-action-target: 新增.html;
 		cursor: pointer;
 	}
 	#_127 {

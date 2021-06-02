@@ -23,18 +23,20 @@
 				<span>Revise<br/>Diary</span>
 			</div>
 		</div>
-		<div onclick="application.goToTargetView(event)" id="_ba">
-			<svg class="_127">
-				<rect id="_127" rx="5" ry="5" x="0" y="0" width="388" height="203">
-				</rect>
-			</svg>
-			<svg class="_126">
-				<rect id="_126" rx="5" ry="5" x="0" y="0" width="366" height="182">
-				</rect>
-			</svg>
-			<div id="Add_Diary">
-				<span>Add<br/>Diary</span>
-			</div>
+		<div id="_ba">
+			<a href="{% url 'EmotionDiary:addDiary1' %}">
+				<svg class="_127">
+					<rect id="_127" rx="5" ry="5" x="0" y="0" width="388" height="203">
+					</rect>
+				</svg>
+				<svg class="_126">
+						<rect id="_126" rx="5" ry="5" x="0" y="0" width="366" height="182">
+						</rect>
+				</svg>
+				<div id="Add_Diary">
+					<span>Add<br/>Diary</span>
+				</div>
+			</a>
 		</div>
 		<div id="_bc">
 			<img id="_be" src="{% static 'images/Diary/Menu/_be.png' %}" srcset="{% static 'images/Diary/Menu/_be.png' %} 1x, {% static 'images/Diary/Menu/_be@2x.png' %} 2x">

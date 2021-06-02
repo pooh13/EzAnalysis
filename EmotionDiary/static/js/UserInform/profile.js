@@ -10,7 +10,7 @@ window.onload = function(){
         liff.getProfile().then(profile => {
           $('#userid').val(profile.userId);
           $('#disname').val(profile.displayName);
-          window.location.replace('https://cdf0d3b0252f.ngrok.io/AI_analyze/editUser/' + profile.userId)
+          window.location.replace('https://f1a089c5d606.ngrok.io/AI_analyze/editUser/' + profile.userId)
         })
     })
 }
