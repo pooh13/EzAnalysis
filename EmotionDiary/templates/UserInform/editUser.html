@@ -199,7 +199,7 @@
 
 	<script type="text/javascript">
         function check(){
-            var button = document.getElementById('userForm');
+            var form = document.getElementById('userForm');
             var username = document.getElementById('disname').value;
             
 			if(username == 0){
@@ -208,7 +208,7 @@
 			else{
                 swal("儲存成功", "", "success", {button:"OK"})
                     .then(() => {
-                        button.submit();
+                        form.submit();
                     });
             }
 
