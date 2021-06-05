@@ -10,7 +10,7 @@ def oneHotEncoding(comment_bow, bow, queryList):
     onehot = OneHotEncoder(handle_unknown='ignore').fit(bow_array)
 
     df = cursorToPd.cursorToPd(queryList)
-    print(len(df))
+    # print(len(df))
 
     X = np.ndarray((len(df), len(bow)))
     for i in range(len(df)):

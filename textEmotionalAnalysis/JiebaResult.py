@@ -10,6 +10,6 @@ def JiebaResult(queryList):
 
     return[MyJieba_hant.MyJieba_hant(str(contextRow)) for contextRow in cursorToList.cursorToList(queryList)]
 
-# print(type(JiebaResult('select test.text from localtest.test')))
-# print(JiebaResult('select test.text from localtest.test'))
+# print(type(JiebaResult('select test_copy2.text from localtest.test_copy2')))
+# print(JiebaResult('select test_copy2.text from localtest.test_copy2'))
 # print(JiebaResult('select test.text from localtest.test')[2])
