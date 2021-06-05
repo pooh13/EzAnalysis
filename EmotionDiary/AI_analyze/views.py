@@ -90,6 +90,12 @@ def add_diary3(request):
     })
 
 
+def edit_diary(request):
+    return render(request, 'Diary/editDiary.html', {
+
+    })
+
+
 def profile(request):
     return render(request, 'UserInform/profile.html', {
     })

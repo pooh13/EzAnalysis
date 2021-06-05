@@ -9,20 +9,7 @@
 {% block body %}
 	<div id="">
 		<img id="_2" src="{% static 'images/Diary/Menu/_2.png' %}" srcset="{% static 'images/Diary/Menu/_2.png' %} 1x, {% static 'images/Diary/Menu/_2@2x.png' %} 2x">
-
-		<div onclick="application.goToTargetView(event)" id="_ba1">
-			<svg class="_125">
-				<rect id="_125" rx="5" ry="5" x="0" y="0" width="388" height="203">
-				</rect>
-			</svg>
-			<svg class="_128">
-				<rect id="_128" rx="5" ry="5" x="0" y="0" width="366" height="182">
-				</rect>
-			</svg>
-			<div id="Revise_Diary">
-				<span>Revise<br/>Diary</span>
-			</div>
-		</div>
+		<!--  新增日記  -->
 		<div id="_ba">
 			<a href="{% url 'EmotionDiary:addDiary1' %}">
 				<svg class="_127">
@@ -38,6 +25,24 @@
 				</div>
 			</a>
 		</div>
+
+		<!--  修改日記  -->
+		<div id="_ba1">
+			<a href="{% url 'EmotionDiary:editDiary' %}">
+				<svg class="_125">
+					<rect id="_125" rx="5" ry="5" x="0" y="0" width="388" height="203">
+					</rect>
+				</svg>
+				<svg class="_128">
+					<rect id="_128" rx="5" ry="5" x="0" y="0" width="366" height="182">
+					</rect>
+				</svg>
+				<div id="Revise_Diary">
+					<span>Revise<br/>Diary</span>
+				</div>
+			</a>
+		</div>
+
 		<div id="_bc">
 			<img id="_be" src="{% static 'images/Diary/Menu/_be.png' %}" srcset="{% static 'images/Diary/Menu/_be.png' %} 1x, {% static 'images/Diary/Menu/_be@2x.png' %} 2x">
 			<img id="_bf" src="{% static 'images/Diary/Menu/_bf.png' %}" srcset="{% static 'images/Diary/Menu/_bf.png' %} 1x, {% static 'images/Diary/Menu/_bf@2x.png' %} 2x">
