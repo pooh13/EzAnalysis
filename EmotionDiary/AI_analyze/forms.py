@@ -10,8 +10,18 @@ class UserInformFrom(forms.ModelForm):
             'line_id': forms.TextInput(attrs={'id': 'userid', 'name': 'userid', 'type': 'hidden'}),
             'username': forms.TextInput(attrs={'id': 'disname', 'name': 'username', 'class': 'nametextbox', 'type': 'text', 'size': '20', 'maxlength': '20'}),
             'birth': forms.TextInput(attrs={'id': 'birth', 'class': 'agetextbox','name': 'agetextbox', 'type': 'date'}),
-            'gender': forms.TextInput(attrs={'id': 'gender', 'type': 'text'}),
+            'gender': forms.TextInput(attrs={'id': 'gender', 'type': 'hidden'}),
             'career_id': forms.TextInput(attrs={'id': 'job', 'type': 'hidden'}),
+        }
+
+
+class DiaryForm(forms.ModelForm):
+    class Meta:
+        model = models.Diary
+        fields = ['line_id', 'date', 'mood', 'note', 'pic']
+        widgets = {
+            'line_id': forms.TextInput(attrs={'id': 'userid', 'name': 'userid', 'type': 'hidden'}),
+            'mood': forms.TextInput(attrs={'id': 'mood', 'type': 'hidden'}),
         }
 
 

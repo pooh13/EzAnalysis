@@ -2851,8 +2851,7 @@ var Application = function() {
 				if(this.className == 'btn1'){
 					this.className = 'btn2';
 					g_id = this.id;
-					var g_name = this.value;
-					document.getElementById('gender').value = g_name;
+					document.getElementById('gender').value = this.value;
 					var btn = document.getElementsByClassName('btn2');
 					for(var j=0;j<btn.length;j++){
 						if(btn[j].id!=g_id){
@@ -2896,8 +2895,7 @@ var Application = function() {
 				if(this.className == 'btn3'){
 					this.className = 'btn4';
 					j_id = this.id;
-					var j_name = this.value;
-					document.getElementById('job').value = j_name;
+					document.getElementById('job').value = this.value;
 					var btn = document.getElementsByClassName('btn4');
 					for(var j=0;j<btn.length;j++){
 						if(btn[j].id!=j_id){

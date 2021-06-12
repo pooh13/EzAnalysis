@@ -11,7 +11,7 @@
 		<img id="_2" src="{% static 'images/Diary/Menu/_2.png' %}" srcset="{% static 'images/Diary/Menu/_2.png' %} 1x, {% static 'images/Diary/Menu/_2@2x.png' %} 2x">
 		<!--  新增日記  -->
 		<div id="_ba">
-			<a href="{% url 'EmotionDiary:addDiary1' %}">
+			<button id="add_btn">
 				<svg class="_127">
 					<rect id="_127" rx="5" ry="5" x="0" y="0" width="388" height="203">
 					</rect>
@@ -21,14 +21,14 @@
 						</rect>
 				</svg>
 				<div id="Add_Diary">
-					<span>Add<br/>Diary</span>
+					<span>新增<br/>日曆</span>
 				</div>
-			</a>
+			</button>
 		</div>
 
 		<!--  修改日記  -->
 		<div id="_ba1">
-			<a href="{% url 'EmotionDiary:editDiary' %}">
+			<button id="edit_btn">
 				<svg class="_125">
 					<rect id="_125" rx="5" ry="5" x="0" y="0" width="388" height="203">
 					</rect>
@@ -38,9 +38,9 @@
 					</rect>
 				</svg>
 				<div id="Revise_Diary">
-					<span>Revise<br/>Diary</span>
+					<span>修改<br/>日記</span>
 				</div>
-			</a>
+			</button>
 		</div>
 
 		<div id="_bc">

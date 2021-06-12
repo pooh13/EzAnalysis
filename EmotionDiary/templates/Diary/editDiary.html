@@ -1,4 +1,5 @@
 {% extends 'layout.html' %}
+{% load bootstrap4 %}
 {% load static %}
 
 {% block css %}
@@ -165,7 +166,6 @@
 			swal("儲存成功", "", "success", {button:"OK"})
 				.then(() => {
 					form.submit();
-					window.close();
 				});
 			}
     </script>

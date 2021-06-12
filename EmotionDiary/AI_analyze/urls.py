@@ -22,10 +22,10 @@ urlpatterns = [
     path('callback/', views.callback),
     path('index/', views.index, name='index'),
     path('menuDiary/', views.menu_diary, name='menuDiary'),
-    path('addDiary1/', views.add_diary1, name='addDiary1'),
+    path('addDiary1/<pk>', views.add_diary1, name='addDiary1'),
     path('addDiary2/', views.add_diary2, name='addDiary2'),
     path('addDiary3/', views.add_diary3, name='addDiary3'),
-    path('editDiary/', views.edit_diary, name='editDiary'),
+    path('editDiary/<pk>', views.edit_diary, name='editDiary'),
     path('profile/', views.profile, name='profile'),
     path('editUser/<pk>', views.edit_user, name='editUser'),
 ]

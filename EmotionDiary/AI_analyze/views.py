@@ -72,13 +72,22 @@ def menu_diary(request):
     })
 
 
-def add_diary1(request):
+def add_diary1(request, pk):
+    today = datetime.date.today().strftime("%Y/%m/%d")
+    time = datetime.datetime.today().strftime("%H:%M")
+    form = forms.DiaryForm(request.POST or None)
+    if request.method == 'POST':
+        if form.is_valid():
+            form.save()
+    print(form)
     return render(request, 'Diary/addDiary1.html', {
-
+        'today': today, 'time': time, 'form': form,
     })
 
 
 def add_diary2(request):
+    # diary = models.Diary.objects.get(id=pk)
+    # form = forms.DiaryForm(request.POST or None, instance=diary)
     return render(request, 'Diary/addDiary2.html', {
 
     })
@@ -90,9 +99,14 @@ def add_diary3(request):
     })
 
 
-def edit_diary(request):
+def edit_diary(request, pk):
+    diary = models.Diary.objects.get(line_id=pk)
+    form = forms.DiaryForm(request.POST or None, instance=diary)
+    if request.method == 'POST':
+        if form.is_valid():
+            form.save()
     return render(request, 'Diary/editDiary.html', {
-
+        'form': form,
     })
 
 

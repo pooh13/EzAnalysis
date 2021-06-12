@@ -2831,6 +2831,31 @@ var Application = function() {
 	// sometimes the body size is 0 so we call this now and again later
 	window.addEventListener("load", self.onloadHandler);
 	window.document.addEventListener("DOMContentLoaded", self.onloadHandler);
+	// ---------------------------------------------------------------------------
+
+	window.onload = function(){
+    liff.init({
+        liffId: '1655966851-vA7AZYl9'
+    })
+    .then(() => {
+        // do something you want when liff.init finishes
+        if(!liff.isLoggedIn()){
+            liff.login();
+        }
+        liff.getProfile().then(profile => {
+            var userid = profile.userId;
+
+            document.getElementById('add_btn').addEventListener('click', function () {
+                window.location.replace('https://f1a089c5d606.ngrok.io/AI_analyze/addDiary1/' + profile.userId);
+            })
+
+            document.getElementById('edit_btn').addEventListener('click', function () {
+                window.location.replace('https://f1a089c5d606.ngrok.io/AI_analyze/editDiary/' + profile.userId);
+            })
+
+        })
+    })
+}
 }
 
 window.application = new Application();
