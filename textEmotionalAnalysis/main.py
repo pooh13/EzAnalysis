@@ -5,6 +5,7 @@ import RNN_Model
 import cursorToPd
 import tokenization
 import one_hotEncoding
+import twoTypeClassify
 import MyTrain_test_split
 
 os.environ["CUDA_DEVICE_ORDER"] = "PCI_BUS_ID"
@@ -14,21 +15,17 @@ os.environ["CUDA_VISIBLE_DEVICES"] = "0"
 def textEmotionalAnalysis():
 
     # ----- queryAll
-    tableQueryList = (f'SELECT * FROM localtest.test')
-    textQueryList = (f'SELECT test.text FROM localtest.test')
-    moodQueryList = (f'SELECT test.mood FROM localtest.test')
+    # tableQueryList = (f'SELECT * FROM localtest.test')
+    # textQueryList = (f'SELECT test.text FROM localtest.test')
+    # moodQueryList = (f'SELECT test.mood FROM localtest.test')
 
-    # tableQueryList = (f'SELECT * FROM localtest.test_copy2')
-    # textQueryList = (f'SELECT test_copy2.text FROM localtest.test_copy2')
-    # moodQueryList = (f'SELECT test_copy2.mood FROM localtest.test_copy2')
+    tableQueryList = (f'SELECT * FROM localtest.test ORDER BY dmsc_zh.ID LIMIT 100')
+    textQueryList = (f'SELECT dmsc_zh.Comment FROM localtest.dmsc_zh ORDER BY dmsc_zh.ID LIMIT 100')
+    moodQueryList = (f'SELECT dmsc_zh.Star FROM localtest.dmsc_zh ORDER BY dmsc_zh.ID LIMIT 100')
 
-    # tableQueryList = (f'SELECT * FROM localtest.test ORDER BY RAND() LIMIT 200')
-    # textQueryList = (f'SELECT dmsc_zh.Comment FROM localtest.dmsc_zh ORDER BY RAND() LIMIT 200')
-    # moodQueryList = (f'SELECT dmsc_zh.Star FROM localtest.dmsc_zh ORDER BY RAND() LIMIT 200')
-
-    tableQueryList = (f'SELECT * FROM localtest.test')
-    textQueryList = (f'SELECT dmsc_zh.Comment FROM localtest.dmsc_zh')
-    moodQueryList = (f'SELECT dmsc_zh.Star FROM localtest.dmsc_zh')
+    # tableQueryList = (f'SELECT * FROM localtest.test')
+    # textQueryList = (f'SELECT dmsc_zh.Comment FROM localtest.dmsc_zh')
+    # moodQueryList = (f'SELECT dmsc_zh.Star FROM localtest.dmsc_zh')
 
     # ----- queryFunction
     # textQueryList = (f'select test.text from localtest.test where id = ' + line_id)
@@ -42,11 +39,14 @@ def textEmotionalAnalysis():
     # tokenization.tokenization(tableQueryList, textQueryList)
 
     # ----- one_hotEncoding
-    X = one_hotEncoding.oneHotEncoding(tokenization.tokenization(textQueryList)[0], tokenization.tokenization(textQueryList)[1], moodQueryList)
+    X = one_hotEncoding.oneHotEncoding(tokenization.tokenization(textQueryList)[0],
+                                       tokenization.tokenization(textQueryList)[1],
+                                       twoTypeClassify.twoTypeClassify(moodQueryList, 0, '正負評'))
     # print(X)
+    # print(twoTypeClassify.twoTypeClassify(moodQueryList, 0, '正負評'))
 
     # ----- column "mood"
-    y = cursorToPd.cursorToPd(moodQueryList)
+    y = twoTypeClassify.twoTypeClassify(moodQueryList, 0, '正負評')
     # print(y)
 
     # ----- check row amount

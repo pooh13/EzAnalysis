@@ -2,14 +2,17 @@ import numpy as np
 from sklearn.preprocessing import OneHotEncoder
 import cursorToPd
 
-def oneHotEncoding(comment_bow, bow, queryList):
+def oneHotEncoding(comment_bow, bow, args):
 
     comment_bowLen = len(comment_bow) - 1
 
     bow_array = np.array(list(bow)).reshape(-1, 1)
     onehot = OneHotEncoder(handle_unknown='ignore').fit(bow_array)
 
-    df = cursorToPd.cursorToPd(queryList)
+    if type(args) == str:
+        df = cursorToPd.cursorToPd(args, 1)
+    else:
+        df = args
     # print(len(df))
 
     X = np.ndarray((len(df), len(bow)))
