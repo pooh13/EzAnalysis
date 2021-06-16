@@ -32,10 +32,10 @@ class AnalysisDiary(models.Model):
 
 class Diary(models.Model):
     line_id = models.ForeignKey(UserInform, on_delete=models.CASCADE)
-    date = models.DateTimeField(null=False)
-    mood = models.IntegerField(null=False)
+    date = models.DateField(null=False)
+    mood = models.IntegerField(null=True)
     note = models.CharField(max_length=255)
-    pic = models.ImageField(null=False)
+    pic = models.ImageField(upload_to='images', null=True)
 
     class Meta:
         unique_together = ("line_id", "date")
@@ -49,13 +49,17 @@ class UserThings(models.Model):
 
 
 class DefaultNote(models.Model):
+    things_id = models.ForeignKey(DefaultThing, on_delete=models.CASCADE)
     note_id = models.CharField(max_length=4, primary_key=True)
     default_note = models.CharField(max_length=255, blank=False, null=False)
+
+    class Meta:
+        unique_together = ('things_id', 'note_id')
 
 
 class InstantPhotoAnalysis(models.Model):
     photo_id = models.AutoField(primary_key=True)
     line_id = models.ForeignKey(UserInform, on_delete=models.CASCADE)
     date = models.DateTimeField(null=False)
-    pic = models.ImageField(upload_to='img')
+    pic = models.ImageField(upload_to='images')
 

@@ -43,8 +43,7 @@ SECRET_KEY = '*f60@damy%^)#)=$@+0804h=nvwyhi594_az@3oo=u$+u(pc&+'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-SET_URL = 'b87e8a582406.ngrok.io'
-# SET_URL = '719b5dc374f9.ngrok.io'
+SET_URL = '2661aaf0c7ff.ngrok.io'
 ALLOWED_HOSTS = ['*']
 
 
@@ -104,8 +103,8 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',   # 數據庫引擎
         'NAME': 'diary',  # DB名稱，ex: sakila
         'USER': 'root',     # 用戶名
-        # 'PASSWORD': 'Imd@110208',  # 密碼
-        'PASSWORD': 'mysql123',  # 密碼
+        # 'PASSWORD': 'Imd@110208',  # local密碼
+        'PASSWORD': 'mysql123',  # 140上mysql密碼
         'HOST': '127.0.0.1',  # 本機端ip
         'PORT': '3306',         # port
     }
@@ -142,7 +141,7 @@ USE_I18N = True
 
 USE_L10N = True
 
-USE_TZ = True
+USE_TZ = False
 
 
 # Static files (CSS, JavaScript, Images)
