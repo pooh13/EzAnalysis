@@ -36,7 +36,7 @@ SECRET_KEY = '*f60@damy%^)#)=$@+0804h=nvwyhi594_az@3oo=u$+u(pc&+'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-SET_URL = '8aa6f8fd5907.ngrok.io'
+SET_URL = '2661aaf0c7ff.ngrok.io'
 ALLOWED_HOSTS = ['*']
 
 
