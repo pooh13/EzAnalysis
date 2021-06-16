@@ -1,13 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
     {% load static %}
-
     <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
     {% block css %}{% endblock %}
 
@@ -15,8 +14,6 @@
 
     {% load bootstrap4 %}
 
-    {% bootstrap_css %}
-    {% bootstrap_javascript jquery='full' %}
 </head>
 
 <body>
