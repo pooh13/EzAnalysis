@@ -1,0 +1,404 @@
+
+	.mediaViewInfo {
+		--web-view-name: 選單;
+		--web-view-id: ;
+		--web-scale-on-resize: true;
+		--web-enable-deep-linking: true;
+	}
+	:root {
+		--web-view-ids: ;
+	}
+	*menu {
+		margin: 0;
+		padding: 0;
+		box-sizing: border-box;
+		border: none;
+	}
+	#menu {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		background-color: rgba(250,247,237,1);
+		overflow: hidden;
+		--web-view-name: 選單;
+		--web-view-id: ;
+		--web-scale-on-resize: true;
+		--web-enable-deep-linking: true;
+	}
+	@keyframes fadein {
+	
+		0% {
+			opacity: 0;
+		}
+		100% {
+			opacity: 1;
+		}
+	
+	}
+	#_2 {
+		position: absolute;
+		width: 900px;
+		height: 900px;
+		overflow: visible;
+	}
+	#_ba1{
+		position: absolute;
+		width: 388px;
+		height: 203px;
+		left: 20px;
+		top: 515px;
+		overflow: visible;
+		--web-animation: fadein 0.3s ease-out;
+		--web-action-type: page;
+		cursor: pointer;
+	}
+	#_125 {
+		fill: rgba(212,224,231,1);
+		stroke: rgba(112,112,112,1);
+		stroke-width: 1px;
+		stroke-linejoin: miter;
+		stroke-linecap: butt;
+		stroke-miterlimit: 4;
+		shape-rendering: auto;
+	}
+	._125 {
+		position: absolute;
+		overflow: visible;
+		width: 388px;
+		height: 203px;
+		left: 0px;
+		top: 0px;
+		cursor: pointer;
+	}
+	#_128 {
+		opacity: 0.32;
+		fill: transparent;
+		stroke: rgba(191,163,137,1);
+		stroke-width: 2px;
+		stroke-linejoin: miter;
+		stroke-linecap: butt;
+		stroke-miterlimit: 4;
+		shape-rendering: auto;
+	}
+	._128 {
+		position: absolute;
+		overflow: visible;
+		width: 366px;
+		height: 182px;
+		left: 11px;
+		top: 11px;
+	}
+	#Revise_Diary {
+		left: 98px;
+		top: 19px;
+		position: absolute;
+		overflow: visible;
+		width: 193px;
+		white-space: nowrap;
+		text-align: center;
+		font-family: Cochin;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 70px;
+		color: rgba(191,163,137,1);
+		letter-spacing: -0.05px;
+	}
+	#_ba {
+		position: absolute;
+		width: 388px;
+		height: 203px;
+		left: 20px;
+		top: 282px;
+		overflow: visible;
+		--web-animation: fadein 0.3s ease-out;
+		--web-action-type: page;
+		cursor: pointer;
+	}
+	#_127 {
+		fill: rgba(212,224,231,1);
+	}
+	._127 {
+		position: absolute;
+		overflow: visible;
+		width: 388px;
+		height: 203px;
+		left: 0px;
+		top: 0px;
+	}
+	#_126 {
+		fill: transparent;
+		stroke: rgba(191,163,137,1);
+		stroke-width: 1px;
+		stroke-linejoin: miter;
+		stroke-linecap: butt;
+		stroke-dasharray: 10 5;
+		stroke-dashoffset: 0;
+		stroke-miterlimit: 4;
+		shape-rendering: auto;
+	}
+	._126 {
+		position: absolute;
+		overflow: visible;
+		width: 366px;
+		height: 182px;
+		left: 9px;
+		top: 10px;
+	}
+	#Add_Diary {
+		left: 115px;
+		top: 18px;
+		position: absolute;
+		overflow: visible;
+		width: 159px;
+		white-space: nowrap;
+		text-align: center;
+		font-family: Cochin;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 70px;
+		color: rgba(191,163,137,1);
+		letter-spacing: -0.05px;
+	}
+	#_bc {
+		transform: matrix(1,0,0,1,301.3745,430.6294) rotate(89deg);
+		transform-origin: center;
+		position: absolute;
+		width: 187.251px;
+		height: 168.741px;
+		left: 0px;
+		top: 0px;
+		overflow: visible;
+	}
+	#_58 {
+		opacity: 0.996;
+		transform: translate(594.019px, -308.844px) matrix(1,0,0,1,318.463,457.5971) rotate(25deg);
+		transform-origin: center;
+		position: absolute;
+		width: 153.074px;
+		height: 114.805px;
+		left: 0px;
+		top: 0px;
+		overflow: visible;
+	}
+	#_be {
+		filter: drop-shadow(0px 0.5px 1px rgba(0, 0, 0, 0.161));
+		position: absolute;
+		width: 89%;
+		height: 112%;
+		left: 6.5px;
+		top: 3.7px;
+		overflow: visible;
+		-webkit-transform:rotate(-71.6deg);
+	}
+	#_bf {
+		position: absolute;
+		width: 115.895px;
+		height: 129.102px;
+		left: 31.222px;
+		top: 29.476px;
+		overflow: visible;
+		-webkit-transform:rotate(-71deg);
+	}
+	#_1 {
+		position: absolute;
+		width: 76.954px;
+		height: 56.977px;
+		left: 20px;
+		top: 35px;
+		overflow: visible;
+		-webkit-transform:rotate(-80deg);
+	}
+	#_bh {
+		position: absolute;
+		width: 385.917px;
+		height: 273.635px;
+		left: 181.041px;
+		top: -61.273px;
+		overflow: visible;
+	}
+	#w644_1 {
+		filter: drop-shadow(0px 0.5px 1px rgba(0, 0, 0, 0.161));
+		position: absolute;
+		width: 130.305px;
+		height: 42.242px;
+		left: 148.848px;
+		top: 260.879px;
+		overflow: visible;
+	}
+	#w644_1_bj {
+		filter: drop-shadow(0px 0.5px 1px rgba(0, 0, 0, 0.161));
+		position: absolute;
+		width: 129px;
+		height: 45.134px;
+		left: 149.5px;
+		top: 492.433px;
+		overflow: visible;
+	}
+	#_13 {
+		fill: rgba(0,0,0,0);
+		stroke: rgba(195,169,146,1);
+		stroke-width: 2px;
+		stroke-linejoin: miter;
+		stroke-linecap: butt;
+		stroke-miterlimit: 4;
+		shape-rendering: auto;
+	}
+	._13 {
+		overflow: visible;
+		position: absolute;
+		width: 259.74px;
+		height: 61.78px;
+		left: -110.152px;
+		top: 129.031px;
+		transform: matrix(1,0,0,1,0,0);
+	}
+	#KEEP {
+		opacity: 0.348;
+		left: 31px;
+		top: 45px;
+		position: absolute;
+		overflow: visible;
+		width: 198px;
+		white-space: nowrap;
+		text-align: left;
+		font-family: Bodoni 72 Smallcaps;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 92px;
+		color: rgba(0,0,0,0.22);
+		letter-spacing: -0.05px;
+	}
+	#DIARY {
+		opacity: 0.348;
+		left: 139px;
+		top: 133px;
+		position: absolute;
+		overflow: visible;
+		width: 252px;
+		white-space: nowrap;
+		text-align: left;
+		font-family: Bodoni 72 Smallcaps;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 92px;
+		color: rgba(0,0,0,0.22);
+		letter-spacing: -0.05px;
+	}
+	#KEEP_bn {
+		left: 20px;
+		top: 33px;
+		position: absolute;
+		overflow: visible;
+		width: 198px;
+		white-space: nowrap;
+		text-align: left;
+		font-family: Bodoni 72 Smallcaps;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 92px;
+		color: rgba(132,86,42,1);
+		letter-spacing: -0.05px;
+	}
+	#DIARY_bo {
+		left: 127px;
+		top: 121px;
+		position: absolute;
+		overflow: visible;
+		width: 252px;
+		white-space: nowrap;
+		text-align: left;
+		font-family: Bodoni 72 Smallcaps;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 92px;
+		color: rgba(132,86,42,1);
+		letter-spacing: -0.05px;
+	}
+	#_61 {
+		transform: matrix(1,0,0,1,11.0992,180.5922) rotate(-15deg);
+		transform-origin: center;
+		position: absolute;
+		width: 45.66px;
+		height: 63.539px;
+		left: 0px;
+		top: 0px;
+		overflow: visible;
+	}
+	#_136 {
+		fill: rgba(255,255,255,1);
+	}
+	._136 {
+		filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+		position: absolute;
+		overflow: visible;
+		width: 78.549px;
+		height: 91.192px;
+		left: 0px;
+		top: 0px;
+	}
+	#vh9keWU {
+		position: absolute;
+		width: 50.115px;
+		height: 56.339px;
+		left: -2px;
+		top: 3.511px;
+		overflow: visible;
+		-webkit-transform:rotate(15deg);
+	}
+	#clothespin_PNG57 {
+		filter: drop-shadow(0px 5px 5px rgba(0, 0, 0, 0.161));
+		position: absolute;
+		width: 23.44px;
+		height: 23.44px;
+		left: 14.916px;
+		top: 169.723px;
+		overflow: visible;
+	}
+	#_62 {
+		transform: matrix(1,0,0,1,69.4052,162.9021) rotate(-27deg);
+		transform-origin: center;
+		position: absolute;
+		width: 45.66px;
+		height: 63.539px;
+		left: 0px;
+		top: 0px;
+		overflow: visible;
+	}
+	#_136_bu {
+		fill: rgba(255,255,255,1);
+	}
+	._136_bu {
+		filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+		position: absolute;
+		overflow: visible;
+		width: 87.53px;
+		height: 95.343px;
+		left: 0px;
+		top: 0px;
+	}
+	#ID8164a8766028c1cc7d82587f62dd {
+		position: absolute;
+		width: 56.53px;
+		height: 60.376px;
+		left: -5px;
+		top: 3.949px;
+		overflow: visible;
+		-webkit-transform:rotate(27deg);
+	}
+	#clothespin_PNG57_bw {
+		filter: drop-shadow(0px 5px 5px rgba(0, 0, 0, 0.161));
+		position: absolute;
+		width: 32.646px;
+		height: 32.646px;
+		left: 61.43px;
+		top: 153.4px;
+		overflow: visible;
+	}
+	#_3 {
+		position: absolute;
+		width: 285.199px;
+		height: 294.353px;
+		left: -16.1px;
+		top: 705.647px;
+		overflow: visible;
+	}

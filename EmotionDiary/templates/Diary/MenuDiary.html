@@ -2,45 +2,46 @@
 {% load static %}
 
 {% block css %}
-	<link rel="stylesheet" href="{% static 'css/Diary/menuDiary_style.css' %}">
+	<link rel="stylesheet" href="{% static 'css/Diary/menuDiary.css' %}">
 {% endblock %}
 
 {% block body %}
-	<div id="">
+	<div id="menu">
 		<img id="_2" src="{% static 'images/Diary/Menu/_2.png' %}" srcset="{% static 'images/Diary/Menu/_2.png' %} 1x, {% static 'images/Diary/Menu/_2@2x.png' %} 2x">
-
-		<div onclick="application.goToTargetView(event)" id="_ba1">
-			<svg class="_125">
-				<rect id="_125" rx="5" ry="5" x="0" y="0" width="388" height="203">
-				</rect>
-			</svg>
-			<svg class="_128">
-				<rect id="_128" rx="5" ry="5" x="0" y="0" width="366" height="182">
-				</rect>
-			</svg>
-			<a href="{% url 'EmotionDiary:edit_diary' %}">
-				<div id="Revise_Diary">
-					<span>Revise<br/>Diary</span>
-				</div>
-			</a>
-		</div>
-		<div onclick="application.goToTargetView(event)" id="_ba">
-			<svg class="_127">
-				<rect id="_127" rx="5" ry="5" x="0" y="0" width="388" height="203">
-				</rect>
-			</svg>
-			<svg class="_126">
-				<rect id="_126" rx="5" ry="5" x="0" y="0" width="366" height="182">
-				</rect>
-			</svg>
-			<a href="#">
+		<!--  新增日記  -->
+		<div id="_ba">
+			<button id="add_btn">
+				<svg class="_127">
+					<rect id="_127" rx="5" ry="5" x="0" y="0" width="388" height="203">
+					</rect>
+				</svg>
+				<svg class="_126">
+						<rect id="_126" rx="5" ry="5" x="0" y="0" width="366" height="182">
+						</rect>
+				</svg>
 				<div id="Add_Diary">
-					<span>
-						Add<br/>Diary
-					</span>
+					<span>新增<br/>日曆</span>
 				</div>
-			</a>
+			</button>
 		</div>
+
+		<!--  修改日記  -->
+		<div id="_ba1">
+			<button id="edit_btn">
+				<svg class="_125">
+					<rect id="_125" rx="5" ry="5" x="0" y="0" width="388" height="203">
+					</rect>
+				</svg>
+				<svg class="_128">
+					<rect id="_128" rx="5" ry="5" x="0" y="0" width="366" height="182">
+					</rect>
+				</svg>
+				<div id="Revise_Diary">
+					<span>修改<br/>日記</span>
+				</div>
+			</button>
+		</div>
+
 		<div id="_bc">
 			<img id="_be" src="{% static 'images/Diary/Menu/_be.png' %}" srcset="{% static 'images/Diary/Menu/_be.png' %} 1x, {% static 'images/Diary/Menu/_be@2x.png' %} 2x">
 			<img id="_bf" src="{% static 'images/Diary/Menu/_bf.png' %}" srcset="{% static 'images/Diary/Menu/_bf.png' %} 1x, {% static 'images/Diary/Menu/_bf@2x.png' %} 2x">
@@ -90,11 +91,10 @@
 		</div>
 		<img id="clothespin_PNG57_bw" src="{% static 'images/Diary/Menu/clothespin_PNG57_bw.png' %}" srcset="{% static 'images/Diary/Menu/clothespin_PNG57_bw.png' %} 1x, {% static 'images/Diary/Menu/clothespin_PNG57_bw@2x.png' %} 2x">
 
-		<img id="_3" src="{% static 'images/Diary/Menu/_3.png' %}" srcset="{% static 'images/Diary/Menu/_3.png' %} 1x, {% static 'images/Menu/_3@2x.png' %} 2x">
+		<img id="_3" src="{% static 'images/Diary/Menu/_3.png' %}" srcset="{% static 'images/Diary/Menu/_3.png' %} 1x, {% static 'images/Diary/Menu/_3@2x.png' %} 2x">
 	</div>
 {% endblock %}
 
 {% block js %}
-	<script src="https://static.line-scdn.net/liff/edge/2/sdk.js"/>
-	<script src="{% static 'js/liff.js' %}"></script>
+	<script src="{% static 'js/Diary/menuDiary.js' %}"></script>
 {% endblock %}

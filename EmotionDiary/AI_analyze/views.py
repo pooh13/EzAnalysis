@@ -6,7 +6,8 @@ import tempfile
 from django.shortcuts import render
 from cgitb import handler
 from django.conf import settings
-from django.http import HttpResponse, HttpResponseBadRequest, HttpResponseForbidden
+from django.urls import reverse
+from django.http import HttpResponse, HttpResponseRedirect, HttpResponseBadRequest, HttpResponseForbidden
 from django.views.decorators.csrf import csrf_exempt
 
 from linebot import LineBotApi, WebhookParser, WebhookHandler
@@ -15,25 +16,22 @@ from linebot.models import *
 
 from . import forms
 from . import models
-# from liffpy import (
-#     LineFrontendFramework as LIFF,
-# )
+from liffpy import (
+    LineFrontendFramework as LIFF,
+)
 
-# 16-------------------------------------
-# import ssl
-# ssl._create_default_https_context = ssl._create_unverified_context
-# ---------------------------------------
+import ssl
+ssl._create_default_https_context = ssl._create_unverified_context
 
 # setting TIME
 t = time.time()
 today = datetime.date.today().strftime("%Y-%m-%d")
-# print(datetime.date.today().strftime("%Y-%m-%d"))
-
 
 # filter 來過濾條件
 
 
 # LINE 聊天機器人的基本資料
+liff_api = LIFF(settings.LINE_CHANNEL_ACCESS_TOKEN)
 line_bot_api = LineBotApi(settings.LINE_CHANNEL_ACCESS_TOKEN)
 handler = WebhookHandler(settings.LINE_CHANNEL_SECRET)
 parser = WebhookParser(settings.LINE_CHANNEL_SECRET)
@@ -96,7 +94,6 @@ def index(request):
 
     })
 
-
 def usertest(request):
     form = forms.UserInformFrom(request.POST or None, request.FILES or None)
     # form.fields['line_id'].widget = form.HiddenInput()
@@ -104,33 +101,67 @@ def usertest(request):
         # form.save(commit=False) # 保存數據，但暫時不提交到數據庫中
         form.save()
 
-    return render(request, 'UserInform/new.html', {
-        'form': form
+
+def menu_diary(request):
+    return render(request, 'Diary/menuDiary.html', {
+
     })
 
 
-def newUser(request):
-    form = forms.UserInformFrom(request.POST or None, request.FILES or None)
-    if form.is_valid():
-        # newform = form.save(commit=False) # 保存數據，但暫時不提交到數據庫中
-
-        form.save()
-    print(form.as_p())
-
-    return render(request, 'UserInform/newUser.html', {
-        'form': form
+def add_diary1(request, pk):
+    today = datetime.date.today().strftime("%Y/%m/%d")
+    time = datetime.datetime.today().strftime("%H:%M")
+    form = forms.DiaryForm(request.POST or None)
+    if request.method == 'POST':
+        if form.is_valid():
+            form.save()
+    print(form)
+    return render(request, 'Diary/addDiary1.html', {
+        'today': today, 'time': time, 'form': form,
     })
 
 
-def editUser(request):
-    form = forms.UserInformFrom(request.POST or None, request.FILES or None)
-    if form.is_valid():
-        # newform = form.save(commit=False) # 保存數據，但暫時不提交到數據庫中
-        form.save()
-    # print(form.as_p())
+def add_diary2(request):
+    # diary = models.Diary.objects.get(id=pk)
+    # form = forms.DiaryForm(request.POST or None, instance=diary)
+    return render(request, 'Diary/addDiary2.html', {
+
+    })
+
+
+def add_diary3(request):
+    return render(request, 'Diary/addDiary3.html', {
+
+    })
+
+
+def edit_diary(request, pk):
+    diary = models.Diary.objects.get(line_id=pk)
+    form = forms.DiaryForm(request.POST or None, instance=diary)
+    if request.method == 'POST':
+        if form.is_valid():
+            form.save()
+    return render(request, 'Diary/editDiary.html', {
+        'form': form,
+    })
+
+
+def profile(request):
+    return render(request, 'UserInform/profile.html', {
+    })
+
+
+def edit_user(request, pk):
+    userinfo = models.UserInform.objects.get(line_id=pk)
+    form = forms.UserInformFrom(request.POST or None, instance=userinfo)
+    # print(profile)
+    # print(form)
+    if request.method == 'POST':
+        if form.is_valid():
+            form.save()
 
     return render(request, 'UserInform/editUser.html', {
-        'form': form
+        'form': form,
     })
 
 

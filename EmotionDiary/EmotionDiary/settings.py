@@ -44,6 +44,7 @@ SECRET_KEY = '*f60@damy%^)#)=$@+0804h=nvwyhi594_az@3oo=u$+u(pc&+'
 DEBUG = True
 
 SET_URL = '2661aaf0c7ff.ngrok.io'
+SET_URL = 'cdf0d3b0252f.ngrok.io'
 ALLOWED_HOSTS = ['*']
 
 
@@ -107,6 +108,12 @@ DATABASES = {
         'PASSWORD': 'mysql123',  # 140上mysql密碼
         'HOST': '127.0.0.1',  # 本機端ip
         'PORT': '3306',         # port
+        'NAME': 'EzAnalyze',  # 設定資料庫名
+        'USER': 'root',  # 設定使用者名稱
+        'PASSWORD': '1234',  # 設定密碼
+        'HOST': 'localhost',  # 設定主機地址
+        'PORT': 3306,  # 設定埠號
+        'ENGINE': 'django.db.backends.mysql',  # 設定驅動
     }
 }
 

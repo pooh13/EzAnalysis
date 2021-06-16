@@ -91,7 +91,7 @@ var Application = function() {
 		if (view==null) view = self.getInitialView();
 		self.collectViews();
 		self.collectOverlays();
-		self.collectMediaQueries();
+//		self.collectMediaQueries();
 
 		for (let index = 0; index < views.length; index++) {
 			var view = views[index];
@@ -1836,11 +1836,11 @@ var Application = function() {
 		return viewId;
 	}
 
-	self.getApplicationStylesheet = function() {
-		var stylesheetId = self.getViewPreferenceValue(document.body, self.prefix + "stylesheet-id");
-		self.applicationStylesheet = document.getElementById("applicationStylesheet");
-		return self.applicationStylesheet.sheet;
-	}
+//	self.getApplicationStylesheet = function() {
+//		var stylesheetId = self.getViewPreferenceValue(document.body, self.prefix + "stylesheet-id");
+//		self.applicationStylesheet = document.getElementById("applicationStylesheet");
+//		return self.applicationStylesheet.sheet;
+//	}
 
 	self.getVisibleView = function() {
 		var viewIds = self.getViewIds();
@@ -2177,7 +2177,7 @@ var Application = function() {
 
 	self.collectMediaQueries = function() {
 		var viewIds = self.getViewIds();
-		var styleSheet = self.getApplicationStylesheet();
+//		var styleSheet = self.getApplicationStylesheet();
 		var cssRules = self.getStylesheetRules(styleSheet);
 		var numOfCSSRules = cssRules ? cssRules.length : 0;
 		var cssRule;
@@ -2778,7 +2778,7 @@ var Application = function() {
 	}
 
 	self.onloadHandler = function(event) {
-		self.initialize();
+//		self.initialize();
 	}
 
 	self.setElementHTML = function(id, value) {
@@ -2837,14 +2837,21 @@ var Application = function() {
 
 	function genderSelect(g_id) {
 		var arr = document.getElementsByName('gender_btn');
-		for(var i = 0;i<arr.length;i++){
+		var user_gen = document.getElementById('gender').value;
+
+		if(user_gen == 'M'){
+			document.getElementsByTagName('button').G1.className='btn2';
+		}else if(user_gen == 'F'){
+			document.getElementsByTagName('button').G2.className='btn2';
+		}
+
+		for(var i = 0;i<arr.length;i++){	
 			arr[i].onclick = function(){
 				//this是当前激活的按钮，在这里可以写对应的操作
 				if(this.className == 'btn1'){
 					this.className = 'btn2';
 					g_id = this.id;
-					var g_name = this.value;
-					document.getElementById('gender').value = g_name;
+					document.getElementById('gender').value = this.value;
 					var btn = document.getElementsByClassName('btn2');
 					for(var j=0;j<btn.length;j++){
 						if(btn[j].id!=g_id){
@@ -2859,14 +2866,36 @@ var Application = function() {
 
 	function jobSelect(j_id){
 		var arr = document.getElementsByName('job_btn');
+		var user_job = document.getElementById('job').value;
+
+		if(user_job == 'C001'){
+			document.getElementsByTagName('button').C001.className='btn4';
+		}else if(user_job == 'C002'){
+			document.getElementsByTagName('button').C002.className='btn4';
+		}else if(user_job == 'C003'){
+			document.getElementsByTagName('button').C003.className='btn4';
+		}else if(user_job == 'C004'){
+			document.getElementsByTagName('button').C004.className='btn4';
+		}else if(user_job == 'C005'){
+			document.getElementsByTagName('button').C005.className='btn4';
+		}else if(user_job == 'C006'){
+			document.getElementsByTagName('button').C006.className='btn4';
+		}else if(user_job == 'C007'){
+			document.getElementsByTagName('button').C007.className='btn4';
+		}else if(user_job == 'C008'){
+			document.getElementsByTagName('button').C008.className='btn4';
+		}else if(user_job == 'C009'){
+			document.getElementsByTagName('button').C009.className='btn4';
+		}
+
+
 		for(var i = 0;i<arr.length;i++){
 			arr[i].onclick = function(){
 				//this是当前激活的按钮，在这里可以写对应的操作
 				if(this.className == 'btn3'){
 					this.className = 'btn4';
 					j_id = this.id;
-					var j_name = this.value;
-					document.getElementById('job').value = j_name;
+					document.getElementById('job').value = this.value;
 					var btn = document.getElementsByClassName('btn4');
 					for(var j=0;j<btn.length;j++){
 						if(btn[j].id!=j_id){
@@ -2878,30 +2907,11 @@ var Application = function() {
 		}
 	}
 
-	function initializeApp(data) {
-        liff.getProfile().then(profile => {
-            $("#userid").val(data.context.userId);
-//            $("#disname").val(profile.displayName);
-        });
-        // .val( )：新增或讀取表單內的值
-        var userid = data.context.userId; //my line_id
-        var form = document.forms['userForm'];
-        var uservalid = $("#userid").val(form.elements['line_id']);
-        // 判斷使用者是否已經填過資料
-        if(uservalid == ''){
-            window.alert("not yet!");
-        }else{
-            window.alert("already");
-        }
-    }
-
-	window.onload = function(){
+    window.onload = function(){
 		genderSelect(g_id);
 		jobSelect(j_id);
-		liff.init(function (data) {
-            initializeApp(data);
-        });
 	}
+
 }
 
 window.application = new Application();

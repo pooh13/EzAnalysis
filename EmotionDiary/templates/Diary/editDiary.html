@@ -1,156 +1,172 @@
 {% extends 'layout.html' %}
+{% load bootstrap4 %}
 {% load static %}
 
 {% block css %}
-	<link rel="stylesheet" href="{% static 'css/Diary/editDiary_style.css' %}">
+	<link rel="stylesheet" href="{% static 'css/Diary/editDiary.css' %}">
 {% endblock %}
 
 {% block body %}
-	<div id="ID3_-_1__3">
-		<svg class="_12" viewBox="0 0 428 89">
-			<path id="_12" d="M 0 0 L 428 0 L 428 89 L 0 89 L 0 0 Z">
-			</path>
-		</svg>
-		<div id="title">
-			<span>更改日記</span>
-		</div>
-		<div id="_51">
-			<svg class="_104">
-				<rect id="_104" rx="0" ry="0" x="0" y="0" width="428" height="60">
-				</rect>
-			</svg>
-			<div id="Date">
-				<span>Date</span>
-				<input id="intputdate" type="date">
-			</div>
-		</div>
-		<div id="_50">
-			<svg class="_106">
-				<rect id="_106" rx="0" ry="0" x="0" y="0" width="428" height="60">
-				</rect>
-			</svg>
-			<div id="Time">
-				<span>Time</span>
-				<input id="intputtime" type="time">
-			</div>
-		</div>
-		<div onclick="application.goToTargetView(event)" id="_52">
-			<svg class="_104_bd">
-				<rect id="_104_bd" rx="0" ry="0" x="0" y="0" width="428" height="96">
-				</rect>
-			</svg>
-			<img id="ID051-joy" src="{% static 'images/Diary/Edit/ID051-joy.png' %}" srcset="{% static 'images/Diary/Edit/ID051-joy.png' %} 1x, {% static 'images/Diary/Edit/ID051-joy@2x.png' %} 2x">
-				
-			<div id="_bf">
-				<span>心情</span>
-			</div>
-		</div>
-		<div id="_53">
-			<svg class="_104_bh">
-				<rect id="_104_bh" rx="0" ry="0" x="0" y="0" width="428" height="234">
-				</rect>
-			</svg>
-			<div id="_bi">
-				<span>事件</span>
-			</div>
-			<svg class="_9" viewBox="0 0 408 1">
-				<path id="_9" d="M 0 0 L 255.796875 0 L 408 0">
+	<form id="editDiaryForm" action="{% url 'EmotionDiary:menuDiary' %}" method="post" class="form" enctype="multipart/form-data">
+		{% csrf_token %}
+		<div id="ID3_-_1__3">
+			<svg class="_12" viewBox="0 0 428 89">
+				<path id="_12" d="M 0 0 L 428 0 L 428 89 L 0 89 L 0 0 Z">
 				</path>
 			</svg>
-		</div>
-		<div onclick="application.goToTargetView(event)" id="_bk">
-			<div id="_bl">
-				<div id="_bm">
-					<span>購物</span>
-				</div>
-				<img id="shopping-bag" src="{% static 'images/Diary/Edit/shopping-bag.png' %}" srcset="{% static 'images/Diary/Edit/shopping-bag.png' %} 1x, {% static 'images/Diary/Edit/shopping-bag@2x.png' %} 2x">
-					
+			<div id="title">
+				<span>更改日記</span>
 			</div>
-			<div id="_bo">
-				<img id="fast-food" src="{% static 'images/Diary/Edit/fast-food.png' %}" srcset="{% static 'images/Diary/Edit/fast-food.png' %} 1x, {% static 'images/Diary/Edit/fast-food@2x.png' %} 2x">
-					
-				<div id="_bq">
-					<span>美食</span>
+			<div id="_51">
+				<svg class="_104">
+					<rect id="_104" rx="0" ry="0" x="0" y="0" width="428" height="60">
+					</rect>
+				</svg>
+				<div id="Date">
+					<span>Date</span>
+					<input id="intputdate" type="date">
 				</div>
 			</div>
-			<div id="_br">
-				<img id="friends" src="{% static 'images/Diary/Edit/friends.png' %}" srcset="{% static 'images/Diary/Edit/friends.png' %} 1x, {% static 'images/Diary/Edit/friends@2x.png' %} 2x">
-					
-				<div id="_bt">
-					<span>朋友</span>
+			<div id="_50">
+				<svg class="_106">
+					<rect id="_106" rx="0" ry="0" x="0" y="0" width="428" height="60">
+					</rect>
+				</svg>
+				<div id="Time">
+					<span>Time</span>
+					<input id="intputtime" type="time">
 				</div>
 			</div>
-			<div id="_bu">
-				<img id="sport" src="{% static 'images/Diary/Edit/sport.png' %}" srcset="{% static 'images/Diary/Edit/sport.png' %} 1x, {% static 'images/Diary/Edit/sport@2x.png' %} 2x">
-					
-				<div id="_bw">
-					<span>運動</span>
+			<div onclick="application.goToTargetView(event)" id="_52">
+				<svg class="_104_bd">
+					<rect id="_104_bd" rx="0" ry="0" x="0" y="0" width="428" height="96">
+					</rect>
+				</svg>
+				<img id="ID051-joy" src="{% static 'images/Diary/Edit/ID051-joy.png' %}" srcset="{% static 'images/Diary/Edit/ID051-joy.png' %} 1x, {% static 'images/Diary/Edit/ID051-joy@2x.png' %} 2x">
+
+				<div id="_bf">
+					<span>心情</span>
 				</div>
 			</div>
-			<div id="_bx">
-				<img id="favourite" src="{% static 'images/Diary/Edit/favourite.png' %}" srcset="{% static 'images/Diary/Edit/favourite.png' %} 1x, {% static 'images/Diary/Edit/favourite@2x.png' %} 2x">
-					
-				<div id="_bz">
-					<span>約會</span>
+			<div id="_53">
+				<svg class="_104_bh">
+					<rect id="_104_bh" rx="0" ry="0" x="0" y="0" width="428" height="234">
+					</rect>
+				</svg>
+				<div id="_bi">
+					<span>事件</span>
+				</div>
+				<svg class="_9" viewBox="0 0 408 1">
+					<path id="_9" d="M 0 0 L 255.796875 0 L 408 0">
+					</path>
+				</svg>
+			</div>
+			<div onclick="application.goToTargetView(event)" id="_bk">
+				<div id="_bl">
+					<div id="_bm">
+						<span>購物</span>
+					</div>
+					<img id="shopping-bag" src="{% static 'images/Diary/Edit/shopping-bag.png' %}" srcset="{% static 'images/Diary/Edit/shopping-bag.png' %} 1x, {% static 'images/Diary/Edit/shopping-bag@2x.png' %} 2x">
+
+				</div>
+				<div id="_bo">
+					<img id="fast-food" src="{% static 'images/Diary/Edit/fast-food.png' %}" srcset="{% static 'images/Diary/Edit/fast-food.png' %} 1x, {% static 'images/Diary/Edit/fast-food@2x.png' %} 2x">
+
+					<div id="_bq">
+						<span>美食</span>
+					</div>
+				</div>
+				<div id="_br">
+					<img id="friends" src="{% static 'images/Diary/Edit/friends.png' %}" srcset="{% static 'images/Diary/Edit/friends.png' %} 1x, {% static 'images/Diary/Edit/friends@2x.png' %} 2x">
+
+					<div id="_bt">
+						<span>朋友</span>
+					</div>
+				</div>
+				<div id="_bu">
+					<img id="sport" src="{% static 'images/Diary/Edit/sport.png' %}" srcset="{% static 'images/Diary/Edit/sport.png' %} 1x, {% static 'images/Diary/Edit/sport@2x.png' %} 2x">
+
+					<div id="_bw">
+						<span>運動</span>
+					</div>
+				</div>
+				<div id="_bx">
+					<img id="favourite" src="{% static 'images/Diary/Edit/favourite.png' %}" srcset="{% static 'images/Diary/Edit/favourite.png' %} 1x, {% static 'images/Diary/Edit/favourite@2x.png' %} 2x">
+
+					<div id="_bz">
+						<span>約會</span>
+					</div>
+				</div>
+				<div id="_b">
+					<img id="joystick" src="{% static 'images/Diary/Edit/joystick.png' %}" srcset="{% static 'images/Diary/Edit/joystick.png' %} 1x, {% static 'images/Diary/Edit/joystick@2x.png' %} 2x">
+
+					<div id="_ca">
+						<span>玩遊戲</span>
+					</div>
+				</div>
+				<div id="_cb">
+					<img id="broom" src="{% static 'images/Diary/Edit/broom.png' %}" srcset="{% static 'images/Diary/Edit/broom.png' %} 1x, {% static 'images/Diary/Edit/broom@2x.png' %} 2x">
+
+					<div id="_cc">
+						<span>清潔</span>
+					</div>
+				</div>
+				<div id="_cd">
+					<img id="luggage" src="{% static 'images/Diary/Edit/luggage.png' %}" srcset="{% static 'images/Diary/Edit/luggage.png' %} 1x, {% static 'images/Diary/Edit/luggage@2x.png' %} 2x">
+
+					<div id="_ce">
+						<span>旅行</span>
+					</div>
+				</div>
+				<div id="_cf">
+					<img id="confetti" src="{% static 'images/Diary/Edit/confetti.png' %}" srcset="{% static 'images/Diary/Edit/confetti.png' %} 1x, {% static 'images/Diary/Edit/confetti@2x.png' %} 2x">
+
+					<div id="_cg">
+						<span>派對</span>
+					</div>
+				</div>
+				<div id="_ch">
+					<img id="open-book" src="{% static 'images/Diary/Edit/open-book.png' %}" srcset="{% static 'images/Diary/Edit/open-book.png' %} 1x, {% static 'images/Diary/Edit/open-book@2x.png' %} 2x">
+
+					<div id="_ci">
+						<span>閱讀</span>
+					</div>
 				</div>
 			</div>
-			<div id="_b">
-				<img id="joystick" src="{% static 'images/Diary/Edit/joystick.png' %}" srcset="{% static 'images/Diary/Edit/joystick.png' %} 1x, {% static 'images/Diary/Edit/joystick@2x.png' %} 2x">
-					
-				<div id="_ca">
-					<span>玩遊戲</span>
-				</div>
-			</div>
-			<div id="_cb">
-				<img id="broom" src="{% static 'images/Diary/Edit/broom.png' %}" srcset="{% static 'images/Diary/Edit/broom.png' %} 1x, {% static 'images/Diary/Edit/broom@2x.png' %} 2x">
-					
-				<div id="_cc">
-					<span>清潔</span>
-				</div>
-			</div>
-			<div id="_cd">
-				<img id="luggage" src="{% static 'images/Diary/Edit/luggage.png' %}" srcset="{% static 'images/Diary/Edit/luggage.png' %} 1x, {% static 'images/Diary/Edit/luggage@2x.png' %} 2x">
-					
-				<div id="_ce">
-					<span>旅行</span>
-				</div>
-			</div>
-			<div id="_cf">
-				<img id="confetti" src="{% static 'images/Diary/Edit/confetti.png' %}" srcset="{% static 'images/Diary/Edit/confetti.png' %} 1x, {% static 'images/Diary/Edit/confetti@2x.png' %} 2x">
-					
-				<div id="_cg">
-					<span>派對</span>
-				</div>
-			</div>
-			<div id="_ch">
-				<img id="open-book" src="{% static 'images/Diary/Edit/open-book.png' %}" srcset="{% static 'images/Diary/Edit/open-book.png' %} 1x, {% static 'images/Diary/Edit/open-book@2x.png' %} 2x">
-					
-				<div id="_ci">
-					<span>閱讀</span>
-				</div>
-			</div>
-		</div>
-		<!-- <input type="file" id="fileElem" multiple accept="image/*" onchange="handleFiles(this)"> 
-		<div id="fileList" style="width:200px;height:200px;"></div> -->
-		<svg class="_107">
-			<rect id="_107" rx="0" ry="0" x="0" y="0" width="428" height="317">
-			</rect>
-		</svg>
-		<img id="photo-camera" src="{% static 'images/Diary/Edit/photo-camera.png' %}" srcset="{% static 'images/Diary/Edit/photo-camera.png' %} 1x, {% static 'images/Diary/Edit/photo-camera@2x.png' %} 2x">
-		
-		
-		<div onclick="application.goToTargetView(event)" id="NEXT" class="NEXT">
-			<svg class="_4">
-				<rect id="_4" rx="24" ry="24" x="0" y="0" width="123" height="48">
+			<!-- <input type="file" id="fileElem" multiple accept="image/*" onchange="handleFiles(this)">
+			<div id="fileList" style="width:200px;height:200px;"></div> -->
+			<svg class="_107">
+				<rect id="_107" rx="0" ry="0" x="0" y="0" width="428" height="317">
 				</rect>
 			</svg>
-			<div id="_cj">
-				<span>完成</span>
+			<img id="photo-camera" src="{% static 'images/Diary/Edit/photo-camera.png' %}" srcset="{% static 'images/Diary/Edit/photo-camera.png' %} 1x, {% static 'images/Diary/Edit/photo-camera@2x.png' %} 2x">
+
+
+			<div id="NEXT" class="NEXT">
+				<svg class="_4">
+					<rect id="_4" rx="24" ry="24" x="0" y="0" width="123" height="48">
+					</rect>
+				</svg>
+				<div id="_cj">
+					<input type="button" value="完成" style="color:white" onclick="check(this);">
+	<!--				<span>完成</span>-->
+				</div>
 			</div>
 		</div>
-	</div>
+	</form>
 {% endblock %}
 
 {% block js %}
-	<script src="{% static 'js/Diary/Edit/editdiary.js' %}"></script>
+	<script src="{% static 'js/Diary/editDiary.js' %}"></script>
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+	<script type="text/javascript">
+        function check(){
+			var form = document.getElementById('editDiaryForm');
+			swal("儲存成功", "", "success", {button:"OK"})
+				.then(() => {
+					form.submit();
+				});
+			}
+    </script>
 {% endblock %}
