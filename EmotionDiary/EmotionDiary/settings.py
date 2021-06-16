@@ -101,13 +101,14 @@ DATABASES = {
     #     'NAME': BASE_DIR / 'db.sqlite3',
     # },
     'default': {
-        'ENGINE': 'django.db.backends.mysql',   # 數據庫引擎
-        'NAME': 'diary',  # DB名稱，ex: sakila
-        'USER': 'root',     # 用戶名
-        # 'PASSWORD': 'Imd@110208',  # local密碼
-        'PASSWORD': 'mysql123',  # 140上mysql密碼
-        'HOST': '127.0.0.1',  # 本機端ip
-        'PORT': '3306',         # port
+        # 'ENGINE': 'django.db.backends.mysql',   # 數據庫引擎
+        # 'NAME': 'diary',  # DB名稱，ex: sakila
+        # 'USER': 'root',     # 用戶名
+        # # 'PASSWORD': 'Imd@110208',  # local密碼
+        # 'PASSWORD': 'mysql123',  # 140上mysql密碼
+        # 'HOST': '127.0.0.1',  # 本機端ip
+        # 'PORT': '3306',         # ports
+
         'NAME': 'EzAnalyze',  # 設定資料庫名
         'USER': 'root',  # 設定使用者名稱
         'PASSWORD': '1234',  # 設定密碼

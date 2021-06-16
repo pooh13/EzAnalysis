@@ -578,7 +578,7 @@ def handle_text_message(event):
                         )
                     ),
                     URIImagemapAction(
-                        link_uri='https://liff.line.me/1655986483-zn8JLArg',
+                        link_uri='https://liff.line.me/1655976131-1rjWz2x3',
                         area=ImagemapArea(
                             x=520, y=0, width=520, height=240
                         )

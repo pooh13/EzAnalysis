@@ -2835,7 +2835,7 @@ var Application = function() {
 
 	window.onload = function(){
     liff.init({
-        liffId: '1655966851-vA7AZYl9'
+        liffId: '1655976131-1rjWz2x3'
     })
     .then(() => {
         // do something you want when liff.init finishes
