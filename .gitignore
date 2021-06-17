@@ -6,6 +6,8 @@ textEmotionalAnalysis/.idea/
 textEmotionalAnalysis/db.sqlite3
 textEmotionalAnalysis/venv/
 
+Models/
+
 EmotionDiary/AI_analyze/__pycache__/
 EmotionDiary/__pycache__/
 
