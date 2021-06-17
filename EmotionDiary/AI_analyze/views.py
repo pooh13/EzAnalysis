@@ -255,10 +255,10 @@ def handle_text_message(event):
         if prev:
             if prev[event.source.user_id] == "diary_image":
                 # 判斷使用者當天是否已經登入過一次照片(使用者一天只會有一張照片)
-                if os.path.isfile('media\\images\\' + event.source.user_id + '-' + today + '.' + ext):
-                    os.remove('media\\images\\' + event.source.user_id + '-' + today + '.' + ext)
+                if os.path.isfile('media/images/' + event.source.user_id + '-' + today + '.' + ext):
+                    os.remove('media/images/' + event.source.user_id + '-' + today + '.' + ext)
 
-                with open('media\\images\\' + event.source.user_id + '-', 'wb') as file:
+                with open('media/images/' + event.source.user_id + '-', 'wb') as file:
                     for chunk in message_content.iter_content():
                         file.write(chunk)
 
@@ -270,7 +270,7 @@ def handle_text_message(event):
                 os.rename(temp_file_path, dist_path)
                 # print(dist_path)
 
-                arr = dist_path.split("\\")
+                arr = dist_path.split("/")
                 db_pic_path = arr[-1::-1][1] + "/" + arr[-1::-1][0]  # img/XXX.jpg
                 # print(db_pic_path)
 
@@ -313,15 +313,15 @@ def handle_text_message(event):
                         TextSendMessage(text="您今天的心情為：" + mood + "\n\n所輸入的日記內容為：\n" + diary.note),
                         TextSendMessage(text="所上傳的照片為："),
                         ImageSendMessage(
-                            original_content_url='https://' + url + '/' + dist_path.replace("\\", "/"),
-                            preview_image_url='https://' + url + '/' + dist_path.replace("\\", "/")
+                            original_content_url='https://' + url + '/' + dist_path,
+                            preview_image_url='https://' + url + '/' + dist_path
                         ),
                         confirm_template
                     ]
                 )
             else:
                 # 即時照片接收/分析
-                with tempfile.NamedTemporaryFile(dir='media\\images\\', prefix=event.source.user_id + '-', delete=False) as file:
+                with tempfile.NamedTemporaryFile(dir='media/images/', prefix=event.source.user_id + '-', delete=False) as file:
                     for chunk in message_content.iter_content():
                         file.write(chunk)
 
@@ -333,7 +333,7 @@ def handle_text_message(event):
                 # dist_name = os.path.basename(dist_path)
                 os.rename(temp_file_path, dist_path)
 
-                arr = dist_path.split("\\")
+                arr = dist_path.split("/")
                 db_pic_path = arr[-1::-1][1] + "/" + arr[-1::-1][0]  # img/XXX.jpg
                 # print(db_pic_path)
 
@@ -348,7 +348,7 @@ def handle_text_message(event):
                 )
         else:  # if dictionary prev={}
             # 即時照片接收/分析
-            with tempfile.NamedTemporaryFile(dir='media\\images\\', prefix=event.source.user_id + '-', delete=False) as file:
+            with tempfile.NamedTemporaryFile(dir='media/images/', prefix=event.source.user_id + '-', delete=False) as file:
                 for chunk in message_content.iter_content():
                     file.write(chunk)
 
@@ -360,7 +360,7 @@ def handle_text_message(event):
             # dist_name = os.path.basename(dist_path)
             os.rename(temp_file_path, dist_path)
 
-            arr = dist_path.split("\\")
+            arr = dist_path.split("/")
             db_pic_path = arr[-1::-1][1] + "/" + arr[-1::-1][0]  # img/XXX.jpg
             # print(db_pic_path)
 
