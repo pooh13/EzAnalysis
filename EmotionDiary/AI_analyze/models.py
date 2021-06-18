@@ -32,7 +32,7 @@ class AnalysisDiary(models.Model):
 
 class Diary(models.Model):
     line_id = models.ForeignKey(UserInform, on_delete=models.CASCADE)
-    date = models.DateField(null=False)
+    date = models.DateTimeField(null=False)
     mood = models.IntegerField(null=True)
     note = models.CharField(max_length=255)
     pic = models.ImageField(upload_to='images', null=True)
