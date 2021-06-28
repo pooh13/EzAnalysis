@@ -1,8 +1,11 @@
 
-	#ID1 {
-		position: absolute;
+	form, #ID1 {
+		position: relative;
 		width: 100%;
 		height: 100%;
+		background: rgba(253,231,232,1);
+		overflow-x: hidden;
+		overflow-y: scroll;
 	}
 
     /*  vh=view height, vw=view weight */
@@ -10,17 +13,18 @@
 	/* --- 標題 --- */
 	#_bk {
 		position: relative;
-		overflow: visible;
 		width: 100%;
-		height: 7%;
-		padding: 2% 0;
+		height: 50px;
+		padding: 4px 0;
 		white-space: nowrap;
+		overflow: visible;
 		background: rgba(214,226,233,1);
 	}
     #banner {
         position: relative;
-		overflow: visible;
 		width: 100%;
+		height: 100%;
+		margin: 0 auto;
 		text-align: center;
 		font-family: Microsoft JhengHei;
 		font-style: normal;
@@ -29,12 +33,7 @@
 		color: rgba(109,104,117,1);
     }
 
-    /* --- content --- */
     #content {
-        position: relative;
-        width: 100%;
-        height: 93%;
-        padding: 4% 0;
         background: rgba(253,231,232,1);
     }
 
@@ -549,25 +548,25 @@
 
 	/* --- next page --- */
 	#next {
-		position: relative;
+        position: relative;
 		width: 368px;
 		height: 50px;
-		margin: 0 auto;
-		overflow: visible;
+		margin: 0 auto 5%;
+        overflow: visible;
 	}
 	#next_btn {
-	    position: relative;
-	    float: right;
-	    top: -610%;
-	    width: 141px;
-	    height: 100%;
-	    margin: 0 22px;
+        position: relative;
+        width: 80%;
+        height:50px;
+        margin: 0 auto;
 	}
-	input[type="button"] {
-	    width: 100%;
-	    height: 100%;
-	    color: white;
-	    text-align: center;
+
+    .next_btn {
+        position: relative;
+        width: 130px;
+        height: 50px;
+        margin: 0 auto;
+        color: white;
 		font-family: Apple SD Gothic Neo;
 		font-style: normal;
 		font-weight: bold;
@@ -576,4 +575,4 @@
 		border-radius: 24px;
 		background: rgba(255,215,184,1);
 		filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
-	}
+    }
