@@ -57,122 +57,120 @@
 			<!--	job	-->
 			<div id="work">
 				{{ form.career_id }}
-				<div id="work_btn">
-					<!-- 底框 -->
-					<svg class="_5">
-						<rect id="_5" rx="28" ry="28" width="100%" height="100%">
-						</rect>
-					</svg>
-					<!-- 職業btn -->
-					<div id="work_row1">
-						<!-- 學生 -->
-						<div id="student">
-							<div id="student_btn">
-								<button id="C001" name="job_btn" value="C001" type="button" class="btn3" style="background-color: rgba(250,215,179,1);">
-									<img id="ID009-student" src="{% static 'images/UserInform/ID009-student.png' %}" srcset="{% static 'images/UserInform/ID009-student.png' %} 1x, {% static 'images/UserInform/ID009-student@2x.png' %} 2x">
-								</button>
-							</div>
-							<div id="student_text">
-								<span>學生</span>
-							</div>
-						</div>
+				<div id="work_background">
+				</div>
 
-						<!-- 服務業 -->
-						<div id="service">
-							<div id="service_btn">
-								<button id = "C003" name="job_btn" value="C003" type = "button" class = "btn3" style="background-color: rgba(184,245,255,1);">
-									<img id="ID046-telemarketer" src="{% static 'images/UserInform/ID046-telemarketer.png' %}" srcset="{% static 'images/UserInform/ID046-telemarketer.png' %} 1x, {% static 'images/UserInform/ID046-telemarketer@2x.png' %} 2x">
-								</button>
-							</div>
-							<div id="service_text">
-								<span>服務業</span>
-							</div>
+				<!-- 職業btn -->
+				<div id="work_row1">
+					<!-- 學生 -->
+					<div id="student">
+						<div id="student_btn">
+							<button id="C001" name="job_btn" value="C001" type="button" class="btn3" style="background-color: rgba(250,215,179,1);">
+								<img id="ID009-student" src="{% static 'images/UserInform/ID009-student.png' %}" srcset="{% static 'images/UserInform/ID009-student.png' %} 1x, {% static 'images/UserInform/ID009-student@2x.png' %} 2x">
+							</button>
 						</div>
-
-						<!-- 軍公教 -->
-						<div id="soldier">
-							<div id="soldier_btn">
-								<button id="C002" name="job_btn" value="C002" type="button" class="btn3" style="background-color: rgba(198,218,208,1);">
-									<img id="ID030-soldier" src="{% static 'images/UserInform/ID030-soldier.png' %}" srcset="{% static 'images/UserInform/ID030-soldier.png' %} 1x, {% static 'images/UserInform/ID030-soldier@2x.png' %} 2x">
-								</button>
-							</div>
-							<div id="soldier_text">
-								<span>軍公教</span>
-							</div>
+						<div id="student_text">
+							<span>學生</span>
 						</div>
 					</div>
-					<div id="work_row2">
-						<!-- 自由業 -->
-						<div id="freelance">
-							<div id="freelance_btn">
-								<button id = "C004" name="job_btn" value="C004" type = "button" class = "btn3" style="background-color: rgba(147,146,155,1);">
-									<img id="ID019-hacker" src="{% static 'images/UserInform/ID019-hacker.png' %}" srcset="{% static 'images/UserInform/ID019-hacker.png' %} 1x, {% static 'images/UserInform/ID019-hacker@2x.png' %} 2x">
-								</button>
-							</div>
-							<div id="freelance_text">
-								<span>自由業</span>
-							</div>
-						</div>
 
-						<!-- 家管 -->
-						<div id="home">
-							<div id="home_btn">
-								<button id = "C006" name="job_btn" value="C006" type = "button" class = "btn3" style="background-color: rgba(251, 219, 231,1);">
-									<img id="ID008-maid" src="{% static 'images/UserInform/img/ID008-maid.png' %}" srcset="{% static 'images/UserInform/ID008-maid.png' %} 1x, {% static 'images/UserInform/ID008-maid@2x.png' %} 2x">
-								</button>
-							</div>
-							<div id="home_text">
-								<span>家管</span>
-							</div>
+					<!-- 服務業 -->
+					<div id="service">
+						<div id="service_btn">
+							<button id = "C003" name="job_btn" value="C003" type = "button" class = "btn3" style="background-color: rgba(184,245,255,1);">
+								<img id="ID046-telemarketer" src="{% static 'images/UserInform/ID046-telemarketer.png' %}" srcset="{% static 'images/UserInform/ID046-telemarketer.png' %} 1x, {% static 'images/UserInform/ID046-telemarketer@2x.png' %} 2x">
+							</button>
 						</div>
-
-						<!-- 工商業 -->
-						<div id="business">
-							<div id="business_btn">
-								<button id = "C005" name="job_btn" value="C005" type = "button" class = "btn3" style="background-color: rgba(136,158,170,1);">
-									<img id="ID048-office-worker" src="{% static 'images/UserInform/ID048-office-worker.png' %}" srcset="{% static 'images/UserInform/ID048-office-worker.png' %} 1x, {% static 'images/UserInform/ID048-office-worker@2x.png' %} 2x">
-								</button>
-							</div>
-							<div id="business_text">
-								<span>工商業</span>
-							</div>
+						<div id="service_text">
+							<span>服務業</span>
 						</div>
 					</div>
-					<div id="work_row3">
-						<!-- 退休人員 -->
-						<div id="retirement">
-							<div id="retirement_btn">
-								<button id = "C007" name="job_btn" value="C007" type = "button" class = "btn3" style="background-color: rgba(167,233,212,1);">
-									<img id="ID043-teacher" src="{% static 'images/UserInform/ID043-teacher.png' %}" srcset="{% static 'images/UserInform/ID043-teacher.png' %} 1x, {% static 'images/UserInform/ID043-teacher@2x.png' %} 2x">
-								</button>
-							</div>
-							<div id="retirement_text">
-								<span>退休人員</span>
-							</div>
-						</div>
 
-						<!-- 其他 -->
-						<div id="other">
-							<div id="other_btn">
-								<button id = "C009" name="job_btn" value="C009" type = "button" class = "btn3" style="background-color:rgba(255,255,255,1);">
-									<img id="ID035-astronaut" src="{% static 'images/UserInform/ID035-astronaut.png' %}" srcset="{% static 'images/UserInform/ID035-astronaut.png' %} 1x, {% static 'images/UserInform/ID035-astronaut@2x.png' %} 2x">
-								</button>
-							</div>
-							<div id="other_text">
-								<span>其他</span>
-							</div>
+					<!-- 軍公教 -->
+					<div id="soldier">
+						<div id="soldier_btn">
+							<button id="C002" name="job_btn" value="C002" type="button" class="btn3" style="background-color: rgba(198,218,208,1);">
+								<img id="ID030-soldier" src="{% static 'images/UserInform/ID030-soldier.png' %}" srcset="{% static 'images/UserInform/ID030-soldier.png' %} 1x, {% static 'images/UserInform/ID030-soldier@2x.png' %} 2x">
+							</button>
 						</div>
+						<div id="soldier_text">
+							<span>軍公教</span>
+						</div>
+					</div>
+				</div>
 
-						<!-- 農民漁牧業 -->
-						<div id="farmer">
-							<div id="farmer_btn">
-								<button id = "C008" name="job_btn" value="C008" type = "button" class = "btn3" style="background-color:rgb(255, 252, 203);">
-									<img id="ID001-farmer" src="{% static 'images/UserInform/ID001-farmer.png' %}" srcset="{% static 'images/UserInform/ID001-farmer.png' %} 1x, {% static 'images/UserInform/ID001-farmer@2x.png' %} 2x">
-								</button>
-							</div>
-							<div id="farmer_text">
-								<span>農民漁牧業</span>
-							</div>
+				<div id="work_row2">
+					<!-- 自由業 -->
+					<div id="freelance">
+						<div id="freelance_btn">
+							<button id = "C004" name="job_btn" value="C004" type = "button" class = "btn3" style="background-color: rgba(147,146,155,1);">
+								<img id="ID019-hacker" src="{% static 'images/UserInform/ID019-hacker.png' %}" srcset="{% static 'images/UserInform/ID019-hacker.png' %} 1x, {% static 'images/UserInform/ID019-hacker@2x.png' %} 2x">
+							</button>
+						</div>
+						<div id="freelance_text">
+							<span>自由業</span>
+						</div>
+					</div>
+
+					<!-- 家管 -->
+					<div id="home">
+						<div id="home_btn">
+							<button id = "C006" name="job_btn" value="C006" type = "button" class = "btn3" style="background-color: rgba(251, 219, 231,1);">
+								<img id="ID008-maid" src="{% static 'images/UserInform/img/ID008-maid.png' %}" srcset="{% static 'images/UserInform/ID008-maid.png' %} 1x, {% static 'images/UserInform/ID008-maid@2x.png' %} 2x">
+							</button>
+						</div>
+						<div id="home_text">
+							<span>家管</span>
+						</div>
+					</div>
+
+					<!-- 工商業 -->
+					<div id="business">
+						<div id="business_btn">
+							<button id = "C005" name="job_btn" value="C005" type = "button" class = "btn3" style="background-color: rgba(136,158,170,1);">
+								<img id="ID048-office-worker" src="{% static 'images/UserInform/ID048-office-worker.png' %}" srcset="{% static 'images/UserInform/ID048-office-worker.png' %} 1x, {% static 'images/UserInform/ID048-office-worker@2x.png' %} 2x">
+							</button>
+						</div>
+						<div id="business_text">
+							<span>工商業</span>
+						</div>
+					</div>
+				</div>
+
+				<div id="work_row3">
+					<!-- 退休人員 -->
+					<div id="retirement">
+						<div id="retirement_btn">
+							<button id = "C007" name="job_btn" value="C007" type = "button" class = "btn3" style="background-color: rgba(167,233,212,1);">
+								<img id="ID043-teacher" src="{% static 'images/UserInform/ID043-teacher.png' %}" srcset="{% static 'images/UserInform/ID043-teacher.png' %} 1x, {% static 'images/UserInform/ID043-teacher@2x.png' %} 2x">
+							</button>
+						</div>
+						<div id="retirement_text">
+							<span>退休人員</span>
+						</div>
+					</div>
+
+					<!-- 其他 -->
+					<div id="other">
+						<div id="other_btn">
+							<button id = "C009" name="job_btn" value="C009" type = "button" class = "btn3" style="background-color:rgba(255,255,255,1);">
+								<img id="ID035-astronaut" src="{% static 'images/UserInform/ID035-astronaut.png' %}" srcset="{% static 'images/UserInform/ID035-astronaut.png' %} 1x, {% static 'images/UserInform/ID035-astronaut@2x.png' %} 2x">
+							</button>
+						</div>
+						<div id="other_text">
+							<span>其他</span>
+						</div>
+					</div>
+
+					<!-- 農民漁牧業 -->
+					<div id="farmer">
+						<div id="farmer_btn">
+							<button id = "C008" name="job_btn" value="C008" type = "button" class = "btn3" style="background-color:rgb(255, 252, 203);">
+								<img id="ID001-farmer" src="{% static 'images/UserInform/ID001-farmer.png' %}" srcset="{% static 'images/UserInform/ID001-farmer.png' %} 1x, {% static 'images/UserInform/ID001-farmer@2x.png' %} 2x">
+							</button>
+						</div>
+						<div id="farmer_text">
+							<span>農民漁牧業</span>
 						</div>
 					</div>
 				</div>

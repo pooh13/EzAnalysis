@@ -168,14 +168,14 @@
 		overflow: visible;
 	}
 	.btn1{
-		border:0.5vh #ffffff solid;
+		border:2px #ffffff solid;
 		height: 100px;
 		width: 100px;
 		font-size: small;
 		border-radius:50%;
 	  	}
 	.btn2{
-		border: 0.7vh #f78989 solid;
+		border: 5px #f78989 solid;
 		height: 100px;
 		width: 100px;
 		font-size: small;
@@ -186,16 +186,20 @@
 	#work {
 		position: relative;
 		width: 368px;
-		height: 337px;
+		height: 370px;
+		padding: 10px 22px;
 		margin: 0 auto;
 		overflow: visible;
 	}
-	#work_btn {
-	    position:relative;
+	#work_background {
+	    position: absolute;
 	    width: 324px;
-		height: 318px;
-	    top: 2%;
-	    margin: 0 auto;
+		height: 350px;
+	    background: rgba(185,185,185,1);
+
+	    opacity: 0.642;
+	    border-radius:28px;
+	    filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
 	}
 	#_5 {
 		opacity: 0.642;
@@ -227,18 +231,21 @@
 
 	#work_row1 {
         position: relative;
-        top: -102%;
-        margin: 3% 5% 0;
+        width: 292px;
+        height: 100px;
+        margin: 12.5px auto;
 	}
 	#work_row2 {
         position: relative;
-        top: -102%;
-        margin: 1% 5%;
+        width: 292px;
+        height: 100px;
+        margin: 0 auto;
 	}
 	#work_row3 {
         position: relative;
-        top: -102%;
-        margin: 0 5% 4% 5%;
+        width: 292px;
+        height: 100px;
+        margin: 12.5px auto;
 	}
 
 	/* 學生 */
@@ -551,7 +558,7 @@
         position: relative;
 		width: 368px;
 		height: 50px;
-		margin: 0 auto 5%;
+		margin: 0 auto 10px;
         overflow: visible;
 	}
 	#next_btn {
@@ -563,6 +570,7 @@
 
     .next_btn {
         position: relative;
+        float: right;
         width: 130px;
         height: 50px;
         margin: 0 auto;
