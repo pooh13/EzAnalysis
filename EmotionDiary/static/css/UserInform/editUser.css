@@ -3,9 +3,10 @@
 		position: relative;
 		width: 100%;
 		height: 100%;
-		background: rgba(253,231,232,1);
-		overflow-x: hidden;
+		min-width: fit-content;
+		overflow-x: scroll;
 		overflow-y: scroll;
+		background: rgba(253,231,232,1);
 	}
 
     /*  vh=view height, vw=view weight */
@@ -17,7 +18,6 @@
 		height: 50px;
 		padding: 4px 0;
 		white-space: nowrap;
-		overflow: visible;
 		background: rgba(214,226,233,1);
 	}
     #banner {
@@ -43,13 +43,11 @@
 		width: 368px;
 		height: 98px;
 		margin: 0 auto;
-		overflow: visible;
 	}
 	#name_text {
 		position: relative;
-		overflow: visible;
 		width: 80%;
-		height: 38px;
+		height: 94px;
 		margin: 0 auto;
 		text-align: left;
 		font-family: Microsoft JhengHei;
@@ -71,9 +69,8 @@
 	}
 	.name_textbox {
 		position: relative;
-		width: 100%;
+		width: 293px;
 		height: 50px;
-		overflow: visible;
 		border-radius: 20px; /*圓框*/
 		border:6px rgba(109,104,117,1) solid;
 		text-align: left;
@@ -90,7 +87,6 @@
     /* --- birth --- */
     #age {
 		position: relative;
-		overflow: visible;
 		width: 368px;
 		height: 98px;
 		margin: 0 auto;
@@ -100,9 +96,8 @@
 
 	#age_text{
 		position: relative;
-		overflow: visible;
 		width: 80%;
-		height: 38px;
+		height: 94px;
 		margin: 0 auto;
 		text-align: left;
 		font-family: Microsoft JhengHei;
@@ -122,8 +117,7 @@
 	}
 	.age_textbox {
 		position: relative;
-		overflow: visible;
-		width: 100%;
+		width: 293px;
 		height: 50px;
 		border-radius: 20px;/*圓框*/
 		border:6px rgba(109,104,117,1) solid;
@@ -157,7 +151,6 @@
 		float: left;
 		margin: 0 3%;
 		padding: 1% 2%;
-		overflow: visible;
 	}
 	/* woman */
 	#woman {
@@ -165,7 +158,6 @@
 		float: right;
 		margin: 0 3%;
 		padding: 1% 2%;
-		overflow: visible;
 	}
 	.btn1{
 		border:2px #ffffff solid;
@@ -189,28 +181,15 @@
 		height: 370px;
 		padding: 10px 22px;
 		margin: 0 auto;
-		overflow: visible;
 	}
 	#work_background {
 	    position: absolute;
 	    width: 324px;
 		height: 350px;
 	    background: rgba(185,185,185,1);
-
 	    opacity: 0.642;
 	    border-radius:28px;
 	    filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
-	}
-	#_5 {
-		opacity: 0.642;
-		fill: rgba(185,185,185,1);
-	}
-	._5 {
-		filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
-		position: relative;
-		width: 100%;
-		height: 100%;
-		margin: 0 auto;
 	}
 	.btn3{
 		border:none;
@@ -254,23 +233,19 @@
 		float: left;
 		width: 80px;
 		height: 100px;
-        overflow: visible;
 	}
 	#student_btn {
 		fill: rgba(250,215,179,1);
 	}
 	.student_btn {
 		position: relative;
-		overflow: visible;
 	}
 	#ID009-student {
 		position: relative;
 		width: 100%;
-		overflow: visible;
 	}
 	#student_text {
 		position: relative;
-		overflow: visible;
 		width: 100%;
 		white-space: nowrap;
 		text-align: center;
@@ -288,23 +263,19 @@
 		width: 80px;
 		height: 100px;
 		margin: 0 auto;
-        overflow: visible;
 	}
 	#soldier_btn {
 		fill: rgba(198,218,208,1);
 	}
 	.soldier_btn {
 		position: relative;
-		overflow: visible;
 	}
 	#ID030-soldier {
 		position: relative;
 		width: 100%;
-		overflow: visible;
 	}
 	#soldier_text {
 		position: relative;
-		overflow: visible;
 		width: 100%;
 		white-space: nowrap;
 		text-align: center;
@@ -322,23 +293,19 @@
 		float: right;
 		width: 80px;
 		height: 100px;
-        overflow: visible;
 	}
 	#service_btn {
 		fill: rgba(184,245,255,1);
 	}
 	.service_btn {
 		position: relative;
-		overflow: visible;
 	}
 	#ID046-telemarketer {
 		position: relative;
 		width: 100%;
-		overflow: visible;
 	}
 	#service_text {
 		position: relative;
-		overflow: visible;
 		width: 100%;
 		white-space: nowrap;
 		text-align: center;
@@ -356,23 +323,19 @@
 		float: left;
 		width: 80px;
 		height: 100px;
-        overflow: visible;
 	}
 	#freelance_btn {
 		fill: rgba(147,146,155,1);
 	}
 	.freelance_btn {
 		position: relative;
-		overflow: visible;
 	}
 	#ID019-hacker {
 		position: relative;
 		width: 100%;
-		overflow: visible;
 	}
 	#freelance_text {
 		position: relative;
-		overflow: visible;
 		width: 100%;
 		white-space: nowrap;
 		text-align: center;
@@ -390,23 +353,19 @@
 		width: 80px;
 		height: 100px;
 		margin: 0 auto;
-        overflow: visible;
 	}
 	#business_btn {
 		fill: rgba(136,158,170,1);
 	}
 	.business_btn {
 		position: relative;
-		overflow: visible;
 	}
 	#ID048-office-worker {
 		position: relative;
 		width: 100%;
-		overflow: visible;
 	}
 	#business_text {
 		position: relative;
-		overflow: visible;
 		width: 100%;
 		white-space: nowrap;
 		text-align: center;
@@ -424,23 +383,19 @@
 		float: right;
 		width: 80px;
 		height: 100px;
-        overflow: visible;
 	}
 	#home_btn {
 		fill: rgba(250,214,172,1);
 	}
 	.home_btn {
 		position: relative;
-		overflow: visible;
 	}
 	#ID008-maid {
 		position: relative;
 		width: 100%;
-		overflow: visible;
 	}
 	#home_text {
 		position: relative;
-		overflow: visible;
 		width: 100%;
 		white-space: nowrap;
 		text-align: center;
@@ -458,23 +413,19 @@
 		float: left;
 		width: 80px;
 		height: 100px;
-		overflow: visible;
 	}
 	#retirement_btn {
 		fill: rgba(167,233,212,1);
 	}
 	.retirement_btn {
 		position: relative;
-		overflow: visible;
 	}
 	#ID043-teacher {
 		position: relative;
 		width: 100%;
-		overflow: visible;
 	}
 	#retirement_text {
 		position: relative;
-		overflow: visible;
 		width: 100%;
 		white-space: nowrap;
 		text-align: center;
@@ -492,23 +443,19 @@
 		width: 80px;
 		height: 100px;
 		margin: 0 auto;
-        overflow: visible;
 	}
 	#farmer_btn {
 		fill: rgba(227,124,124,1);
 	}
 	.farmer_btn {
 		position: relative;
-		overflow: visible;
 	}
 	#ID001-farmer {
 		position: relative;
 		width: 100%;
-		overflow: visible;
 	}
 	#farmer_text {
 		position: relative;
-		overflow: visible;
 		width: 100%;
 		white-space: nowrap;
 		text-align: center;
@@ -526,22 +473,18 @@
 		float: right;
 		width: 80px;
 		height: 100px;
-        overflow: visible;
 	}
 	#other_btn {
 	}
 	.other_btn{
 		position: relative;
-		overflow: visible;
 	}
 	#ID035-astronaut {
 		position: relative;
 		width: 100%;
-		overflow: visible;
 	}
 	#other_text {
 		position: relative;
-		overflow: visible;
 		width: 100%;
 		white-space: nowrap;
 		text-align: center;
@@ -556,14 +499,13 @@
 	/* --- next page --- */
 	#next {
         position: relative;
-		width: 368px;
-		height: 50px;
-		margin: 0 auto 10px;
-        overflow: visible;
+		width: 100%;
+		height: 65px;
+		margin: 0 auto;
 	}
 	#next_btn {
         position: relative;
-        width: 80%;
+        width: 292px;
         height:50px;
         margin: 0 auto;
 	}
