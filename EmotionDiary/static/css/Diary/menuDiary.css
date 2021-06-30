@@ -1,20 +1,18 @@
 
-	*menu {
-		margin: 0;
-		padding: 0;
-		box-sizing: border-box;
-		border: none;
-	}
 	#menu {
 		position: relative;
 		min-width: fit-content;
-		height: 100%;
 		background-image: url('../../images/Diary/Menu/_2.png');
+		background-size: cover;
 		background-color: rgba(250,247,237,1);
+		background-repeat: no-repeat;
 		overflow-x: hidden;
-		overflow-y: scroll;
+		overflow-y: visible;
 
 	}
+
+	/* background_img */
+
 
     /* background */
     #bh {
@@ -25,7 +23,7 @@
         overflow: hidden;
     }
 	#KEEP_bn {
-		left: 20px;
+		left: 10px;
 		top: 15px;
 		position: absolute;
 		white-space: nowrap;
@@ -38,7 +36,7 @@
 		letter-spacing: -0.05px;
 	}
     #KEEP {
-		left: 31px;
+		left: 21px;
 		top: 27px;
 		position: absolute;
 		white-space: nowrap;
@@ -191,7 +189,7 @@
 		cursor: pointer;
 	}
 	#add_btn {
-        width: 100%;
+        width: 350px;
         height: 100%;
         border: none;
         background: none;
@@ -259,7 +257,7 @@
 		cursor: pointer;
 	}
 	#edit_btn {
-        width: 100%;
+        width: 350px;
         height: 100%;
         border: none;
         background: none;
