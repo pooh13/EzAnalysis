@@ -3,9 +3,10 @@
 		position: relative;
 		min-width: fit-content;
 		height: 100%;
+		background: rgba(253,231,232,1);
 		overflow-x: hidden;
 		overflow-y: scroll;
-		background: rgba(253,231,232,1);
+
 	}
 
 	/* --- 標題 --- */
