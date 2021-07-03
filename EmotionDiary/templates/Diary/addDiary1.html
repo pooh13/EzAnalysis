@@ -3,35 +3,36 @@
 {% load static %}
 
 {% block css %}
-	<link rel="stylesheet" href="{% static 'css/Diary/addDiary1.css' %}">
+<link rel="stylesheet" href="{% static 'css/Diary/addDiary1.css' %}" xmlns="http://www.w3.org/1999/html">
 {% endblock %}
 
 {% block body %}
-	<form id="diaryForm" action="{% url 'EmotionDiary:addDiary2' %}" method="post" class="form" enctype="multipart/form-data">
+	<form id="diaryForm" action="" method="post" class="form" enctype="multipart/form-data">
 		{% csrf_token %}
 		<div id="ID2">
-			<div id="date">
-				<span>{{ form.line_id }}</span>
-				<span>{{ today }}</span>
+			<!-- userid -->
+			{{ form.line_id }}
+			<!-- 日期&時間 -->
+			<div id="date"></div>
+			<div id="time"></div>
+			{{ form.date }}
+			<div id="line_9">
+				<svg id="_9">
+					<path class="_9" d="M 0 0 L 188.712890625 0 L 295 0">
+					</path>
+				</svg>
 			</div>
-			<div id="time">
-				<span>{{ time }}</span>
-			</div>
-			<img id="_2" src="{% static 'images/Diary/Add/_2.png' %}" srcset="{% static 'images/Diary/Add/_2.png' %} 1x, {% static 'images/Diary/Add/_2@2x.png' %} 2x">
 
-			<svg class="_9" viewBox="0 0 301 1">
-				<path id="_9" d="M 0 0 L 188.712890625 0 L 301 0">
-				</path>
-			</svg>
-			<!--表情框-->
+			<!-- mood -->
 			<div id="emoji">
+				{{ form.mood }}
 				<div id="_area">
-					<!--底圖-->
+					<!-- 底圖 -->
 					<svg class="_101">
 						<rect id="_101" rx="1" ry="1" x="0" y="0" width="348" height="315">
 						</rect>
 					</svg>
-					<!--洞洞-->
+					<!-- 洞洞 -->
 					<svg class="_15">
 						<ellipse id="_15" rx="7.5" ry="7.5" cx="7.5" cy="7.5">
 						</ellipse>
@@ -83,44 +84,55 @@
 				</div>
 				<div id="emoji_text">
 					<span>今天心情如何呢？</span>
-					{{ form.mood }}
 				</div>
+
+				<img id="w644" src="{% static 'images/Diary/Add/w644.png' %}" srcset="{% static 'images/Diary/Add/w644.png' %} 1x, {% static 'images/Diary/Add/w644@2x.png' %} 2x">
 
 				<div id="_33">
 
 					<div id="joy">
-						<button id="joy_btn" type="button" name="emoji" value="5" class="btn1">
+						<button id="joy_btn" name="emoji_btn" type="button" class="btn1" value="5">
 							<img id="ID051-joy" src="{% static 'images/Diary/Add/ID051-joy.png' %}" srcset="{% static 'images/Diary/Add/ID051-joy.png' %} 1x, {% static 'images/Diary/Add/ID051-joy@2x.png' %} 2x" style="padding: 2px;">
 						</button>
-						<span id="_bn">超開心</span>
+						<div id="joy_text">
+							<span>超開心</span>
+						</div>
+					</div>
+
+					<div id="neutral">
+						<button id="neutral_btn" name="emoji_btn" type="button" class="btn1" value="3">
+							<img id="ID051-neutral" src="{% static 'images/Diary/Add/ID051-neutral.png' %}" srcset="{% static 'images/Diary/Add/ID051-neutral.png' %} 1x, {% static 'images/Diary/Add/ID051-neutral@2x.png' %} 2x" style="padding: 2px;">
+						</button>
+						<div id="neutral_text">
+							<span>普通</span>
+						</div>
 					</div>
 
 					<div id="happy">
-						<button id="happy_btn" type="button" name="emoji" value="4" class="btn1">
+						<button id="happy_btn" name="emoji_btn" type="button" class="btn1" value="4">
 							<img id="ID051-happy" src="{% static 'images/Diary/Add/ID051-happy.png' %}" srcset="{% static 'images/Diary/Add/ID051-happy.png' %} 1x, {% static 'images/Diary/Add/ID051-happy@2x.png' %} 2x" style="padding: 2px;">
 						</button>
-						<span id="_bp">開心</span>
+						<div id="happy_text">
+							<span>開心</span>
+						</div>
 					</div>
 
-					<div>
-						<button id="neutral_btn" type="button"  name="emoji" value="3" class="btn1">
-							<img id="ID051-neutral" src="{% static 'images/Diary/Add/ID051-neutral.png' %}" srcset="{% static 'images/Diary/Add/ID051-neutral.png' %} 1x, {% static 'images/Diary/Add/ID051-neutral@2x.png' %} 2x" style="padding: 2px;">
-						</button>
-						<span id="_br">普通</span>
-					</div>
-
-					<div>
-						<button id="sad_btn" type="button" name="emoji" value="2" class="btn1">
+					<div id="sad">
+						<button id="sad_btn" name="emoji_btn" type="button" class="btn1" value="2">
 							<img id="ID051-sad-1" src="{% static 'images/Diary/Add/ID051-sad-1.png' %}" srcset="{% static 'images/Diary/Add/ID051-sad-1.png' %} 1x, {% static 'images/Diary/Add/ID051-sad-1@2x.png' %} 2x" style="padding: 2px;">
 						</button>
-						<span id="_bt">難過</span>
+						<div id="sad_text">
+							<span>難過</span>
+						</div>
 					</div>
 
-					<div>
-						<button id="cry_btn" type="button" name="emoji" value="1" class="btn1">
+					<div id="cry">
+						<button id="cry_btn" name="emoji_btn" type="button" class="btn1" value="1">
 							<img id="ID051-cry" src="{% static 'images/Diary/Add/ID051-cry.png'%}" srcset="{% static 'images/Diary/Add/ID051-cry.png' %} 1x, {% static 'images/Diary/Add/ID051-cry@2x.png' %} 2x" style="padding: 2px">
 						</button>
-						<span id="_bv">超難過</span>
+						<div id="cry_text">
+							<span>超難過</span>
+						</div>
 					</div>
 
 
@@ -128,7 +140,7 @@
 			</div>
 			<div id="_bx">
 				<svg class="_101_by">
-					<rect id="_101_by" rx="1" ry="1" x="0" y="0" width="348" height="280">
+					<rect id="_101_by" rx="1" ry="1" x="0" y="0" width="348" height="300">
 					</rect>
 				</svg>
 				<svg class="_15_bz">
@@ -179,66 +191,90 @@
 					<ellipse id="_26_ca" rx="7.5" ry="7.5" cx="7.5" cy="7.5">
 					</ellipse>
 				</svg>
-			</div>
-			<div id="Face_Scanning">
-				<span>Face Scanning</span>
-				<div>
-					<img id="fake_icon" src="{% static 'images/Diary/Add/photo-camera.png' %}" width="90%">
-					<br>
+				<div id="w644_1">
+					<img class="w644_1" src="{% static 'images/Diary/Add/w644_1.png' %}" srcset="{% static 'images/Diary/Add/w644_1.png' %} 1x, {% static 'images/Diary/Add/w644_1@2x.png' %} 2x">
 				</div>
-				<input type="file" value="Choose Pic" name="photo" id="photo" class="chosePic">
-
+				<div id="Face_Scanning">
+					<span class="Face_Scanning">Face Scanning</span>
+					<!-- input pic -->
+					<img id="image" src="{% static 'images/Diary/Add/photo-camera.png' %}">
+					{{ form.pic }}
+				</div>
 			</div>
-			<svg class="_27">
-				<a href="{% url 'EmotionDiary:addDiary2' %}">
-					<ellipse id="_27" rx="29" ry="29" cx="29" cy="29"></ellipse>
-				</a>s
-			</svg>
-			<div id="_cd">
-				<span>繼續</span>
+			<div id="next">
+				<img id="_3" src="{% static 'images/Diary/Add/_3.png' %}" srcset="{% static 'images/Diary/Add/_3.png' %} 1x, {% static 'images/Diary/Add/_3@2x.png' %} 2x">
+				<div id="next_btn">
+						<input id="_27" type="button" onclick="check(this);">
+						<svg class="_10" viewBox="0 0 30.915 15.458">
+							<path id="_10" d="M 30.9150390625 0 L 15.45751953125 15.45751953125 L 0 0">
+							</path>
+						</svg>
+						<div id="_cd">
+							<span>繼續</span>
+						</div>
+				</div>
 			</div>
-			<svg class="_10" viewBox="0 0 30.915 15.458">
-					<path id="_10" d="M 30.9150390625 0 L 15.45751953125 15.45751953125 L 0 0">
-					</path>
-			</svg>
-
-			<img id="w644" src="{% static 'images/Diary/Add/w644.png' %}" srcset="{% static 'images/Diary/Add/w644.png' %} 1x, {% static 'images/Diary/Add/w644@2x.png' %} 2x">
-
-			<img id="_3" src="{% static 'images/Diary/Add/_3.png' %}" srcset="{% static 'images/Diary/Add/_3.png' %} 1x, {% static 'images/Diary/Add/_3@2x.png' %} 2x">
-
-			<img id="w644_1" src="{% static 'images/Diary/Add/w644_1.png' %}" srcset="{% static 'images/Diary/Add/w644_1.png' %} 1x, {% static 'images/Diary/Add/w644_1@2x.png' %} 2x">
-
 		</div>
 	</form>
 {% endblock %}
 
 {% block js %}
-	<script src='//code.jquery.com/jquery-2.1.4.min.js'></script>
 	<script src="{% static 'js/Diary/addDiary1.js' %}"></script>
-	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+	<script src='//code.jquery.com/jquery-2.1.4.min.js'></script>
+
 
 	<script type="text/javascript">
+		// 設定時間
+		function ShowTime(){
+			today = new Date();
+			var year = today.getFullYear();
+			var month = today.getMonth()+1;
+			var day = today.getDate();
+			var monthString = ( month < 10)? ('0'+ month) : ('' + month);
+			var dayString = ( day < 10)? ('0'+ day) : ('' + day);
+			var hour = today.getHours();
+			var minute = today.getMinutes();
+			var second = today.getSeconds();
+			var hourString = ( hour < 10)? ('0'+ hour) : ('' + hour);
+  			var minString = ( minute < 10)? ('0'+ minute) : ('' + minute);
+  			var secString = ( second < 10)? ('0'+ second) : ('' + second);
+  			var date = year + '/' + monthString + '/' + dayString;
+  			var time = hourString + ':' + minString + ':' + secString;
+			document.getElementById('date').innerText = date;
+		　	document.getElementById('time').innerText = time;
+		　	document.getElementById('diary_date').value = date;
+		}
+		window.setInterval('ShowTime()',1000);
+
+		// 上傳照片 & 預覽照片
 		$('#photo').change(function () {
 			var file = this.files[0];
 			var reader = new FileReader();
 			reader.readAsDataURL(file);
 			reader.onload = function () {
-				$('#fake_icon')[0].src = this.result;
+				$('#photo')[0].src = this.result;
 			}
-			reader.readAsDataURL(input.files[0]);
 		});
-	</script>
-	<script type="text/javascript">
+        function readURL(input) {
+          if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function(e) {
+              $('#image').attr('src', e.target.result);
+              $('#photo').attr('src', e.target.result);
+            }
+            reader.readAsDataURL(input.files[0]);
+          }
+        }
+
+		// 是否都填寫完成
         function check(){
             var form = document.getElementById('diaryForm');
 			var mood = document.getElementById('mood').value;
 			if(mood == ''){
 				swal("請選擇表情", "", "error");
 			}else{
-				swal("儲存成功", "", "success", {button:"OK"})
-					.then(() => {
-						form.submit();
-					});
+				form.submit();
+				window.location.href='../addDiary2/'
 			}
         }
     </script>

@@ -91,7 +91,6 @@
          if (view==null) view = self.getInitialView();
          self.collectViews();
          self.collectOverlays();
-         self.collectMediaQueries();
  
          for (let index = 0; index < views.length; index++) {
              var view = views[index];
@@ -1836,12 +1835,6 @@
          return viewId;
      }
  
-     self.getApplicationStylesheet = function() {
-         var stylesheetId = self.getViewPreferenceValue(document.body, self.prefix + "stylesheet-id");
-         self.applicationStylesheet = document.getElementById("applicationStylesheet");
-         return self.applicationStylesheet.sheet;
-     }
- 
      self.getVisibleView = function() {
          var viewIds = self.getViewIds();
          
@@ -2184,7 +2177,6 @@
          var id = viewIds.length ? viewIds[0]: ""; // single view
          var selectorIDText = "#" + id;
          var selectorClassText = "." + id + "_Class";
-         var viewsNotFound = viewIds.slice();
          var viewsFound = [];
          var selectorText = null;
          var property = self.prefix + "view-id";
@@ -2786,43 +2778,6 @@
          element.innerHTML = value;
      }
  
-     self.getStackArray = function(error) {
-         var value = "";
-         
-         if (error==null) {
-           try {
-              error = new Error("Stack");
-           }
-           catch (e) {
-              
-           }
-         }
-         
-         if ("stack" in error) {
-           value = error.stack;
-           var methods = value.split(/\n/g);
-      
-           var newArray = methods ? methods.map(function (value, index, array) {
-              value = value.replace(/\@.*/,"");
-              return value;
-           }) : null;
-      
-           if (newArray && newArray[0].includes("getStackTrace")) {
-              newArray.shift();
-           }
-           if (newArray && newArray[0].includes("getStackArray")) {
-              newArray.shift();
-           }
-           if (newArray && newArray[0]=="") {
-              newArray.shift();
-           }
-      
-             return newArray;
-         }
-         
-         return null;
-     }
- 
      self.log = function(value) {
          console.log.apply(this, [value]);
      }
@@ -2841,11 +2796,12 @@
           reader.readAsDataURL(input.files[0]);
         }
       }
-    // // ---------------------------------------------------------------------------
-	var e_id;	
+    // ---------------------------------------------------------------------------
+
+	var e_id;
 	function emojiSelect(e_id) {
-		var arr = document.getElementsByName('emoji');
-		for(var i = 0;i<arr.length;i++){
+		var arr = document.getElementsByName('emoji_btn');
+		for(var i=0; i<arr.length; i++){
 			arr[i].onclick = function(){	
 				//this是当前激活的按钮，在这里可以写对应的操作	
 				if(this.className == 'btn1'){

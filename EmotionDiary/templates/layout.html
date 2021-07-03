@@ -3,11 +3,12 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="viewport-fit=cover, width=device-width, initial-scale=1"/>
+    <meta name="viewport" content="viewport-fit=cover, width=device-width"/>
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <link rel="Shortcut Icon" type="image/x-icon" href="{% static 'images/logo.jpg' %}"/>
     {% block css %}{% endblock %}
 
     <title>EzAnalysis</title>
@@ -22,6 +23,7 @@
 
 </body>
     <script charset="utf-8" src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
     {% block js %}{% endblock %}
 

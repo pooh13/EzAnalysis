@@ -21,7 +21,8 @@ app_name = 'EmotionDiary'
 urlpatterns = [
     path('callback/', views.callback),
     path('index/', views.index, name='index'),
-    path('menuDiary/', views.menu_diary, name='menuDiary'),
+    path('Diary/', views.diary, name='Diary'),
+    path('menuDiary/<pk>', views.menu_diary, name='menuDiary'),
     path('addDiary1/<pk>', views.add_diary1, name='addDiary1'),
     path('addDiary2/', views.add_diary2, name='addDiary2'),
     path('addDiary3/', views.add_diary3, name='addDiary3'),

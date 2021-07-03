@@ -21,6 +21,8 @@ class UserInform(models.Model):
     birth = models.DateField(blank=True, null=True)
     career_id = models.ForeignKey(Career, on_delete=models.CASCADE, blank=True, null=True)
 
+    def __str__(self):
+        return self.line_id
 
 class AnalysisDiary(models.Model):
     photo_id = models.AutoField(primary_key=True)
@@ -32,9 +34,9 @@ class AnalysisDiary(models.Model):
 class Diary(models.Model):
     line_id = models.ForeignKey(UserInform, on_delete=models.CASCADE)
     date = models.DateTimeField(null=False)
-    mood = models.IntegerField(null=False)
+    mood = models.IntegerField(null=True)
     note = models.CharField(max_length=255)
-    pic = models.ImageField(null=False)
+    pic = models.ImageField(upload_to='images', null=True)
 
     class Meta:
         unique_together = ("line_id", "date")

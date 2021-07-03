@@ -3,7 +3,7 @@ import datetime
 import time
 import tempfile
 
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from cgitb import handler
 from django.conf import settings
 from django.http import HttpResponse, HttpResponseRedirect, HttpResponseBadRequest, HttpResponseForbidden
@@ -48,7 +48,8 @@ def callback(request):
         body = request.body.decode('utf-8')
 
         try:
-            handler.handle(body, signature) # 傳入的事件
+            # 傳入的事件
+            handler.handle(body, signature)
         except InvalidSignatureError:
             return HttpResponseForbidden()
 
@@ -66,22 +67,60 @@ def index(request):
     })
 
 
-def menu_diary(request):
-    return render(request, 'Diary/menuDiary.html', {
+def profile(request):
+    return render(request, 'UserInform/profile.html', {
+    })
+
+
+def edit_user(request, pk):
+    userinfo = models.UserInform.objects.get(line_id=pk)
+    form = forms.UserInformFrom(request.POST or None, instance=userinfo)
+    # print(profile)
+    # print(form)
+    if request.method == 'POST':
+        if form.is_valid():
+            form.save()
+
+    return render(request, 'UserInform/editUser.html', {
+        'form': form,
+    })
+
+
+def diary(request):
+    return render(request, 'Diary/diary.html', {
 
     })
 
 
+def menu_diary(request, pk):
+    diary = models.Diary.objects.filter(line_id=pk, date=datetime.datetime.today().date())
+    # print(diary)
+
+    # 判斷該使用者當天是否填寫過
+    if diary:
+        message = '已填過'
+    else:
+        message = ''
+
+    return render(request, 'Diary/menuDiary.html', {
+        'message': message, 'pk': pk,
+    })
+
+
 def add_diary1(request, pk):
-    today = datetime.date.today().strftime("%Y/%m/%d")
-    time = datetime.datetime.today().strftime("%H:%M")
-    form = forms.DiaryForm(request.POST or None)
+    user = models.UserInform.objects.get(line_id=pk)
+    form = forms.DiaryForm(instance=user)
+
     if request.method == 'POST':
+        form = forms.DiaryForm(request.POST, request.FILES)
         if form.is_valid():
+            # img = request.FILES['pic']
             form.save()
-    print(form)
+            # print(img)
+    # print(form)
+
     return render(request, 'Diary/addDiary1.html', {
-        'today': today, 'time': time, 'form': form,
+        'form': form,
     })
 
 
@@ -106,25 +145,6 @@ def edit_diary(request, pk):
         if form.is_valid():
             form.save()
     return render(request, 'Diary/editDiary.html', {
-        'form': form,
-    })
-
-
-def profile(request):
-    return render(request, 'UserInform/profile.html', {
-    })
-
-
-def edit_user(request, pk):
-    userinfo = models.UserInform.objects.get(line_id=pk)
-    form = forms.UserInformFrom(request.POST or None, instance=userinfo)
-    # print(profile)
-    # print(form)
-    if request.method == 'POST':
-        if form.is_valid():
-            form.save()
-
-    return render(request, 'UserInform/editUser.html', {
         'form': form,
     })
 

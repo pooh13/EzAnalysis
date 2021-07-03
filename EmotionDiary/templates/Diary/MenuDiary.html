@@ -7,6 +7,8 @@
 
 {% block body %}
 <div id="menu">
+	<div id="userid" style="display:none;">{{ pk }}</div>
+	<div id="message" style="display:none;">{{ message }}</div>
 	<div id="bh">
 		<!-- 拍立得線 -->
 		<svg class="_13" viewBox="0 0 259 59.969">
@@ -50,7 +52,7 @@
 
 	<!-- 新增日記 -->
 	<div id="_ba">
-		<button id="add_btn">
+		<button id="add_btn" onclick="addDiary()">
 			<svg class="_127">
 				<rect id="_127" rx="5" ry="5" x="0" y="0" width="350" height="203">
 				</rect>
@@ -70,7 +72,7 @@
 
 	<!--  修改日記  -->
 	<div id="_ba1">
-		<button id="edit_btn">
+		<button id="edit_btn" onclick="editDiary()">
 			<svg class="_125">
 				<rect id="_125" rx="5" ry="5" x="0" y="0" width="350" height="203">
 				</rect>
@@ -102,4 +104,28 @@
 
 {% block js %}
 	<script src="{% static 'js/Diary/menuDiary.js' %}"></script>
+
+	<script type="text/javascript">
+		// 是否填寫過日記 -> 新增日記
+		function addDiary(){
+			var userid = document.getElementById('userid').innerText;
+			var message = document.getElementById('message').innerText;
+			if(message){
+				swal("您今天已填寫日記了呦～");
+			}else{
+				window.location.href='../addDiary1/'+ userid;
+			}
+		}
+
+		// 修改日記
+		function editDiary(){
+			var userid = document.getElementById('userid').innerText;
+			var message = document.getElementById('message').innerText;
+			if(message == ''){
+				swal("您今天還沒填寫日記了呦～");
+			}else{
+				window.location.href='../editDiary/'+ userid;
+			}
+		}
+    </script>
 {% endblock %}
