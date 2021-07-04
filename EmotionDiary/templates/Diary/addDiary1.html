@@ -247,23 +247,18 @@
 		window.setInterval('ShowTime()',1000);
 
 		// 上傳照片 & 預覽照片
-		$('#photo').change(function () {
-			var file = this.files[0];
-			var reader = new FileReader();
-			reader.readAsDataURL(file);
-			reader.onload = function () {
-				$('#photo')[0].src = this.result;
+        function readURL() {
+        	var preview = document.getElementById('image');
+			var file    = document.querySelector('input[type=file]').files[0];
+			var reader  = new FileReader();
+
+			reader.addEventListener("load", function () {
+				preview.src = reader.result;
+			}, false);
+
+			if (file) {
+				reader.readAsDataURL(file);
 			}
-		});
-        function readURL(input) {
-          if (input.files && input.files[0]) {
-            var reader = new FileReader();
-            reader.onload = function(e) {
-              $('#image').attr('src', e.target.result);
-              $('#photo').attr('src', e.target.result);
-            }
-            reader.readAsDataURL(input.files[0]);
-          }
         }
 
 		// 是否都填寫完成
@@ -274,7 +269,6 @@
 				swal("請選擇表情", "", "error");
 			}else{
 				form.submit();
-				window.location.href='../addDiary2/'
 			}
         }
     </script>

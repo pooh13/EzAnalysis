@@ -110,17 +110,23 @@ def menu_diary(request, pk):
 def add_diary1(request, pk):
     user = models.UserInform.objects.get(line_id=pk)
     form = forms.DiaryForm(instance=user)
+    day = datetime.datetime.today().date().strftime('%Y%m%d')
 
     if request.method == 'POST':
         form = forms.DiaryForm(request.POST, request.FILES)
         if form.is_valid():
-            # img = request.FILES['pic']
-            form.save()
-            # print(img)
-    # print(form)
+            photo = form.save(commit=False)
+            upload_photo = request.FILES['pic']
+
+            # 修改上傳照片名稱 (userid-day.jpg)
+            if upload_photo:
+                ext = upload_photo.name.split('.')[-1]
+                filename = pk + '-' + day + '.' + ext
+                photo.pic.name = filename
+                photo.save()
 
     return render(request, 'Diary/addDiary1.html', {
-        'form': form,
+        'form': form
     })
 
 

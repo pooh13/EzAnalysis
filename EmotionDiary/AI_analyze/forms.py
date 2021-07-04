@@ -23,7 +23,7 @@ class DiaryForm(forms.ModelForm):
             'line_id': forms.TextInput(attrs={'id': 'userid', 'name': 'userid', 'type': 'hidden'}),
             'date': forms.TextInput(attrs={'id': 'diary_date', 'type': 'hidden'}),
             'mood': forms.TextInput(attrs={'id': 'mood', 'type': 'hidden'}),
-            'pic': forms.FileInput(attrs={'id': 'photo', 'name': 'photo', 'src': '#', 'onchange': 'readURL(this);'}),
+            'pic': forms.FileInput(attrs={'id': 'photo', 'name': 'pic', 'onchange': 'readURL(this);'}),
         }
 
 

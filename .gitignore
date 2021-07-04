@@ -1,4 +1,7 @@
 .idea/
 EmotionDiary/.idea/
 EmotionDiary/db.sqlite3
-EmotionDiary/__pycache__/
+EmotionDiary/media
+EmotionDiary/AI_analyze/migrations
+EmotionDiary/AI_analyze/__pycache__
+EmotionDiary/EmotionDiary/__pycache__
