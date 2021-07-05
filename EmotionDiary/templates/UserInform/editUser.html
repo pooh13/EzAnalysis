@@ -190,23 +190,4 @@
 {% block js %}
 	<script src="{% static 'js/UserInform/editUser.js' %}"></script>
 	<script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
-
-	<script type="text/javascript">
-        function check(){
-            var form = document.getElementById('userForm');
-            var username = document.getElementById('disname').value;
-            
-			if(username == 0){
-                swal("請填寫名字", "", "error");
-            }
-			else{
-                swal("儲存成功", "", "success", {button:"OK"})
-                    .then(() => {
-                        form.submit();
-                    });
-            }
-
-        }
-    </script>
-	
 {% endblock %}
