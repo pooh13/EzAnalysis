@@ -5,6 +5,8 @@ EmotionDiary/venv/
 textEmotionalAnalysis/.idea/
 textEmotionalAnalysis/db.sqlite3
 textEmotionalAnalysis/venv/
+textEmotionalAnalysis/Jupyter Notebook/
+textEmotionalAnalysis/Models/
 
 Models/
 
