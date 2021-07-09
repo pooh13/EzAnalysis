@@ -8,7 +8,7 @@ window.onload = function(){
             liff.login();
         }
         liff.getProfile().then(profile => {
-            window.location.replace('https://f1a089c5d606.ngrok.io/AI_analyze/menuDiary/' + profile.userId);
+            window.location.replace('https://d3f74f7f848c.ngrok.io/AI_analyze/menuDiary/' + profile.userId);
         })
     })
 }

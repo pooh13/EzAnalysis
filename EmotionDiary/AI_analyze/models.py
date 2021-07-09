@@ -50,6 +50,7 @@ class UserThings(models.Model):
 
 
 class DefaultNote(models.Model):
+    things_id = models.ForeignKey(DefaultThing, on_delete=models.CASCADE)
     note_id = models.CharField(max_length=4, primary_key=True)
     default_note = models.CharField(max_length=255, blank=False, null=False)
 
