@@ -7,6 +7,7 @@ import tokenization
 import one_hotEncoding
 import twoTypeClassify
 import MyTrain_test_split
+import MLP_ModelSave
 
 os.environ["CUDA_DEVICE_ORDER"] = "PCI_BUS_ID"
 os.environ["CUDA_VISIBLE_DEVICES"] = "0"
@@ -68,13 +69,22 @@ def textEmotionalAnalysis():
     # print(a[3])
 
     # ----- MLP_Model
-    a1 = MLP_Model.MLP_Model(MyTrain_test_split.MyTrain_test_split(X, y)[0],
+    # a1 = MLP_Model.MLP_Model(MyTrain_test_split.MyTrain_test_split(X, y)[0],
+    #                     MyTrain_test_split.MyTrain_test_split(X, y)[1],
+    #                     MyTrain_test_split.MyTrain_test_split(X, y)[2],
+    #                     MyTrain_test_split.MyTrain_test_split(X, y)[3])
+    #
+    # print(type(a1))
+    # print(a1)
+
+    # ----- MLP_Model(include MLP_ModelSave)
+    a2 = MLP_ModelSave.MLP_ModelSave((MLP_Model.MLP_Model(MyTrain_test_split.MyTrain_test_split(X, y)[0],
                         MyTrain_test_split.MyTrain_test_split(X, y)[1],
                         MyTrain_test_split.MyTrain_test_split(X, y)[2],
-                        MyTrain_test_split.MyTrain_test_split(X, y)[3])
+                        MyTrain_test_split.MyTrain_test_split(X, y)[3])).model)
 
-    print(type(a1))
-    print(a1)
+    print(type(a2))
+    print(a2)
 
     # ----- RNN_Model
     # b1 = RNN_Model.RNN_Model(MyTrain_test_split.MyTrain_test_split(X, y)[0],
