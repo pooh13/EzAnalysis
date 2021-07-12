@@ -93,12 +93,14 @@ def diary(request):
 
 
 def menu_diary(request, pk):
-    get_diary = models.Diary.objects.filter(line_id=pk, date=datetime.datetime.today().date())
-    # print(diary)
-
+    get_diary = models.Diary.objects.filter(line_id=pk)
     # 判斷該使用者當天是否填寫過
     if get_diary:
-        message = '已填過'
+        for d in get_diary:
+            if d.date.strftime('%Y-%m-%d') == today:
+                message = '已填過'
+            else:
+                message = ''    
     else:
         message = ''
 
@@ -106,15 +108,10 @@ def menu_diary(request, pk):
     thing_form = forms.UserThingsForm(request.POST)
     if request.method == 'POST':
         thing_form.save()
-        print(thing_form)
 
     return render(request, 'Diary/menuDiary.html', {
         'message': message, 'pk': pk,
     })
-
-# test
-# id = 'Ua86fbb6a53fe1f0559a2841cb1cac3a7'
-# date = '2021/07/08'
 
 
 def add_diary1(request, pk):
@@ -146,7 +143,6 @@ def add_diary2(request):
 
     # 選取所做的事的id
     thing_form = forms.UserThingsForm(request.POST)
-    # print(thing_form)
 
     return render(request, 'Diary/addDiary2.html', {
         'thing_form': thing_form, 'diary_id': diary_id,
@@ -156,7 +152,7 @@ def add_diary2(request):
 def add_diary3(request, id):
     # id = Diary_id
     thing_form = forms.UserThingsForm(request.POST)
-    # print(thing_form)
+    print(thing_form)
 
     thing = request.POST['things_id']
     split = thing.split(',')
@@ -164,29 +160,28 @@ def add_diary3(request, id):
 
     # 取得Thing
     default_thing = models.DefaultThing.objects.all()
-    # print(default_thing)
 
     # 取得所做的事的細項note
     default_note = models.DefaultNote.objects.all()
-    # for t in thing_list:
-    #     default_note = models.DefaultNote.objects.filter(things_id=t).all()
-        # print(default_note)
 
     return render(request, 'Diary/addDiary3.html', {
-        'thing_form': thing_form, 'thing_list': thing_list,
+        'id': id, 'thing_form': thing_form, 'thing_list': thing_list,
         'default_thing': default_thing, 'default_note': default_note,
     })
 
 
 def edit_diary(request, pk):
     # 取得使用者當天的Diary
-    today = datetime.datetime.today().date().strftime('%Y-%m-%d')
-    diary = models.Diary.objects.filter(line_id=pk)
-    for diary in diary:
-        if diary.date.strftime('%Y-%m-%d') == today:
-            date = diary.date.strftime('%Y-%m-%d')
-            time = diary.date.strftime('%H:%M')
-            mood = diary.mood
+    get_diary = models.Diary.objects.filter(line_id=pk)
+    for d in get_diary:
+        if d.date.strftime('%Y-%m-%d') == today:
+            date = d.date.strftime('%Y-%m-%d')
+            time = d.date.strftime('%H:%M')
+            mood = d.mood
+            pic = d.pic
+            user_things = models.UserThings.objects.filter(diary_id=d.id).all()
+
+
     # form = forms.DiaryForm(request.POST or None, instance=diary)
     # if request.method == 'POST':
     #     if form.is_valid():
@@ -194,6 +189,7 @@ def edit_diary(request, pk):
 
     return render(request, 'Diary/editDiary.html', {
         'date': date, 'time': time, 'mood': mood,
+        'pic': pic, 'user_things': user_things,
     })
 
 

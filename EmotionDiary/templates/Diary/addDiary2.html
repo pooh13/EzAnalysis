@@ -10,7 +10,8 @@
 		{% csrf_token %}
 		<div id="ID2">
 			{{ thing_form.line_id }}
-			{{ thing_form.date }}
+			{{ thing_form.diary_id }}
+			<div id="d_id" style="display:none">{{ diary_id }}</div>
 			{{ thing_form.chooseThing }}
 			<!-- banner -->
 			<div id="banner">

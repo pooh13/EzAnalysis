@@ -2,7 +2,7 @@
 	#menu {
 		position: relative;
 		min-width: fit-content;
-		background-image: url('../../images/decoration/_2.png');
+		background-image: url('../images/decoration/_2.png');
 		background-size: cover;
 		background-color: rgba(250,247,237,1);
 		background-repeat: no-repeat;

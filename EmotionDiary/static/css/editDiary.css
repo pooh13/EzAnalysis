@@ -56,7 +56,7 @@
         width: 294px;
         margin-left: 10px;
         background: rgba(245, 232, 218,1);
-        border: 1px rgba(28, 28, 28, 1) solid;
+        border: none;
 	}
 	input[type="date"]::-webkit-datetime-edit {
         text-align: right;
@@ -97,7 +97,7 @@
 	    width: 294px;
 	    margin-left: 8px;
 	    background: rgba(229,239,245,1);
-        border: 1px rgba(28, 28, 28, 1) solid;
+        border: none;
 	}
 	input[type="time"]::-webkit-datetime-edit {
 		text-align: right;
@@ -188,8 +188,10 @@
 	}
 	#_bl {
 		position: relative;
+		float: left;
 		width: 60px;
 		height: 86px;
+		margin: 0 5px;
 	}
 	#shopping-bag {
 		position: relative;
@@ -222,7 +224,12 @@
 		height: 240px;
 		margin: 20px auto;
     }
-	#photo-camera {
+	.photo_img {
+		position: relative;
+		width: auto;
+		height: 240px;
+	}
+	#photo_camera {
 		position: relative;
 		width: 240px;
 		height: 240px;

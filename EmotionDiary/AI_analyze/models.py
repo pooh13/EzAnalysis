@@ -39,6 +39,7 @@ class AnalysisDiary(models.Model):
 
 
 class Diary(models.Model):
+    id = models.AutoField(primary_key=True)
     line_id = models.ForeignKey(UserInform, on_delete=models.CASCADE)
     date = models.DateTimeField(null=False)
     mood = models.IntegerField(null=True)
@@ -51,9 +52,9 @@ class Diary(models.Model):
 
 class UserThings(models.Model):
     id = models.AutoField(primary_key=True)
+    diary_id = models.ForeignKey(Diary, on_delete=models.CASCADE)
     line_id = models.ForeignKey(UserInform, on_delete=models.CASCADE)
     things_id = models.ForeignKey(DefaultThing, on_delete=models.CASCADE)
-    date = models.ForeignKey(Diary, on_delete=models.CASCADE)
 
 
 class DefaultNote(models.Model):

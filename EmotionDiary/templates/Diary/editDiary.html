@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block css %}
-	<link rel="stylesheet" href="{% static 'css/Diary/editDiary.css' %}">
+	<link rel="stylesheet" href="{% static 'css/editDiary.css' %}">
 {% endblock %}
 
 {% block body %}
@@ -31,10 +31,10 @@
 			</div>
 
 			<!-- Mood -->
-			<div id="_52" onclick="application.goToTargetView(event)">
+			<div id="_52">
 				<div id="Mood">
 					<div id="mood_text">心情</div>
-					<button id="mood_btn" value="{{ mood }}">
+					<button id="mood_btn" type="button" value="{{ mood }}" onclick="ShowEmoji(this);">
 						<img id="mood_img" src="">
 					</button>
 				</div>
@@ -49,10 +49,12 @@
 						</path>
 					</svg>
 					<div id="_bk">
-						<div id="_bl" onclick="application.goToTargetView(event)">
-							<img id="shopping-bag" src="{% static 'images/Diary/Edit/shopping-bag.png' %}" srcset="{% static 'images/Diary/Edit/shopping-bag.png' %} 1x, {% static 'images/Diary/Edit/shopping-bag@2x.png' %} 2x">
-							<div id="_bm">購物</div>
+						{% for t in user_things %}
+						<div id="_bl">
+							<img id="shopping-bag" src="{{ MEDIA_URL }}{{ t.things_id.things_img }}">
+							<div id="_bm">{{ t.things_id.things }}</div>
 						</div>
+						{% endfor %}
 					</div>
 				</div>
 			</div>
@@ -60,7 +62,11 @@
 			<!-- Photo -->
 			<div id="_54">
 				<div id="Photo">
-					<img id="photo-camera" src="{% static 'images/Diary/Edit/photo-camera.png' %}" srcset="{% static 'images/Diary/Edit/photo-camera.png' %} 1x, {% static 'images/Diary/Edit/photo-camera@2x.png' %} 2x">
+					{% if pic %}
+					<img class="photo_img"  src="{{ MEDIA_URL }}{{ pic }}">
+					{% else %}
+					<img id="photo_camera" src="{% static 'images/decoration/photo-camera.png' %}" srcset="{% static 'images/decoration/photo-camera.png' %} 1x, {% static 'images/decoration/photo-camera@2x.png' %} 2x">
+					{% endif %}
 				</div>
 
 				<!-- Finish -->
@@ -75,7 +81,7 @@
 {% endblock %}
 
 {% block js %}
-	<script src="{% static 'js/Diary/editDiary.js' %}"></script>
+	<script src="{% static 'js/editDiary.js' %}"></script>
 	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 	<script type="text/javascript">

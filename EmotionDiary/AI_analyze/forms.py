@@ -30,10 +30,10 @@ class DiaryForm(forms.ModelForm):
 class UserThingsForm(forms.ModelForm):
     class Meta:
         model = models.UserThings
-        fields = ['line_id', 'date', 'things_id']
+        fields = ['line_id', 'diary_id', 'things_id']
         widgets = {
             'line_id': forms.TextInput(attrs={'id': 'userid', 'name': 'userid', 'type': 'hidden'}),
-            'date': forms.TextInput(attrs={'id': 'diary_date', 'type': 'hidden'}),
+            'diary_id': forms.TextInput(attrs={'id': 'diary_id', 'type': 'hidden'}),
             'things_id': forms.TextInput(attrs={'id': 'chooseThing', 'type': 'hidden'}),
         }
 

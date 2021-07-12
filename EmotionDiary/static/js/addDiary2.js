@@ -3,6 +3,9 @@
 ///////////////////////////////////////
 
 window.onload = function(){
+    var id = document.getElementById('d_id').innerText;
+    var diary_id = document.getElementById('diary_id');
+    diary_id.value = id;
     thingSelect(t_id);
 }
 
