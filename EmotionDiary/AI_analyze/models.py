@@ -1,6 +1,8 @@
 from django.db import models
 
 # Create your models here.
+
+
 class Career(models.Model):
     career_id = models.CharField(max_length=4, primary_key=True)
     career_name = models.CharField(max_length=10, blank=False, null=False)
@@ -12,6 +14,10 @@ class Career(models.Model):
 class DefaultThing(models.Model):
     things_id = models.CharField(max_length=4, primary_key=True)
     things = models.CharField(max_length=10, blank=False, null=False)
+    things_img = models.ImageField(upload_to='things', null=True)
+
+    def __str__(self):
+        return self.things_id
 
 
 class UserInform(models.Model):
@@ -23,6 +29,7 @@ class UserInform(models.Model):
 
     def __str__(self):
         return self.line_id
+
 
 class AnalysisDiary(models.Model):
     photo_id = models.AutoField(primary_key=True)
@@ -53,6 +60,9 @@ class DefaultNote(models.Model):
     things_id = models.ForeignKey(DefaultThing, on_delete=models.CASCADE)
     note_id = models.CharField(max_length=4, primary_key=True)
     default_note = models.CharField(max_length=255, blank=False, null=False)
+
+    def __str__(self):
+        return self.note_id
 
 
 class InstantPhotoAnalysis(models.Model):

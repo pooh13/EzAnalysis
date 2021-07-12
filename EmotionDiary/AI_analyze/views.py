@@ -74,7 +74,7 @@ def profile(request):
 
 def edit_user(request, pk):
     userinfo = models.UserInform.objects.get(line_id=pk)
-    form = forms.UserInformFrom(request.POST or None, instance=userinfo)
+    form = forms.UserInForm(request.POST or None, instance=userinfo)
     # print(profile)
     # print(form)
     if request.method == 'POST':
@@ -93,37 +93,33 @@ def diary(request):
 
 
 def menu_diary(request, pk):
-    diary = models.Diary.objects.filter(line_id=pk, date=datetime.datetime.today().date())
+    get_diary = models.Diary.objects.filter(line_id=pk, date=datetime.datetime.today().date())
     # print(diary)
 
     # 判斷該使用者當天是否填寫過
-    if diary:
+    if get_diary:
         message = '已填過'
     else:
         message = ''
+
+    # UserThingForm.save
+    thing_form = forms.UserThingsForm(request.POST)
+    if request.method == 'POST':
+        thing_form.save()
+        print(thing_form)
 
     return render(request, 'Diary/menuDiary.html', {
         'message': message, 'pk': pk,
     })
 
+# test
+# id = 'Ua86fbb6a53fe1f0559a2841cb1cac3a7'
+# date = '2021/07/08'
+
 
 def add_diary1(request, pk):
     user = models.UserInform.objects.get(line_id=pk)
     form = forms.DiaryForm(instance=user)
-    day = datetime.datetime.today().date().strftime('%Y%m%d')
-
-    if request.method == 'POST':
-        form = forms.DiaryForm(request.POST, request.FILES)
-        if form.is_valid():
-            photo = form.save(commit=False)
-            upload_photo = request.FILES['pic']
-
-            # 修改上傳照片名稱 (userid-day.jpg)
-            if upload_photo:
-                ext = upload_photo.name.split('.')[-1]
-                filename = pk + '-' + day + '.' + ext
-                photo.pic.name = filename
-                photo.save()
 
     return render(request, 'Diary/addDiary1.html', {
         'form': form
@@ -131,27 +127,73 @@ def add_diary1(request, pk):
 
 
 def add_diary2(request):
-    # diary = models.Diary.objects.get(id=pk)
-    # form = forms.DiaryForm(request.POST or None, instance=diary)
-    return render(request, 'Diary/addDiary2.html', {
+    # DiaryForm.save
+    diary_form = forms.DiaryForm(request.POST, request.FILES)
+    userid = request.POST['line_id']
+    upload_photo = request.FILES['pic']
+    day = datetime.datetime.today().date().strftime('%Y%m%d')
+    if request.method == 'POST':
+        # 修改上傳照片名稱 (userid-day.jpg)
+        if upload_photo:
+            photo = diary_form.save(commit=False)
+            ext = upload_photo.name.split('.')[-1]
+            filename = userid + '-' + day + '.' + ext
+            photo.pic.name = filename
+            photo.save()
 
+    # 儲存的Diary_id - Diary object(id)
+    diary_id = photo.id
+
+    # 選取所做的事的id
+    thing_form = forms.UserThingsForm(request.POST)
+    # print(thing_form)
+
+    return render(request, 'Diary/addDiary2.html', {
+        'thing_form': thing_form, 'diary_id': diary_id,
     })
 
 
-def add_diary3(request):
-    return render(request, 'Diary/addDiary3.html', {
+def add_diary3(request, id):
+    # id = Diary_id
+    thing_form = forms.UserThingsForm(request.POST)
+    # print(thing_form)
 
+    thing = request.POST['things_id']
+    split = thing.split(',')
+    thing_list = list(split)
+
+    # 取得Thing
+    default_thing = models.DefaultThing.objects.all()
+    # print(default_thing)
+
+    # 取得所做的事的細項note
+    default_note = models.DefaultNote.objects.all()
+    # for t in thing_list:
+    #     default_note = models.DefaultNote.objects.filter(things_id=t).all()
+        # print(default_note)
+
+    return render(request, 'Diary/addDiary3.html', {
+        'thing_form': thing_form, 'thing_list': thing_list,
+        'default_thing': default_thing, 'default_note': default_note,
     })
 
 
 def edit_diary(request, pk):
-    diary = models.Diary.objects.get(line_id=pk)
-    form = forms.DiaryForm(request.POST or None, instance=diary)
-    if request.method == 'POST':
-        if form.is_valid():
-            form.save()
+    # 取得使用者當天的Diary
+    today = datetime.datetime.today().date().strftime('%Y-%m-%d')
+    diary = models.Diary.objects.filter(line_id=pk)
+    for diary in diary:
+        if diary.date.strftime('%Y-%m-%d') == today:
+            date = diary.date.strftime('%Y-%m-%d')
+            time = diary.date.strftime('%H:%M')
+            mood = diary.mood
+    # form = forms.DiaryForm(request.POST or None, instance=diary)
+    # if request.method == 'POST':
+    #     if form.is_valid():
+    #         form.save()
+
     return render(request, 'Diary/editDiary.html', {
-        'form': form,
+        'date': date, 'time': time, 'mood': mood,
     })
 
 

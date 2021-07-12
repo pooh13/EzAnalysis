@@ -43,10 +43,10 @@ function ShowTime(){
     var minString = ( minute < 10)? ('0'+ minute) : ('' + minute);
     var secString = ( second < 10)? ('0'+ second) : ('' + second);
     var date = year + '/' + monthString + '/' + dayString;
-    var time = hourString + ':' + minString + ':' + secString;
+    var time = hourString + ':' + minString;
     document.getElementById('date').innerText = date;
 　	document.getElementById('time').innerText = time;
-　	document.getElementById('diary_date').value = date;
+　	document.getElementById('diary_date').value = date + ' ' + time;
 }
 window.setInterval('ShowTime()',1000);
 

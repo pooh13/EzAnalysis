@@ -1,0 +1,328 @@
+
+	form, #ID2 {
+		position: relative;
+		min-width: fit-content;
+		height: 100%;
+		background-image: url('../../images/Diary/add/_2.png');
+		background-size: cover;
+		background-color: rgba(250,247,237,1);
+		background-repeat: no-repeat;
+		overflow-x: hidden;
+		overflow-y: visible;
+	}
+
+    /*-- banner --*/
+	#banner {
+		position: relative;
+		width: 348px;
+		height: 100px;
+		margin: 50px auto 0;
+	}
+	#banner_text {
+		position: absolute;
+		width: 295px;
+		height: 100px;
+		margin-left: 13px;
+		line-height: 50px;
+		text-align: center;
+		font-family: Microsoft JhengHei;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 30px;
+		color: rgba(132,86,42,1);
+	}
+	#ID051-joy {
+		position: absolute;
+		width: 46px;
+		height: 46px;
+		left: 300px;
+		overflow: visible;
+	}
+
+    /*-- 裝飾 --*/
+	#decoration {
+		position: relative;
+		width: 348px;
+		height: 569px;
+		margin: 40px auto 0;
+		overflow: visible;
+	}
+	#area{
+		position: absolute;
+		width: 348px;
+		height: 569px;
+		padding: 5px;
+		background: rgba(255,255,255,1);
+		filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+	}
+	.dot {
+		position: relative;
+		width: 18px;
+		height: 18px;
+        margin-left: 6px;
+		filter: drop-shadow(1px -1px 1px rgba(0, 0, 0, 0.161));
+	}
+	.dot_dot {
+		fill: rgba(250,247,237,1);
+	}
+	#w644_1 {
+		position: relative;
+		top: -20px;
+		width: 129px;
+		height: 45.134px;
+		margin: 0 auto;
+	}
+	.w644_1 {
+	    position: absolute;
+        width: 129px;
+		height: 45.134px;
+		filter: drop-shadow(0px 0.5px 1px rgba(0, 0, 0, 0.161));
+	}
+
+    /*-- 按鈕 --*/
+	#thing {
+		position: relative;
+		width: 315px;
+		height: 475px;
+		margin: 0 auto;
+	}
+    #row1 {
+        position: relative;
+        width: 308px;
+        height: 90px;
+        margin: 0 auto;
+    }
+    #row2 {
+        position: relative;
+        width: 308px;
+        height: 90px;
+        margin: 30px auto;
+    }
+    #row3 {
+        position: relative;
+        width: 308px;
+        height: 90px;
+        margin: 30px auto;
+    }
+    #row4 {
+        position: relative;
+        width: 308px;
+        height: 90px;
+        margin: 0 auto;
+    }
+    .btn1 {
+        position: relative;
+	    width: 62px;
+	    height: 62px;
+	    padding: 0;
+	    border: 3px #ffffff solid;
+    }
+    .btn2 {
+	    width: 62px;
+	    height: 62px;
+	    padding: 0;
+	    border: 3px #C3E0E5 solid;
+    }
+
+	/*-- shopping --*/
+	#shopping {
+		position: relative;
+		float: left;
+		width: 62px;
+		height: 86px;
+		margin-right: 10px;
+	}
+
+	/*-- eat --*/
+	#eat {
+		position: relative;
+		float: left;
+		width: 62px;
+		height: 86px;
+		margin: 0 10px;
+	}
+
+	/*-- friend --*/
+	#friend {
+		position: relative;
+		float: left;
+		width: 62px;
+		height: 86px;
+		margin: 0 10px;
+	}
+
+	/*-- game --*/
+	#game {
+		position: relative;
+		float: right;
+		width: 62px;
+		height: 86px;
+		margin-left: 10px;
+	}
+
+	/*-- sport --*/
+	#sport {
+		position: relative;
+		float: left;
+		width: 62px;
+		height: 86px;
+		margin-right: 10px;
+	}
+
+	/*-- favourite --*/
+	#favourite {
+		position: relative;
+		float: left;
+		width: 62px;
+		height: 86px;
+		margin: 0 10px;
+	}
+
+	/*-- clean --*/
+	#clean {
+		position: relative;
+		float: left;
+		width: 62px;
+		height: 86px;
+		margin: 0 10px;
+	}
+
+	/*-- travel --*/
+	#travel {
+		position: relative;
+		float: right;
+		width: 62px;
+		height: 86px;
+		margin-left: 10px;
+	}
+
+    /*-- work --*/
+	#work {
+		position: relative;
+		float: left;
+		width: 62px;
+		height: 86px;
+		margin-right: 10px;
+	}
+
+	/*-- relax --*/
+	#relax {
+		position: relative;
+		float: left;
+		width: 62px;
+		height: 86px;
+		margin: 0 10px;
+	}
+
+	/*-- party --*/
+	#party {
+		position: relative;
+		float: left;
+		width: 62px;
+		height: 86px;
+		margin: 0 10px;
+	}
+
+	/*-- reading --*/
+	#reading {
+		position: relative;
+		float: right;
+		width: 62px;
+		height: 86px;
+		margin-left: 10px;
+	}
+
+	/*-- movie --*/
+	#movie {
+		position: relative;
+		float: left;
+		width: 62px;
+		height: 86px;
+		margin-right: 10px;
+	}
+
+	/*-- other --*/
+	#other {
+		position: relative;
+		float: left;
+		width: 62px;
+		height: 86px;
+		margin: 0 10px;
+	}
+	.thing_img {
+	    position: relative;
+		width: 100%;
+	}
+	.thing_text {
+	    position: relative;
+		width: 60px;
+		margin: 0 auto;
+		text-align: center;
+		font-family: Arial;
+		font-style: normal;
+		font-weight: bold;
+		font-size: 20px;
+		color: rgba(0,0,0,1);
+	}
+
+    /* -- next_btn -- */
+	#next {
+	    position: relative;
+	    width: 348px;
+	    height: 115px;
+	    margin: 10px auto;
+	}
+	#_3 {
+		position: relative;
+		float: right;
+		width: 110px;
+		height: 113px;
+	}
+    #next_btn {
+        position: relative;
+        top: 21px;
+        width: 58px;
+        height: 85px;
+        margin: 0 auto;
+    }
+    #_27 {
+	    position: relative;
+	    width: 58px;
+	    height: 58px;
+	    padding: 0;
+	    border: none;
+	    border-radius: 50%;
+	    background: rgba(174,202,217,1);
+	    filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+	}
+	#_10 {
+		fill: transparent;
+		stroke: rgba(255,255,255,1);
+		stroke-width: 5px;
+		stroke-linejoin: miter;
+		stroke-linecap: round;
+		stroke-miterlimit: 4;
+		shape-rendering: auto;
+	}
+	._10 {
+		position: absolute;
+		top: 20px;
+        left: 15px;
+		width: 30.915px;
+		height: 15.458px;
+		transform: rotate(-90deg);
+	}
+
+	#next_text {
+		position: relative;
+		width: 24px;
+		margin: 0 auto;
+		white-space: nowrap;
+		text-align: center;
+		font-family: Wingdings;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 10px;
+		color: rgba(75,106,124,1);
+	}
+

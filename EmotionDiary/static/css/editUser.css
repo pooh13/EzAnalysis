@@ -1,0 +1,287 @@
+
+	form, #ID1 {
+		position: relative;
+		min-width: fit-content;
+		height: 100%;
+		background: rgba(253,231,232,1);
+	}
+
+    /*  vh=view height, vw=view weight */
+
+	/* --- 標題 --- */
+	#_bk {
+		position: relative;
+		width: 100%;
+		height: 50px;
+		padding: 4px 0;
+		white-space: nowrap;
+		background: rgba(214,226,233,1);
+	}
+    #banner {
+        position: relative;
+		width: 295px;
+		height: 100%;
+		margin: 0 auto;
+		text-align: center;
+		font-family: Microsoft JhengHei;
+		font-style: normal;
+		font-weight: bold;
+		font-size: 30px;
+		color: rgba(109,104,117,1);
+    }
+
+    #content {
+        position: relative;
+        width: 100%;
+        height: 690px;
+        background: rgba(253,231,232,1);
+    }
+
+	/* --- name, birth --- */
+	#name {
+		position: relative;
+		width: 295px;
+		height: 98px;
+		margin: 0 auto;
+	}
+	#birthday {
+		position: relative;
+		width: 295px;
+		height: 98px;
+		margin: 0 auto;
+	}
+	.text {
+		position: relative;
+		width: 294px;
+		height: 36px;
+		margin: 0 auto;
+		text-align: left;
+		font-family: Microsoft JhengHei;
+		font-style: normal;
+		font-weight: bold;
+		font-size: 25px;
+		color: rgba(109,104,117,1);
+	}
+	.textbox {
+		position: relative;
+		width: 294px;
+		height: 50px;
+		border-radius: 20px;
+		border:6px rgba(109,104,117,1) solid;
+		background-color: rgba(253,231,232,1);
+		text-align: left;
+		font-family: Microsoft JhengHei;
+		font-style: normal;
+		font-weight: bold;
+		font-size: 30px;
+		color: rgba(109,104,117,1);
+		filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+	}
+
+	/* --- gender --- */
+	#gen {
+        position: relative;
+        width: 295px;
+		height: 105px;
+		margin: 0 auto;
+	}
+	#gen_btn {
+	    position:relative;
+	    width: 260px;
+	    height: 100%;
+	    margin: 0 auto;
+	}
+	/* man */
+	#man {
+		position: relative;
+		float: left;
+	}
+	/* woman */
+	#woman {
+		position: relative;
+		float: right;
+	}
+	.gen_img {
+	    width: 100%;
+	}
+	.btn1{
+		border:2px #ffffff solid;
+		height: 100px;
+		width: 100px;
+		font-size: small;
+		border-radius:50%;
+		background-color: #ffffff;
+	  	}
+	.btn2{
+		border: 5px #f78989 solid;
+		height: 100px;
+		width: 100px;
+		font-size: small;
+		border-radius:50%;
+		background-color: #ffffff;
+	  	}
+
+	/* --- work --- */
+	#work {
+		position: relative;
+		width: 320px;
+		height: 320px;
+		margin: 0 auto;
+	}
+	#work_background {
+	    position: absolute;
+	    width: 320px;
+		height: 320px;
+	    background: rgba(185,185,185,1);
+	    opacity: 0.642;
+	    border-radius:28px;
+	    filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+	}
+	.btn3{
+		border:none;
+		height: 75px;
+		width:  75px;
+		border-radius: 20px;
+		}
+	.btn4{
+		border: 4px #0066ff solid;
+		height: 80px;
+		width:  80px;
+		margin: 0 auto;
+		border-radius: 20px;
+		}
+
+
+	#work_row1 {
+        position: relative;
+        width: 290px;
+        height: 106px;
+        margin: 0 auto;
+        padding: 7px 0;
+	}
+	#work_row2 {
+        position: relative;
+        width: 290px;
+        height: 106px;
+        margin: 0 auto;
+        padding: 6px 0;
+	}
+	#work_row3 {
+        position: relative;
+        width: 290px;
+        height: 106px;
+        margin: 0 auto;
+        padding: 7px 0;
+	}
+
+	/* 學生 */
+	#student {
+		position: relative;
+		float: left;
+		width: 80px;
+		height: 100px;
+	}
+    /* 軍公教 */
+	#soldier {
+		position: relative;
+		width: 80px;
+		height: 100px;
+		margin: 0 auto;
+	}
+	/* 服務業 */
+	#service {
+		position: relative;
+		float: right;
+		width: 80px;
+		height: 100px;
+	}
+    /* 自由業 */
+	#freelance {
+		position: relative;
+		float: left;
+		width: 80px;
+		height: 100px;
+	}
+    /* 工商業 */
+	#business {
+		position: relative;
+		width: 80px;
+		height: 100px;
+		margin: 0 auto;
+	}
+    /* 家管 */
+	#home {
+		position: relative;
+		float: right;
+		width: 80px;
+		height: 100px;
+	}
+    /* 退休人員 */
+	#retirement {
+		position: relative;
+		float: left;
+		width: 80px;
+		height: 100px;
+	}
+    /* 農民漁牧業 */
+	#farmer {
+		position: relative;
+		width: 80px;
+		height: 100px;
+		margin: 0 auto;
+	}
+	/* 其他 */
+	#other {
+		position: relative;
+		float: right;
+		width: 80px;
+		height: 100px;
+	}
+
+	.work_img {
+		position: relative;
+		width: 100%;
+	}
+	.work_text {
+		position: relative;
+		height: 20px;
+		text-align: center;
+		font-family: Cambria;
+		font-style: normal;
+		font-weight: bold;
+		font-size: 17px;
+		color: rgba(255,255,255,1);
+		letter-spacing: -0.05px;
+	}
+
+	/* --- next page --- */
+	#next {
+        position: relative;
+		width: 100%;
+		height: 65px;
+		margin: 0 auto;
+		padding: 7.5px 0;
+	}
+	#next_btn {
+        position: relative;
+        width: 292px;
+        height:50px;
+        margin: 0 auto;
+	}
+
+    .next_btn {
+        position: relative;
+        float: right;
+        width: 130px;
+        height: 50px;
+        margin: 0 auto;
+        color: white;
+		font-family: Apple SD Gothic Neo;
+		font-style: normal;
+		font-weight: bold;
+		font-size: 30px;
+		border: none;
+		border-radius: 24px;
+		background: rgba(255,215,184,1);
+		filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+    }

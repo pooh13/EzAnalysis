@@ -1,0 +1,302 @@
+
+	form, #ID2{
+		position: relative;
+		min-width: fit-content;
+		height: 100%;
+		background-image: url('../../images/Diary/add/_2.png');
+		background-size: cover;
+		background-color: rgba(250,247,237,1);
+		background-repeat: no-repeat;
+		overflow-x: hidden;
+		overflow-y: visible;
+	}
+
+	/* -- 日期＆時間 -- */
+    #date {
+		position: relative;
+		top: 10px;
+		width: 295px;
+		height: 75px;
+		margin: 0 auto;
+		text-align: center;
+		font-family: Kohinoor Bangla;
+		font-style: normal;
+		font-weight: lighter;
+		font-size: 50px;
+		color: rgba(132,86,42,1);
+	}
+	#time {
+	    position: relative;
+		width: 295px;
+		height: 75px;
+		margin: 0 auto;
+		text-align: center;
+		font-family: Kohinoor Bangla;
+		font-style: normal;
+		font-weight: lighter;
+		font-size: 50px;
+		color: rgba(132,86,42,1);
+	}
+
+    #line_9 {
+        position: relative;
+        width: 295px;
+        height: 5px;
+        margin: 0 auto;
+    }
+	#line {
+		position: absolute;
+		width: 295px;
+		height: 1px;
+		transform: matrix(1,0,0,1,0,0);
+	}
+	.line {
+		fill: rgba(0,0,0,0);
+		stroke: rgba(132,86,42,1);
+		stroke-width: 1px;
+		stroke-linejoin: miter;
+		stroke-linecap: butt;
+		stroke-miterlimit: 4;
+		shape-rendering: auto;
+	}
+
+    /* -- mood -- */
+	#emoji{
+		position: relative;
+		width: 348px;
+		height: 315px;
+		margin: 20px auto;
+	}
+	#area_1{
+		position: absolute;
+		width: 348px;
+		height: 315px;
+		padding: 5px;
+		background: rgba(255,255,255,1);
+		filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+	}
+	.dot {
+		position: relative;
+		width: 18px;
+		height: 18px;
+        margin-left: 6px;
+		filter: drop-shadow(1px -1px 1px rgba(0, 0, 0, 0.161));
+	}
+	.dot_dot {
+		fill: rgba(250,247,237,1);
+	}
+	#emoji_text {
+		position: relative;
+		width: 161px;
+		top: 30px;
+		margin: 0 auto;
+		white-space: nowrap;
+		text-align: center;
+		font-family: Microsoft JhengHei;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 20px;
+		color: rgba(132,86,42,1);
+	}
+	#w644 {
+		position: absolute;
+		width: 135.913px;
+		height: 99.357px;
+		top: -20px;
+		left: -25px;
+		filter: drop-shadow(0px 0.5px 1px rgba(0, 0, 0, 0.161));
+	}
+
+    /* -- btn -- */
+	#_33 {
+		position: absolute;
+		width: 295px;
+		height: 220px;
+		left: 30px;
+		top: 70px;
+	}
+	#joy {
+	    position: relative;
+	    float: left;
+	    width: 80px;
+	    height:110px;
+	}
+    #neutral {
+        position: relative;
+	    float: right;
+	    width: 80px;
+	    height:110px;
+    }
+	#happy {
+	    position: relative;
+	    width: 80px;
+	    height:110px;
+	    margin: 0 auto;
+	}
+	#sad {
+	    position: relative;
+	    float: left;
+	    width: 80px;
+	    height: 100px;
+	    margin-left: 50px;
+	}
+	#cry {
+	    position: relative;
+	    float: right;
+	    width: 80px;
+	    height: 100px;
+	    margin-right: 50px;
+	}
+	.mood_btn{
+        position: relative;
+		width: 74px;
+		height: 74px;
+		padding: 2px;
+    }
+    .mood_text {
+        position: relative;
+		width: 80px;
+		white-space: nowrap;
+		text-align: center;
+		font-family: Microsoft JhengHei;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 24px;
+		color: rgba(132,86,42,1);
+    }
+	.btn1 {
+	    position: relative;
+		width: 80px;
+		height: 80px;
+		padding: 0;
+		border: none;
+		border-radius: 80px;
+		background-color: rgb(247, 203, 203);
+
+	}
+	.btn2 {
+		position: relative;
+		width: 80px;
+		height: 80px;
+		padding: 0;
+		border: none;
+		border-radius: 80px;
+		background-color: rgb(115, 190, 230);
+	}
+
+	/* -- Face_Scanning  -- */
+	#_bx {
+		position: relative;
+		width: 348px;
+		height: 300px;
+		margin: 0 auto;
+	}
+	#area_2{
+		position: absolute;
+		width: 348px;
+		height: 300px;
+		padding: 5px;
+		background: rgba(255,255,255,1);
+		filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+	}
+	#w644_1 {
+		position: relative;
+		top: -12px;
+		width: 97.314px;
+		height: 35.54px;
+		margin: 0 auto;
+	}
+	.w644_1 {
+	    position: relative;
+		width: 97.314px;
+		height: 35.54px;
+		filter: drop-shadow(0px 0.5px 1px rgba(0, 0, 0, 0.161));
+	}
+	#Face_Scanning {
+		position: relative;
+		top: -17px;
+		width: 190px;
+		height: 275px;
+		margin: 0 auto;
+	}
+	.Face_Scanning {
+	    position: relative;
+	    white-space: nowrap;
+		text-align: center;
+		font-family: Cochin;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 30px;
+		color: rgba(132,86,42,1);
+	}
+	#image {
+	    position: relative;
+	    max-width: 190px;
+	    max-height: 190px;
+	}
+	#photo {
+	    position: relative;
+	    width: 190px;
+	    margin: 5px 0;
+	    font-size: 18px;
+	}
+
+    /* -- next_btn -- */
+	#next {
+	    position: relative;
+	    width: 348px;
+	    height: 115px;
+	    margin: 10px auto;
+	}
+	#_3 {
+		position: relative;
+		float: right;
+		width: 110px;
+		height: 113px;
+	}
+    #next_btn {
+        position: relative;
+        top: 21px;
+        width: 58px;
+        height: 85px;
+        margin: 0 auto;
+    }
+    #_27 {
+	    position: relative;
+	    width: 58px;
+	    height: 58px;
+	    padding: 0;
+	    border: none;
+	    border-radius: 50%;
+	    background: rgba(174,202,217,1);
+	    filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+	}
+	#_10 {
+		fill: transparent;
+		stroke: rgba(255,255,255,1);
+		stroke-width: 5px;
+		stroke-linejoin: miter;
+		stroke-linecap: round;
+		stroke-miterlimit: 4;
+		shape-rendering: auto;
+	}
+	._10 {
+		position: absolute;
+		top: 20px;
+        left: 15px;
+		width: 30.915px;
+		height: 15.458px;
+		transform: rotate(-90deg);
+	}
+	#next_text {
+		position: relative;
+		width: 24px;
+		margin: 0 auto;
+		white-space: nowrap;
+		text-align: center;
+		font-family: Wingdings;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 10px;
+		color: rgba(75,106,124,1);
+	}

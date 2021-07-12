@@ -1,0 +1,258 @@
+
+	form, #ID2{
+		position: relative;
+		min-width: fit-content;
+		height: 100%;
+		background-color: rgba(250,249,244,1);
+		overflow-x: hidden;
+		overflow-y: visible;
+	}
+
+    /*-- title --*/
+	#title{
+        position: relative;
+		width: 100%;
+		height: 90px;
+		margin: 0 auto;
+		padding: 25px;
+		background-color: rgba(214,226,233,1);
+		border: 1px rgba(198,198,198,1) solid;
+		text-align: center;
+		font-family: Microsoft Himalaya;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 30px;
+		color: rgba(0,0,0,1);
+	}
+
+    /*-- date --*/
+	#_50 {
+		position: relative;
+		width: 100%;
+		height: 60px;
+		margin: 15px auto;
+		padding: 8px;
+		background-color: rgba(245,232,218,1);
+		border: 1px rgba(218,218,218,1) solid;
+	}
+	#Date {
+		position: relative;
+		width: 348px;
+		height: 42px;
+		margin: 0 auto;
+	}
+	#date_text {
+	    position: relative;
+	    float: left;
+	    margin: 6px auto;
+		font-family: Microsoft JhengHei;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 20px;
+		color: rgba(0,0,0,1);
+	}
+	#date_input {
+	    position: relative;
+        width: 294px;
+        margin-left: 10px;
+        background: rgba(245, 232, 218,1);
+        border: 1px rgba(28, 28, 28, 1) solid;
+	}
+	input[type="date"]::-webkit-datetime-edit {
+        text-align: right;
+        font-size: x-large;
+    }
+    input[type="date"]::-webkit-calendar-picker-indicator {   /*這是控制下拉小箭頭的*/
+        font-size: large;
+        margin-right: 8px;
+    }
+    /*-- time --*/
+	#_51 {
+		position: relative;
+		width: 100%;
+		height: 60px;
+		margin: 15px auto;
+		padding: 8px;
+		background-color: rgba(229,239,245,1);
+		border: 1px rgba(218,218,218,1) solid;
+	}
+	#Time {
+		position: relative;
+		width: 348px;
+		height: 42px;
+		margin: 0 auto;
+	}
+	#time_text {
+	    position: relative;
+	    float: left;
+	    margin: 6px auto;
+		font-family: Microsoft JhengHei;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 20px;
+		color: rgba(0,0,0,1);
+	}
+	#time_input {
+	    position: relative;
+	    width: 294px;
+	    margin-left: 8px;
+	    background: rgba(229,239,245,1);
+        border: 1px rgba(28, 28, 28, 1) solid;
+	}
+	input[type="time"]::-webkit-datetime-edit {
+		text-align: right;
+        font-size: x-large;
+	}
+	input[type="time"]::-webkit-calendar-picker-indicator {   /*這是控制下拉小箭頭的*/
+		font-size: large;
+        margin-right: 8px;
+	}
+
+	/*-- Mood --*/
+	#_52 {
+	    position: relative;
+		width: 100%;
+		height: 96px;
+		margin: 15px auto;
+		padding: 8px;
+		background-color: rgba(245,232,218,1);
+		border: 1px rgba(218,218,218,1) solid;
+	}
+    #Mood {
+        position: relative;
+		width: 348px;
+		height: 74px;
+		margin: 0 auto;
+    }
+	#mood_text {
+		position: relative;
+	    float: left;
+	    margin: 22px auto;
+		white-space: nowrap;
+		text-align: center;
+		font-family: Wingdings;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 20px;
+		color: rgba(0,0,0,1);
+	}
+	#mood_btn {
+		position: relative;
+		float:right;
+		width: 77px;
+		height: 77px;
+		margin-right: 10px;
+		padding: 0;
+		border: none;
+		background: none;
+	}
+
+    /*-- Thing --*/
+	#_53 {
+	    position: relative;
+		width: 100%;
+		height: 245px;
+		margin: 15px auto;
+		background-color: rgba(229,239,245,1);
+		border: 1px rgba(218,218,218,1) solid;
+	}
+	#Thing {
+        position: relative;
+		width: 348px;
+		height: 245px;
+		margin: 0 auto;
+    }
+	#thing_text {
+		position: relative;
+		top: 10px;
+		font-family: Wingdings;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 20px;
+		color: rgba(0,0,0,1);
+	}
+	#_9 {
+	    position: relative;
+		width: 348px;
+		height: 1px;
+		transform: matrix(1,0,0,1,0,0);
+	}
+	._9 {
+		stroke: rgba(112,112,112,1);
+		stroke-width: 1px;
+	}
+	#_bk {
+		position: relative;
+		width: 348px;
+		height: 182px;
+	}
+	#_bl {
+		position: relative;
+		width: 60px;
+		height: 86px;
+	}
+	#shopping-bag {
+		position: relative;
+		width: 60px;
+		height: 60px;
+	}
+	#_bm {
+		position: relative;
+		width: 60px;
+		text-align: center;
+		font-family: Arial;
+		font-style: normal;
+		font-weight: bold;
+		font-size: 20px;
+		color: rgba(0,0,0,1);
+	}
+
+	/*-- Photo --*/
+	#_54 {
+	    position: relative;
+		width: 100%;
+		height: auto;
+		margin: 15px auto 0;
+		background-color: rgba(245,232,218,1);
+		border: 1px rgba(218,218,218,1) solid;
+	}
+	#Photo {
+        position: relative;
+		width: 240px;
+		height: 240px;
+		margin: 20px auto;
+    }
+	#photo-camera {
+		position: relative;
+		width: 240px;
+		height: 240px;
+		opacity: 0.499;
+	}
+
+	/*-- Finish --*/
+	#Finish {
+		position: relative;
+		width: 348px;
+		height: 48px;
+		margin: 15px auto;
+	}
+	#finish_btn {
+	    position: relative;
+	    float: right;
+	    width: 141px;
+	    height: 48px;
+	    border-radius: 24px;
+	    border: none;
+	    background-color: rgba(106,142,168,1);
+	    filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161))
+	}
+    #finish_text {
+        position: relative;
+        text-align: center;
+		font-family: Apple SD Gothic Neo;
+		font-style: normal;
+		font-weight: bold;
+		font-size: 30px;
+		color: rgba(255,255,255,1);
+		filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+    }
