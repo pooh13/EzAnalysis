@@ -34,7 +34,7 @@
 			<div id="_52">
 				<div id="Mood">
 					<div id="mood_text">心情</div>
-					<button id="mood_btn" type="button" value="{{ mood }}" onclick="ShowEmoji(this);">
+					<button id="mood_btn" type="button" value="{{ mood }}" onclick="showEmoji(this);">
 						<img id="mood_img" src="">
 					</button>
 				</div>
@@ -51,7 +51,9 @@
 					<div id="_bk">
 						{% for t in user_things %}
 						<div id="_bl">
-							<img id="shopping-bag" src="{{ MEDIA_URL }}{{ t.things_id.things_img }}">
+							<button id="thing_btn" type="button" onclick="showThing(this);">
+								<img id="thing_img_" src="{{ MEDIA_URL }}{{ t.things_id.things_img }}">
+							</button>
 							<div id="_bm">{{ t.things_id.things }}</div>
 						</div>
 						{% endfor %}
@@ -78,11 +80,11 @@
 			</div>
 		</div>
 	</form>
+
 {% endblock %}
 
 {% block js %}
 	<script src="{% static 'js/editDiary.js' %}"></script>
-	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 	<script type="text/javascript">
         function check(){

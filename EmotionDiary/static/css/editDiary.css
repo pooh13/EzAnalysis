@@ -189,18 +189,25 @@
 	#_bl {
 		position: relative;
 		float: left;
-		width: 60px;
+		width: 62px;
 		height: 86px;
 		margin: 0 5px;
 	}
-	#shopping-bag {
+	#thing_btn {
+	    position: relative;
+        width: 62px;
+        height: 62px;
+		padding: 0;
+		border: none;
+		background: none;
+	}
+	#thing_img_ {
 		position: relative;
 		width: 60px;
 		height: 60px;
 	}
 	#_bm {
 		position: relative;
-		width: 60px;
 		text-align: center;
 		font-family: Arial;
 		font-style: normal;
@@ -262,4 +269,53 @@
 		font-size: 30px;
 		color: rgba(255,255,255,1);
 		filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+    }
+
+    /*-- 選擇表情之小視窗 --*/
+    .emoji_img {
+        width: 40px;
+        height: 40px;
+    }
+    .btn1 {
+	    position: relative;
+		width: 50px;
+		height: 50px;
+		margin: 3px;
+		padding: 0;
+		border: none;
+		border-radius: 80px;
+		background-color: rgb(247, 203, 203);
+
+	}
+	.btn2 {
+		position: relative;
+		width: 50px;
+		height: 50px;
+		margin: 3px;
+		padding: 0;
+		border: none;
+		border-radius: 80px;
+		background-color: rgb(115, 190, 230);
+	}
+
+    /*-- 選擇做了什麼之小視窗 --*/
+    .things {
+        float: left;
+    }
+    .thing_img {
+        width: 50px;
+        height: 50px;
+    }
+    .btn3 {
+        position: relative;
+	    width: 60px;
+	    height: 60px;
+	    padding: 0;
+	    border: 3px #ffffff solid;
+    }
+    .btn4 {
+	    width: 60px;
+	    height: 60px;
+	    padding: 0;
+	    border: 3px #C3E0E5 solid;
     }

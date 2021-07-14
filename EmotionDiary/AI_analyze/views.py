@@ -100,7 +100,7 @@ def menu_diary(request, pk):
             if d.date.strftime('%Y-%m-%d') == today:
                 message = '已填過'
             else:
-                message = ''    
+                message = ''
     else:
         message = ''
 
